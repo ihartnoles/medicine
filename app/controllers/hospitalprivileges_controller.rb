@@ -6,7 +6,7 @@ class HospitalprivilegesController < ApplicationController
 
     respond_to do |format|
       if @hospitalprivilege.save
-        format.html { redirect_to affiliate_path, notice: 'hospitalprivilege was successfully created.' }
+        format.html { redirect_to affiliate_path(:id => params[:affiliate_id]), notice: 'hospital privilege was successfully created.' }
         format.json { render json: @hospitalprivilege, status: :created, location: @hospitalprivilege }
       else
         format.html { render action: "new" }
