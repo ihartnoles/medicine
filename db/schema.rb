@@ -1,0 +1,292 @@
+# encoding: UTF-8
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
+#
+# Note that this schema.rb definition is the authoritative source for your
+# database schema. If you need to create the application database on another
+# system, you should be using db:schema:load, not running all the migrations
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# you'll amass, the slower it'll run and the greater likelihood for issues).
+#
+# It's strongly recommended to check this file into your version control system.
+
+ActiveRecord::Schema.define(:version => 20131205163238) do
+
+  create_table "Affilates_Institutions", :force => true do |t|
+    t.integer "Affiliate_id",   :null => false
+    t.integer "Institution_id", :null => false
+  end
+
+  create_table "Affiliates", :primary_key => "Affiliate_id", :force => true do |t|
+    t.string   "znumber",          :limit => 50
+    t.string   "Prefix",           :limit => 10
+    t.string   "FirstName",        :limit => 50
+    t.string   "MiddleName",       :limit => 50
+    t.string   "LastName",         :limit => 50
+    t.string   "Suffix",           :limit => 10
+    t.string   "License",          :limit => 50
+    t.string   "HomeStreet"
+    t.string   "HomeCity",         :limit => 50
+    t.string   "HomeState",        :limit => 10
+    t.string   "HomeZip",          :limit => 10
+    t.string   "OfficeStreet"
+    t.string   "OfficeCity",       :limit => 50
+    t.string   "OfficeState",      :limit => 10
+    t.string   "OfficeZip",        :limit => 10
+    t.string   "HomePhone",        :limit => 50
+    t.string   "CellPhone",        :limit => 50
+    t.string   "OfficePhone",      :limit => 50
+    t.string   "EmergencyPhone",   :limit => 50
+    t.string   "FaxNumber",        :limit => 50
+    t.string   "OtherPhoneNumber", :limit => 50
+    t.string   "EmailFAU",         :limit => 50
+    t.string   "EmailPersonal",    :limit => 50
+    t.string   "EmailOffice",      :limit => 50
+    t.string   "EmailOther",       :limit => 50
+    t.boolean  "isFaculty"
+    t.datetime "createdOn"
+  end
+
+  create_table "AffiliatesSpecialty", :id => false, :force => true do |t|
+    t.integer "id",           :null => false
+    t.integer "Affiliate_id", :null => false
+    t.integer "Division_id",  :null => false
+  end
+
+  create_table "Affiliates_Degrees", :force => true do |t|
+    t.integer "Affiliate_id", :null => false
+    t.integer "Degree_id",    :null => false
+  end
+
+  add_index "Affiliates_Degrees", ["id"], :name => "IX_Affiliates_Degrees", :unique => true
+
+  create_table "Affiliates_Languages", :id => false, :force => true do |t|
+    t.integer "id",           :null => false
+    t.integer "Affiliate_id", :null => false
+    t.integer "Language_id",  :null => false
+  end
+
+  create_table "BasicScienceDisciplines", :primary_key => "Discipline_id", :force => true do |t|
+    t.string "DisciplineName", :limit => 50
+    t.date   "CreatedOn"
+  end
+
+  create_table "ClinicalDivisions", :primary_key => "division_id", :force => true do |t|
+    t.string   "DivisionName", :limit => 50
+    t.datetime "createdOn"
+  end
+
+  create_table "ClinicalSections", :primary_key => "Section_id", :force => true do |t|
+    t.string  "SectionName", :limit => 50
+    t.integer "Division_id"
+  end
+
+  create_table "Degrees", :primary_key => "Degree_id", :force => true do |t|
+    t.string   "DegreeName", :limit => 100
+    t.datetime "CreatedOn"
+  end
+
+  create_table "HospitalPrivileges", :primary_key => "Privilege_id", :force => true do |t|
+    t.integer "Hospital_id"
+    t.integer "Affiliate_id"
+  end
+
+  create_table "Hospitals_bak", :primary_key => "Hospital_id", :force => true do |t|
+    t.string   "HospitalName", :null => false
+    t.datetime "CreatedOn",    :null => false
+  end
+
+  create_table "Institutions", :primary_key => "Institution_id", :force => true do |t|
+    t.string   "InstitutionName"
+    t.string   "City",            :limit => 50
+    t.string   "State",           :limit => 10
+    t.string   "Country",         :limit => 50
+    t.datetime "CreatedOn"
+  end
+
+  create_table "Languages", :primary_key => "Language_id", :force => true do |t|
+    t.string "Language",             :limit => 50
+    t.string "LanguageAbbreviation", :limit => 10
+  end
+
+  create_table "Licenses", :primary_key => "License_id", :force => true do |t|
+    t.integer "Affiliate_id",                :null => false
+    t.string  "LicenseNumber", :limit => 50, :null => false
+    t.string  "State",         :limit => 50
+    t.string  "Year",          :limit => 50
+    t.string  "Status",        :limit => 50
+  end
+
+  create_table "Training", :id => false, :force => true do |t|
+    t.integer  "Training_id",                         :null => false
+    t.integer  "Affiliate_id",                        :null => false
+    t.string   "FloridaMedicalLicense", :limit => 50
+    t.string   "CV",                    :limit => 10
+    t.datetime "CV_last_updated"
+  end
+
+  create_table "UserTypes", :primary_key => "UserType_ID", :force => true do |t|
+    t.string "UserType",    :limit => 45
+    t.string "Description", :limit => 50
+  end
+
+  create_table "com_affiliate", :id => false, :force => true do |t|
+    t.float  "id",                        :limit => 53
+    t.string "status"
+    t.string "eligibility"
+    t.string "category"
+    t.string "cv"
+    t.string "transcript"
+    t.string "personnel"
+    t.string "prefix"
+    t.string "fname"
+    t.string "mi"
+    t.string "lname"
+    t.string "suffix"
+    t.string "specialty"
+    t.string "license"
+    t.string "home_address"
+    t.string "home_city"
+    t.string "home_county"
+    t.string "home_state"
+    t.string "home_zip"
+    t.string "home_phone"
+    t.string "home_fax"
+    t.string "home_email"
+    t.string "home_emergency_name"
+    t.string "home_emergency_number"
+    t.string "work_organization"
+    t.string "work_address"
+    t.string "work_city"
+    t.string "work_county"
+    t.string "work_state"
+    t.string "work_zip"
+    t.string "work_phone"
+    t.string "work_cel"
+    t.string "work_pager"
+    t.string "work_fax"
+    t.string "work_email"
+    t.string "assistant_name"
+    t.string "assistant_phone"
+    t.string "assistant_email"
+    t.string "hospital_appointments"
+    t.string "teaching_experience"
+    t.string "research_experience"
+    t.string "honors_awards"
+    t.string "medical_organizations"
+    t.string "committees"
+    t.string "community_service"
+    t.string "notes"
+    t.string "created"
+    t.string "updated"
+    t.string "deleted"
+    t.string "path"
+    t.float  "user_id",                   :limit => 53
+    t.string "mail_preference"
+    t.string "preclinical_teaching"
+    t.string "clinical_teaching"
+    t.string "physician_referral"
+    t.string "other_source"
+    t.string "participate_research"
+    t.string "research_type"
+    t.string "course"
+    t.string "comments"
+    t.string "rec_letter1"
+    t.string "rec_letter2"
+    t.string "completed_by_name"
+    t.string "completed_by_phone"
+    t.string "completed_by_relationship"
+    t.string "interest_letter"
+    t.string "fau_title"
+    t.string "practice_type"
+    t.string "interest_letter_date"
+    t.string "rec_letter1_date"
+    t.string "rec_letter2_date"
+    t.string "cap_date"
+    t.string "exp_date"
+    t.string "loa_date"
+    t.string "certificate_date"
+    t.string "pform_date"
+    t.string "fau_email"
+    t.string "z_number"
+    t.string "specialty_listed"
+    t.string "currently_teaching"
+  end
+
+  create_table "com_appointment", :id => false, :force => true do |t|
+    t.float  "id",             :limit => 53
+    t.string "rank"
+    t.string "school"
+    t.string "beginning_date"
+    t.string "ending_date"
+    t.float  "affiliate_id",   :limit => 53
+  end
+
+  create_table "com_certification", :id => false, :force => true do |t|
+    t.float  "id",           :limit => 53
+    t.string "specialty"
+    t.string "year"
+    t.float  "affiliate_id", :limit => 53
+  end
+
+  create_table "com_education", :id => false, :force => true do |t|
+    t.float  "id",           :limit => 53
+    t.string "degree"
+    t.string "year"
+    t.string "institution"
+    t.string "country"
+    t.float  "affiliate_id", :limit => 53
+  end
+
+  create_table "com_hospital", :id => false, :force => true do |t|
+    t.float  "id",           :limit => 53
+    t.string "name"
+    t.float  "affiliate_id", :limit => 53
+    t.string "name_listed"
+  end
+
+  create_table "com_licensure", :id => false, :force => true do |t|
+    t.float  "id",           :limit => 53
+    t.string "number"
+    t.string "state"
+    t.string "years"
+    t.string "status"
+    t.float  "affiliate_id", :limit => 53
+  end
+
+  create_table "com_log", :id => false, :force => true do |t|
+    t.float  "id",           :limit => 53
+    t.string "date_time"
+    t.string "ip"
+    t.string "user_name"
+    t.string "action"
+    t.float  "affiliate_id", :limit => 53
+  end
+
+  create_table "com_teaching", :id => false, :force => true do |t|
+    t.float  "id",           :limit => 53
+    t.string "ENGINE"
+    t.string "title"
+    t.string "period"
+    t.float  "affiliate_id", :limit => 53
+  end
+
+  create_table "com_training", :id => false, :force => true do |t|
+    t.float  "id",           :limit => 53
+    t.string "specialty"
+    t.string "years"
+    t.string "institution"
+    t.float  "affiliate_id", :limit => 53
+  end
+
+  create_table "sysdiagrams", :primary_key => "diagram_id", :force => true do |t|
+    t.string  "name",         :limit => 128, :null => false
+    t.integer "principal_id",                :null => false
+    t.integer "version"
+    t.binary  "definition"
+  end
+
+  add_index "sysdiagrams", ["principal_id", "name"], :name => "UK_principal_name", :unique => true
+
+end

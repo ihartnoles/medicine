@@ -1,0 +1,2 @@
+module AffililatesHelper
+end

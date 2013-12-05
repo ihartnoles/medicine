@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  privilege_id: 1
+  hospital_id: 1
+  affiliate_id: 1
+
+two:
+  privilege_id: 1
+  hospital_id: 1
+  affiliate_id: 1
