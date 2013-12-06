@@ -1,9 +1,10 @@
 Medicine::Application.routes.draw do
   
- 
   resources :affiliates
   resources :hospitalprivileges
   resources :hospitals
+  resources :languages
+  resources :affiliatelanguages
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -15,4 +15,18 @@ class HospitalprivilegesController < ApplicationController
     end
   end
 
+   def destroy
+   	#find the privilege
+    @hospitalprivilege = Hospitalprivilege.find(params[:id])
+    #set the affiliate_id 
+    @affiliate_id = @hospitalprivilege.affiliate_id
+    #destroy the privilege
+    @hospitalprivilege.destroy
+
+    respond_to do |format|
+      format.html { redirect_to affiliate_path(:id => @affiliate_id), notice: 'hospital privilege was successfully deleted.' }
+      format.json { head :no_content }
+    end
+  end
+
 end

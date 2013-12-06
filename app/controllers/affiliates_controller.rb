@@ -14,10 +14,12 @@ class AffiliatesController < ApplicationController
   # GET /affiliates/1.json
   def show
     @affiliate = Affiliate.find(params[:id])
-
     @hospitalprivilege = Hospitalprivilege.new
     @showprivileges = Hospitalprivilege.where(:affiliate_id => params[:id])
-    #Affiliate.new(params[:affiliate])
+    @showlanguagespoken = Affiliatelanguage.where(:affiliate_id => params[:id])
+    #@languagespoken_id = Affiliatelanguage.where(:affiliate_id => params[:id], :language_id => ?)
+    @languagespoken = Affiliatelanguage.new   
+    @languagelist = Language.all
 
     respond_to do |format|
       format.html # show.html.erb

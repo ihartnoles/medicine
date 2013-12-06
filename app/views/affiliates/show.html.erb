@@ -41,24 +41,50 @@
 <%= link_to 'Edit', edit_affiliate_path(@affiliate) %> |
 <%= link_to 'Back', affiliates_path %>
 
+<hr>
+<h3>Add Languages Spoken</h3>
+
+<%= form_for(@languagespoken) do |f| %>
+  <%= hidden_field_tag :affiliate_id, params[:id] %>
+  <%#= collection_select(:language, :id, Language.all, :language_id, :language) %>
+  
+  <% @languagelist.each do |lang| %>
+    <%= check_box_tag 'languages[language_ids][]', lang.id, Affiliatelanguage.where(:affiliate_id => params[:id]).pluck(:language_id).include?(lang.id) %> 
+    <%#= f.check_box :language_id %><%= lang.language %><br/>
+  <% end %>
+
+
+   <div class="actions">
+    <%= f.submit 'Update Languages Spoken' %>
+  </div>
+<% end %>
+
+<hr>
+<h3>Languages Spoken List</h3>
+
+<% @showlanguagespoken.each do |l| %>
+  <%= l.language.language %> <%= link_to 'Remove', l, method: :delete, data: { confirm: 'Are you sure?' } %><br>
+<% end %>
 
 <hr>
 <h3>Add a Hospital Privilege</h3>
+
 
 <%= form_for(@hospitalprivilege) do |f| %>
   <%= hidden_field_tag :affiliate_id, params[:id] %>
   <%= collection_select(:hospital, :id, Hospital.all, :id, :name) %>
    <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Add Hospital Privilege'%>
   </div>
 <% end %>
+
 
 <hr>
 
 <h3>Hospital Privileges</h3>
 
 <% @showprivileges.each do |p| %>
-  <%= p.hospital.name %><br>
+  <%= p.hospital.name %> <%= link_to 'Remove', p, method: :delete, data: { confirm: 'Are you sure?' } %><br>
 <% end %>
 
 
