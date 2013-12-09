@@ -46,6 +46,7 @@
 
 <%= form_for(@languagespoken) do |f| %>
   <%= hidden_field_tag :affiliate_id, params[:id] %>
+  <%#= hidden_field_tag "languages[language_ids][]", nil %>
   <%#= collection_select(:language, :id, Language.all, :language_id, :language) %>
   
   <% @languagelist.each do |lang| %>

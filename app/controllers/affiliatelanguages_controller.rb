@@ -2,21 +2,34 @@ class AffiliatelanguagesController < ApplicationController
    
    def create
     
-    params[:languages][:language_ids].each do | i |
-      @affiliatelanguage = Affiliatelanguage.new(:language_id => i,
-    											                       :affiliate_id => params[:affiliate_id])
-      @affiliatelanguage.save
-    end 
+      #clear out any existing in database
+      @findExistingLang = Affiliatelanguage.where('affiliate_id' => params[:affiliate_id]).destroy_all
+                        
+        #loop over selections and save
+        if params.has_key?("languages")
+          params[:languages][:language_ids].each do | i |          
+              @affiliatelanguage = Affiliatelanguage.new(:language_id => i,
+          											                       :affiliate_id => params[:affiliate_id])
+              @affiliatelanguage.save
+          end
 
-    respond_to do |format|
-     if @affiliatelanguage.save
-        format.html { redirect_to affiliate_path(:id => params[:affiliate_id]), notice: 'affiliate language was successfully created.' }
-        format.json { render json: @affiliatelanguage, status: :created, location: @affiliatelanguage }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @affiliatelanguage.errors, status: :unprocessable_entity }
-      end
-    end
+           respond_to do |format|
+           if @affiliatelanguage.save
+              format.html { redirect_to affiliate_path(:id => params[:affiliate_id]), notice: 'affiliate language was successfully created.' }
+              #format.json { render json: @affiliatelanguage, status: :created, location: @affiliatelanguage }
+            else
+              format.html { redirect_to affiliate_path(:id => params[:affiliate_id]), notice: 'affiliate language was successfully created.' }
+            end
+        end
+
+        #no checkboxes checked
+        else
+            respond_to do |format|
+              format.html { redirect_to affiliate_path(:id => params[:affiliate_id]), notice: 'affiliate language preference updated.' }
+            end
+        end  
+
+       
   end
 
    def destroy
