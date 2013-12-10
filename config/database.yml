@@ -5,9 +5,10 @@
 #   gem 'sqlite3'
 development:
   adapter: sqlserver
-  dataserver: boc22mssqloit\oit
+  #dataserver: boc22mssqloit\oit
+  host: localhost
   database: Medicine
-  username: FAU\ihartstein
+  username: BOC22-LT-IH\ihartstein
   password: ikeFAU1358
 
 # Warning: The database defined as "test" will be erased and

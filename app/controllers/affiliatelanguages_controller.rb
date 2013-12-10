@@ -9,7 +9,7 @@ class AffiliatelanguagesController < ApplicationController
         if params.has_key?("languages")
           params[:languages][:language_ids].each do | i |          
               @affiliatelanguage = Affiliatelanguage.new(:language_id => i,
-          											                       :affiliate_id => params[:affiliate_id])
+          											                         :affiliate_id => params[:affiliate_id])
               @affiliatelanguage.save
           end
 

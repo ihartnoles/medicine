@@ -11,21 +11,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131205163238) do
+ActiveRecord::Schema.define(:version => 20131210025459) do
 
-  create_table "Affilates_Institutions", :force => true do |t|
+  create_table "Affilates_Institutions", :id => false, :force => true do |t|
+    t.integer "id",             :null => false
     t.integer "Affiliate_id",   :null => false
     t.integer "Institution_id", :null => false
   end
 
-  create_table "Affiliates", :primary_key => "Affiliate_id", :force => true do |t|
+  create_table "AffiliateLanguages", :force => true do |t|
+    t.integer "affiliate_id", :null => false
+    t.integer "language_id",  :null => false
+  end
+
+  create_table "Affiliates", :id => false, :force => true do |t|
+    t.integer  "affiliate_id",                   :null => false
     t.string   "znumber",          :limit => 50
-    t.string   "Prefix",           :limit => 10
-    t.string   "FirstName",        :limit => 50
-    t.string   "MiddleName",       :limit => 50
-    t.string   "LastName",         :limit => 50
-    t.string   "Suffix",           :limit => 10
-    t.string   "License",          :limit => 50
+    t.string   "prefix",           :limit => 10
+    t.string   "firstname",        :limit => 50
+    t.string   "middlename",       :limit => 50
+    t.string   "lastname",         :limit => 50
+    t.string   "suffix",           :limit => 10
+    t.string   "license",          :limit => 50
     t.string   "HomeStreet"
     t.string   "HomeCity",         :limit => 50
     t.string   "HomeState",        :limit => 10
@@ -54,50 +61,50 @@ ActiveRecord::Schema.define(:version => 20131205163238) do
     t.integer "Division_id",  :null => false
   end
 
-  create_table "Affiliates_Degrees", :force => true do |t|
+  create_table "Affiliates_Degrees", :id => false, :force => true do |t|
+    t.integer "id",           :null => false
     t.integer "Affiliate_id", :null => false
     t.integer "Degree_id",    :null => false
   end
 
-  add_index "Affiliates_Degrees", ["id"], :name => "IX_Affiliates_Degrees", :unique => true
-
-  create_table "Affiliates_Languages", :id => false, :force => true do |t|
-    t.integer "id",           :null => false
-    t.integer "Affiliate_id", :null => false
-    t.integer "Language_id",  :null => false
+  create_table "BasicScienceDisciplines", :id => false, :force => true do |t|
+    t.integer "Discipline_id",                :null => false
+    t.string  "DisciplineName", :limit => 50
+    t.date    "CreatedOn"
   end
 
-  create_table "BasicScienceDisciplines", :primary_key => "Discipline_id", :force => true do |t|
-    t.string "DisciplineName", :limit => 50
-    t.date   "CreatedOn"
-  end
-
-  create_table "ClinicalDivisions", :primary_key => "division_id", :force => true do |t|
+  create_table "ClinicalDivisions", :id => false, :force => true do |t|
+    t.integer  "division_id",                :null => false
     t.string   "DivisionName", :limit => 50
     t.datetime "createdOn"
   end
 
-  create_table "ClinicalSections", :primary_key => "Section_id", :force => true do |t|
+  create_table "ClinicalSections", :id => false, :force => true do |t|
+    t.integer "Section_id",                :null => false
     t.string  "SectionName", :limit => 50
     t.integer "Division_id"
   end
 
-  create_table "Degrees", :primary_key => "Degree_id", :force => true do |t|
+  create_table "Degrees", :id => false, :force => true do |t|
+    t.integer  "Degree_id",                 :null => false
     t.string   "DegreeName", :limit => 100
     t.datetime "CreatedOn"
   end
 
-  create_table "HospitalPrivileges", :primary_key => "Privilege_id", :force => true do |t|
-    t.integer "Hospital_id"
-    t.integer "Affiliate_id"
+  create_table "HospitalPrivileges", :id => false, :force => true do |t|
+    t.integer "privilege_id", :null => false
+    t.integer "hospital_id"
+    t.integer "affiliate_id"
   end
 
-  create_table "Hospitals_bak", :primary_key => "Hospital_id", :force => true do |t|
-    t.string   "HospitalName", :null => false
-    t.datetime "CreatedOn",    :null => false
+  create_table "Hospitals", :id => false, :force => true do |t|
+    t.integer  "id",        :null => false
+    t.string   "name",      :null => false
+    t.datetime "CreatedOn", :null => false
   end
 
-  create_table "Institutions", :primary_key => "Institution_id", :force => true do |t|
+  create_table "Institutions", :id => false, :force => true do |t|
+    t.integer  "Institution_id",                :null => false
     t.string   "InstitutionName"
     t.string   "City",            :limit => 50
     t.string   "State",           :limit => 10
@@ -105,12 +112,14 @@ ActiveRecord::Schema.define(:version => 20131205163238) do
     t.datetime "CreatedOn"
   end
 
-  create_table "Languages", :primary_key => "Language_id", :force => true do |t|
-    t.string "Language",             :limit => 50
-    t.string "LanguageAbbreviation", :limit => 10
+  create_table "Languages", :id => false, :force => true do |t|
+    t.integer "language_id",                :null => false
+    t.string  "language",     :limit => 50
+    t.string  "abbreviation", :limit => 10
   end
 
-  create_table "Licenses", :primary_key => "License_id", :force => true do |t|
+  create_table "Licenses", :id => false, :force => true do |t|
+    t.integer "License_id",                  :null => false
     t.integer "Affiliate_id",                :null => false
     t.string  "LicenseNumber", :limit => 50, :null => false
     t.string  "State",         :limit => 50
@@ -124,11 +133,6 @@ ActiveRecord::Schema.define(:version => 20131205163238) do
     t.string   "FloridaMedicalLicense", :limit => 50
     t.string   "CV",                    :limit => 10
     t.datetime "CV_last_updated"
-  end
-
-  create_table "UserTypes", :primary_key => "UserType_ID", :force => true do |t|
-    t.string "UserType",    :limit => 45
-    t.string "Description", :limit => 50
   end
 
   create_table "com_affiliate", :id => false, :force => true do |t|
@@ -280,13 +284,29 @@ ActiveRecord::Schema.define(:version => 20131205163238) do
     t.float  "affiliate_id", :limit => 53
   end
 
-  create_table "sysdiagrams", :primary_key => "diagram_id", :force => true do |t|
+  create_table "sysdiagrams", :id => false, :force => true do |t|
     t.string  "name",         :limit => 128, :null => false
     t.integer "principal_id",                :null => false
+    t.integer "diagram_id",                  :null => false
     t.integer "version"
     t.binary  "definition"
   end
 
-  add_index "sysdiagrams", ["principal_id", "name"], :name => "UK_principal_name", :unique => true
+  create_table "users", :force => true do |t|
+    t.string   "username"
+    t.integer  "usertype_id"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "phone"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "usertypes", :force => true do |t|
+    t.string   "usertype"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
 end

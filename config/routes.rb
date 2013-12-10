@@ -1,5 +1,11 @@
 Medicine::Application.routes.draw do
   
+  resources :usertypes
+
+
+  resources :users
+
+
   resources :affiliates
   resources :hospitalprivileges
   resources :hospitals
