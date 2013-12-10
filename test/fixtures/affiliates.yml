@@ -8,6 +8,24 @@ one:
   lastname: MyString
   suffix: MyString
   license: MyString
+  homestreet: MyString
+  homecity: MyString
+  homestate: MyString
+  homezip: 1
+  officestreet: MyString
+  officecity: MyString
+  officestate: MyString
+  officezip: 1
+  homephone: MyString
+  cellphone: MyString
+  emergencyphone: MyString
+  faxnumber: MyString
+  otherphonenumber: MyString
+  emailfau: MyString
+  emailpersonal: MyString
+  emailoffice: MyString
+  emailother: MyString
+  isfaculty: false
 
 two:
   znumber: MyString
@@ -17,3 +35,21 @@ two:
   lastname: MyString
   suffix: MyString
   license: MyString
+  homestreet: MyString
+  homecity: MyString
+  homestate: MyString
+  homezip: 1
+  officestreet: MyString
+  officecity: MyString
+  officestate: MyString
+  officezip: 1
+  homephone: MyString
+  cellphone: MyString
+  emergencyphone: MyString
+  faxnumber: MyString
+  otherphonenumber: MyString
+  emailfau: MyString
+  emailpersonal: MyString
+  emailoffice: MyString
+  emailother: MyString
+  isfaculty: false

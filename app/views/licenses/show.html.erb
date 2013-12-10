@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Affiliate:</b>
+  <%= @license.affiliate_id %>
+</p>
+
+<p>
+  <b>Licensenumber:</b>
+  <%= @license.licensenumber %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @license.state %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%= @license.year %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @license.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_license_path(@license) %> |
+<%= link_to 'Back', licenses_path %>

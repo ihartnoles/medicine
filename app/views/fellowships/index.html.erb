@@ -1,0 +1,27 @@
+<h1>Listing fellowships</h1>
+
+<table>
+  <tr>
+    <th>Specialty</th>
+    <th>Location</th>
+    <th>Training</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @fellowships.each do |fellowship| %>
+  <tr>
+    <td><%= fellowship.specialty %></td>
+    <td><%= fellowship.location %></td>
+    <td><%= fellowship.training %></td>
+    <td><%= link_to 'Show', fellowship %></td>
+    <td><%= link_to 'Edit', edit_fellowship_path(fellowship) %></td>
+    <td><%= link_to 'Destroy', fellowship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Fellowship', new_fellowship_path %>

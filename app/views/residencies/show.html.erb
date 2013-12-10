@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Specialty:</b>
+  <%= @residency.specialty %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @residency.location %>
+</p>
+
+<p>
+  <b>Trainingtitle:</b>
+  <%= @residency.trainingtitle %>
+</p>
+
+<p>
+  <b>Matchconnection:</b>
+  <%= @residency.matchconnection %>
+</p>
+
+
+<%= link_to 'Edit', edit_residency_path(@residency) %> |
+<%= link_to 'Back', residencies_path %>

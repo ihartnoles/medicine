@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  degreename: MyString
+  year: 1
+  institution_id: 1
+  affiliate_id: 1
+
+two:
+  degreename: MyString
+  year: 1
+  institution_id: 1
+  affiliate_id: 1

@@ -2,7 +2,7 @@ class HospitalprivilegesController < ApplicationController
    
    def create
     @hospitalprivilege = Hospitalprivilege.new( :hospital_id =>params[:hospital][:id],
-    											:affiliate_id => params[:affiliate_id] )
+    											                      :affiliate_id => params[:affiliate_id] )
 
     respond_to do |format|
       if @hospitalprivilege.save

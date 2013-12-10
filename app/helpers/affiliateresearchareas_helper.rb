@@ -1,0 +1,2 @@
+module AffiliateresearchareasHelper
+end

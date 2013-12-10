@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Degreename:</b>
+  <%= @degree.degreename %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%= @degree.year %>
+</p>
+
+<p>
+  <b>Institution:</b>
+  <%= @degree.institution_id %>
+</p>
+
+<p>
+  <b>Affiliate:</b>
+  <%= @degree.affiliate_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_degree_path(@degree) %> |
+<%= link_to 'Back', degrees_path %>

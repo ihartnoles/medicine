@@ -1,5 +1,35 @@
 Medicine::Application.routes.draw do
   
+  resources :certifiedspecialities
+
+
+  resources :cvs
+
+
+  resources :affiliateresearchareas
+
+
+  resources :researchareas
+
+
+  resources :fellowships
+
+
+  resources :residencies
+
+
+  resources :degrees
+
+
+  resources :institutions
+
+
+  resources :licenses
+
+
+  resources :affiliates
+
+
   resources :usertypes
 
 

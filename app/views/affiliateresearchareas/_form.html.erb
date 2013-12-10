@@ -1,0 +1,25 @@
+<%= form_for(@affiliateresearcharea) do |f| %>
+  <% if @affiliateresearcharea.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@affiliateresearcharea.errors.count, "error") %> prohibited this affiliateresearcharea from being saved:</h2>
+
+      <ul>
+      <% @affiliateresearcharea.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :researcharea_id %><br />
+    <%= f.number_field :researcharea_id %>
+  </div>
+  <div class="field">
+    <%= f.label :affiliate_id %><br />
+    <%= f.number_field :affiliate_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

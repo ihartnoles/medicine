@@ -1,0 +1,33 @@
+<%= form_for(@residency) do |f| %>
+  <% if @residency.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@residency.errors.count, "error") %> prohibited this residency from being saved:</h2>
+
+      <ul>
+      <% @residency.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :specialty %><br />
+    <%= f.text_field :specialty %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :trainingtitle %><br />
+    <%= f.text_field :trainingtitle %>
+  </div>
+  <div class="field">
+    <%= f.label :matchconnection %><br />
+    <%= f.text_field :matchconnection %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

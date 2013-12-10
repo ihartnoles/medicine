@@ -1,0 +1,25 @@
+<h1>Listing cvs</h1>
+
+<table>
+  <tr>
+    <th>Affiliate</th>
+    <th>Path</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cvs.each do |cv| %>
+  <tr>
+    <td><%= cv.affiliate_id %></td>
+    <td><%= cv.path %></td>
+    <td><%= link_to 'Show', cv %></td>
+    <td><%= link_to 'Edit', edit_cv_path(cv) %></td>
+    <td><%= link_to 'Destroy', cv, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Cv', new_cv_path %>

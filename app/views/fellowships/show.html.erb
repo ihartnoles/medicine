@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Specialty:</b>
+  <%= @fellowship.specialty %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @fellowship.location %>
+</p>
+
+<p>
+  <b>Training:</b>
+  <%= @fellowship.training %>
+</p>
+
+
+<%= link_to 'Edit', edit_fellowship_path(@fellowship) %> |
+<%= link_to 'Back', fellowships_path %>

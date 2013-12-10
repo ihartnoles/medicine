@@ -18,7 +18,7 @@ class AffiliatesControllerTest < ActionController::TestCase
 
   test "should create affiliate" do
     assert_difference('Affiliate.count') do
-      post :create, affiliate: { firstname: @affiliate.firstname, lastname: @affiliate.lastname, license: @affiliate.license, middlename: @affiliate.middlename, prefix: @affiliate.prefix, suffix: @affiliate.suffix, znumber: @affiliate.znumber }
+      post :create, affiliate: { cellphone: @affiliate.cellphone, emailfau: @affiliate.emailfau, emailoffice: @affiliate.emailoffice, emailother: @affiliate.emailother, emailpersonal: @affiliate.emailpersonal, emergencyphone: @affiliate.emergencyphone, faxnumber: @affiliate.faxnumber, firstname: @affiliate.firstname, homecity: @affiliate.homecity, homephone: @affiliate.homephone, homestate: @affiliate.homestate, homestreet: @affiliate.homestreet, homezip: @affiliate.homezip, isfaculty: @affiliate.isfaculty, lastname: @affiliate.lastname, license: @affiliate.license, middlename: @affiliate.middlename, officecity: @affiliate.officecity, officestate: @affiliate.officestate, officestreet: @affiliate.officestreet, officezip: @affiliate.officezip, otherphonenumber: @affiliate.otherphonenumber, prefix: @affiliate.prefix, suffix: @affiliate.suffix, znumber: @affiliate.znumber }
     end
 
     assert_redirected_to affiliate_path(assigns(:affiliate))
@@ -35,7 +35,7 @@ class AffiliatesControllerTest < ActionController::TestCase
   end
 
   test "should update affiliate" do
-    put :update, id: @affiliate, affiliate: { firstname: @affiliate.firstname, lastname: @affiliate.lastname, license: @affiliate.license, middlename: @affiliate.middlename, prefix: @affiliate.prefix, suffix: @affiliate.suffix, znumber: @affiliate.znumber }
+    put :update, id: @affiliate, affiliate: { cellphone: @affiliate.cellphone, emailfau: @affiliate.emailfau, emailoffice: @affiliate.emailoffice, emailother: @affiliate.emailother, emailpersonal: @affiliate.emailpersonal, emergencyphone: @affiliate.emergencyphone, faxnumber: @affiliate.faxnumber, firstname: @affiliate.firstname, homecity: @affiliate.homecity, homephone: @affiliate.homephone, homestate: @affiliate.homestate, homestreet: @affiliate.homestreet, homezip: @affiliate.homezip, isfaculty: @affiliate.isfaculty, lastname: @affiliate.lastname, license: @affiliate.license, middlename: @affiliate.middlename, officecity: @affiliate.officecity, officestate: @affiliate.officestate, officestreet: @affiliate.officestreet, officezip: @affiliate.officezip, otherphonenumber: @affiliate.otherphonenumber, prefix: @affiliate.prefix, suffix: @affiliate.suffix, znumber: @affiliate.znumber }
     assert_redirected_to affiliate_path(assigns(:affiliate))
   end
 
