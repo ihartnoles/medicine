@@ -3,6 +3,8 @@ class AffiliatesController < ApplicationController
   # GET /affiliates.json
   def index
     @affiliates = Affiliate.all
+    @title      = 'Affiliate List'
+    @description = 'List of CoM Affiliates'
 
     respond_to do |format|
       format.html # index.html.erb

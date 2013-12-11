@@ -1,71 +1,96 @@
-<h1>Listing affiliates</h1>
+<div class="box border green">
+    <div class="box-title">
+        <h4><i class="fa fa-table"></i>Dynamic Data Tables</h4>
+        <div class="tools hidden-xs">
+            <a href="#box-config" data-toggle="modal" class="config">
+                <i class="fa fa-cog"></i>
+            </a>
+            <a href="javascript:;" class="reload">
+                <i class="fa fa-refresh"></i>
+            </a>
+            <a href="javascript:;" class="collapse">
+                <i class="fa fa-chevron-up"></i>
+            </a>
+            <a href="javascript:;" class="remove">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    </div>
 
-<table>
-  <tr>
-    <th>Znumber</th>
-    <th>Prefix</th>
-    <th>Firstname</th>
-    <th>Middlename</th>
-    <th>Lastname</th>
-    <th>Suffix</th>
-    <th>License</th>
-    <th>Homestreet</th>
-    <th>Homecity</th>
-    <th>Homestate</th>
-    <th>Homezip</th>
-    <th>Officestreet</th>
-    <th>Officecity</th>
-    <th>Officestate</th>
-    <th>Officezip</th>
-    <th>Homephone</th>
-    <th>Cellphone</th>
-    <th>Emergencyphone</th>
-    <th>Faxnumber</th>
-    <th>Otherphonenumber</th>
-    <th>Emailfau</th>
-    <th>Emailpersonal</th>
-    <th>Emailoffice</th>
-    <th>Emailother</th>
-    <th>Isfaculty</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @affiliates.each do |affiliate| %>
-  <tr>
-    <td><%= affiliate.znumber %></td>
-    <td><%= affiliate.prefix %></td>
-    <td><%= affiliate.firstname %></td>
-    <td><%= affiliate.middlename %></td>
-    <td><%= affiliate.lastname %></td>
-    <td><%= affiliate.suffix %></td>
-    <td><%= affiliate.license %></td>
-    <td><%= affiliate.homestreet %></td>
-    <td><%= affiliate.homecity %></td>
-    <td><%= affiliate.homestate %></td>
-    <td><%= affiliate.homezip %></td>
-    <td><%= affiliate.officestreet %></td>
-    <td><%= affiliate.officecity %></td>
-    <td><%= affiliate.officestate %></td>
-    <td><%= affiliate.officezip %></td>
-    <td><%= affiliate.homephone %></td>
-    <td><%= affiliate.cellphone %></td>
-    <td><%= affiliate.emergencyphone %></td>
-    <td><%= affiliate.faxnumber %></td>
-    <td><%= affiliate.otherphonenumber %></td>
-    <td><%= affiliate.emailfau %></td>
-    <td><%= affiliate.emailpersonal %></td>
-    <td><%= affiliate.emailoffice %></td>
-    <td><%= affiliate.emailother %></td>
-    <td><%= affiliate.isfaculty %></td>
-    <td><%= link_to 'Show', affiliate %></td>
-    <td><%= link_to 'Edit', edit_affiliate_path(affiliate) %></td>
-    <td><%= link_to 'Destroy', affiliate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
 
-<br />
+    <div class="box-body">
+        <table d="datatable1" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered table-hover">
+         <thead>
+          <tr>
+            <th>Znumber</th>
+            <th>Prefix</th>
+            <th>Firstname</th>
+            <th>Middlename</th>
+            <th>Lastname</th>
+            <th>Suffix</th>
+            <th>License</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
 
-<%= link_to 'New Affiliate', new_affiliate_path %>
+        <tbody>
+            <% @affiliates.each do |affiliate| %>
+              <tr class="gradeA">
+                <td><%= affiliate.znumber %></td>
+                <td><%= affiliate.prefix %></td>
+                <td><%= affiliate.firstname %></td>
+                <td><%= affiliate.middlename %></td>
+                <td><%= affiliate.lastname %></td>
+                <td><%= affiliate.suffix %></td>
+                <td><%= affiliate.license %></td>
+                <td><%= link_to 'Show', affiliate %></td>
+                <td><%= link_to 'Edit', edit_affiliate_path(affiliate) %></td>
+                <td><%= link_to 'Destroy', affiliate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+        </tbody>
+
+        </table>
+
+        <br />
+
+        <%= link_to 'New Affiliate', new_affiliate_path %>
+
+
+    </div>
+</div>
+
+<!-- JQUERY -->
+    <script src="assets/jquery/jquery-2.0.3.min.js"></script>
+    <!-- JQUERY UI-->
+    <script src="assets/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <!-- BOOTSTRAP -->
+    <script src="assets/bootstrap-dist/js/bootstrap.min.js"></script>
+    
+        
+    <!-- DATE RANGE PICKER -->
+    <script src="assets/bootstrap-daterangepicker/moment.min.js"></script>
+    
+    <script src="assets/bootstrap-daterangepicker/daterangepicker.min.js"></script>
+    <!-- SLIMSCROLL -->
+    <script type="text/javascript" src="assets/jQuery-slimScroll-1.3.0/jquery.slimscroll.min.js"></script><script type="text/javascript" src="assets/jQuery-slimScroll-1.3.0/slimScrollHorizontal.min.js"></script>
+    <!-- BLOCK UI -->
+    <script type="text/javascript" src="assets/jQuery-BlockUI/jquery.blockUI.min.js"></script>
+    <!-- DATA TABLES -->
+    <script type="text/javascript" src="assets/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="assets/datatables/media/assets/js/datatables.min.js"></script>
+    <script type="text/javascript" src="assets/datatables/extras/TableTools/media/js/TableTools.min.js"></script>
+    <script type="text/javascript" src="assets/datatables/extras/TableTools/media/js/ZeroClipboard.min.js"></script>
+    <!-- COOKIE -->
+    <script type="text/javascript" src="assets/jQuery-Cookie/jquery.cookie.min.js"></script>
+    <!-- CUSTOM SCRIPT -->
+    <script src="assets/script.js"></script>
+    <script>
+        jQuery(document).ready(function() {     
+            App.setPage("dynamic_table");  //Set current page
+            App.init(); //Initialise plugins and elements
+        });
+    </script>

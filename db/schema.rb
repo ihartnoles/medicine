@@ -13,22 +13,15 @@
 
 ActiveRecord::Schema.define(:version => 20131211011609) do
 
-  create_table "BasicScienceDisciplines", :id => false, :force => true do |t|
-    t.integer "Discipline_id",                :null => false
-    t.string  "DisciplineName", :limit => 50
-    t.date    "CreatedOn"
+  create_table "AffiliatesSpecialty", :id => false, :force => true do |t|
+    t.integer "id",           :null => false
+    t.integer "Affiliate_id", :null => false
+    t.integer "Division_id",  :null => false
   end
 
-  create_table "ClinicalDivisions", :id => false, :force => true do |t|
-    t.integer  "division_id",                :null => false
-    t.string   "DivisionName", :limit => 50
-    t.datetime "createdOn"
-  end
-
-  create_table "ClinicalSections", :id => false, :force => true do |t|
-    t.integer "Section_id",                :null => false
-    t.string  "SectionName", :limit => 50
-    t.integer "Division_id"
+  create_table "BasicScienceDisciplines", :primary_key => "Discipline_id", :force => true do |t|
+    t.string "DisciplineName", :limit => 50
+    t.date   "created_at"
   end
 
   create_table "affiliateinstitutions", :force => true do |t|
@@ -88,6 +81,16 @@ ActiveRecord::Schema.define(:version => 20131211011609) do
     t.integer  "year"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "clinicaldivisions", :force => true do |t|
+    t.string   "divisionname", :limit => 50
+    t.datetime "created_at"
+  end
+
+  create_table "clinicalsections", :force => true do |t|
+    t.string  "sectionname", :limit => 50
+    t.integer "division_id"
   end
 
   create_table "com_affiliate", :id => false, :force => true do |t|
@@ -256,7 +259,7 @@ ActiveRecord::Schema.define(:version => 20131211011609) do
   end
 
   create_table "fellowships", :force => true do |t|
-    t.string   "specialty_id"
+    t.integer  "specialty_id"
     t.string   "location"
     t.string   "training"
     t.datetime "created_at",   :null => false
@@ -265,7 +268,6 @@ ActiveRecord::Schema.define(:version => 20131211011609) do
   end
 
   create_table "hospitalprivileges", :force => true do |t|
-    t.integer  "privilege_id"
     t.integer  "hospital_id"
     t.integer  "affiliate_id"
     t.datetime "created_at",   :null => false
@@ -283,6 +285,7 @@ ActiveRecord::Schema.define(:version => 20131211011609) do
     t.string   "city"
     t.string   "state"
     t.string   "country"
+    t.integer  "affiliate_id",    :null => false
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
@@ -320,7 +323,7 @@ ActiveRecord::Schema.define(:version => 20131211011609) do
   end
 
   create_table "residencies", :force => true do |t|
-    t.string   "specialty_id"
+    t.integer  "specialty_id"
     t.string   "location"
     t.string   "trainingtitle"
     t.string   "matchconnection"
@@ -329,13 +332,14 @@ ActiveRecord::Schema.define(:version => 20131211011609) do
     t.integer  "affiliate_id"
   end
 
-  create_table "sysdiagrams", :id => false, :force => true do |t|
+  create_table "sysdiagrams", :primary_key => "diagram_id", :force => true do |t|
     t.string  "name",         :limit => 128, :null => false
     t.integer "principal_id",                :null => false
-    t.integer "diagram_id",                  :null => false
     t.integer "version"
     t.binary  "definition"
   end
+
+  add_index "sysdiagrams", ["principal_id", "name"], :name => "UK_principal_name", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "username"
@@ -343,6 +347,13 @@ ActiveRecord::Schema.define(:version => 20131211011609) do
     t.string   "firstname"
     t.string   "lastname"
     t.string   "phone"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "usertypes", :force => true do |t|
+    t.string   "usertype"
+    t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
