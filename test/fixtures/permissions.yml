@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  usertype: MyString
-  description: MyText
+  type: 
+  description: MyString
+  bits: 1
 
 two:
-  usertype: MyString
-  description: MyText
+  type: 
+  description: MyString
+  bits: 1
