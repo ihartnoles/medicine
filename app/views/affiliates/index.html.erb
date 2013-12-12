@@ -1,6 +1,8 @@
 <div class="box border green">
     <div class="box-title">
-        <h4><i class="fa fa-table"></i>Dynamic Data Tables</h4>
+        
+        <h4><i class="fa fa-table"></i>Affiliates</h4>
+        
         <div class="tools hidden-xs">
             <a href="#box-config" data-toggle="modal" class="config">
                 <i class="fa fa-cog"></i>
@@ -20,7 +22,7 @@
 
 
     <div class="box-body">
-        <table d="datatable1" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered table-hover">
+        <table id="datatable1" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered table-hover">
          <thead>
           <tr>
             <th>Znumber</th>
@@ -53,30 +55,43 @@
             <% end %>
         </tbody>
 
+        <tfoot>
+            <tr>
+                <th>Znumber</th>
+                <th>Prefix</th>
+                <th>Firstname</th>
+                <th>Middlename</th>
+                <th>Lastname</th>
+                <th>Suffix</th>
+                <th>License</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </tfoot>
+
         </table>
 
         <br />
 
         <%= link_to 'New Affiliate', new_affiliate_path %>
 
-
     </div>
 </div>
 
 <!-- JQUERY -->
     <script src="assets/jquery/jquery-2.0.3.min.js"></script>
-    <!-- JQUERY UI-->
+    <!-- JQUERY UI
     <script src="assets/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
+    -->
     <!-- BOOTSTRAP -->
     <script src="assets/bootstrap-dist/js/bootstrap.min.js"></script>
-    
-        
-    <!-- DATE RANGE PICKER -->
-    <script src="assets/bootstrap-daterangepicker/moment.min.js"></script>
-    
-    <script src="assets/bootstrap-daterangepicker/daterangepicker.min.js"></script>
-    <!-- SLIMSCROLL -->
+   
+   
+    <!-- SLIMSCROLL 
     <script type="text/javascript" src="assets/jQuery-slimScroll-1.3.0/jquery.slimscroll.min.js"></script><script type="text/javascript" src="assets/jQuery-slimScroll-1.3.0/slimScrollHorizontal.min.js"></script>
+    -->
+
     <!-- BLOCK UI -->
     <script type="text/javascript" src="assets/jQuery-BlockUI/jquery.blockUI.min.js"></script>
     <!-- DATA TABLES -->
@@ -86,8 +101,10 @@
     <script type="text/javascript" src="assets/datatables/extras/TableTools/media/js/ZeroClipboard.min.js"></script>
     <!-- COOKIE -->
     <script type="text/javascript" src="assets/jQuery-Cookie/jquery.cookie.min.js"></script>
+    
     <!-- CUSTOM SCRIPT -->
-    <script src="assets/script.js"></script>
+    <script type="text/javascript" src="assets/script.js"></script>
+
     <script>
         jQuery(document).ready(function() {     
             App.setPage("dynamic_table");  //Set current page
