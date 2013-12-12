@@ -33,8 +33,6 @@
             <th>Suffix</th>
             <th>License</th>
             <th></th>
-            <th></th>
-            <th></th>
           </tr>
         </thead>
 
@@ -48,9 +46,11 @@
                 <td><%= affiliate.lastname %></td>
                 <td><%= affiliate.suffix %></td>
                 <td><%= affiliate.license %></td>
-                <td><%= link_to 'Show', affiliate %></td>
-                <td><%= link_to 'Edit', edit_affiliate_path(affiliate) %></td>
-                <td><%= link_to 'Destroy', affiliate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td>
+                <%= link_to 'Show', affiliate %> |
+                <%= link_to 'Edit', edit_affiliate_path(affiliate) %> |
+                <%= link_to 'Destroy', affiliate, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </td>
               </tr>
             <% end %>
         </tbody>
@@ -64,9 +64,7 @@
                 <th>Lastname</th>
                 <th>Suffix</th>
                 <th>License</th>
-                <th></th>
-                <th></th>
-                <th></th>
+                <th></th>                
             </tr>
         </tfoot>
 
