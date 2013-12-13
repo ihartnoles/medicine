@@ -1,49 +1,25 @@
 Medicine::Application.routes.draw do
   
   resources :permissions
-
-
   resources :certifiedspecialities
-
-
   resources :cvs
-
-
   resources :affiliateresearchareas
-
-
   resources :researchareas
-
-
   resources :fellowships
-
-
   resources :residencies
-
-
   resources :degrees
-
-
   resources :institutions
-
-
   resources :licenses
-
-
   resources :affiliates
-
-
   resources :usertypes
-
-
   resources :users
-
-
   resources :affiliates
   resources :hospitalprivileges
   resources :hospitals
   resources :languages
   resources :affiliatelanguages
+
+   match '/faq',    to: 'static_pages#faq'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

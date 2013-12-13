@@ -3,3 +3,12 @@
 <%= render 'form' %>
 
 <%= link_to 'Back', affiliates_path %>
+
+<%= render 'shared/javascript' %>
+
+<script>
+        jQuery(document).ready(function() {     
+            App.setPage("new_affiliate");  //Set current page
+            App.init(); //Initialise plugins and elements
+        });
+</script>
