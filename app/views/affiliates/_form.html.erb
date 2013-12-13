@@ -1,6 +1,7 @@
 <%= form_for(@affiliate) do |f| %>
   <% if @affiliate.errors.any? %>
-    <div id="error_explanation">
+    <div class="alert alert-block alert-danger">
+      <a class="close" aria-hidden="true" href="#" data-dismiss="alert">×</a>
       <h2><%= pluralize(@affiliate.errors.count, "error") %> prohibited this affiliate from being saved:</h2>
 
       <ul>
@@ -11,10 +12,12 @@
     </div>
   <% end %>
 
+  <!--
   <div class="field">
     <%= f.label :znumber %><br />
     <%= f.text_field :znumber %>
   </div>
+-->
   <div class="field">
     <%= f.label :prefix %><br />
     <%= f.text_field :prefix %>
