@@ -1,4 +1,4 @@
-<%= form_for(@affiliate) do |f| %>
+<%= form_for @affiliate, :html => {:class => 'form-horizontal'} do |f| %>
   <% if @affiliate.errors.any? %>
     <div class="alert alert-block alert-danger">
       <a class="close" aria-hidden="true" href="#" data-dismiss="alert">×</a>
