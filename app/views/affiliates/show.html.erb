@@ -9,7 +9,7 @@
                 <!-- BOX -->
                 <div class="box border">
                   <div class="box-title">
-                    <h4><i class="fa fa-columns"></i><span class="hidden-inline-mobile">Faculty Profile</span></h4>
+                    <h4><i class="fa fa-columns"></i><span class="hidden-inline-mobile">Affiliate Profile</span></h4>
                   </div>
                   <div class="box-body">
                     <div class="tabbable header-tabs">
@@ -17,7 +17,7 @@
                        <li class=""><a data-toggle="tab" href="#assignments"><i class="fa fa-desktop"></i> <span class="hidden-inline-mobile">Assignments</span></a></li>
                        <li class=""><a data-toggle="tab" href="#appointments"><i class="fa fa-desktop"></i> <span class="hidden-inline-mobile">Appointments</span></a></li>
                        <li class=""><a data-toggle="tab" href="#training"><i class="fa fa-flask"></i> <span class="hidden-inline-mobile">Training</span></a></li>
-                       <li class="active"><a data-toggle="tab" href="#personal"><i class="fa fa-home"></i> <span class="hidden-inline-mobile">Personal</span></a></li>
+                       <li class="active"><a data-toggle="tab" href="#personal"><i class="fa fa-user"></i> <span class="hidden-inline-mobile">Personal</span></a></li>
                       </ul>
                       <div class="tab-content">
                        <div id="personal" class="tab-pane fade active in">
@@ -30,7 +30,7 @@
                              <div class="col-sm-12">
                                 <div class="box border blue col-sm-12">
                                     <div class="box-title">                              
-                                        <h4><i class="fa fa-table"></i>Personal</h4>
+                                        <h4><i class="fa fa-user"></i>Personal</h4>
                                     </div>
                               
                                     <div class="box-body">
@@ -97,7 +97,7 @@
                              <div class="col-sm-12">                             
                                 <div class="box border orange col-sm-12"><!-- work -->
                                   <div class="box-title">                              
-                                      <h4><i class="fa fa-table"></i>Work information</h4>
+                                      <h4><i class="fa fa-medkit"></i>Work information</h4>
                                   </div>                            
                                   <div class="box-body">
                                     <div class="box-container">                                         
@@ -105,17 +105,23 @@
                                            <p>
                                             <b>Address:</b><br>
                                             <%= @affiliate.officestreet %><br>
-                                            <%= @affiliate.officecity %>, <%= @affiliate.officestate %> <%= @affiliate.officezip %>
+                                            <%= @affiliate.officecity %> <%= @affiliate.officestate %> <%= @affiliate.officezip %>
                                           </p>
                                         </div>
                                           <div class="col-sm-6"> 
                                           <p>
                                             <b>Hospital Privileges</b><br>
-                                              <ul>
-                                              <% @showprivileges.each do |p| %>
-                                               <li><%= p.hospital.name %> <%= link_to 'Remove', p, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-                                              <% end %>
-                                            </ul>
+                                              
+                                                <ul>
+                                                <% if @showprivileges.count > 0%>
+                                                  <% @showprivileges.each do |p| %>
+                                                   <li><%= p.hospital.name %> <%= link_to 'Remove', p, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+                                                  <% end %>
+                                                <% else %>
+                                                  <li>None selected</li>
+                                                <% end %>
+                                                </ul>
+                                              
                                           </p>           
                                           
                                             <p>
