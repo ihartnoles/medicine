@@ -22,6 +22,9 @@ Medicine::Application.routes.draw do
   match '/faq',    to: 'static_pages#faq'
   match '/home',   to: 'static_pages#home'
 
+  #root to:'static_pages#faq'
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

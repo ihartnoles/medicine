@@ -15,6 +15,10 @@ class AffiliatesController < ApplicationController
   # GET /affiliates/1
   # GET /affiliates/1.json
   def show
+
+    @title      = 'Edit Affiliate'
+    @description = 'Change affiliate details'
+
     @affiliate = Affiliate.find(params[:id])
     @hospitalprivilege = Hospitalprivilege.new
     @showprivileges = Hospitalprivilege.where(:affiliate_id => params[:id])
@@ -33,6 +37,8 @@ class AffiliatesController < ApplicationController
   # GET /affiliates/new.json
   def new
     @affiliate = Affiliate.new
+    @title      = 'New Affiliate'
+    @description = ''
 
     respond_to do |format|
       format.html # new.html.erb
