@@ -19,7 +19,8 @@ Medicine::Application.routes.draw do
   resources :languages
   resources :affiliatelanguages
 
-   match '/faq',    to: 'static_pages#faq'
+  match '/faq',    to: 'static_pages#faq'
+  match '/home',   to: 'static_pages#home'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

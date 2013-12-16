@@ -1,0 +1,61 @@
+		<div class="row">
+		<div class="col-md-9 col-md-offset-1 box-container">
+								<!-- BOX WITH SPACE-->
+								<div class="box border blue">
+									<div class="box-title">
+										<h4><i class="fa fa-user"></i><span class="hidden-inline-mobile">Hello, John!</span></h4>	
+									</div>
+									<div class="box-body big">
+										<div class="alert alert-success center">
+											<!-- BUTTONS -->
+																<div class="row">
+																	<div class="col-md-3">
+																		<a href="/affiliates" class="btn btn-danger btn-icon input-block-level">
+																			<i class="fa fa-user-md fa-2x"></i>
+																			<div>View <br>Faculty</div>
+																			
+																		</a>
+																	</div>
+																	<div class="col-md-3">
+																		<a href="javascript:void(0);" class="btn btn-primary btn-icon input-block-level">
+																			<i class="fa fa-search fa-2x"></i>
+																			<div>Faculty <br> Search</div>
+																			
+																		</a>
+																	</div>
+																	<div class="col-md-3">
+																		<a href="javascript:void(0);" class="btn btn-pink btn-icon input-block-level">
+																			<i class="fa fa-users fa-2x"></i>
+																			<div><br>Manage Users</div>
+																			
+																		</a>
+																	</div>
+																	<div class="col-md-3">
+																		<a href="/faq" class="btn btn-success btn-icon input-block-level">
+																			<i class="fa fa-question fa-2x"></i>
+																			<div><br>F.A.Q.</div>
+																		</a>
+																	</div>
+																</div>
+																<!-- /BUTTONS -->
+										</div> 
+										<h4>Announcements</h4>
+										<ul>
+											<li>ectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.ectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</li><br>
+											<li>ectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.ectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</li><br>
+											<li>ectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.ectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</li><br>
+										</ul>
+										
+									</div>
+								</div>
+								<!-- /BOX WITH SPACE-->
+</div>
+<!-- JQUERY -->
+<%= render 'shared/javascript' %>
+
+<script>
+        jQuery(document).ready(function() {     
+            App.setPage("home");  //Set current page
+            App.init(); //Initialise plugins and elements
+        });
+</script>
