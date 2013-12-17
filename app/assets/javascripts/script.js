@@ -1214,6 +1214,11 @@ var App = function () {
                     sSwfPath: "js/datatables/extras/TableTools/media/swf/copy_csv_xls_pdf.swf"
                 }
 			});
+
+        $('#datatable3').dataTable({
+                "sPaginationType": "bs_full"
+         });
+
 		$('.datatable').each(function(){
 			var datatable = $(this);
 			// SEARCH - Add the placeholder for Search and Turn this into in-line form control

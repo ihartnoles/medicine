@@ -3,6 +3,9 @@ class HospitalsController < ApplicationController
   # GET /hospitals.json
   def index
     @hospitals = Hospital.all
+    @title      = 'Hospital List'
+    @description = 'List of Hospitals'
+
 
     respond_to do |format|
       format.html # index.html.erb

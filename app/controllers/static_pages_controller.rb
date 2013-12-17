@@ -8,4 +8,9 @@ class StaticPagesController < ApplicationController
 		@title      = 'Home'
     	@description = 'What would you like to do?'		
 	end
+
+	def admin	
+		@title      = 'Administration'
+    	@description = 'Administrative Panel'		
+	end
 end
