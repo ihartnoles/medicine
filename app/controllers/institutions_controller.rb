@@ -3,6 +3,8 @@ class InstitutionsController < ApplicationController
   # GET /institutions.json
   def index
     @institutions = Institution.all
+    @title      = 'Institution List'
+    @description = 'List of Institutions'
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,6 +27,8 @@ class InstitutionsController < ApplicationController
   # GET /institutions/new.json
   def new
     @institution = Institution.new
+    @title      = 'New Institution'
+    @description = 'Add a new institution to the system'
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +39,8 @@ class InstitutionsController < ApplicationController
   # GET /institutions/1/edit
   def edit
     @institution = Institution.find(params[:id])
+    @title      = 'Edit Institution'
+    @description = 'Edit an institution option in the system'
   end
 
   # POST /institutions
@@ -60,7 +66,7 @@ class InstitutionsController < ApplicationController
 
     respond_to do |format|
       if @institution.update_attributes(params[:institution])
-        format.html { redirect_to @institution, notice: 'Institution was successfully updated.' }
+        format.html { redirect_to institutions_url, notice: 'Institution was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +82,7 @@ class InstitutionsController < ApplicationController
     @institution.destroy
 
     respond_to do |format|
-      format.html { redirect_to institutions_url }
+      format.html { redirect_to institutions_url , notice: 'Institution was successfully deleted.'}
       format.json { head :no_content }
     end
   end

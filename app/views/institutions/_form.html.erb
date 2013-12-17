@@ -1,6 +1,6 @@
 <%= form_for(@institution) do |f| %>
   <% if @institution.errors.any? %>
-    <div id="error_explanation">
+    <div class="alert alert-block alert-danger">
       <h2><%= pluralize(@institution.errors.count, "error") %> prohibited this institution from being saved:</h2>
 
       <ul>
