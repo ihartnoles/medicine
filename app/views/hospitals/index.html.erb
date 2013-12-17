@@ -33,8 +33,7 @@
                             <tr class="gradeX">
                               <td><%= hospital.name %></td>
                               <td>
-                              <%= link_to 'View', hospital %>
-                              <%= link_to 'Edit', edit_hospital_path(hospital) %>
+                              <%= link_to 'Edit', edit_hospital_path(hospital) %> | 
                               <%= link_to 'Delete', hospital, method: :delete, data: { confirm: 'Are you sure?' } %>
                               </td>
                             </tr>

@@ -40,6 +40,8 @@ class HospitalsController < ApplicationController
   # GET /hospitals/1/edit
   def edit
     @hospital = Hospital.find(params[:id])
+     @title      = 'Edit Hospital'
+    @description = 'Edit a hospital option in the system'
   end
 
   # POST /hospitals
