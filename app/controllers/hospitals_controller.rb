@@ -28,6 +28,8 @@ class HospitalsController < ApplicationController
   # GET /hospitals/new.json
   def new
     @hospital = Hospital.new
+    @title      = 'New Hospital'
+    @description = 'Add a new hospital to the system'
 
     respond_to do |format|
       format.html # new.html.erb
@@ -48,7 +50,7 @@ class HospitalsController < ApplicationController
 
     respond_to do |format|
       if @hospital.save
-        format.html { redirect_to @hospital, notice: 'Hospital was successfully created.' }
+        format.html { redirect_to hospitals_path, notice: 'Hospital was successfully created.' }
         format.json { render json: @hospital, status: :created, location: @hospital }
       else
         format.html { render action: "new" }
@@ -80,7 +82,7 @@ class HospitalsController < ApplicationController
     @hospital.destroy
 
     respond_to do |format|
-      format.html { redirect_to hospitals_url }
+      format.html { redirect_to hospitals_url, notice: 'Hospital was successfully deleted.'  }
       format.json { head :no_content }
     end
   end

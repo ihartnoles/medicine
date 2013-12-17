@@ -1,27 +1,63 @@
-<h1>Listing languages</h1>
+<div class="col-md-6">
+                <!-- BOX -->
+                <%= link_to 'Add a New Language', new_language_path %><br><br>
 
-<table>
-  <tr>
-    <th>Language</th>
-    <th>Language</th>
-    <th>Abbreviation</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @languages.each do |language| %>
-  <tr>
-    <td><%= language.language_id %></td>
-    <td><%= language.language %></td>
-    <td><%= language.abbreviation %></td>
-    <td><%= link_to 'Show', language %></td>
-    <td><%= link_to 'Edit', edit_language_path(language) %></td>
-    <td><%= link_to 'Destroy', language, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+                <div class="box border orange">
+                  <div class="box-title">
+                    <h4><i class="fa fa-hand-o-up"></i>Language List</h4>
+                    <div class="tools">
+                      <a href="#box-config" data-toggle="modal" class="config">
+                        <i class="fa fa-cog"></i>
+                      </a>
+                      <a href="javascript:;" class="reload">
+                        <i class="fa fa-refresh"></i>
+                      </a>
+                      <a href="javascript:;" class="collapse">
+                        <i class="fa fa-chevron-up"></i>
+                      </a>
+                      <a href="javascript:;" class="remove">
+                        <i class="fa fa-times"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="box-body">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                        <th>Language</th>
+                        <th>Abbreviation</th>
+                        <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% @languages.each do |language| %>
+                          <tr>
+                            <td><%= language.language %></td>
+                            <td><%= language.abbreviation %></td>
+                            <td>
+                              <%= link_to 'View', language %>
+                              <%= link_to 'Edit', edit_language_path(language) %>
+                              <%= link_to 'Delete', language, method: :delete, data: { confirm: 'Are you sure?' } %>
+                            </td>
+                          </tr>
+                        <% end %>
+                      </tbody>
+                      </table>
+                  </div>
+                </div>
+                <!-- /BOX -->
+              </div>
 
 <br />
 
-<%= link_to 'New Language', new_language_path %>
+
+
+
+<%= render 'shared/javascript' %>
+
+<script>
+    jQuery(document).ready(function() {   
+      App.setPage("languages");  //Set current page
+      App.init(); //Initialise plugins and elements      
+    });
+</script>

@@ -3,6 +3,8 @@ class LanguagesController < ApplicationController
   # GET /languages.json
   def index
     @languages = Language.all
+    @title      = 'Language List'
+    @description = 'Language options in the system'
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,7 +27,8 @@ class LanguagesController < ApplicationController
   # GET /languages/new.json
   def new
     @language = Language.new
-
+    @title      = 'New Language'
+    @description = 'Add a new language option to the system'
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @language }
@@ -35,6 +38,8 @@ class LanguagesController < ApplicationController
   # GET /languages/1/edit
   def edit
     @language = Language.find(params[:id])
+    @title      = 'Edit Language'
+    @description = 'Edit a new language option to the system'
   end
 
   # POST /languages
@@ -44,7 +49,7 @@ class LanguagesController < ApplicationController
 
     respond_to do |format|
       if @language.save
-        format.html { redirect_to @language, notice: 'Language was successfully created.' }
+        format.html { redirect_to languages_path, notice: 'Language was successfully created.' }
         format.json { render json: @language, status: :created, location: @language }
       else
         format.html { render action: "new" }
@@ -76,7 +81,7 @@ class LanguagesController < ApplicationController
     @language.destroy
 
     respond_to do |format|
-      format.html { redirect_to languages_url }
+      format.html { redirect_to languages_url , notice: 'Language was successfully deleted.'  }
       format.json { head :no_content }
     end
   end

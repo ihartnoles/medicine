@@ -1,6 +1,7 @@
 <%= form_for(@hospital) do |f| %>
   <% if @hospital.errors.any? %>
-    <div id="error_explanation">
+    <div class="alert alert-block alert-danger">
+      <a class="close" aria-hidden="true" href="#" data-dismiss="alert">×</a>
       <h2><%= pluralize(@hospital.errors.count, "error") %> prohibited this hospital from being saved:</h2>
 
       <ul>
@@ -11,7 +12,7 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
