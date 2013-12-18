@@ -38,7 +38,7 @@ class AffiliatesController < ApplicationController
   def new
     @affiliate = Affiliate.new
     @title      = 'New Affiliate'
-    @description = ''
+    @description = 'Add a new affiliate'
 
     respond_to do |format|
       format.html # new.html.erb
@@ -49,6 +49,8 @@ class AffiliatesController < ApplicationController
   # GET /affiliates/1/edit
   def edit
     @affiliate = Affiliate.find(params[:id])
+     @title      = 'Edit Affiliate'
+    @description = 'Edit an affiliate'
   end
 
   # POST /affiliates
