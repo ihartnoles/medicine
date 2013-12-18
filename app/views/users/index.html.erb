@@ -1,31 +1,82 @@
-<h1>Listing users</h1>
+<div class="row">
+              <div class="col-md-12">
+                  <%= link_to 'New User', new_user_path %> <br><br>
+                <!-- BOX -->
+                <div class="box border primary">
+                  <div class="box-title">
+                    <h4><i class="fa fa-table"></i>Users</h4>
+                    <div class="tools hidden-xs">
+                      <a href="#box-config" data-toggle="modal" class="config">
+                        <i class="fa fa-cog"></i>
+                      </a>
+                      <a href="javascript:;" class="reload">
+                        <i class="fa fa-refresh"></i>
+                      </a>
+                      <a href="javascript:;" class="collapse">
+                        <i class="fa fa-chevron-up"></i>
+                      </a>
+                      <a href="javascript:;" class="remove">
+                        <i class="fa fa-times"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="box-body">
+                    <table id="datatable3" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered table-hover">
+                      <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Usertype</th>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
+                            <th>Phone</th>
+                            <th class="hidden-xs">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          <% @users.each do |user| %>
+                              <tr class="gradeX">
+                                <td><%= user.username %></td>
+                                <td><%= user.usertype_id %></td>
+                                <td><%= user.firstname %></td>
+                                <td><%= user.lastname %></td>
+                                <td><%= user.phone %></td>
+                                <td><%= link_to 'View', user %>
+                                <%= link_to 'Edit', edit_user_path(user) %>
+                                <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                              </tr>
+                         <% end %>
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                           <th>Username</th>
+                            <th>Usertype</th>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
+                            <th>Phone</th>
+                            <th class="hidden-xs">Actions</th>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+                <!-- /BOX -->
 
-<table>
-  <tr>
-    <th>Username</th>
-    <th>Usertype</th>
-    <th>Firstname</th>
-    <th>Lastname</th>
-    <th>Phone</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.username %></td>
-    <td><%= user.usertype_id %></td>
-    <td><%= user.firstname %></td>
-    <td><%= user.lastname %></td>
-    <td><%= user.phone %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+              </div>
+            </div>
+<br />
 
 <br />
 
-<%= link_to 'New User', new_user_path %>
+
+<%= render 'shared/javascript' %>
+
+<script>
+    jQuery(document).ready(function() {   
+      App.setPage("dynamic_table");  //Set current page
+      App.init(); //Initialise plugins and elements      
+    });
+  </script>
+
+<br />
+
+

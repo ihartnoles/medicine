@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    @title      = 'User List'
+    @description = 'Users who have access to the system'
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,6 +27,8 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
+    @title      = 'New User'
+    @description = 'Add a new user to the system'
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,7 +48,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to users_path, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
@@ -60,7 +64,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to users_path, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +80,7 @@ class UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to users_url }
+      format.html { redirect_to users_url, notice: 'User was successfully deleted.' }
       format.json { head :no_content }
     end
   end
