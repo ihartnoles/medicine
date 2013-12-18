@@ -40,10 +40,9 @@ div {
 }
 
 .field_with_errors {
-  color: #b94a48;
-  border-color: #b94a48;
-  background-color: #f2dede;
- 
+  padding: 2px;
+  background-color: red;
+  display: table;
 }
 
 #error_explanation {

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  groupname: MyString
+  description: MyString
+  bits: 1
+
+two:
+  groupname: MyString
+  description: MyString
+  bits: 1

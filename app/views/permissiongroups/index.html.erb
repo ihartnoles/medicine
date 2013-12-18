@@ -1,0 +1,27 @@
+<h1>Listing permissiongroups</h1>
+
+<table>
+  <tr>
+    <th>Groupname</th>
+    <th>Description</th>
+    <th>Bits</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @permissiongroups.each do |permissiongroup| %>
+  <tr>
+    <td><%= permissiongroup.groupname %></td>
+    <td><%= permissiongroup.description %></td>
+    <td><%= permissiongroup.bits %></td>
+    <td><%= link_to 'Show', permissiongroup %></td>
+    <td><%= link_to 'Edit', edit_permissiongroup_path(permissiongroup) %></td>
+    <td><%= link_to 'Destroy', permissiongroup, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Permissiongroup', new_permissiongroup_path %>

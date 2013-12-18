@@ -1,5 +1,8 @@
 Medicine::Application.routes.draw do
   
+  resources :permissiongroups
+
+
   resources :permissions
   resources :certifiedspecialities
   resources :cvs
