@@ -4,6 +4,9 @@ class PermissiongroupsController < ApplicationController
   def index
     @permissiongroups = Permissiongroup.all
 
+    @title      = 'Permission Groups'
+    @description = 'A list of permission groups'
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @permissiongroups }
@@ -25,6 +28,8 @@ class PermissiongroupsController < ApplicationController
   # GET /permissiongroups/new.json
   def new
     @permissiongroup = Permissiongroup.new
+    @title      = 'Add Permission Group'
+    @description = 'Add a permission group option to the system'
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +40,8 @@ class PermissiongroupsController < ApplicationController
   # GET /permissiongroups/1/edit
   def edit
     @permissiongroup = Permissiongroup.find(params[:id])
+    @title      = 'Edit Permission Group'
+    @description = 'Edit a permission group option in the system'
   end
 
   # POST /permissiongroups
@@ -44,7 +51,7 @@ class PermissiongroupsController < ApplicationController
 
     respond_to do |format|
       if @permissiongroup.save
-        format.html { redirect_to @permissiongroup, notice: 'Permissiongroup was successfully created.' }
+        format.html { redirect_to @permissiongroup, notice: 'Permission Group was successfully created.' }
         format.json { render json: @permissiongroup, status: :created, location: @permissiongroup }
       else
         format.html { render action: "new" }
@@ -60,7 +67,7 @@ class PermissiongroupsController < ApplicationController
 
     respond_to do |format|
       if @permissiongroup.update_attributes(params[:permissiongroup])
-        format.html { redirect_to @permissiongroup, notice: 'Permissiongroup was successfully updated.' }
+        format.html { redirect_to permissiongroups_path, notice: 'Permission Group was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +83,7 @@ class PermissiongroupsController < ApplicationController
     @permissiongroup.destroy
 
     respond_to do |format|
-      format.html { redirect_to permissiongroups_url }
+      format.html { redirect_to permissiongroups_path, notice: 'Permission Group was successfully deleted.' }
       format.json { head :no_content }
     end
   end

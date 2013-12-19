@@ -18,7 +18,7 @@ class PermissiongroupsControllerTest < ActionController::TestCase
 
   test "should create permissiongroup" do
     assert_difference('Permissiongroup.count') do
-      post :create, permissiongroup: { bits: @permissiongroup.bits, description: @permissiongroup.description, groupname: @permissiongroup.groupname }
+      post :create, permissiongroup: {  }
     end
 
     assert_redirected_to permissiongroup_path(assigns(:permissiongroup))
@@ -35,7 +35,7 @@ class PermissiongroupsControllerTest < ActionController::TestCase
   end
 
   test "should update permissiongroup" do
-    put :update, id: @permissiongroup, permissiongroup: { bits: @permissiongroup.bits, description: @permissiongroup.description, groupname: @permissiongroup.groupname }
+    put :update, id: @permissiongroup, permissiongroup: {  }
     assert_redirected_to permissiongroup_path(assigns(:permissiongroup))
   end
 
