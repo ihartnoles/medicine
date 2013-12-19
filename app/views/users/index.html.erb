@@ -2,7 +2,7 @@
               <div class="col-md-12">
                   <%= link_to 'New User', new_user_path %> <br><br>
                 <!-- BOX -->
-                <div class="box border primary">
+                <div class="box border red">
                   <div class="box-title">
                     <h4><i class="fa fa-table"></i>Users</h4>
                     <div class="tools hidden-xs">
@@ -40,8 +40,8 @@
                                 <td><%= user.firstname %></td>
                                 <td><%= user.lastname %></td>
                                 <td><%= user.phone %></td>
-                                <td><%= link_to 'View', user %>
-                                <%= link_to 'Edit', edit_user_path(user) %>
+                                <td><%#= link_to 'View', user %>
+                                <%= link_to 'Edit', edit_user_path(user) %> | 
                                 <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                               </tr>
                          <% end %>
