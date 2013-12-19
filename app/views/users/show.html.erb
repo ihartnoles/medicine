@@ -5,10 +5,20 @@
   <%= @user.username %>
 </p>
 
+<!--
 <p>
   <b>Usertype:</b>
   <%= @user.usertype_id %>
 </p>
+-->
+<p>
+<b>Permission Level:</b><br>
+<%#= form_for(@permissions) do |f| %>
+  <%#= hidden_field_tag :affiliate_id, params[:id] %>
+  <%= collection_select(:permissiongroup, :id, Permissiongroup.all, :id, :groupname) %>
+  
+<%# end %>
+</p>    
 
 <p>
   <b>Firstname:</b>

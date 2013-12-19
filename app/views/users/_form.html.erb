@@ -13,11 +13,17 @@
 
   <div class="field">
     <%= f.label :username %><br />
-    <%= f.text_field :username %>
+    <%= f.text_field :username , readonly: "true" %>
   </div>
+  <!--
   <div class="field">
     <%= f.label :usertype_id %><br />
     <%= f.number_field :usertype_id %>
+  </div>
+  -->
+  <div class="field">
+    <%= label_tag(:permissionid, "Permission") %><br>
+    <%= collection_select(:permissiongroup, :id, Permissiongroup.all, :id, :groupname) %>
   </div>
   <div class="field">
     <%= f.label :firstname %><br />
@@ -31,6 +37,7 @@
     <%= f.label :phone %><br />
     <%= f.text_field :phone %>
   </div>
+  <br>
   <div class="actions">
     <%= f.submit %>
   </div>

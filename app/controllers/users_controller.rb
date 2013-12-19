@@ -41,6 +41,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @title      = 'Edit User'
     @description = 'Update a user'
+    @permissions = Permissiongroup.all
   end
 
   # POST /users

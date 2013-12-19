@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131218134318) do
+ActiveRecord::Schema.define(:version => 20131219214949) do
 
   create_table "AffiliatesSpecialty", :id => false, :force => true do |t|
     t.integer "id",           :null => false
@@ -34,6 +34,13 @@ ActiveRecord::Schema.define(:version => 20131218134318) do
   create_table "affiliatelanguages", :force => true do |t|
     t.integer  "affiliate_id"
     t.integer  "language_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "affiliatepermissions", :force => true do |t|
+    t.integer  "affiliate_id"
+    t.integer  "permissionid"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
@@ -347,6 +354,13 @@ ActiveRecord::Schema.define(:version => 20131218134318) do
   end
 
   add_index "sysdiagrams", ["principal_id", "name"], :name => "UK_principal_name", :unique => true
+
+  create_table "userpermissions", :force => true do |t|
+    t.integer  "userid"
+    t.integer  "permissionid"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "username"
