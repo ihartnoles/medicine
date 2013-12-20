@@ -23,7 +23,7 @@
   -->
   <div class="field">
     <%= label_tag(:permissionid, "Permission") %><br>
-    <%= collection_select(:permissiongroup, :id, Permissiongroup.all, :id, :groupname) %>
+    <%= collection_select(:user, :usertype_id, Permissiongroup.all, :id, :groupname, { :selected => @user.usertype_id }) %>
   </div>
   <div class="field">
     <%= f.label :firstname %><br />

@@ -15,7 +15,7 @@
 <b>Permission Level:</b><br>
 <%#= form_for(@permissions) do |f| %>
   <%#= hidden_field_tag :affiliate_id, params[:id] %>
-  <%= collection_select(:permissiongroup, :id, Permissiongroup.all, :id, :groupname) %>
+  <%= collection_select(:permissiongroup, :id, Permissiongroup.all, :id, :groupname, { :selected => @user.usertype_id }) %>
   
 <%# end %>
 </p>    
