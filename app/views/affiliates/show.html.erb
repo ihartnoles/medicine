@@ -9,7 +9,7 @@
                 <!-- BOX -->
                 <div class="box border">
                   <div class="box-title">
-                    <h4><i class="fa fa-columns"></i><span class="hidden-inline-mobile">Affiliate Profile</span></h4>
+                    <h4><i class="fa fa-columns"></i><span class="hidden-inline-mobile"><%= @affiliate.firstname %> <%= @affiliate.middlename %>  <%= @affiliate.lastname %>, <%= @affiliate.suffix %></span></h4>
                   </div>
                   <div class="box-body">
                     <div class="tabbable header-tabs">
@@ -150,73 +150,224 @@
 
                        <div id="training" class="tab-pane fade">
                               <div class="row"><!-- row1 -->
-                             <div class="col-sm-12">
-                                <div class="box border red col-sm-12">
-                                    <div class="box-title">                              
-                                        <h4><i class="fa fa-flask"></i>Training</h4>
-                                    </div>
-                              
-                                    <div class="box-body">
+                                <div class="col-sm-6">                             
+                                  <!-- BOX -->
+                                  <div class="box border inverse">
+                                    <div class="box-title">
+                                      <h4><i class="fa fa-briefcase"></i>Training</h4>
                                      
-
-                                      <div class="box-container">
-                                           <div class="col-sm-6"> 
+                                    </div>
+                                    <div class="box-body">
                                             <p>
-                                              <b>Znumber:</b><br>
-                                              <%= @affiliate.znumber %>
+                                              <b>Florida Medical License:</b><br>
+                                              ???
                                             </p>
 
                                             <p>
-                                              <b>Name:</b><br>
-                                              <%= @affiliate.prefix %>  <%= @affiliate.firstname %> <%= @affiliate.middlename %>  <%= @affiliate.lastname %>, <%= @affiliate.suffix %>
+                                              <b>Curriculum-Vitae:</b><br>
+                                              ????
                                             </p>
 
                                             <p>
-                                              <b>Address:</b><br>
-                                              <%= @affiliate.homestreet %><br>
-                                               <%= @affiliate.homecity %>, <%= @affiliate.homestate %> <%= @affiliate.homezip %>
+                                              <b>Research Area:</b><br>
+                                              ????
                                             </p>
-                                                                                   
+
                                             <p>
-                                              <b>License:</b><br>
-                                              <%= @affiliate.license %>
+                                              <b>Research desciption (add'l training):</b><br>
+                                              ????
                                             </p>
-                                          </div>
-                                          <div class="col-sm-6"> 
-                                            
-                                          
-                                            
-                                            <p>
-                                              <b>Isfaculty:</b><br>
-                                              <%= @affiliate.isfaculty %>
-                                            </p>
-
-                                            <b>Languages Spoken:</b><br>
-                                            <%= form_for(@languagespoken) do |f| %>
-                                                <%= hidden_field_tag :affiliate_id, params[:id] %>
-                                                                                                
-                                                <% @languagelist.each do |lang| %>
-                                                  <%= check_box_tag 'languages[language_ids][]', lang.id, Affiliatelanguage.where(:affiliate_id => params[:id]).pluck(:language_id).include?(lang.id) %> 
-                                                  <%#= f.check_box :language_id %><%= lang.language %><br/>
-                                                <% end %>
-
-
-                                                 <div class="actions">
-                                                  <%= f.submit 'Update Languages Spoken' %>
-                                                </div>
-                                              <% end %>
-
-                                          </div>
-                                            <%= link_to 'Edit', edit_affiliate_path(@affiliate) %> |
-                                            <%= link_to 'Back', affiliates_path %>
-
-                                          </div>
                                     </div>
                                   </div>
-                                </div><!-- end of row1 -->
+                                  <!-- /BOX -->    
+                                </div>
+
+                                <div class="col-sm-6">                             
+                                  <!-- BOX -->
+                                  <div class="box border red">
+                                    <div class="box-title">
+                                      <h4><i class="fa fa-plus-square"></i>Certified Specialties</h4>
+                                     
+                                    </div>
+                                    <div class="box-body">
+                                           <table class="table table-hover">
+                                        <thead>
+                                          <tr>
+                                            <th>Specialty</th>
+                                            <th>Year received</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>1</td>
+                                            <td>Mark</td>
+                                          </tr>
+                                          <tr>
+                                            <td>2</td>
+                                            <td>Jacob</td>
+                                          </tr>
+                                          <tr>
+                                            <td>3</td>
+                                            <td>Larry</td>
+                                          </tr>
+                                          <tr>
+                                            <td>3</td>
+                                            <td>Larry</td>
+                                          </tr>
+                                        </tbody>
+                                        </table>
+                                    </div>
+                                  </div>
+                                  <!-- /BOX -->    
+                                </div>
+
+                              </div><!-- end of row1-->
+
+                              <div class="row"><!-- row2 -->
+                                <div class="col-sm-12">                             
+                                  <!-- BOX -->
+                                  <div class="box border primary">
+                                    <div class="box-title">
+                                      <h4><i class="fa fa-book"></i>Degrees</h4>
+                                     
+                                    </div>
+                                    <div class="box-body">
+                                      <table class="table table-hover">
+                                        <thead>
+                                          <tr>
+                                            <th>Degree</th>
+                                            <th>Degree Year</th>
+                                            <th>Institution</th>
+                                            <th>City</th>
+                                            <th>State</th>
+                                            <th>Country</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>1</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                            <td>x</td>
+                                            <td>y</td>
+                                          </tr>
+                                          <tr>
+                                            <td>2</td>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                            <td>x</td>
+                                            <td>y</td>
+                                          </tr>
+                                          <tr>
+                                            <td>3</td>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                            <td>x</td>
+                                            <td>y</td>
+                                          </tr>
+                                        </tbody>
+                                        </table>
+                                    </div>
+                                  </div>
+                                  <!-- /BOX -->    
+                              </div>
+                              </div><!-- end of row2-->
+
+                               <div class="row"><!-- row3 -->
+                                <div class="col-sm-12">                             
+                                  <!-- BOX -->
+                                  <div class="box border pink">
+                                    <div class="box-title">
+                                      <h4><i class="fa fa-stethoscope"></i>Residency</h4>
+                                     
+                                    </div>
+                                    <div class="box-body">
+                                      <table class="table table-hover">
+                                        <thead>
+                                          <tr>
+                                            <th>Specialty</th>
+                                            <th>Location</th>
+                                            <th>Training Last Title</th>
+                                            <th>Match Connection</th>
+                                            
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>1</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            <td>2</td>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            <td>3</td>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                            
+                                          </tr>
+                                        </tbody>
+                                        </table>
+                                    </div>
+                                  </div>
+                                  <!-- /BOX -->    
+                              </div>
+                              </div><!-- end of row3 -->
+
+                              <div class="row"><!-- row4 -->
+                                <div class="col-sm-12">                             
+                                  <!-- BOX -->
+                                  <div class="box border green">
+                                    <div class="box-title">
+                                      <h4><i class="fa fa-user-md"></i>Fellowship</h4>
+                                     
+                                    </div>
+                                    <div class="box-body">
+                                      <table class="table table-hover">
+                                        <thead>
+                                          <tr>
+                                            <th>Specialty</th>
+                                            <th>Training</th>
+                                            <th>Location</th>        
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>1</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                          </tr>
+                                          <tr>
+                                            <td>2</td>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                          </tr>
+                                          <tr>
+                                            <td>3</td>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>                                           
+                                          </tr>
+                                        </tbody>
+                                        </table>
+                                    </div>
+                                  </div>
+                                  <!-- /BOX -->    
+                              </div>
+                              </div><!-- end of row4 -->
                        </div>
                        
-                      </div>
+                      
 
                       <div id="appointments" class="tab-pane fade">
                         <div class="alert alert-info"><strong>Appointments!</strong> I'm a cool tabbed box.</div>
