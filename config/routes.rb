@@ -26,8 +26,10 @@ Medicine::Application.routes.draw do
   match '/home',   to: 'static_pages#home'
   match '/admin',   to: 'static_pages#admin'
 
-  root to:'static_pages#home'
 
+  root :to => 'static_pages#home'
+
+  match '*unmatched_route', :to => 'application#raise_not_found!'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

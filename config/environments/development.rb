@@ -29,7 +29,7 @@ Medicine::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  # Do not compress assets
+  # enables the compression of compiled assets
   config.assets.compress = false
 
   # Expands the lines which load the assets
