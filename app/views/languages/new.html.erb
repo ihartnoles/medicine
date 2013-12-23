@@ -29,3 +29,12 @@
 		</div>
 	</div>
 </div>
+
+<%= render 'shared/javascript' %>
+
+<script>
+        jQuery(document).ready(function() {     
+            App.setPage("new_language");  //Set current page
+            App.init(); //Initialise plugins and elements
+        });
+</script>

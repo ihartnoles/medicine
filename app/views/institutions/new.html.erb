@@ -27,3 +27,12 @@
 </div>
 
 <%= link_to 'Back', institutions_path %>
+
+<%= render 'shared/javascript' %>
+
+<script>
+        jQuery(document).ready(function() {     
+            App.setPage("new_institution");  //Set current page
+            App.init(); //Initialise plugins and elements
+        });
+</script>
