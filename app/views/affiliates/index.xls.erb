@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+
+  <Styles>
+    <Style ss:ID="Default" ss:Name="Normal">
+      <Alignment ss:Vertical="Bottom" />
+      <Borders />
+      <Font />
+      <Interior />
+      <NumberFormat />
+      <Protection />
+    </Style>
+    <Style ss:ID="s21">
+      <Font x:Family="Swiss" ss:Bold="1" />
+    </Style>
+  </Styles>
+
+  <Worksheet ss:Name="Sheet1">
+  <Table>
+     <Row>
+       <Cell ss:StyleID="s21"><Data ss:Type="String">ZNUMBER</Data></Cell>
+       <Cell ss:StyleID="s21"><Data ss:Type="String">FIRSTNAME</Data></Cell>
+       <Cell ss:StyleID="s21"><Data ss:Type="String">MIDDLENAME</Data></Cell>
+       <Cell ss:StyleID="s21"><Data ss:Type="String">LASTNAME</Data></Cell>
+       <Cell ss:StyleID="s21"><Data ss:Type="String">LICENSE</Data></Cell>
+       <Cell ss:StyleID="s21"><Data ss:Type="String">FACULTY MEMBER</Data></Cell>
+     </Row>
+   <% @affiliates.each do |affiliate| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= affiliate.znumber%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= affiliate.firstname%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= affiliate.middlename%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= affiliate.lastname%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= affiliate.license%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= affiliate.facultymember%></Data></Cell>
+      </Row>
+  <% end %>
+  </Table>
+  </Worksheet>
+</Workbook>

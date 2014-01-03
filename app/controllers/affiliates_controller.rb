@@ -9,6 +9,7 @@ class AffiliatesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @affiliates }
+      format.xls  { response.headers['Content-Disposition'] = 'attachment; filename="affiliates_' +  Time.now.to_s + '.xls"' } 
     end
   end
 
