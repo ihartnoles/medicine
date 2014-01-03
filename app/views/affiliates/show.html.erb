@@ -61,9 +61,6 @@
                                             </p>
                                           </div>
                                           <div class="col-sm-6"> 
-                                            
-                                          
-                                            
                                             <p>
                                               <b>Isfaculty:</b><br>
                                               <%= @affiliate.isfaculty %>
@@ -105,8 +102,12 @@
                                          <div class="col-sm-6">  
                                            <p>
                                             <b>Address:</b><br>
-                                            <%= @affiliate.officestreet %><br>
-                                            <%= @affiliate.officecity %> <%= @affiliate.officestate %> <%= @affiliate.officezip %>
+                                            <% if !@affiliate.officestreet.blank? %>
+                                              <%= @affiliate.officestreet %><br>
+                                              <%= @affiliate.officecity %> <%= @affiliate.officestate %> <%= @affiliate.officezip %>
+                                            <% else %>
+                                               N/A
+                                            <% end %>
                                           </p>
                                         </div>
                                           <div class="col-sm-6"> 
@@ -615,7 +616,7 @@
                              <div class="col-sm-12">                             
                                 <div class="box border primary col-sm-12"><!-- work -->
                                   <div class="box-title">                              
-                                      <h4><i class="fa fa-medkit"></i>Annual Evaluations</h4>
+                                      <h4><i class="fa fa-check-square-o"></i>Annual Evaluations</h4>
                                   </div>                            
                                   <div class="box-body">
                                     <div class="box-container">                                         
@@ -654,7 +655,7 @@
                              <div class="col-sm-12">                             
                                 <div class="box border orange col-sm-12"><!-- work -->
                                   <div class="box-title">                              
-                                      <h4><i class="fa fa-medkit"></i>Appointment Rejection</h4>
+                                      <h4><i class="fa fa-thumbs-o-down"></i>Appointment Rejection</h4>
                                   </div>                            
                                   <div class="box-body">
                                     <div class="box-container">                                         
@@ -670,7 +671,7 @@
                              <div class="col-sm-12">                             
                                 <div class="box border red col-sm-12"><!-- work -->
                                   <div class="box-title">                              
-                                      <h4><i class="fa fa-medkit"></i>Disciplinary Action</h4>
+                                      <h4><i class="fa fa-warning"></i>Disciplinary Action</h4>
                                   </div>                            
                                   <div class="box-body">
                                     <div class="box-container">                                         
