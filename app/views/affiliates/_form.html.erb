@@ -1,4 +1,4 @@
-<%= form_for @affiliate, :html => {:class => 'form-horizontal'} do |f| %>
+<%= form_for @affiliate, :html => {:class => 'form'} do |f| %>
   <% if @affiliate.errors.any? %>
     <div class="alert alert-block alert-danger">
       <a class="close" aria-hidden="true" href="#" data-dismiss="alert">×</a>
@@ -13,104 +13,104 @@
   <% end %>
 
   <!--
-  <div class="field">
+  <div class="form-group">
     <%= f.label :znumber %><br />
     <%= f.text_field :znumber %>
   </div>
 -->
-  <div class="field">
+  <div class="form-group">
     <%= f.label :prefix %><br />
-    <%= f.text_field :prefix %>
+    <%= f.text_field :prefix ,:class => 'form-control', :id => 'disabledInput', :disabled=>'' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :firstname %><br />
-    <%= f.text_field :firstname %>
+    <%= f.text_field :firstname ,:class => 'form-control' , :id => 'disabledInput', :disabled=>'' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :middlename %><br />
-    <%= f.text_field :middlename %>
+    <%= f.text_field :middlename  ,:class => 'form-control' , :id => 'disabledInput', :disabled=>''%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :lastname %><br />
-    <%= f.text_field :lastname %>
+    <%= f.text_field :lastname  ,:class => 'form-control' , :id => 'disabledInput', :disabled=>''%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :suffix %><br />
-    <%= f.text_field :suffix %>
+    <%= f.text_field :suffix ,:class => 'form-control' , :id => 'disabledInput', :disabled=>''%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :license %><br />
-    <%= f.text_field :license %>
+    <%= f.text_field :license ,:class => 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :homestreet %><br />
-    <%= f.text_field :homestreet %>
+    <%= f.text_field :homestreet ,:class => 'form-control' , :id => 'disabledInput', :disabled=>''%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :homecity %><br />
-    <%= f.text_field :homecity %>
+    <%= f.text_field :homecity ,:class => 'form-control' , :id => 'disabledInput', :disabled=>''%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :homestate %><br />
-    <%= f.text_field :homestate %>
+    <%= f.text_field :homestate ,:class => 'form-control' , :id => 'disabledInput', :disabled=>''%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :homezip %><br />
-    <%= f.number_field :homezip %>
+    <%= f.number_field :homezip ,:class => 'form-control' , :id => 'disabledInput', :disabled=>''%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :officestreet %><br />
-    <%= f.text_field :officestreet %>
+    <%= f.text_field :officestreet ,:class => 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :officecity %><br />
-    <%= f.text_field :officecity %>
+    <%= f.text_field :officecity ,:class => 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :officestate %><br />
-    <%= f.text_field :officestate %>
+    <%= f.text_field :officestate ,:class => 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :officezip %><br />
-    <%= f.number_field :officezip %>
+    <%= f.number_field :officezip ,:class => 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :homephone %><br />
-    <%= f.text_field :homephone %>
+    <%= f.text_field :homephone ,:class => 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :cellphone %><br />
-    <%= f.text_field :cellphone %>
+    <%= f.text_field :cellphone ,:class => 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :emergencyphone %><br />
-    <%= f.text_field :emergencyphone %>
+    <%= f.text_field :emergencyphone ,:class => 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :faxnumber %><br />
-    <%= f.text_field :faxnumber %>
+    <%= f.text_field :faxnumber ,:class => 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :otherphonenumber %><br />
-    <%= f.text_field :otherphonenumber %>
+    <%= f.text_field :otherphonenumber ,:class => 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :emailfau %><br />
-    <%= f.text_field :emailfau %>
+    <%= f.text_field :emailfau ,:class => 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :emailpersonal %><br />
-    <%= f.text_field :emailpersonal %>
+    <%= f.text_field :emailpersonal ,:class => 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :emailoffice %><br />
-    <%= f.text_field :emailoffice %>
+    <%= f.text_field :emailoffice  ,:class => 'form-control'%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :emailother %><br />
-    <%= f.text_field :emailother %>
+    <%= f.text_field :emailother ,:class => 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :isfaculty %><br />
     <%= f.check_box :isfaculty %>
   </div>

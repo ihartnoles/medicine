@@ -1,52 +1,51 @@
 <div class="row">
-              <div class="col-md-12">
+<div class="col-md-12">
+            
 
             <%= link_to 'Add a New Affiliate', new_affiliate_path %> <br><br>
 
             <div class="box border red">
-                
                 <div class="box-title">
-                    
                     <h4><i class="fa fa-table"></i>Affiliates</h4>
-                    
                 </div>
-
-
-
                 <div class="box-body">
                     <table id="datatable1" cellpadding="0" cellspacing="0" border="0" class="datatable table table-condensed table-striped table-bordered table-hover">
                      <thead>
                       <tr>
-                        <th>Znumber</th>
+                        <th class="hidden-xs">Znumber</th>
                         <!-- <th>Prefix</th> -->
                         <th>Firstname</th>
-                        <th>Middlename</th>
+                        <th class="hidden-xs">Middlename</th>
                         <th>Lastname</th>
                         <!-- <th>Suffix</th >-->
-                        <th>License</th>
-                        <th>Division</th>
-                        <th>Section</th>
-                        <th>Specialty</th>
-                        <th>Faculty Member</th>    
-                        <th></th>                    
+                        <th class="hidden-xs">License</th>
+                        <!--
+                        <th class="hidden-xs">Division</th>
+                        <th class="hidden-xs">Section</th>
+                        -->
+                        <th class="hidden-xs">Specialty</th>
+                        <th class="hidden-xs">Faculty</th>    
+                        <th>Actions</th>                    
                       </tr>
                     </thead>
 
                     <tbody>
                         <% @affiliates.each do |affiliate| %>
                           <tr class="gradeA">
-                            <td><%= affiliate.znumber %></td>
+                            <td class="hidden-xs"><%= affiliate.znumber %></td>
                             <!-- <td><%= affiliate.prefix %></td> -->
                             <td><%= affiliate.firstname %></td>
-                            <td><%= affiliate.middlename %></td>
+                            <td class="hidden-xs"><%= affiliate.middlename %></td>
                             <td><%= affiliate.lastname %></td>
                             <!-- <td><%= affiliate.suffix %></td> -->
-                            <td><%= affiliate.license %></td>
-                            <td><%=[:Pediatrics, :Surgery].sample %></td>
-                            <td><%=[:Geriatrics, :Nephrology].sample %></td>
-                            <td><%=[:Physiology, :Immunology].sample %></td>
-                            <td><%= affiliate.facultymember  %></td>
-                            <td>
+                            <td class="hidden-xs"><%= affiliate.license %></td>
+                            <!--
+                            <td class="hidden-xs"><%=[:Pediatrics, :Surgery].sample %></td>
+                            <td class="hidden-xs"><%=[:Geriatrics, :Nephrology].sample %></td>
+                            -->
+                            <td class="hidden-xs"><%=[:Physiology, :Immunology].sample %></td>
+                            <td class="hidden-xs"><%= affiliate.facultymember  %></td>
+                            <td >
                             <%= link_to 'View', affiliate %> |
                             <%= link_to 'Edit', edit_affiliate_path(affiliate) %> |
                             <%= link_to 'Delete', affiliate, method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -57,21 +56,22 @@
                     </tbody>
 
                     <tfoot>
-                        <tr>
-                            <th>Znumber</th>
-                            <!-- <th>Prefix</th> -->
+                         <tr>
+                            <th class="hidden-xs">Znumber</th>
                             <th>Firstname</th>
-                            <th>Middlename</th>
+                            <th class="hidden-xs">Middlename</th>
                             <th>Lastname</th>
-                            <!--<th>Suffix</th>-->
-                            <th>License</th>
-                            <th>Division</th>
-                            <th>Section</th>
-                            <th>Specialty</th>
-                            <th>Faculty Member</th> 
-                            <th></th>                                           
-                        </tr>
+                            <th class="hidden-xs">License</th>
+                            <!--
+                            <th class="hidden-xs">Division</th>
+                            <th class="hidden-xs">Section</th>
+                            -->
+                            <th class="hidden-xs">Specialty</th>
+                            <th class="hidden-xs">Faculty</th>    
+                            <th>Actions</th>                    
+                          </tr>
                     </tfoot>
+                   
 
                     </table>
                     Download: <%= link_to "Excel", affiliates_path(format: "xls") %>
@@ -82,15 +82,16 @@
                 </div>
             </div>
              <!-- /BOX -->
-            </div>
-         </div>
+</div>
+</div><!-- row -->
+
 
 <!-- JQUERY -->
-    <%= render 'shared/javascript' %>
+<%= render 'shared/javascript' %>
 
-    <script>
-        jQuery(document).ready(function() {     
-            App.setPage("dynamic_table");  //Set current page
-            App.init(); //Initialise plugins and elements
-        });
-    </script>
+<script>
+  jQuery(document).ready(function() {     
+    App.setPage("dynamic_table");  //Set current page
+    App.init(); //Initialise plugins and elements
+  });
+</script>

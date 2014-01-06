@@ -5,29 +5,16 @@
                 <div class="box border inverse">
                   <div class="box-title">
                     <h4><i class="fa fa-table"></i>Institutions</h4>
-                    <div class="tools hidden-xs">
-                      <a href="#box-config" data-toggle="modal" class="config">
-                        <i class="fa fa-cog"></i>
-                      </a>
-                      <a href="javascript:;" class="reload">
-                        <i class="fa fa-refresh"></i>
-                      </a>
-                      <a href="javascript:;" class="collapse">
-                        <i class="fa fa-chevron-up"></i>
-                      </a>
-                      <a href="javascript:;" class="remove">
-                        <i class="fa fa-times"></i>
-                      </a>
-                    </div>
+                   
                   </div>
                   <div class="box-body">
                     <table id="datatable3" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered table-hover">
                       <thead>
                         <tr>
                           <th>Institution Name</th>
-                          <th>City</th>
-                          <th>State</th>
-                          <th>Country</th>
+                          <th class="hidden-xs">City</th>
+                          <th class="hidden-xs">State</th>
+                          <th class="hidden-xs">Country</th>
                           <th>Actions</th> 
                         </tr>
                       </thead>
@@ -35,9 +22,9 @@
                         <% @institutions.each do |institution| %>
                           <tr>
                             <td><%= institution.institutionname %></td>
-                            <td><%= institution.city %></td>
-                            <td><%= institution.state %></td>
-                            <td><%= institution.country %></td>
+                            <td class="hidden-xs"><%= institution.city %></td>
+                            <td class="hidden-xs"><%= institution.state %></td>
+                            <td class="hidden-xs"><%= institution.country %></td>
                             <td><%= link_to 'Edit', edit_institution_path(institution) %> | <%= link_to 'Delete', institution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                           </tr>
                         <% end %>
@@ -46,9 +33,9 @@
                       <tfoot>
                         <tr>
                           <th>Institution Name</th>
-                          <th>City</th>
-                          <th>State</th>
-                          <th>Country</th>
+                          <th class="hidden-xs">City</th>
+                          <th class="hidden-xs">State</th>
+                          <th class="hidden-xs">Country</th>
                           <th class="hidden-xs">Actions</th>
                         </tr>
                       </tfoot>

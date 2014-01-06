@@ -26,9 +26,9 @@
                         <tr>
                             <th>Username</th>
                             <th>Usertype</th>
-                            <th>Firstname</th>
-                            <th>Lastname</th>
-                            <th>Phone</th>
+                            <th class="hidden-xs">Firstname</th>
+                            <th class="hidden-xs">Lastname</th>
+                            <th class="hidden-xs">Phone</th>
                             <th class="hidden-xs">Actions</th>
                         </tr>
                       </thead>
@@ -37,10 +37,10 @@
                               <tr class="gradeX">
                                 <td><%= user.username %></td>
                                 <td><%= user.groupname(user.usertype_id) %></td>
-                                <td><%= user.firstname %></td>
-                                <td><%= user.lastname %></td>
-                                <td><%= user.phone %></td>
-                                <td><%#= link_to 'View', user %>
+                                <td class="hidden-xs"><%= user.firstname %></td>
+                                <td class="hidden-xs"><%= user.lastname %></td>
+                                <td class="hidden-xs"><%= user.phone %></td>
+                                <td class="hidden-xs"><%#= link_to 'View', user %>
                                 <%= link_to 'Edit', edit_user_path(user) %> | 
                                 <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                               </tr>
@@ -50,9 +50,9 @@
                         <tr>
                            <th>Username</th>
                             <th>Usertype</th>
-                            <th>Firstname</th>
-                            <th>Lastname</th>
-                            <th>Phone</th>
+                            <th class="hidden-xs">Firstname</th>
+                            <th class="hidden-xs">Lastname</th>
+                            <th class="hidden-xs">Phone</th>
                             <th class="hidden-xs">Actions</th>
                         </tr>
                       </tfoot>

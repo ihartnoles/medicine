@@ -1,4 +1,5 @@
-<%= form_for(@user) do |f| %>
+
+<%= form_for @user, :html => {:class => 'form'} do |f| %>
   <% if @user.errors.any? %>
     <div class="alert alert-block alert-danger">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -10,35 +11,38 @@
       </ul>
     </div>
   <% end %>
+ 
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :username %><br />
-    <%= f.text_field :username , readonly: "true" %>
+    <%= f.text_field :username ,  :class => 'form-control', readonly: "true" %>
   </div>
-  <!--
-  <div class="field">
-    <%= f.label :usertype_id %><br />
-    <%= f.number_field :usertype_id %>
-  </div>
-  -->
-  <div class="field">
+  
+  <div class="form-group">
     <%= label_tag(:permissionid, "Permission") %><br>
-    <%= collection_select(:user, :usertype_id, Permissiongroup.all, :id, :groupname, { :selected => @user.usertype_id }) %>
+    <%= collection_select(:user, :usertype_id, Permissiongroup.all, :id, :groupname, { :selected => @user.usertype_id }, :class=>'col-sm-6 form-control') %>
   </div>
-  <div class="field">
-    <%= f.label :firstname %><br />
-    <%= f.text_field :firstname %>
+  
+  <div class="form-group">
+    <%= f.label :firstname%><br />
+    <%= f.text_field :firstname ,:class => 'col-sm-6 form-control', :size => 15 %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :lastname %><br />
-    <%= f.text_field :lastname %>
+    <%= f.text_field :lastname  ,:class => 'col-sm-6 form-control' %>
   </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.label :phone %><br />
-    <%= f.text_field :phone %>
+    <%= f.text_field :phone  ,:class => 'col-sm-6 form-control' %>
   </div>
-  <br>
+ 
+  <br><br>
+ 
   <div class="actions">
-    <%= f.submit %>
+      <%= f.submit %>
   </div>
+
+
 <% end %>
