@@ -13,7 +13,7 @@
                         
                         <div id="clinicaldivision">
                             <b>Division:</b><br>
-                            <%= collection_select(:clinicaldivision, :id, Clinicaldivision.all, :id, :divisionname) %>
+                            <%= collection_select(:clinicaldivision, :id, Clinicaldivision.all, :id, :divisionname, {:include_blank => 'Please select a clinical division'}) %>
                         </div>
 
 
@@ -51,7 +51,7 @@
     
     alert(division);
 
-    
+
     if(division == "") division="0";
       jQuery.get('/search/update_section_select/' + division, function(data){
             $("#clinicalsection").html(data);
