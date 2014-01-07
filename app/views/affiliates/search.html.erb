@@ -1,0 +1,65 @@
+<div class="row">
+<div class="col-md-12">
+            
+        
+
+            <div class="box border red">
+                <div class="box-title">
+                    <h4><i class="fa fa-table"></i>Affiliates</h4>
+                </div>
+                <div class="box-body">
+                   
+                    <%= form_for :clinicalsection, :html => {:class => 'form', :id => 'searchform' } do |f| %>   
+                        
+                        <div id="clinicaldivision">
+                            <b>Division:</b><br>
+                            <%= collection_select(:clinicaldivision, :id, Clinicaldivision.all, :id, :divisionname) %>
+                        </div>
+
+
+                        <div id="clinicalsection">
+                            
+                        </div>
+
+                        
+
+                    <% end %>
+
+                </div>
+            </div>
+             <!-- /BOX -->
+</div>
+</div><!-- row -->
+
+
+<!-- JQUERY -->
+<%= render 'shared/javascript' %>
+
+<script>
+  jQuery(document).ready(function() {     
+    App.setPage("searchpage");  //Set current page
+    App.init(); //Initialise plugins and elements
+
+
+    // when the #country field changes
+    $("#clinicaldivision_id").change(function() {
+    
+    alert('SHABBA!!!');
+
+    // make a POST call and replace the content
+    var division = $('#clinicaldivision_id').val();
+    
+    alert(division);
+
+    
+    if(division == "") division="0";
+      jQuery.get('/search/update_section_select/' + division, function(data){
+            $("#clinicalsection").html(data);
+    })
+
+    return false;
+  });
+
+
+  });
+</script>

@@ -97,4 +97,24 @@ class AffiliatesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  #GET /search
+  def search
+    @title       = 'Affiliate Search'
+    @description = 'Advanced Search of Affiliates/Faculty'
+
+    @clinicalsection = Clinicalsection.new
+    @sections = Clinicalsection.all
+
+    respond_to do |format|
+      format.html # search.html.erb
+      format.json { render json: @affiliates }
+    end
+  end
+
+  def update_section_select
+    @sections = Clinicalsection.where(:division_id=>params[:id]).order(:sectionname) unless params[:id].blank?
+    render :partial => "sections"
+  end
+
 end

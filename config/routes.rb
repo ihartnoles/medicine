@@ -22,9 +22,15 @@ Medicine::Application.routes.draw do
   resources :languages
   resources :affiliatelanguages
 
+
   match '/faq',    to: 'static_pages#faq'
   match '/home',   to: 'static_pages#home'
   match '/admin',   to: 'static_pages#admin'
+
+  get '/search',  to: 'affiliates#search'
+
+  get 'search/update_section_select/:id', to: 'affiliates#update_section_select'
+  #match 'search/update_city_select/:id',  to: 'affiliates#update_city_select'
 
 
   root :to => 'static_pages#home'
