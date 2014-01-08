@@ -3,30 +3,53 @@
             
         
 
-            <div class="box border red">
+            <div class="box border green">
                 <div class="box-title">
-                    <h4><i class="fa fa-table"></i>Affiliates</h4>
+                    <h4><i class="fa fa-table"></i>Advanced Search</h4>
                 </div>
                 <div class="box-body">
-                   
-                    <%= form_for :clinicalsection, :html => {:class => 'form', :id => 'searchform' } do |f| %>   
+                  
+                   <div class="box-container">
+                    <%= form_for :clinicaldivision, :url => {:action => 'doSearch'}, :html => {:class => 'form-horizontal', :id => 'searchform' } , :method => "post" do |f| %>   
                         
-                        <div id="clinicaldivision">
-                            <b>Division:</b><br>
-                            <%= collection_select(:clinicaldivision, :id, Clinicaldivision.all, :id, :divisionname, {:include_blank => 'Please select a clinical division'}) %>
-                        </div>
-
-
-                        <div id="clinicalsection">
+                         <div class="row">
+                            <div class="col-sm-4">
+                                 <%= f.label :firstname %><br />
+                                <%= f.text_field :firstname ,:class => 'form-control'  %>
+                            </div>
                             
-                        </div>
+
+                             <div class="col-sm-4">
+                                <%= f.label :lastname %><br />
+                                <%= f.text_field :lastname  ,:class => 'form-control'%>
+                              </div>
+                         </div>
+                         <br>
+                         <div class="row">
+                            <div class="col-sm-4" id="clinicaldivision">
+                                <b>Division:</b><br>
+                                <%= collection_select(:clinicaldivision, :division_id, Clinicaldivision.all, :id, :divisionname, {:include_blank => '-- Clinical Division --'} ,:class=>'form-control') %>
+                            </div>
+
+                            <div class="col-sm-4" id="clinicalsection">
+                                
+                            </div>
+                         </div>
 
                         
+                        
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-12">
+                             <%= f.submit "Search" %>
+                            </div>
+                        </div>
 
                     <% end %>
 
                 </div>
             </div>
+        </div>
              <!-- /BOX -->
 </div>
 </div><!-- row -->
@@ -42,14 +65,14 @@
 
 
     // when the #country field changes
-    $("#clinicaldivision_id").change(function() {
+    $("#clinicaldivision_division_id").change(function() {
     
-    alert('SHABBA!!!');
+    //alert('SHABBA!!!');
 
     // make a POST call and replace the content
-    var division = $('#clinicaldivision_id').val();
+    var division = $('#clinicaldivision_division_id').val();
     
-    alert(division);
+    //alert(division);
 
 
     if(division == "") division="0";

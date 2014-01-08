@@ -100,7 +100,7 @@ class AffiliatesController < ApplicationController
 
   #GET /search
   def search
-    @title       = 'Affiliate Search'
+    @title       = 'Advanced Search'
     @description = 'Advanced Search of Affiliates/Faculty'
 
     @clinicalsection = Clinicalsection.new
@@ -112,9 +112,23 @@ class AffiliatesController < ApplicationController
     end
   end
 
+  #handles jquery/ajax call to populate second-drop down on search page.
   def update_section_select
     @sections = Clinicalsection.where(:division_id=>params[:id]).order(:sectionname) unless params[:id].blank?
     render :partial => "sections"
   end
+
+
+  # POST /affiliates
+  # POST /affiliates.json
+  def doSearch
+    #@affiliate = Affiliate.new(params[:affiliate])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @affiliate }
+    end
+  end
+
 
 end

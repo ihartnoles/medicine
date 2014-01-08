@@ -3,9 +3,9 @@
     <%#= collection_select(:clinicalsection, :id, Clinicalsection.all, :id, :sectionname) %>
 
     <% if !@sections.blank? %>
-      <%= f.select :section_id, @sections.collect{ |s| [s.sectionname,s.id]}, :include_blank => 'Please select a clinical section'%>
+      <%= f.select :section_id, @sections.collect{ |s| [s.sectionname,s.id]}, {:include_blank => '-- Clinical Section --'} , {:class=>'form-control'} %>
     <% else %>
-      <%= f.select :section_id, :collection=>[] %>
+      <%= f.select :section_id, "", {:include_blank => '-- N/A --'} , {:class=>'form-control'}  %>
     <% end %>
 
  <% end %>

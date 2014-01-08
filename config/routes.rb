@@ -28,6 +28,7 @@ Medicine::Application.routes.draw do
   match '/admin',   to: 'static_pages#admin'
 
   get '/search',  to: 'affiliates#search'
+  post '/doSearch', to: 'affiliates#doSearch'
 
   get 'search/update_section_select/:id', to: 'affiliates#update_section_select'
   #match 'search/update_city_select/:id',  to: 'affiliates#update_city_select'
