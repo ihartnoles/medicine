@@ -169,12 +169,18 @@
                                   <div class="box border inverse">
                                     <div class="box-title">
                                       <h4><i class="fa fa-briefcase"></i>Training</h4>
-                                     
+                                      
+                                       <div class="tools">
+                                          <a href="/affiliates/<%= params[:id] %>/edit">
+                                              <i class="fa fa-pencil"></i>
+                                          </a>
+                                       </div>
+
                                     </div>
                                     <div class="box-body">
                                             <p>
                                               <b>Florida Medical License:</b><br>
-                                              ???
+                                              <%= @affiliate.license %>
                                             </p>
 
                                             <p>
