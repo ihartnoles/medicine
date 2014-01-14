@@ -1,5 +1,7 @@
 Medicine::Application.routes.draw do
   
+  get "contact/index"
+
   resources :permissiongroups
 
 
@@ -23,6 +25,7 @@ Medicine::Application.routes.draw do
   resources :affiliatelanguages
 
 
+
   match '/faq',    to: 'static_pages#faq'
   match '/home',   to: 'static_pages#home'
   match '/admin',   to: 'static_pages#admin'
@@ -33,6 +36,8 @@ Medicine::Application.routes.draw do
   get 'search/update_section_select/:id', to: 'affiliates#update_section_select'
   #match 'search/update_city_select/:id',  to: 'affiliates#update_city_select'
 
+  match 'contactus', to: 'contact#index'
+  match 'sendcontact', to: 'contact#sendcontact'
 
   root :to => 'static_pages#home'
 

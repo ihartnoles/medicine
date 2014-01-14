@@ -1,0 +1,40 @@
+<div class="col-md-9">
+	<div class="box border primary">
+		<div class="box-title">
+			<h4><i class="fa fa-envelope"></i>Contact Form</h4>
+		</div>
+		<div class="box-body big">
+			
+			<div class="alert alert-info">
+				<strong>Please fill out and submit the form below. Your message will be sent to the College of Medicine Staff.</strong>
+			</div>
+
+			<form class="form-horizontal" action="sendcontact" method="post" name="contactform" role="form">
+			  <div class="form-group">
+				<label class="col-sm-3 control-label">Subject</label>
+				<div class="col-sm-9">
+				  <input type="text" class="form-control" name="subject" placeholder="Enter Your Subject Here">
+				</div>
+			  </div>
+			  <div class="form-group">
+				<label class="col-sm-3 control-label">Message</label>
+				<div class="col-sm-9">
+				 <textarea class="form-control" name="msg" rows="3" placeholder="Enter Your Message Here"></textarea>
+				</div>
+			  </div>		
+
+			  <button class="btn btn-default" type="submit">Submit</button>
+
+			</form>
+		</div>
+	</div>
+
+
+<%= render 'shared/javascript' %>
+
+<script>
+    jQuery(document).ready(function() {   
+      App.setPage("contact_form");  //Set current page
+      App.init(); //Initialise plugins and elements      
+    });
+</script>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140113190404) do
+ActiveRecord::Schema.define(:version => 20140114214149) do
 
   create_table "AffiliatesSpecialty", :id => false, :force => true do |t|
     t.integer "id",           :null => false
@@ -247,6 +247,14 @@ ActiveRecord::Schema.define(:version => 20140113190404) do
     t.string "years"
     t.string "institution"
     t.float  "affiliate_id", :limit => 53
+  end
+
+  create_table "contacts", :force => true do |t|
+    t.string   "sentby"
+    t.string   "subject"
+    t.text     "msg"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "cvs", :force => true do |t|
