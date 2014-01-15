@@ -3,6 +3,7 @@ class ContactController < ApplicationController
   def index
   	@title      = 'Contact Us'
     @description = 'Need assistance? Please fill out the form below.'
+    @contact = Contact.new
 
   	respond_to do |format|
       format.html # index.html.erb      
@@ -15,10 +16,17 @@ class ContactController < ApplicationController
     @description = 'Inquiry submitted!'
     @username = 'ihartstein'
   	  	
-  	@contact = Contact.new(:sentby => @username, :subject => params[:subject], :msg => params[:msg])
-    @contact.save
+  	@contact = Contact.new(params[:contact])
+   	
+   	respond_to do |format|
+	   	if @contact.save    	 
+	    	 ContactMailer.send_msg(@username, params[:subject] , params[:msg]).deliver
+	    	 format.html
+	    else
+	    	 format.html {  render action: "index" }
+	    end
+	end
 
-    ContactMailer.send_msg(@username,@subject,@msg).deliver
   end
 
 end

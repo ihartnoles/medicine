@@ -6,6 +6,7 @@
 development:
   adapter: sqlserver
   dataserver: boc22mssqloit\oit
+  #dataserver: BOC22DT-940181\IH_DB
   #host: localhost
   database: Medicine
   #username: BOC22-LT-IH\ihartstein

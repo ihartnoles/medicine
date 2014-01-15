@@ -1,14 +1,13 @@
-<div class="col-md-9">
+<div class="col-md-12">
 	<div class="box border primary">
 		<div class="box-title">
 			<h4><i class="fa fa-envelope"></i>Contact Form</h4>
 		</div>
 		<div class="box-body big">
 			
-			<div class="alert alert-info">
-				<strong>Please fill out and submit the form below. Your message will be sent to the College of Medicine Staff.</strong>
-			</div>
+			
 
+			<!--
 			<form class="form-horizontal" action="sendcontact" method="post" name="contactform" role="form">
 			  <div class="form-group">
 				<label class="col-sm-3 control-label">Subject</label>
@@ -26,6 +25,45 @@
 			  <button class="btn btn-default" type="submit">Submit</button>
 
 			</form>
+			-->
+
+			<%= form_for @contact, :url => {:action => 'sendcontact'}, :html => {:class => 'form-horizontal'}  , :method => "post" do |f| %>
+
+				<% if @contact.errors.any? %>
+			    <div class="alert alert-block alert-danger">
+			      <a class="close" aria-hidden="true" href="#" data-dismiss="alert">×</a>
+			      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this message from being sent:</h2>
+
+			      <ul>
+			      <% @contact.errors.full_messages.each do |msg| %>
+			        <li><%= msg %></li>
+			      <% end %>
+			      </ul>
+			    </div>
+			  <% end %>
+
+			 <div class="alert alert-info">
+				<strong>Please fill out and submit the form below. Your message will be sent to the College of Medicine Staff.</strong>
+			 </div>
+
+			 <div class="form-group">
+			 	<%= f.label :subject %><br />
+                <%= f.text_field :subject ,:class => 'form-control',  :placeholder => "Enter Your Subject Here"  %>
+			 </div>
+
+			 <div class="form-group">
+			 	<%= f.label :message %><br />
+                <%= f.text_area :msg ,:class => 'form-control',  :placeholder => "Enter Your Message Here"  %>
+			 </div>
+
+			 <div class="row">
+				 <div class="col-sm-6">
+	                 <%= f.submit "Submit" ,:class => 'btn btn-default' %>
+	             </div>
+	         </div>
+
+			<% end %>
+
 		</div>
 	</div>
 

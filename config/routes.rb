@@ -36,8 +36,8 @@ Medicine::Application.routes.draw do
   get 'search/update_section_select/:id', to: 'affiliates#update_section_select'
   #match 'search/update_city_select/:id',  to: 'affiliates#update_city_select'
 
-  match 'contactus', to: 'contact#index'
-  match 'sendcontact', to: 'contact#sendcontact'
+  get 'contactus', to: 'contact#index'
+  post 'sendcontact', to: 'contact#sendcontact'
 
   root :to => 'static_pages#home'
 
