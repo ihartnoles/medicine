@@ -24,20 +24,25 @@ Medicine::Application.routes.draw do
   resources :languages
   resources :affiliatelanguages
 
-
-
+  #static actions
   match '/faq',    to: 'static_pages#faq'
   match '/home',   to: 'static_pages#home'
-  match '/admin',   to: 'static_pages#admin'
+  match '/admin',  to: 'static_pages#admin'
 
-  get '/search',  to: 'affiliates#search'
-  post '/doSearch', to: 'affiliates#doSearch'
+  #miscellaneous affilate actions
+  get  '/search',           to: 'affiliates#search'
+  post '/doSearch',         to: 'affiliates#doSearch'
+  get  '/editTraining/:id', to: 'affiliates#editTraining'
+  post '/saveTraining',     to: 'affiliates#saveTraining'
 
+  #search functions
   get 'search/update_section_select/:id', to: 'affiliates#update_section_select'
   #match 'search/update_city_select/:id',  to: 'affiliates#update_city_select'
 
-  get 'contactus', to: 'contact#index'
+  #contactus functions
+  get  'contactus',   to: 'contact#index'
   post 'sendcontact', to: 'contact#sendcontact'
+
 
   root :to => 'static_pages#home'
 

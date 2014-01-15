@@ -69,8 +69,8 @@
                                           </div>
                                           <div class="col-sm-6"> 
                                             <p>
-                                              <b>Isfaculty:</b><br>
-                                              <%= @affiliate.isfaculty %>
+                                              <b>Faculty:</b><br>
+                                              <%= @affiliate.facultymember %>
                                             </p>
 
                                             <b>Languages Spoken:</b><br>
@@ -171,7 +171,7 @@
                                       <h4><i class="fa fa-briefcase"></i>Training</h4>
                                       
                                        <div class="tools">
-                                          <a href="/affiliates/<%= params[:id] %>/edit">
+                                          <a href="/editTraining/<%= params[:id] %>">
                                               <i class="fa fa-pencil"></i>
                                           </a>
                                        </div>

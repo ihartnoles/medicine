@@ -1,0 +1,80 @@
+<div class="row">
+	<div class="col-md-12">
+		<!-- BASIC -->
+		<div class="box border red">
+			<div class="box-title">
+				<h4><i class="fa fa-bars"></i>Edit Training</h4>
+				<div class="tools hidden-xs">
+					<a class="config" data-toggle="modal" href="#box-config">
+						<i class="fa fa-cog"></i>
+					</a>
+					<a class="reload" href="javascript:;">
+						<i class="fa fa-refresh"></i>
+					</a>
+					<a class="collapse" href="javascript:;">
+						<i class="fa fa-chevron-up"></i>
+					</a>
+					<a class="remove" href="javascript:;">
+						<i class="fa fa-times"></i>
+					</a>
+				</div>
+			</div>
+			<div class="box-body">		
+
+				<!--
+				<form action="//file-arrow-circle-o-up"
+										  class="dropzone"
+										  id="my-awesome-dropzone">
+											<div class="fallback">
+												<input name="file" type="file" multiple="" />
+											</div>
+										  </form>
+				-->
+				 <%= form_for :affiliate, :url => '/saveTraining',:html => {:class => 'form', :multipart => true} do |f| %>
+					    
+					    <%= hidden_field_tag :affiliate_id, params[:id] %>
+
+				 		<!--
+					   <div class="form-group">
+					    <%= f.label :license %><br />
+					    <%= f.text_field :license ,:class => 'form-control' %>
+					  </div>
+					-->
+
+					 <div class="form-group">
+					    <%= label_tag 'license', 'License:' %><br />
+					    <%= text_field_tag 'license', @affiliate.license , size:20 ,class: 'form-control' %>
+					  </div>
+
+					 
+					  <div class="form-group">
+					  	<%= label_tag 'cv', 'CV:' %><br>
+					    <%= file_field_tag 'cv' %>
+					  </div>
+					
+					<!--
+					 <div class="form-group">
+						<%= form_for :file_upload, :html => {:multipart => true} do |f| %>
+						  <%= f.file_field :cv %>
+						  <%#= f.submit "Upload" %>
+						<% end %>
+					</div>
+					-->
+
+					  <div class="form-group">
+					  	<%= label_tag 'researcharea', 'Research Area:' %><br>
+					  	<%= collection_select(:researcharea, :id, Researcharea.all, :id, :name, {:include_blank => '-- Choose One --'} , :class=>'form-control') %>
+					  </div>
+
+					  <div class="form-group">
+					  	<%= label_tag 'researchdescription', 'Research Description:' %><br>
+					  	<%= text_area_tag(:researchdescription, '', size: '50x10', :class=>'form-control') %>
+					  </div>
+
+					 <%= submit_tag 'Save' %>
+
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

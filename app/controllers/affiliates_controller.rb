@@ -130,5 +130,28 @@ class AffiliatesController < ApplicationController
     end
   end
 
+  def editTraining
+    @title      = 'Edit Training'
+    @affiliate  = Affiliate.find(params[:id])   
+
+  end
+
+  def saveTraining
+    #save affiliate medical license
+    affiliate = Affiliate.find(params[:affiliate_id])
+    affiliate.license = params[:license]
+    affiliate.save
+
+    #upload the CV
+
+    #save the affiliate research area and research description
+    affiliateResearchArea = Affiliateresearcharea.new
+    affiliateResearchArea.affiliate_id = params[:affiliate_id]
+    affiliateResearchArea.researcharea_id = params[:researcharea][:id]
+    affiliateResearchArea.researchdescription = params[:researchdescription]
+    affiliateResearchArea.save
+
+  end
+
 
 end
