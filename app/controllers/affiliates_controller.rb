@@ -28,6 +28,8 @@ class AffiliatesController < ApplicationController
     @languagespoken = Affiliatelanguage.new   
     @languagelist = Language.all
 
+    @affiliateresearcharea = Affiliateresearcharea.where(:affiliate_id => params[:id])
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @affiliate }
@@ -143,6 +145,13 @@ class AffiliatesController < ApplicationController
     affiliate.save
 
     #upload the CV
+
+    #clear out any existing affiliate research
+    existingresearcharea = Affiliateresearcharea.where(:affiliate_id => params[:affiliate_id])
+    
+    if existingresearcharea
+      delete = Affiliateresearcharea.destroy_all(:affiliate_id => params[:affiliate_id])
+    end 
 
     #save the affiliate research area and research description
     affiliateResearchArea = Affiliateresearcharea.new

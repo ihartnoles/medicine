@@ -188,15 +188,18 @@
                                               ????
                                             </p>
 
+
+                                            <% @affiliateresearcharea.each do |r| %>
                                             <p>
                                               <b>Research Area:</b><br>
-                                              ????
+                                              <%= r.researcharea_id %>
                                             </p>
 
                                             <p>
                                               <b>Research desciption (add'l training):</b><br>
-                                              ????
+                                              <%= r.researchdescription %>
                                             </p>
+                                            <% end %>
                                     </div>
                                   </div>
                                   <!-- /BOX -->    
