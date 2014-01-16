@@ -222,9 +222,13 @@
                                   <!-- BOX -->
                                   <div class="box border red">
                                     <div class="box-title">
-                                      <h4><i class="fa fa-plus-square"></i>Certified Specialties</h4>
+                                      <h4><i class="fa fa-check-square"></i>Certified Specialties</h4>
                                       
-                                        
+                                        <div class="tools">
+                                          <a href="/certifiedspecialities/new?affiliate_id=<%= params[:id] %>">
+                                              <i class="fa fa-pencil"></i>
+                                          </a>
+                                       </div>
                                     </div>
                                     <div class="box-body">
                                            <table class="table table-hover">
@@ -235,22 +239,26 @@
                                           </tr>
                                         </thead>
                                         <tbody>
-                                          <tr>
-                                            <td>1</td>
-                                            <td>Mark</td>
-                                          </tr>
-                                          <tr>
-                                            <td>2</td>
-                                            <td>Jacob</td>
-                                          </tr>
-                                          <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                          </tr>
-                                          <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                          </tr>
+                                            <% if !@certifiedspecialties.blank? %>
+                                              <% @certifiedspecialties.each do |cs| %>
+                                                <tr>
+                                                    <td><%= cs.getSpecialtyName(cs.speciality_id) %></td>
+                                                    <td><%= cs.year %></td>
+                                                </tr>
+                                              <% end %>
+                                             
+                                            <% else %>
+                                              <tr>
+                                                <td colspan="2">
+                                                    <div class="alert alert-block alert-info fade in">
+                                                    <a aria-hidden="true" href="#" data-dismiss="alert" class="close">×</a>
+                                                      <p></p><h4><i class="fa fa-check-square-o"></i> No Specialties on Record!</h4> Please add specialties by clicking on the pencil icon in the upper right corner.<p></p><br>
+                                                  </div>
+                                                </td>
+                                              </tr>
+                                            <% end %>
+
+                                              
                                         </tbody>
                                         </table>
                                     </div>

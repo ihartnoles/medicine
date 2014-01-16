@@ -25,6 +25,11 @@ class CertifiedspecialitiesController < ApplicationController
   # GET /certifiedspecialities/new.json
   def new
     @certifiedspeciality = Certifiedspeciality.new
+    @title      = 'New Certified Specialty'
+    @description = 'Add a new specialty'
+
+    #pull list of specialties
+    @specialties = Clinicalsection.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,11 +45,14 @@ class CertifiedspecialitiesController < ApplicationController
   # POST /certifiedspecialities
   # POST /certifiedspecialities.json
   def create
-    @certifiedspeciality = Certifiedspeciality.new(params[:certifiedspeciality])
+    @certifiedspeciality = Certifiedspeciality.new
+    @certifiedspeciality.affiliate_id = params[:affiliate_id]
+    @certifiedspeciality.speciality_id = params[:clinicalsection][:speciality_id]
+    @certifiedspeciality.year = params[:certifiedspeciality][:year]
 
     respond_to do |format|
       if @certifiedspeciality.save
-        format.html { redirect_to @certifiedspeciality, notice: 'Certifiedspeciality was successfully created.' }
+        format.html { redirect_to affiliate_url(:id => params[:affiliate_id]), notice: 'Certified Specialty Added!'}
         format.json { render json: @certifiedspeciality, status: :created, location: @certifiedspeciality }
       else
         format.html { render action: "new" }
@@ -60,7 +68,7 @@ class CertifiedspecialitiesController < ApplicationController
 
     respond_to do |format|
       if @certifiedspeciality.update_attributes(params[:certifiedspeciality])
-        format.html { redirect_to @certifiedspeciality, notice: 'Certifiedspeciality was successfully updated.' }
+        format.html { redirect_to redirect_to @certifiedspeciality, notice: 'Certifiedspeciality was successfully created.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
