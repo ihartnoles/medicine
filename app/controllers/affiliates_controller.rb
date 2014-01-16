@@ -135,7 +135,10 @@ class AffiliatesController < ApplicationController
   def editTraining
     @title      = 'Edit Training'
     @affiliate  = Affiliate.find(params[:id])   
+    @affiliateresearcharea = Affiliateresearcharea.where(:affiliate_id => params[:id])
 
+   !@affiliateresearcharea.blank? ? @research_id = Researcharea.where(["id = ?" , Affiliateresearcharea.where(:affiliate_id => params[:id]).pluck(:researcharea_id)]).select("id").first.id : @research_id = 0
+   !@affiliateresearcharea.blank? ? @researchdescription = Affiliateresearcharea.where(:affiliate_id => params[:id]).select("researchdescription").first.researchdescription : @researchdescription = ''
   end
 
   def saveTraining
@@ -144,7 +147,8 @@ class AffiliatesController < ApplicationController
     affiliate.license = params[:license]
     affiliate.save
 
-    #upload the CV
+    #upload the CV (TO DO)
+
 
     #clear out any existing affiliate research
     existingresearcharea = Affiliateresearcharea.where(:affiliate_id => params[:affiliate_id])
@@ -159,6 +163,12 @@ class AffiliatesController < ApplicationController
     affiliateResearchArea.researcharea_id = params[:researcharea][:id]
     affiliateResearchArea.researchdescription = params[:researchdescription]
     affiliateResearchArea.save
+   
+    respond_to do |format|
+      format.html { redirect_to affiliate_url(:id => params[:affiliate_id] ) , notice: 'Training Updated!'}
+      #format.json { head :ok }
+    end
+   
 
   end
 

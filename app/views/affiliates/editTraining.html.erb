@@ -61,15 +61,22 @@
 					</div>
 					-->
 
+					 
 					  <div class="form-group">
 					  	<%= label_tag 'researcharea', 'Research Area:' %><br>
-					  	<%= collection_select(:researcharea, :id, Researcharea.all, :id, :name, {:include_blank => '-- Choose One --'} , :class=>'form-control') %>
+					  		
+					  		<%# @affiliateresearcharea.each do |r| %>
+					  			<%= collection_select(:researcharea, :id, Researcharea.all, :id, :name, {:include_blank => '-- Choose One --' ,  :selected => @research_id } , :class=>'form-control') %>
+					  		<%# end %>
 					  </div>
 
 					  <div class="form-group">
 					  	<%= label_tag 'researchdescription', 'Research Description:' %><br>
-					  	<%= text_area_tag(:researchdescription, '', size: '50x10', :class=>'form-control') %>
+				  		<%#@affiliateresearcharea.each do |r| %>
+				  		<%= text_area_tag(:researchdescription, @researchdescription, size: '50x10', :class=>'form-control') %>					  	
+				  		<%# end %>
 					  </div>
+					  
 
 					 <%= submit_tag 'Save' %>
 

@@ -189,17 +189,30 @@
                                             </p>
 
 
-                                            <% @affiliateresearcharea.each do |r| %>
+                                            
                                             <p>
                                               <b>Research Area:</b><br>
-                                              <%= r.researcharea_id %>
+                                              <% if !@affiliateresearcharea.blank? %>
+                                                <% @affiliateresearcharea.each do |r| %>
+                                                  <%= r.getResearchAreaName(r.researcharea_id) %>
+                                                <% end %>
+                                              <% else %>
+                                                N/A
+                                              <% end %>
                                             </p>
 
                                             <p>
+
                                               <b>Research desciption (add'l training):</b><br>
-                                              <%= r.researchdescription %>
+                                              <% if !@affiliateresearcharea.blank? %>
+                                               <% @affiliateresearcharea.each do |r| %>
+                                                <%= r.researchdescription %>
+                                               <% end %>
+                                              <% else %>
+                                                N/A
+                                              <% end %>
                                             </p>
-                                            <% end %>
+                                            
                                     </div>
                                   </div>
                                   <!-- /BOX -->    
@@ -210,7 +223,8 @@
                                   <div class="box border red">
                                     <div class="box-title">
                                       <h4><i class="fa fa-plus-square"></i>Certified Specialties</h4>
-                                     
+                                      
+                                        
                                     </div>
                                     <div class="box-body">
                                            <table class="table table-hover">
