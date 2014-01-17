@@ -1,5 +1,8 @@
 Medicine::Application.routes.draw do
   
+  resources :countries
+
+
   resources :states
 
 
