@@ -52,7 +52,7 @@ class CertifiedspecialitiesController < ApplicationController
   def create
     @certifiedspeciality = Certifiedspeciality.new
     @certifiedspeciality.affiliate_id = params[:affiliate_id]
-    @certifiedspeciality.speciality_id = params[:clinicalsection][:speciality_id]
+    @certifiedspeciality.speciality_id = params[:certifiedspeciality][:speciality_id]
     @certifiedspeciality.year = params[:certifiedspeciality][:year]
 
     respond_to do |format|
