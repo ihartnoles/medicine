@@ -39,20 +39,23 @@ class DegreesController < ApplicationController
   # GET /degrees/1/edit
   def edit
     @degree = Degree.find(params[:id])
+    @title      = 'Edit Degree'
+    @description = 'Edit degree'
   end
 
   # POST /degrees
   # POST /degrees.json
   def create
     @degree = Degree.new(params[:degree])
+    @degree.affiliate_id = params[:affiliate_id]
+
+    @affiliate = Affiliate.find(params[:affiliate_id])
 
     respond_to do |format|
       if @degree.save
-        format.html { redirect_to @degree, notice: 'Degree was successfully created.' }
-        format.json { render json: @degree, status: :created, location: @degree }
+        format.html { redirect_to @affiliate, notice: 'Degree was successfully created.' }
       else
         format.html { render action: "new" }
-        format.json { render json: @degree.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -61,10 +64,12 @@ class DegreesController < ApplicationController
   # PUT /degrees/1.json
   def update
     @degree = Degree.find(params[:id])
+    @affiliate = Affiliate.find(params[:affiliate_id])
+
 
     respond_to do |format|
       if @degree.update_attributes(params[:degree])
-        format.html { redirect_to @degree, notice: 'Degree was successfully updated.' }
+        format.html { redirect_to affiliate_url(:id => params[:affiliate_id]), notice: 'Degree was successfully updated.', notice: 'Degree was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -80,7 +85,7 @@ class DegreesController < ApplicationController
     @degree.destroy
 
     respond_to do |format|
-      format.html { redirect_to degrees_url }
+      format.html { redirect_to affiliate_url(:id => params[:affiliate_id]), notice: 'Degree Removed!'  }
       format.json { head :no_content }
     end
   end

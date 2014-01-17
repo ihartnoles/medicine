@@ -295,33 +295,33 @@
                                             <th>City</th>
                                             <th>State</th>
                                             <th>Country</th>
+                                            <th>Action</th>
                                           </tr>
                                         </thead>
                                         <tbody>
-                                          <tr>
-                                            <td>1</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td>x</td>
-                                            <td>y</td>
-                                          </tr>
-                                          <tr>
-                                            <td>2</td>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                            <td>x</td>
-                                            <td>y</td>
-                                          </tr>
-                                          <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                            <td>x</td>
-                                            <td>y</td>
-                                          </tr>
+                                            <% if !@degrees.blank? %>
+                                              
+                                              <% @degrees.each do |d| %>
+                                                 <tr>
+                                                  <td><%= d.getDegreeName(d.degreelist_id) %></td>
+                                                  <td><%= d.year %></td>
+                                                  <td><%= d.getInstitutionName(d.institution_id) %></td>
+                                                  <td><%= d.city %></td>
+                                                  <td><%= d.getStateName(d.state) %></td>
+                                                  <td><%= d.getCountryName(d.country) %></td>
+                                                  <td> <%= link_to 'Update', edit_degree_path(d , :affiliate_id => params[:id]) %> | <%= link_to 'Remove', degree_path(d , :affiliate_id => params[:id]), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+                                                </tr>
+                                              <% end %>
+                                            <% else %>
+                                              <tr>
+                                                <td colspan="7">
+                                                    <div class="alert alert-block alert-info fade in">
+                                                    <a aria-hidden="true" href="#" data-dismiss="alert" class="close">×</a>
+                                                      <p></p><h4><i class="fa fa-check-square-o"></i> No Degrees on Record!</h4> Please add degrees by clicking on the pencil icon in the upper right corner.<p></p><br>
+                                                  </div>
+                                                </td>
+                                              </tr>
+                                            <% end %>
                                         </tbody>
                                         </table>
                                     </div>

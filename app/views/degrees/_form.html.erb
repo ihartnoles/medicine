@@ -16,8 +16,8 @@
 
 
   <div class="form-group">
-    <%= f.label :degreename %><br />
-    <%= f.text_field :degreename %>
+    <%= f.label :degreelist_id, "Degree" %><br />
+    <%= collection_select(:degree, :degreelist_id, Degreelist.all, :id, :degreename, {:include_blank => '-- Choose Degree --'}, :class=>'form-control' ) %>
   </div>
   <div class="form-group">
     <%= f.label :year %><br />
@@ -28,7 +28,7 @@
   <div class="form-group">
     <%= f.label :institution_id %><br />
     <%#= f.number_field :institution_id %>
-    <%= collection_select(:degree, :institution_id, Institution.all, :id, :institutionname, {:include_blank => '-- Choose Institution --'}, :class=>'form-control', :name => 'state') %>
+    <%= collection_select(:degree, :institution_id, Institution.all, :id, :institutionname, {:include_blank => '-- Choose Institution --'}, :class=>'form-control' ) %>
     <%#= select_tag "institution_id", options_from_collection_for_select(@institutions, "id" , "institutionname") %>
   </div>
 
