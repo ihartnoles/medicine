@@ -1,5 +1,8 @@
 Medicine::Application.routes.draw do
   
+  resources :states
+
+
   get "contact/index"
 
   resources :permissiongroups
