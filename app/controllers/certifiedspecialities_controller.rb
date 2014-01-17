@@ -57,7 +57,7 @@ class CertifiedspecialitiesController < ApplicationController
 
     respond_to do |format|
       if @certifiedspeciality.save
-        format.html { redirect_to affiliate_url(:id => params[:affiliate_id]), notice: 'Certified Specialty Added!'}
+        format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training", notice: 'Certified Specialty Added!'}
         format.json { render json: @certifiedspeciality, status: :created, location: @certifiedspeciality }
       else
         format.html { render action: "new" }
@@ -71,12 +71,12 @@ class CertifiedspecialitiesController < ApplicationController
   def update
     @certifiedspeciality = Certifiedspeciality.find(params[:id])
     @certifiedspeciality.affiliate_id = params[:affiliate_id]
-    @certifiedspeciality.speciality_id = params[:clinicalsection][:speciality_id]
+    @certifiedspeciality.speciality_id = params[:certifiedspeciality][:speciality_id]
     @certifiedspeciality.year = params[:certifiedspeciality][:year]
 
     respond_to do |format|
       if @certifiedspeciality.update_attributes(params[:certifiedspeciality])
-        format.html { redirect_to affiliate_url(:id => params[:affiliate_id]), notice: 'Certified Specialty Updated!' }
+        format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training", notice: 'Certified Specialty Updated!' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -92,7 +92,7 @@ class CertifiedspecialitiesController < ApplicationController
     @certifiedspeciality.destroy
 
     respond_to do |format|
-      format.html { redirect_to affiliate_url(:id => params[:id]), notice: 'Certified Specialty Removed!' }
+      format.html { redirect_to affiliate_url(:id => params[:id]) + "#training", notice: 'Certified Specialty Removed!' }
       format.json { head :no_content }
     end
   end

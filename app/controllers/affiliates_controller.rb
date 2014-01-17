@@ -167,7 +167,7 @@ class AffiliatesController < ApplicationController
     affiliateResearchArea.save
    
     respond_to do |format|
-      format.html { redirect_to affiliate_url(:id => params[:affiliate_id] ) , notice: 'Training Updated!'}
+      format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training" , notice: 'Training Updated!'}
       #format.json { head :ok }
     end
    

@@ -69,7 +69,7 @@ class DegreesController < ApplicationController
 
     respond_to do |format|
       if @degree.update_attributes(params[:degree])
-        format.html { redirect_to affiliate_url(:id => params[:affiliate_id]), notice: 'Degree was successfully updated.', notice: 'Degree was successfully updated.' }
+        format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training", notice: 'Degree was successfully updated.', notice: 'Degree was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -85,7 +85,7 @@ class DegreesController < ApplicationController
     @degree.destroy
 
     respond_to do |format|
-      format.html { redirect_to affiliate_url(:id => params[:affiliate_id]), notice: 'Degree Removed!'  }
+      format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training", notice: 'Degree Removed!'  }
       format.json { head :no_content }
     end
   end
