@@ -28,7 +28,7 @@
   <div class="form-group">
     <%= f.label :institution_id %><br />
     <%#= f.number_field :institution_id %>
-    <%= collection_select(:institution, :id, Institution.all, :id, :institutionname, {:include_blank => '-- Choose Institution --'}, :class=>'form-control') %>
+    <%= collection_select(:degree, :institution_id, Institution.all, :id, :institutionname, {:include_blank => '-- Choose Institution --'}, :class=>'form-control', :name => 'state') %>
     <%#= select_tag "institution_id", options_from_collection_for_select(@institutions, "id" , "institutionname") %>
   </div>
 
@@ -40,7 +40,9 @@
   
   <div class="form-group">
     <%= f.label :state %><br />
-    <%= f.text_field :state ,:class => 'form-control' %>
+    <%= collection_select(:degree, :state, State.all, :id, :state, {:include_blank => '-- Choose State --'}, :class=>'form-control') %>
+    
+    <%#= f.select :state, State.all.collect {|p| [ p.state, p.id ] } %>
   </div>
 
   <div class="form-group">
