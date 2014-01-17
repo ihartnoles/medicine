@@ -247,7 +247,7 @@
                                                     <td><%= cs.year %></td>
                                                     <td>  
                                                       <%= link_to 'Update', edit_certifiedspeciality_path(cs , :affiliate_id => params[:id]) %>
-                                                      | <%= link_to 'Remove', cs, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+                                                      | <%= link_to 'Remove', certifiedspeciality_path(cs , :affiliate_id => params[:id]), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
                                                 </tr>
                                               <% end %>
                                              
