@@ -25,6 +25,10 @@ class DegreesController < ApplicationController
   # GET /degrees/new.json
   def new
     @degree = Degree.new
+    @title      = 'New Degree'
+    @description = 'Add a new degree'
+
+    @institutions =  Institution.all
 
     respond_to do |format|
       format.html # new.html.erb

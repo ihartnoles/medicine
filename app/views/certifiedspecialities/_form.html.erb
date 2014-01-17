@@ -25,6 +25,7 @@
 
     <%= f.select :year, ((1900..2014).map {|i| [i,i] }) , {:include_blank => '-- Choose Year --'} , {:class => "form-control"} %>
   </div>
+  
   <div class="actions">
     <%= f.submit 'Add Specialty' %>
   </div>
