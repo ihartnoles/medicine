@@ -1,0 +1,21 @@
+<%= form_for(@degreelist) do |f| %>
+  <% if @degreelist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@degreelist.errors.count, "error") %> prohibited this degreelist from being saved:</h2>
+
+      <ul>
+      <% @degreelist.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :degreename %><br />
+    <%= f.text_field :degreename %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

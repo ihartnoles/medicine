@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140117170325) do
+ActiveRecord::Schema.define(:version => 20140117185331) do
 
   create_table "AffiliatesSpecialty", :id => false, :force => true do |t|
     t.integer "id",           :null => false
@@ -258,6 +258,13 @@ ActiveRecord::Schema.define(:version => 20140117170325) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "countries", :force => true do |t|
+    t.string   "abbreviation"
+    t.string   "country"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "cvs", :force => true do |t|
     t.integer  "affiliate_id"
     t.string   "path"
@@ -266,7 +273,7 @@ ActiveRecord::Schema.define(:version => 20140117170325) do
   end
 
   create_table "degrees", :force => true do |t|
-    t.string   "degreename"
+    t.string   "degreelist_id"
     t.integer  "year"
     t.integer  "institution_id"
     t.integer  "affiliate_id"

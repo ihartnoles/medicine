@@ -47,7 +47,7 @@
 
   <div class="form-group">
     <%= f.label :country %><br />
-    <%= f.text_field :country ,:class => 'form-control' %>
+     <%= collection_select(:degree, :country, Country.all, :id, :country, {:include_blank => '-- Choose Country --'}, :class=>'form-control') %>
   </div>
 
   <div class="actions">

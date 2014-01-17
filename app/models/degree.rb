@@ -4,5 +4,7 @@ class Degree < ActiveRecord::Base
 
   validates :year, :presence => true
   validates :institution_id, :presence => true
+  validates :city,  format: { with: /^[A-Za-z\s]+$/, message: "only allows letters" } ,:presence => true
   validates :state, :presence => true
+  validates :country, :presence => true
 end
