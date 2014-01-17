@@ -39,7 +39,12 @@ class CertifiedspecialitiesController < ApplicationController
 
   # GET /certifiedspecialities/1/edit
   def edit
+    @title      = 'Edit Certified Specialty'
+    @description = 'Update the certified specialty'
     @certifiedspeciality = Certifiedspeciality.find(params[:id])
+
+
+   !@certifiedspeciality.blank? ? @certifiedspeciality_id = Certifiedspeciality.find(params[:id]).speciality_id : @certifiedspeciality_id = 0
   end
 
   # POST /certifiedspecialities
@@ -65,10 +70,13 @@ class CertifiedspecialitiesController < ApplicationController
   # PUT /certifiedspecialities/1.json
   def update
     @certifiedspeciality = Certifiedspeciality.find(params[:id])
+    @certifiedspeciality.affiliate_id = params[:affiliate_id]
+    @certifiedspeciality.speciality_id = params[:clinicalsection][:speciality_id]
+    @certifiedspeciality.year = params[:certifiedspeciality][:year]
 
     respond_to do |format|
       if @certifiedspeciality.update_attributes(params[:certifiedspeciality])
-        format.html { redirect_to redirect_to @certifiedspeciality, notice: 'Certifiedspeciality was successfully created.' }
+        format.html { redirect_to affiliate_url(:id => params[:affiliate_id]), notice: 'Certified Specialty Updated!' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -84,7 +92,7 @@ class CertifiedspecialitiesController < ApplicationController
     @certifiedspeciality.destroy
 
     respond_to do |format|
-      format.html { redirect_to certifiedspecialities_url }
+      format.html { redirect_to affiliate_url(:id => params[:id]), notice: 'Certified Specialty Removed!' }
       format.json { head :no_content }
     end
   end

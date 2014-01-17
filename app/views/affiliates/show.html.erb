@@ -236,6 +236,7 @@
                                           <tr>
                                             <th>Specialty</th>
                                             <th>Year received</th>
+                                            <th>Action</th>
                                           </tr>
                                         </thead>
                                         <tbody>
@@ -244,6 +245,9 @@
                                                 <tr>
                                                     <td><%= cs.getSpecialtyName(cs.speciality_id) %></td>
                                                     <td><%= cs.year %></td>
+                                                    <td>  
+                                                      <%= link_to 'Update', edit_certifiedspeciality_path(cs , :affiliate_id => params[:id]) %>
+                                                      | <%= link_to 'Remove', cs, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
                                                 </tr>
                                               <% end %>
                                              
@@ -274,7 +278,7 @@
                                   <div class="box border primary">
                                     <div class="box-title">
                                       <h4><i class="fa fa-book"></i>Degrees</h4>
-                                     
+                                      
                                     </div>
                                     <div class="box-body">
                                       <table class="table table-hover">
