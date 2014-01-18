@@ -683,22 +683,33 @@
                                             <th>Due Date</th>
                                             <th>Completed Date</th>
                                             <th>Evaluator Name</th>   
-                                            <th>Status</th>     
+                                            <th>Status</th>    
+                                            <th>Actions</th> 
                                           </tr>
                                         </thead>
                                         <tbody>
-                                          <tr>
-                                            <td>01/31/2014</td>
-                                            <td>01/10/2014</td>
-                                            <td>Otto</td>
-                                            <td>Satisfactory</td>
-                                          </tr>
-                                          <tr>
-                                            <td>12/31/2013</td>
-                                            <td>12/31/2013</td>
-                                            <td>Thornton</td>
-                                            <td>Needs Improvement</td>
-                                          </tr>
+                                          <% if !@annualevaluations.blank? %>
+                                            <% @annualevaluations.each do |a| %>
+                                              <tr>
+                                                <td><%= a.duedate %></td>
+                                                <td><%= a.completeddate %></td>
+                                                <td><%= a.getEvaluatorName(a.evaluator_id) %></td>
+                                                <td><%= a.getStatus(a.status_id) %></td>
+                                                <td>
+                                                  <%= link_to 'Update', edit_annualevaluation_path(a , :affiliate_id => params[:id]) %> | <%= link_to 'Remove', annualevaluation_path(a , :affiliate_id => params[:id]), method: :delete, data: { confirm: 'Are you sure?' } %>
+                                                </td>
+                                              </tr>
+                                            <% end %>
+                                          <% else %>
+                                            <tr>
+                                                <td colspan="5">
+                                                    <div class="alert alert-block alert-info fade in">
+                                                    <a aria-hidden="true" href="#" data-dismiss="alert" class="close">×</a>
+                                                      <p></p><h4><i class="fa fa-check-square-o"></i> No Evaluations on Record!</h4> Please add evaluations by clicking on the pencil icon in the upper right corner.<p></p><br>
+                                                  </div>
+                                                </td>
+                                              </tr>
+                                          <% end %>                                         
                                         </tbody>
                                         </table>
                                      </div>

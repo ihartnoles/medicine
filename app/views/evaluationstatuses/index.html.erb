@@ -1,0 +1,23 @@
+<h1>Listing evaluationstatuses</h1>
+
+<table>
+  <tr>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @evaluationstatuses.each do |evaluationstatus| %>
+  <tr>
+    <td><%= evaluationstatus.status %></td>
+    <td><%= link_to 'Show', evaluationstatus %></td>
+    <td><%= link_to 'Edit', edit_evaluationstatus_path(evaluationstatus) %></td>
+    <td><%= link_to 'Destroy', evaluationstatus, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Evaluationstatus', new_evaluationstatus_path %>

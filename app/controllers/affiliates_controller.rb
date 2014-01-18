@@ -31,6 +31,8 @@ class AffiliatesController < ApplicationController
     @affiliateresearcharea = Affiliateresearcharea.where(:affiliate_id => params[:id])
     @certifiedspecialties  = Certifiedspeciality.where(:affiliate_id => params[:id])
     @degrees               = Degree.where(:affiliate_id => params[:id])
+    @annualevaluations     = Annualevaluation.where(:affiliate_id => params[:id])
+
 
     respond_to do |format|
       format.html # show.html.erb
