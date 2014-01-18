@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Duedate:</b>
+  <%= @annualevaluation.duedate %>
+</p>
+
+<p>
+  <b>Completeddate:</b>
+  <%= @annualevaluation.completeddate %>
+</p>
+
+<p>
+  <b>Evaluator:</b>
+  <%= @annualevaluation.evaluator_id %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @annualevaluation.status_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_annualevaluation_path(@annualevaluation) %> |
+<%= link_to 'Back', annualevaluations_path %>

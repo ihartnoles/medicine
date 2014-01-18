@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  duedate: MyString
+  completeddate: MyString
+  evaluator_id: 1
+  status_id: 1
+
+two:
+  duedate: MyString
+  completeddate: MyString
+  evaluator_id: 1
+  status_id: 1

@@ -1,0 +1,33 @@
+<%= form_for(@annualevaluation) do |f| %>
+  <% if @annualevaluation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@annualevaluation.errors.count, "error") %> prohibited this annualevaluation from being saved:</h2>
+
+      <ul>
+      <% @annualevaluation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :duedate %><br />
+    <%= f.text_field :duedate %>
+  </div>
+  <div class="field">
+    <%= f.label :completeddate %><br />
+    <%= f.text_field :completeddate %>
+  </div>
+  <div class="field">
+    <%= f.label :evaluator_id %><br />
+    <%= f.number_field :evaluator_id %>
+  </div>
+  <div class="field">
+    <%= f.label :status_id %><br />
+    <%= f.number_field :status_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
