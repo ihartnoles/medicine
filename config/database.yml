@@ -5,7 +5,7 @@
 #   gem 'sqlite3'
 development:
   adapter: sqlserver
-  dataserver: boc22mssqloit\oit
+  dataserver: boc22mssqloit.ad.fau.edu
   #dataserver: BOC22DT-940181\IH_DB
   #host: localhost
   database: Medicine
@@ -24,7 +24,7 @@ test:
 
 production:
   adapter: sqlserver
-  dataserver: boc22mssqloit\oit
+  dataserver: boc22mssqloit.ad.fau.edu
   database: Medicine
   username: FAU\ihartstein
   password: ikeFAU1358
