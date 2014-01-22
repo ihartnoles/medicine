@@ -43,7 +43,9 @@ a:focus {
 a:active,
 a:hover {
   outline: 0;
+  color: white;
 }
+
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
@@ -179,6 +181,7 @@ table {
   a,
   a:visited {
     text-decoration: underline;
+    color: white;
   }
   a[href]:after {
     content: " (" attr(href) ")";
