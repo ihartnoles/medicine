@@ -4,12 +4,12 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    Thank you for your inquiry @username! <br/>
+    Thank you for your inquiry <%= @username %>! <br/>
     Your message has been sent to the College of Medicine!
 
     <p>Your Message:<p>
     <code>
-    	<%= raw(@msg) %>
+    	<%= @msg %>
     </code>
   </body>
 </html>
