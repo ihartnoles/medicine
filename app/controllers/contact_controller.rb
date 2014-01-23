@@ -14,7 +14,7 @@ class ContactController < ApplicationController
   def sendcontact
   	@title      = 'Success!'
     @description = 'Inquiry submitted!'
-    @username = 'ihartstein'
+    @username = session[:cas_user]
   	  	
   	@contact = Contact.new(params[:contact])
    	
