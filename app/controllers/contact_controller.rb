@@ -14,13 +14,12 @@ class ContactController < ApplicationController
   def sendcontact
   	@title      = 'Success!'
     @description = 'Inquiry submitted!'
-    @username = session[:cas_user]
-  	  	
+    @username = session[:cas_user]   	  	
   	@contact = Contact.new(params[:contact])
    	
    	respond_to do |format|
 	   	if @contact.save    	 
-	    	 ContactMailer.send_msg(@username, params[:subject] , params[:msg]).deliver
+	    	 ContactMailer.send_msg(@username, params[:contact][:subject] , params[:contact][:msg]).deliver
 	    	 format.html
 	    else
 	    	 format.html {  render action: "index" }

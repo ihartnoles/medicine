@@ -2,13 +2,13 @@ class ContactMailer < ActionMailer::Base
   default from: "noreplay@fau.edu"
 
    def send_msg(username,subject,msg)
-  	@sentby =  username
+  	@username =  username
     @subject = subject
     @msg = msg
   	
  	
 
-    mail(:from => "#{@sentby}@fau.edu", :to => "ihartstein@fau.edu", :subject => "CoM Faculty Database Inquiry")
+    mail(:from => "#{@username}@fau.edu", :to => "ihartstein@fau.edu", :subject => "CoM Faculty Database - #{@subject}")
    end
 
 end
