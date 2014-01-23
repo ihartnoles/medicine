@@ -2,11 +2,11 @@
 <div class="col-md-12">
             
 
-            <%= link_to 'Add a New Affiliate', new_affiliate_path %> <br><br>
+            <%= link_to 'Add a New Faculty Member', new_affiliate_path %> <br><br>
 
             <div class="box border red">
                 <div class="box-title">
-                    <h4><i class="fa fa-table"></i>Affiliates</h4>
+                    <h4><i class="fa fa-table"></i>Faculty Members</h4>
                 </div>
                 <div class="box-body">
                     <table id="datatable1" cellpadding="0" cellspacing="0" border="0" class="datatable table table-condensed table-striped table-bordered table-hover">
@@ -24,7 +24,7 @@
                         <th class="hidden-xs">Section</th>
                         -->
                         <th class="hidden-xs">Specialty</th>
-                        <th class="hidden-xs">Faculty</th>    
+                        <!-- <th class="hidden-xs">Faculty</th>     -->
                         <th>Actions</th>                    
                       </tr>
                     </thead>
@@ -44,7 +44,7 @@
                             <td class="hidden-xs"><%=[:Geriatrics, :Nephrology].sample %></td>
                             -->
                             <td class="hidden-xs"><%=[:Physiology, :Immunology].sample %></td>
-                            <td class="hidden-xs"><%= affiliate.facultymember  %></td>
+                            <!-- <td class="hidden-xs"><%= affiliate.facultymember  %></td> -->
                             <td >
                             <%= link_to 'View', affiliate %> |
                             <%= link_to 'Edit', edit_affiliate_path(affiliate) %> |
@@ -67,7 +67,7 @@
                             <th class="hidden-xs">Section</th>
                             -->
                             <th class="hidden-xs">Specialty</th>
-                            <th class="hidden-xs">Faculty</th>    
+                            <!-- <th class="hidden-xs">Faculty</th>     -->
                             <th>Actions</th>                    
                           </tr>
                     </tfoot>

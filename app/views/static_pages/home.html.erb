@@ -1,24 +1,32 @@
 		<div class="row">
-		<div class="col-md-9 col-md-offset-1 box-container">
+		<div class="col-md-8 col-md-offset-1 box-container">
 								<!-- BOX WITH SPACE-->
 								<div class="box border primary">
 									<div class="box-title">
-										<h4><i class="fa fa-home"></i><span class="hidden-inline-mobile">Hello, John!</span></h4>	
+										<h4><i class="fa fa-home"></i><span class="hidden-inline-mobile">Hello, <%= session[:cas_user] %>!</span></h4>	
 									</div>
 
-									<div class="box-body big">
+									<div class="box-body ">
 										<h4>Choose an action</h4>
-										<div class="alert alert-info center">
+										<div class="alert alert-info btn-toolbar center">
 											<!-- BUTTONS -->
 																<div class="row">
 																	<div class="col-md-3">
 																		<a href="/affiliates" class="btn btn-danger btn-icon input-block-level">
 																			<i class="fa fa-user-md fa-2x"></i>
-																			<div>View/Search<br>Affiliates</div>
+																			<div>View<br>Faculty</div>
 																			
 																		</a>
 																	</div>
 																	
+																	<div class="col-md-3">
+																		<a href="/affiliates" class="btn btn-purple btn-icon input-block-level">
+																			<i class="fa fa-plus-square fa-2x"></i>
+																			<div>Add<br>Faculty</div>
+																			
+																		</a>
+																	</div>
+
 																	<div class="col-md-3">
 																		<a href="/search" class="btn btn-warning btn-icon input-block-level">
 																			<i class="fa fa-search fa-2x"></i>
@@ -26,7 +34,7 @@
 																			
 																		</a>
 																	</div>
-																	
+																	<!--
 																	<div class="col-md-3">
 																		<a href="/admin" class="btn btn-primary btn-icon input-block-level">
 																			<i class="fa fa-cogs fa-2x"></i>
@@ -34,6 +42,7 @@
 																			
 																		</a>
 																	</div>
+																	-->
 																	<div class="col-md-3">
 																		<a href="/faq" class="btn btn-info btn-icon input-block-level">
 																			<i class="fa fa-question fa-2x"></i>

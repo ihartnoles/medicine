@@ -1,7 +1,7 @@
 <%= form_for @certifiedspeciality, :html => {:class => 'form'} do |f| %>
   <% if @certifiedspeciality.errors.any? %>
     <div class="alert alert-block alert-danger">
-      <a class="close" aria-hidden="true" href="#" data-dismiss="alert">×</a>
+      <!-- <a class="close" aria-hidden="true" href="#" data-dismiss="alert">×</a> -->
       <h2><%= pluralize(@certifiedspeciality.errors.count, "error") %> prohibited this certified specialty from being saved:</h2>
 
       <ul>

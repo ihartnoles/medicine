@@ -3,8 +3,8 @@ class AffiliatesController < ApplicationController
   # GET /affiliates.json
   def index
     @affiliates = Affiliate.all
-    @title      = 'Affiliate List'
-    @description = 'List of CoM Affiliates'
+    @title      = 'Faculty List'
+    @description = 'List of CoM Faculty'
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,10 +17,13 @@ class AffiliatesController < ApplicationController
   # GET /affiliates/1.json
   def show
 
-    @title      = 'Edit Affiliate'
-    @description = 'Change affiliate details'
+    @title      = 'Edit Faculty'
+    @description = 'Change faculty details'
 
-    @affiliate = Affiliate.find(params[:id])
+    @id = !params[:affiliate_id].blank? ? params[:affiliate_id] : params[:id]
+
+
+    @affiliate = Affiliate.find(@id)
     @hospitalprivilege = Hospitalprivilege.new
     @showprivileges = Hospitalprivilege.where(:affiliate_id => params[:id])
     @showlanguagespoken = Affiliatelanguage.where(:affiliate_id => params[:id])
@@ -44,8 +47,8 @@ class AffiliatesController < ApplicationController
   # GET /affiliates/new.json
   def new
     @affiliate = Affiliate.new
-    @title      = 'New Affiliate'
-    @description = 'Add a new affiliate'
+    @title      = 'New Faculty'
+    @description = 'Add a new faculty member'
 
     respond_to do |format|
       format.html # new.html.erb
@@ -56,8 +59,8 @@ class AffiliatesController < ApplicationController
   # GET /affiliates/1/edit
   def edit
     @affiliate = Affiliate.find(params[:id])
-     @title      = 'Edit Affiliate'
-    @description = 'Edit an affiliate'
+     @title      = 'Edit Faculty'
+    @description = 'Edit faculty'
   end
 
   # POST /affiliates
@@ -107,7 +110,7 @@ class AffiliatesController < ApplicationController
   #GET /search
   def search
     @title       = 'Advanced Search'
-    @description = 'Advanced Search of Affiliates/Faculty'
+    @description = 'Advanced Search of Faculty'
 
     @clinicalsection = Clinicalsection.new
     @sections = Clinicalsection.all
