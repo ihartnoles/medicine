@@ -37,8 +37,10 @@ class AffiliatesController < ApplicationController
     @annualevaluations     = Annualevaluation.where(:affiliate_id => params[:id])
 
     #felloship data
-    @fellowships            = Fellowship.where(:affiliate_id => params[:id]) 
+    @fellowships           = Fellowship.where(:affiliate_id => params[:id]) 
     
+    #residency data
+    @residencies           = Residency.where(:affiliate_id => params[:id]) 
 
     respond_to do |format|
       format.html # show.html.erb

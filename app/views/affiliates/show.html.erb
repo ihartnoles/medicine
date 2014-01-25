@@ -337,7 +337,11 @@
                                   <div class="box border pink">
                                     <div class="box-title">
                                       <h4><i class="fa fa-stethoscope"></i>Residency</h4>
-                                     
+                                       <div class="tools">
+                                          <a href="/residencies/new?affiliate_id=<%= params[:id] %>">
+                                              <i class="fa fa-pencil"></i>
+                                          </a>
+                                      </div>
                                     </div>
                                     <div class="box-body">
                                       <table class="table table-hover">
@@ -347,31 +351,33 @@
                                             <th>Location</th>
                                             <th>Training Last Title</th>
                                             <th>Match Connection</th>
-                                            
+                                            <th>Actions</th>
                                           </tr>
                                         </thead>
                                         <tbody>
-                                          <tr>
-                                            <td>1</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            
-                                          </tr>
-                                          <tr>
-                                            <td>2</td>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                            
-                                          </tr>
-                                          <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                            
-                                          </tr>
+                                          <% if !@residencies.blank? %>
+                                              <% @residencies.each do |r| %>
+                                                <tr>
+                                                    <td><%= r.getSpecialtyName(r.specialty_id) %></td>
+                                                    <td><%= r.location %></td>
+                                                    <td><%= r.trainingtitle %></td>
+                                                    <td><%= r.matchconnection %></td>
+                                                    <td>  
+                                                      <%= link_to 'Update', edit_residency_path(r , :affiliate_id => params[:id]) %>
+                                                      | <%= link_to 'Remove', residency_path(r , :affiliate_id => params[:id]), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+                                                </tr>
+                                              <% end %>
+                                             
+                                            <% else %>
+                                              <tr>
+                                                <td colspan="5">
+                                                    <div class="alert alert-block alert-info fade in">
+                                                    <a aria-hidden="true" href="#" data-dismiss="alert" class="close">×</a>
+                                                      <p></p><h4><i class="fa fa-check-square-o"></i> No Residencies on Record!</h4> Please add residency information by clicking on the pencil icon in the upper right corner.<p></p><br>
+                                                  </div>
+                                                </td>
+                                              </tr>
+                                            <% end %>
                                         </tbody>
                                         </table>
                                     </div>

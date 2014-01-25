@@ -1,6 +1,6 @@
 <%= form_for(@residency) do |f| %>
   <% if @residency.errors.any? %>
-    <div id="error_explanation">
+     <div class="alert alert-block alert-danger">
       <h2><%= pluralize(@residency.errors.count, "error") %> prohibited this residency from being saved:</h2>
 
       <ul>
@@ -11,21 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :specialty %><br />
-    <%= f.text_field :specialty %>
+   <%= hidden_field_tag :affiliate_id, params[:affiliate_id] %>
+
+  <div class="form-group">
+    <%= f.label :specialty_id, "Specialty" %><br />
+     <%= collection_select(:residency, :specialty_id, Clinicalsection.all, :id, :sectionname, {:include_blank => '-- Choose Specialty --' , :selected =>  @res_specialty_id }  , :class=>'form-control') %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :location %><br />
-    <%= f.text_field :location %>
+    <%= f.text_field :location  , :class => 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :trainingtitle %><br />
-    <%= f.text_field :trainingtitle %>
+    <%= f.text_field :trainingtitle,  :class => 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :matchconnection %><br />
-    <%= f.text_field :matchconnection %>
+    <%= f.text_field :matchconnection  ,:class => 'form-control' %>
   </div>
   <div class="actions">
     <%= f.submit %>
