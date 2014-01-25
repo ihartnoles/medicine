@@ -1,5 +1,24 @@
-<h1>New fellowship</h1>
+<%= link_to 'Back', fellowships_path %><br>
 
-<%= render 'form' %>
+<div class="row">
+	<div class="col-md-12">
+		<!-- BASIC -->
+		<div class="box border green">
+			<div class="box-title">
+				<h4><i class="fa fa-bars"></i>New Fellowship</h4>				
+			</div>
+			<div class="box-body">				
+				  <%= render 'form' %>			
+			</div>
+		</div>
+	</div>
+</div>
 
-<%= link_to 'Back', fellowships_path %>
+<%= render 'shared/javascript' %>
+
+<script>
+        jQuery(document).ready(function() {     
+            App.setPage("new_fellowship");  //Set current page
+            App.init(); //Initialise plugins and elements
+        });
+</script>

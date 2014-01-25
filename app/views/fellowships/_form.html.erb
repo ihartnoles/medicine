@@ -1,6 +1,6 @@
 <%= form_for(@fellowship) do |f| %>
   <% if @fellowship.errors.any? %>
-    <div id="error_explanation">
+    <div class="alert alert-block alert-danger">
       <h2><%= pluralize(@fellowship.errors.count, "error") %> prohibited this fellowship from being saved:</h2>
 
       <ul>
@@ -11,17 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :specialty %><br />
-    <%= f.text_field :specialty %>
+  
+  <%= hidden_field_tag :affiliate_id, params[:affiliate_id] %>
+
+  <div class="form-group">
+    <%= f.label :specialty_id, "Specialty" %><br />
+    <%#= f.number_field :speciality_id , :class => 'form-control' %>
+    <%= collection_select(:fellowship, :specialty_id, Clinicalsection.all, :id, :sectionname, {:include_blank => '-- Choose Specialty --' , :selected =>  @fellowshipspecialty_id }  , :class=>'form-control') %>
   </div>
-  <div class="field">
+
+  <div class="form-group">
     <%= f.label :location %><br />
-    <%= f.text_field :location %>
+    <%= f.text_field :location ,:class => 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :training %><br />
-    <%= f.text_field :training %>
+    <%= f.text_field :training ,:class => 'form-control' %>
   </div>
   <div class="actions">
     <%= f.submit %>

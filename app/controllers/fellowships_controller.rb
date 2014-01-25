@@ -25,6 +25,10 @@ class FellowshipsController < ApplicationController
   # GET /fellowships/new.json
   def new
     @fellowship = Fellowship.new
+    @title      = 'New Fellowship'
+    @description = 'Add fellowship information'
+
+    @specialties  = Certifiedspeciality.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,20 +39,27 @@ class FellowshipsController < ApplicationController
   # GET /fellowships/1/edit
   def edit
     @fellowship = Fellowship.find(params[:id])
+    @title      = 'Edit Fellowship'
+    @description = 'Edit fellowship information'
+
+    @fellowshipspecialty_id = @fellowship.specialty_id
   end
 
   # POST /fellowships
   # POST /fellowships.json
   def create
     @fellowship = Fellowship.new(params[:fellowship])
+    @fellowship.affiliate_id = params[:affiliate_id]
+
+    @affiliate = Affiliate.find(params[:affiliate_id])
 
     respond_to do |format|
       if @fellowship.save
-        format.html { redirect_to @fellowship, notice: 'Fellowship was successfully created.' }
-        format.json { render json: @fellowship, status: :created, location: @fellowship }
+        format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training", notice: 'Fellowship was successfully created.' }
+        #format.json { render json: @fellowship, status: :created, location: @fellowship }
       else
         format.html { render action: "new" }
-        format.json { render json: @fellowship.errors, status: :unprocessable_entity }
+        #format.json { render json: @fellowship.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -60,7 +71,7 @@ class FellowshipsController < ApplicationController
 
     respond_to do |format|
       if @fellowship.update_attributes(params[:fellowship])
-        format.html { redirect_to @fellowship, notice: 'Fellowship was successfully updated.' }
+        format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training", notice: 'Fellowship was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +87,7 @@ class FellowshipsController < ApplicationController
     @fellowship.destroy
 
     respond_to do |format|
-      format.html { redirect_to fellowships_url }
+      format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training", notice: 'Fellowship Removed!' }
       format.json { head :no_content }
     end
   end
