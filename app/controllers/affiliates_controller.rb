@@ -52,9 +52,11 @@ class AffiliatesController < ApplicationController
 
     #felloship data
     @fellowships           = Fellowship.where(:affiliate_id => params[:id]) 
-    
     #residency data
     @residencies           = Residency.where(:affiliate_id => params[:id]) 
+
+    #disciplinary data
+    @disciplinaryactions     = Disciplinaryaction.where(:affiliate_id => params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

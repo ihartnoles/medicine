@@ -760,7 +760,13 @@
                                 <div class="box border red col-sm-12"><!-- work -->
                                   <div class="box-title">                              
                                       <h4><i class="fa fa-warning"></i>Disciplinary Action</h4>
-                                  </div>                            
+                                      <div class="tools">
+                                        <a href="/disciplinaryactions/new?affiliate_id=<%= params[:id] %>">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                      </div>     
+                                  </div>                
+                                         
                                   <div class="box-body">
                                     <div class="box-container">                                         
                                          <table class="table table-hover">
@@ -768,15 +774,33 @@
                                           <tr>
                                             <th>Board Disciplinary Action</th>
                                             <th>Removed From Role</th>
-                                            <th>Date</th>                                               
+                                            <th>Date</th>       
+                                            <th>Actions</th>                                        
                                           </tr>
                                         </thead>
                                         <tbody>
-                                          <tr>
-                                            <td>Yes</td>
-                                            <td>Yes</td>
-                                            <td>01/01/2012</td>
-                                          </tr>
+                                           <% if !@disciplinaryactions.blank? %>
+                                            <% @disciplinaryactions.each do |da| %>
+                                              <tr>
+                                                <td><%= da.disciplinaryaction %></td>
+                                                <td><%= da.removed %></td>
+                                                <td><%= da.date %></td>
+                                                
+                                                <td>
+                                                  <%= link_to 'Update', edit_disciplinaryaction_path(da , :affiliate_id => params[:id]) %> | <%= link_to 'Remove', disciplinaryaction_path(da , :affiliate_id => params[:id]), method: :delete, data: { confirm: 'Are you sure?' } %>
+                                                </td>
+                                              </tr>
+                                            <% end %>
+                                          <% else %>
+                                            <tr>
+                                                <td colspan="4">
+                                                    <div class="alert alert-block alert-info fade in">
+                                                    <a aria-hidden="true" href="#" data-dismiss="alert" class="close">×</a>
+                                                      <p></p><h4><i class="fa fa-check-square-o"></i> No Disciplinary Actions on Record!</h4> Please add actions by clicking on the pencil icon in the upper right corner.<p></p><br>
+                                                  </div>
+                                                </td>
+                                              </tr>
+                                          <% end %> 
                                         </tbody>
                                         </table>
                                      </div>

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Affiliate:</b>
+  <%= @disciplinaryaction.affiliate_id %>
+</p>
+
+<p>
+  <b>Disciplinaryaction:</b>
+  <%= @disciplinaryaction.disciplinaryaction %>
+</p>
+
+<p>
+  <b>Removed:</b>
+  <%= @disciplinaryaction.removed %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @disciplinaryaction.date %>
+</p>
+
+
+<%= link_to 'Edit', edit_disciplinaryaction_path(@disciplinaryaction) %> |
+<%= link_to 'Back', disciplinaryactions_path %>

@@ -1,0 +1,42 @@
+<%= form_for(@disciplinaryaction) do |f| %>
+  <% if @disciplinaryaction.errors.any? %>
+   <div class="alert alert-block alert-danger">
+      <a class="close" aria-hidden="true" href="#" data-dismiss="alert">×</a>
+      <h2><%= pluralize(@disciplinaryaction.errors.count, "error") %> prohibited this disciplinaryaction from being saved:</h2>
+
+      <ul>
+      <% @disciplinaryaction.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :affiliate_id , :value => params[:affiliate_id] %>
+  <!--
+  <div class="form-group">
+    <%= f.label :affiliate_id %><br />
+    <%= f.number_field :affiliate_id ,:class => 'form-control' %>
+  </div>
+  -->
+
+  <%#= hidden_field_tag :affiliate_id, params[:affiliate_id] %>
+
+  <div class="form-group">
+    <%= f.label :disciplinaryaction , "Board Disciplinary Action" %><br />
+    <%#= f.text_field :disciplinaryaction ,:class => 'form-control' %>
+    <%= f.select :disciplinaryaction, [["Yes", "Yes"], ["No", "No"]], { :include_blank => '-- Choose One --', :selected => @action },  :class => 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :removed, "Removed From Role" %><br />
+    <%#= f.text_field :removed ,:class => 'form-control' %>
+   <%= f.select :removed, [["Yes", "Yes"], ["No", "No"]], { :include_blank => '-- Choose One --', :selected => @removed },  :class => 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :date  , :class=>'control-label'%><br />
+    <%= f.text_field :date ,:class => 'form-control' , 'data-mask' => "99/99/9999" %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Update Disciplinary Action' %>
+  </div>
+<% end %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  affiliate_id: 1
+  disciplinaryaction: MyString
+  removed: MyString
+  date: MyString
+
+two:
+  affiliate_id: 1
+  disciplinaryaction: MyString
+  removed: MyString
+  date: MyString

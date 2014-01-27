@@ -1,0 +1,29 @@
+<h1>Listing disciplinaryactions</h1>
+
+<table>
+  <tr>
+    <th>Affiliate</th>
+    <th>Disciplinaryaction</th>
+    <th>Removed</th>
+    <th>Date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @disciplinaryactions.each do |disciplinaryaction| %>
+  <tr>
+    <td><%= disciplinaryaction.affiliate_id %></td>
+    <td><%= disciplinaryaction.disciplinaryaction %></td>
+    <td><%= disciplinaryaction.removed %></td>
+    <td><%= disciplinaryaction.date %></td>
+    <td><%= link_to 'Show', disciplinaryaction %></td>
+    <td><%= link_to 'Edit', edit_disciplinaryaction_path(disciplinaryaction) %></td>
+    <td><%= link_to 'Destroy', disciplinaryaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Disciplinaryaction', new_disciplinaryaction_path %>
