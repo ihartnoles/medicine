@@ -18,103 +18,167 @@
     <%= f.text_field :znumber %>
   </div>
 -->
+  
+  <%= f.hidden_field :isfaculty , :value => @isfacultyflag %>
+
+
   <div class="form-group">
     <%= f.label :prefix %><br />
-    <%= f.text_field :prefix ,:class => 'form-control', :id => 'disabledInput', :disabled=>'' %>
+    <% if @isfacultyflag == 1 %>
+      <%= f.text_field :prefix ,:class => 'form-control'  , :id => 'disabledInput', :disabled=>'' %>
+    <% else %>
+      <%= f.text_field :prefix ,:class => 'form-control' %>
+    <% end %>
+    
   </div>
   <div class="form-group">
-    <%= f.label :firstname %><br />
-    <%= f.text_field :firstname ,:class => 'form-control' , :id => 'disabledInput', :disabled=>'' %>
+    <%= f.label :firstname%><br />
+     <% if @isfacultyflag == 1 %>
+        <%= f.text_field :firstname ,:class => 'form-control' , :id => 'disabledInput', :disabled=>'' %>
+      <% else %>
+        <%= f.text_field :firstname ,:class => 'form-control' %>   
+      <% end %>
   </div>
   <div class="form-group">
     <%= f.label :middlename %><br />
-    <%= f.text_field :middlename  ,:class => 'form-control' , :id => 'disabledInput', :disabled=>''%>
+    <% if @isfacultyflag == 1 %>
+      <%= f.text_field :middlename  ,:class => 'form-control' , :id => 'disabledInput', :disabled=>''%>
+    <% else %>
+      <%= f.text_field :middlename  ,:class => 'form-control'%>
+    <% end %>
   </div>
   <div class="form-group">
     <%= f.label :lastname %><br />
-    <%= f.text_field :lastname  ,:class => 'form-control' , :id => 'disabledInput', :disabled=>''%>
+    <% if @isfacultyflag == 1 %>
+      <%= f.text_field :lastname  ,:class => 'form-control' , :id => 'disabledInput', :disabled=>''%>
+    <% else %>
+      <%= f.text_field :lastname  ,:class => 'form-control'%>
+    <% end %>
   </div>
   <div class="form-group">
-    <%= f.label :suffix %><br />
-    <%= f.text_field :suffix ,:class => 'form-control' , :id => 'disabledInput', :disabled=>''%>
+     <%= f.label :suffix %><br />
+      <% if @isfacultyflag == 1 %>
+        <%= f.text_field :suffix ,:class => 'form-control'  , :id => 'disabledInput', :disabled=>'' %>
+       <% else %>
+        <%= f.text_field :suffix ,:class => 'form-control' %>
+      <% end %>
   </div>
   <div class="form-group">
-    <%= f.label :license %><br />
-    <%= f.text_field :license ,:class => 'form-control' %>
+    <%= f.label :license, "Florida Medical License" %><br />
+     <% if @isfacultyflag == 1 %>
+        <%= f.text_field :license ,:class => 'form-control' , :id => 'disabledInput', :disabled=>''%>
+      <% else %>
+        <%= f.text_field :license ,:class => 'form-control' %>
+      <% end %>
   </div>
   <div class="form-group">
-    <%= f.label :homestreet %><br />
-    <%= f.text_field :homestreet ,:class => 'form-control' , :id => 'disabledInput', :disabled=>''%>
+    <%= f.label :homestreet, "Home street address" %><br />
+
+    <% if @isfacultyflag == 1 %>
+      <%= f.text_field :homestreet ,:class => 'form-control' , :id => 'disabledInput', :disabled=>''%>
+     <% else %>
+       <%= f.text_field :homestreet ,:class => 'form-control' %>
+     <% end %>
   </div>
   <div class="form-group">
-    <%= f.label :homecity %><br />
-    <%= f.text_field :homecity ,:class => 'form-control' , :id => 'disabledInput', :disabled=>''%>
+    <%= f.label :homecity, "Home city address"  %><br />
+    
+    <% if @isfacultyflag == 1 %>
+        <%= f.text_field :homecity ,:class => 'form-control'  , :id => 'disabledInput', :disabled=>''%>
+     <% else %>
+        <%= f.text_field :homecity ,:class => 'form-control' %>
+     <% end %>
   </div>
   <div class="form-group">
-    <%= f.label :homestate %><br />
-    <%= f.text_field :homestate ,:class => 'form-control' , :id => 'disabledInput', :disabled=>''%>
+    <%= f.label :homestate, "Home state address"  %><br />
+     <% if @isfacultyflag == 1 %> 
+        <%= f.text_field :homestate ,:class => 'form-control' , :id => 'disabledInput', :disabled=>'' %>
+     <% else %>
+        <%= f.text_field :homestate ,:class => 'form-control' %>
+     <% end %>
   </div>
   <div class="form-group">
-    <%= f.label :homezip %><br />
-    <%= f.number_field :homezip ,:class => 'form-control' , :id => 'disabledInput', :disabled=>''%>
+    <%= f.label :homezip, "Home zipcode" %><br />
+    <% if @isfacultyflag == 1 %>
+         <%= f.number_field :homezip ,:class => 'form-control' , :id => 'disabledInput', :disabled=>''%>
+     <% else %>
+        <%= f.number_field :homezip ,:class => 'form-control'%>
+     <% end %>
   </div>
   <div class="form-group">
-    <%= f.label :officestreet %><br />
+    <%= f.label :officestreet, "Office street address" %><br />
     <%= f.text_field :officestreet ,:class => 'form-control' %>
+   
   </div>
   <div class="form-group">
-    <%= f.label :officecity %><br />
+    <%= f.label :officecity, "Office city address" %><br />
     <%= f.text_field :officecity ,:class => 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :officestate %><br />
-    <%= f.text_field :officestate ,:class => 'form-control' %>
+    <%= f.label :officestate, "Office state address" %><br />
+    <%= f.text_field :officestate ,:class => 'form-control'  %>    
   </div>
   <div class="form-group">
-    <%= f.label :officezip %><br />
+    <%= f.label :officezip, "Office zipcode" %><br />
     <%= f.number_field :officezip ,:class => 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :homephone %><br />
-    <%= f.text_field :homephone ,:class => 'form-control' %>
+    <%= f.label :homephone, "Home phone number" %><br />
+    <% if @isfacultyflag == 1 %>
+        <%= f.text_field :homephone ,:class => 'form-control' , :id => 'disabledInput', :disabled=>'' %>
+     <% else %>
+        <%= f.text_field :homephone ,:class => 'form-control' %>
+     <% end %>
   </div>
   <div class="form-group">
-    <%= f.label :cellphone %><br />
-    <%= f.text_field :cellphone ,:class => 'form-control' %>
+    <%= f.label :cellphone, "Cell phone number" %><br />
+    <%= f.text_field :cellphone ,:class => 'form-control'  %>
   </div>
   <div class="form-group">
-    <%= f.label :emergencyphone %><br />
+    <%= f.label :emergencyphone, "Emergency phone number" %><br />
     <%= f.text_field :emergencyphone ,:class => 'form-control' %>
   </div>
+
   <div class="form-group">
-    <%= f.label :faxnumber %><br />
+    <%= f.label :faxnumber, "Fax number" %><br />
     <%= f.text_field :faxnumber ,:class => 'form-control' %>
   </div>
+
   <div class="form-group">
-    <%= f.label :otherphonenumber %><br />
+    <%= f.label :otherphonenumber, "Other phone number" %><br />
     <%= f.text_field :otherphonenumber ,:class => 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :emailfau %><br />
-    <%= f.text_field :emailfau ,:class => 'form-control' %>
+    <%= f.label :emailfau, "Email address FAU" %><br />
+    <% if @isfacultyflag == 1 %>
+         <%= f.text_field :emailfau ,:class => 'form-control' , :id => 'disabledInput', :disabled=>'' %>
+     <% else %>
+        <%= f.text_field :emailfau ,:class => 'form-control' %>
+     <% end %>
   </div>
   <div class="form-group">
-    <%= f.label :emailpersonal %><br />
+    <%= f.label :emailpersonal, "Email address personal" %><br />
     <%= f.text_field :emailpersonal ,:class => 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :emailoffice %><br />
-    <%= f.text_field :emailoffice  ,:class => 'form-control'%>
+    <%= f.label :emailoffice, "Email address office" %><br />
+    <%= f.text_field :emailoffice  ,:class => 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :emailother %><br />
+    <%= f.label :emailother, "Email address other" %><br />
     <%= f.text_field :emailother ,:class => 'form-control' %>
   </div>
+  <!--
   <div class="form-group">
     <%= f.label :isfaculty %><br />
-    <%= f.check_box :isfaculty %>
+     <% if params[:prospect] %>
+      <%= f.check_box :isfaculty %>
+     <% else %>
+       <%= f.check_box :isfaculty , :id => 'disabledInput', :disabled=>'' %>
+     <% end %>
   </div>
+  -->
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Update' %>
   </div>
 <% end %>

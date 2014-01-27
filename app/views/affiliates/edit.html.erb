@@ -3,7 +3,7 @@
 		<!-- BASIC -->
 		<div class="box border red">
 			<div class="box-title">
-				<h4><i class="fa fa-bars"></i>Edit Faculty</h4>
+				<h4><i class="fa fa-bars"></i><%= @title %></h4>
 				
 			</div>
 			<div class="box-body">				
@@ -12,6 +12,15 @@
 		</div>
 	</div>
 </div>
+
+<%= render 'shared/javascript' %>
+
+<script>
+        jQuery(document).ready(function() {     
+            App.setPage("edit_affiliate");  //Set current page
+            App.init(); //Initialise plugins and elements
+        });
+</script>
 
 <%= link_to 'Show', @affiliate %> |
 <%= link_to 'Back', affiliates_path %>

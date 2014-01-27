@@ -15,17 +15,17 @@ class AffiliatelanguagesController < ApplicationController
 
            respond_to do |format|
            if @affiliatelanguage.save
-              format.html { redirect_to affiliate_path(:id => params[:affiliate_id]), notice: 'affiliate language was successfully created.' }
+              format.html { redirect_to affiliate_path(:id => params[:affiliate_id]), notice: 'Language preference added!' }
               #format.json { render json: @affiliatelanguage, status: :created, location: @affiliatelanguage }
             else
-              format.html { redirect_to affiliate_path(:id => params[:affiliate_id]), notice: 'affiliate language was successfully created.' }
+              format.html { redirect_to affiliate_path(:id => params[:affiliate_id]), notice: 'Oops! There was a problem. Please try again.' }
             end
         end
 
         #no checkboxes checked
         else
             respond_to do |format|
-              format.html { redirect_to affiliate_path(:id => params[:affiliate_id]), notice: 'affiliate language preference updated.' }
+              format.html { redirect_to affiliate_path(:id => params[:affiliate_id]), notice: 'Language preference updated!' }
             end
         end  
 
@@ -41,7 +41,7 @@ class AffiliatelanguagesController < ApplicationController
     @affiliatelanguage.destroy
 
     respond_to do |format|
-      format.html { redirect_to affiliate_path(:id => @affiliate_id), notice: 'affiliate language was successfully deleted.' }
+      format.html { redirect_to affiliate_path(:id => @affiliate_id), notice: 'Language was successfully deleted.' }
       format.json { head :no_content }
     end
   end

@@ -6,7 +6,7 @@ class HospitalprivilegesController < ApplicationController
 
     respond_to do |format|
       if @hospitalprivilege.save
-        format.html { redirect_to affiliate_path(:id => params[:affiliate_id]), notice: 'hospital privilege was successfully created.' }
+        format.html { redirect_to affiliate_path(:id => params[:affiliate_id]), notice: 'Hospital privilege was successfully created.' }
         format.json { render json: @hospitalprivilege, status: :created, location: @hospitalprivilege }
       else
         format.html { render action: "new" }
@@ -24,7 +24,7 @@ class HospitalprivilegesController < ApplicationController
     @hospitalprivilege.destroy
 
     respond_to do |format|
-      format.html { redirect_to affiliate_path(:id => @affiliate_id), notice: 'hospital privilege was successfully deleted.' }
+      format.html { redirect_to affiliate_path(:id => @affiliate_id), notice: 'Hospital privilege was successfully deleted.' }
       format.json { head :no_content }
     end
   end

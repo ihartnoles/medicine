@@ -2,17 +2,21 @@
 <div class="col-md-12">
             
 
+            <!--
             <%= link_to 'Add a New Faculty Member', new_affiliate_path %> <br><br>
+            -->
 
             <div class="box border red">
                 <div class="box-title">
-                    <h4><i class="fa fa-table"></i>Faculty Members</h4>
+                    <h4><i class="fa fa-table"></i><%= @title %></h4>
                 </div>
                 <div class="box-body">
                     <table id="datatable1" cellpadding="0" cellspacing="0" border="0" class="datatable table table-condensed table-striped table-bordered table-hover">
                      <thead>
                       <tr>
-                        <th class="hidden-xs">Znumber</th>
+                        <% if !params[:prospect] %>
+                            <th class="hidden-xs">Znumber</th>
+                        <% end %>
                         <!-- <th>Prefix</th> -->
                         <th>Firstname</th>
                         <th class="hidden-xs">Middlename</th>
@@ -32,7 +36,9 @@
                     <tbody>
                         <% @affiliates.each do |affiliate| %>
                           <tr class="gradeA">
-                            <td class="hidden-xs"><%= affiliate.znumber %></td>
+                            <% if !params[:prospect] %>
+                                <td class="hidden-xs"><%= affiliate.znumber %></td>
+                            <% end %>
                             <!-- <td><%= affiliate.prefix %></td> -->
                             <td><%= affiliate.firstname %></td>
                             <td class="hidden-xs"><%= affiliate.middlename %></td>
@@ -57,7 +63,9 @@
 
                     <tfoot>
                          <tr>
-                            <th class="hidden-xs">Znumber</th>
+                            <% if !params[:prospect] %>
+                                <th class="hidden-xs">Znumber</th>
+                            <% end %>
                             <th>Firstname</th>
                             <th class="hidden-xs">Middlename</th>
                             <th>Lastname</th>

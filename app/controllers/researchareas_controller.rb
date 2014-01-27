@@ -44,7 +44,7 @@ class ResearchareasController < ApplicationController
 
     respond_to do |format|
       if @researcharea.save
-        format.html { redirect_to @researcharea, notice: 'Researcharea was successfully created.' }
+        format.html { redirect_to @researcharea, notice: 'Research area was successfully created.' }
         format.json { render json: @researcharea, status: :created, location: @researcharea }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class ResearchareasController < ApplicationController
 
     respond_to do |format|
       if @researcharea.update_attributes(params[:researcharea])
-        format.html { redirect_to @researcharea, notice: 'Researcharea was successfully updated.' }
+        format.html { redirect_to @researcharea, notice: 'Research area was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

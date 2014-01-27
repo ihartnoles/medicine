@@ -44,7 +44,7 @@ class EvaluationstatusesController < ApplicationController
 
     respond_to do |format|
       if @evaluationstatus.save
-        format.html { redirect_to @evaluationstatus, notice: 'Evaluationstatus was successfully created.' }
+        format.html { redirect_to @evaluationstatus, notice: 'Evaluation status was successfully created.' }
         format.json { render json: @evaluationstatus, status: :created, location: @evaluationstatus }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class EvaluationstatusesController < ApplicationController
 
     respond_to do |format|
       if @evaluationstatus.update_attributes(params[:evaluationstatus])
-        format.html { redirect_to @evaluationstatus, notice: 'Evaluationstatus was successfully updated.' }
+        format.html { redirect_to @evaluationstatus, notice: 'Evaluation status was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

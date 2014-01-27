@@ -44,7 +44,7 @@ class AffiliateresearchareasController < ApplicationController
 
     respond_to do |format|
       if @affiliateresearcharea.save
-        format.html { redirect_to @affiliateresearcharea, notice: 'Affiliateresearcharea was successfully created.' }
+        format.html { redirect_to @affiliateresearcharea, notice: 'Research area was successfully created.' }
         format.json { render json: @affiliateresearcharea, status: :created, location: @affiliateresearcharea }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class AffiliateresearchareasController < ApplicationController
 
     respond_to do |format|
       if @affiliateresearcharea.update_attributes(params[:affiliateresearcharea])
-        format.html { redirect_to @affiliateresearcharea, notice: 'Affiliateresearcharea was successfully updated.' }
+        format.html { redirect_to @affiliateresearcharea, notice: 'Research area  was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
