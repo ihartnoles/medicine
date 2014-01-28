@@ -76,6 +76,8 @@
 
         <div class="box-body">        
              <%#= @matches.lastname %>
+
+             <% if !@matches.blank? %>
               <p>                
                 <b>Name:</b><br>
                 <%= @matches.prefix %>  <%= @matches.firstname %> <%= @matches.middlename %>  <%= @matches.lastname %>
@@ -92,8 +94,13 @@
                 <%= @matches.license %>
               </p>
              
-              <%= link_to 'View Full Detail', affiliate_path(@matches.id) , :target => "_blank" %>          
-
+              <%= link_to 'View Full Detail', affiliate_path(@matches.id) , :target => "_blank" %>     
+            <% else %>
+              <div class="alert alert-block alert-warning fade in">
+                      <a aria-hidden="true" href="#" data-dismiss="alert" class="close">×</a>
+                        <p></p><h4><i class="fa fa-exclamation-circle"></i> No Matches!</h4> There are currently no matches for the Banner data in the prospect queue.<p></p>
+                    </div>     
+            <% end %>            
         </div>
     </div>
   </div>
