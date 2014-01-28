@@ -1,0 +1,103 @@
+<%= link_to 'New Bannerqueue', new_bannerqueue_path %>
+
+<div class="row">
+<div class="col-md-12">
+            <div class="box border purple">
+                <div class="box-title">
+                    <h4><i class="fa fa-table"></i><%= @title %></h4>
+                </div>
+                <div class="box-body">
+                    <table id="datatable1" cellpadding="0" cellspacing="0" border="0" class="datatable table table-condensed table-striped table-bordered table-hover">
+                     <thead>
+                      <tr>
+                        <th>Faunetid</th>
+                        <th>Znumber</th>
+                        <th>Suffix</th>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Dob</th>
+                        <th>Emailfau</th>
+                        <th>Status</th>
+                        <!--
+                        <th>Homestreet</th>
+                        <th>Homecity</th>
+                        <th>Homestate</th>
+                        <th>Homezip</th>
+                        -->
+                        <th> Actions </th>             
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                        <% @bannerqueues.each do |bannerqueue| %>
+                          <tr class="gradeA">
+                                <td><%= bannerqueue.faunetid %></td>
+                                <td><%= bannerqueue.znumber %></td>
+                                <td><%= bannerqueue.suffix %></td>
+                                <td><%= bannerqueue.firstname %></td>
+                                <td><%= bannerqueue.lastname %></td>
+                                <td><%= bannerqueue.dob %></td>
+                                <td><%= bannerqueue.emailfau %></td>
+                                <td>
+                                    <% if Affiliate.find_by_lastname(bannerqueue.lastname) %>
+                                       <b class="text-success">Potential Match</b>
+                                    <% else %>
+                                        <b class="text-primary">No Match</b>
+                                    <% end %>
+                                </td>
+                                <!--
+                                <td><%= bannerqueue.homestreet %></td>
+                                <td><%= bannerqueue.homecity %></td>
+                                <td><%= bannerqueue.homestate %></td>
+                                <td><%= bannerqueue.homezip %></td>
+                                -->
+                                <td colspan="3"><%= link_to 'View Details', bannerqueue %> <!--
+                                    <%= link_to 'Edit', edit_bannerqueue_path(bannerqueue) %> 
+                                    | <%= link_to 'Destroy', bannerqueue, method: :delete, data: { confirm: 'Are you sure?' } %> -->
+                                </td>
+                          </tr>
+                        <% end %>
+                       
+                    </tbody>
+
+                    <tfoot>
+                         <tr>
+                                <th>Faunetid</th>
+                                <th>Znumber</th>
+                                <th>Suffix</th>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                                <th>Dob</th>
+                                <th>Emailfau</th>
+                                <th>Status</th>
+                                <!--
+                                <th>Homestreet</th>
+                                <th>Homecity</th>
+                                <th>Homestate</th>
+                                <th>Homezip</th>
+                                -->
+                                <th> Actions </th>                 
+                          </tr>
+                    </tfoot>
+                   
+
+                    </table>
+                    <!-- Download: <%= link_to "Excel", affiliates_path(format: "xls") %>
+                    <br /> -->
+
+                </div>
+            </div>
+             <!-- /BOX -->
+</div>
+</div><!-- row -->
+
+
+<!-- JQUERY -->
+<%= render 'shared/javascript' %>
+
+<script>
+  jQuery(document).ready(function() {     
+    App.setPage("dynamic_table");  //Set current page
+    App.init(); //Initialise plugins and elements
+  });
+</script>

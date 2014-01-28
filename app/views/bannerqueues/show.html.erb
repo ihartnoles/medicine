@@ -1,0 +1,110 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="box border purple">
+      <div class="box-title">
+        <h4><i class="fa fa-bars"></i><%= @title %></h4>        
+      </div>
+      <div class="box-body">        
+              <p>
+                <b>Faunetid:</b>
+                <%= @bannerqueue.faunetid %>
+              </p>
+
+              <p>
+                <b>Znumber:</b>
+                <%= @bannerqueue.znumber %>
+              </p>
+
+              <p>
+                <b>Suffix:</b>
+                <%= @bannerqueue.suffix %>
+              </p>
+
+              <p>
+                <b>Firstname:</b>
+                <%= @bannerqueue.firstname %>
+              </p>
+
+              <p>
+                <b>Lastname:</b>
+                <%= @bannerqueue.lastname %>
+              </p>
+
+              <p>
+                <b>Dob:</b>
+                <%= @bannerqueue.dob %>
+              </p>
+
+              <p>
+                <b>Emailfau:</b>
+                <%= @bannerqueue.emailfau %>
+              </p>
+
+              <p>
+                <b>Homestreet:</b>
+                <%= @bannerqueue.homestreet %>
+              </p>
+
+              <p>
+                <b>Homecity:</b>
+                <%= @bannerqueue.homecity %>
+              </p>
+
+              <p>
+                <b>Homestate:</b>
+                <%= @bannerqueue.homestate %>
+              </p>
+
+              <p>
+                <b>Homezip:</b>
+                <%= @bannerqueue.homezip %>
+              </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="box border primary">
+      <div class="box-title">
+        <h4><i class="fa fa-bars"></i>Potential Prospect Match</h4>        
+      </div>
+
+        <div class="box-body">        
+             <%#= @matches.lastname %>
+              <p>                
+                <b>Name:</b><br>
+                <%= @matches.prefix %>  <%= @matches.firstname %> <%= @matches.middlename %>  <%= @matches.lastname %>
+              </p>
+
+               <p>
+                <b>Address:</b><br>
+                <%= @matches.homestreet %><br>
+                <%= @matches.homecity %>, <%= @matches.homestate %> <%= @matches.homezip %>
+              </p>
+
+              <p>
+                <b>License:</b><br>
+                <%= @matches.license %>
+              </p>
+             
+              <%= link_to 'View Full Detail', affiliate_path(@matches.id) , :target => "_blank" %>          
+
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<%= render 'shared/javascript' %>
+
+<script>
+        jQuery(document).ready(function() {     
+            App.setPage("forms");  //Set current page
+            App.init(); //Initialise plugins and elements
+        });
+</script>

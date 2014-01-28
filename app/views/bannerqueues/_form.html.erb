@@ -1,0 +1,61 @@
+<%= form_for(@bannerqueue) do |f| %>
+  <% if @bannerqueue.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bannerqueue.errors.count, "error") %> prohibited this bannerqueue from being saved:</h2>
+
+      <ul>
+      <% @bannerqueue.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :faunetid %><br />
+    <%= f.text_field :faunetid %>
+  </div>
+  <div class="field">
+    <%= f.label :znumber %><br />
+    <%= f.text_field :znumber %>
+  </div>
+  <div class="field">
+    <%= f.label :suffix %><br />
+    <%= f.text_field :suffix %>
+  </div>
+  <div class="field">
+    <%= f.label :firstname %><br />
+    <%= f.text_field :firstname %>
+  </div>
+  <div class="field">
+    <%= f.label :lastname %><br />
+    <%= f.text_field :lastname %>
+  </div>
+  <div class="field">
+    <%= f.label :dob %><br />
+    <%= f.text_field :dob %>
+  </div>
+  <div class="field">
+    <%= f.label :emailfau %><br />
+    <%= f.text_field :emailfau %>
+  </div>
+  <div class="field">
+    <%= f.label :homestreet %><br />
+    <%= f.text_field :homestreet %>
+  </div>
+  <div class="field">
+    <%= f.label :homecity %><br />
+    <%= f.text_field :homecity %>
+  </div>
+  <div class="field">
+    <%= f.label :homestate %><br />
+    <%= f.text_field :homestate %>
+  </div>
+  <div class="field">
+    <%= f.label :homezip %><br />
+    <%= f.number_field :homezip %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

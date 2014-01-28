@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  faunetid: MyString
+  znumber: MyString
+  suffix: MyString
+  firstname: MyString
+  lastname: MyString
+  dob: MyString
+  emailfau: MyString
+  homestreet: MyString
+  homecity: MyString
+  homestate: MyString
+  homezip: 1
+
+two:
+  faunetid: MyString
+  znumber: MyString
+  suffix: MyString
+  firstname: MyString
+  lastname: MyString
+  dob: MyString
+  emailfau: MyString
+  homestreet: MyString
+  homecity: MyString
+  homestate: MyString
+  homezip: 1
