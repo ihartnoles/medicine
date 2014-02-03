@@ -1,0 +1,30 @@
+<div class="row">
+		<div class="col-md-9 col-md-offset-1 box-container">
+								<!-- BOX WITH SPACE-->
+								<div class="box border orange">
+									<div class="box-title">
+										<h4><i class="fa fa-cogs"></i><span class="hidden-inline-mobile">Reporting</span></h4>	
+									</div>
+
+									<div class="box-body big">
+										
+										<div class="alert alert-info">
+											 <ul>
+												<li>Main reporting option will be <b>WEBFOCUS</b>. <b>WEBFOCUS</b> will be used for in-depth analytics.</li><br>
+												<li>Very basic "canned" reporting options will be here. (i.e. - faculty listing by department. etc.) </li><br>
+												<li>Reports will be availabe in an exportable format such as Excel</li>
+											</ul>
+										</div> 
+									</div>
+								</div>
+								<!-- /BOX WITH SPACE-->
+</div>
+<!-- JQUERY -->
+<%= render 'shared/javascript' %>
+
+<script>
+        jQuery(document).ready(function() {     
+            App.setPage("reports");  //Set current page
+            App.init(); //Initialise plugins and elements
+        });
+</script>

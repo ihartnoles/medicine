@@ -53,8 +53,13 @@
                             <!-- <td class="hidden-xs"><%= affiliate.facultymember  %></td> -->
                             <td >
                             <%= link_to 'View', affiliate %> |
-                            <%= link_to 'Edit', edit_affiliate_path(affiliate) %> |
-                            <%= link_to 'Delete', affiliate, method: :delete, data: { confirm: 'Are you sure?' } %>
+                            <%= link_to 'Edit', edit_affiliate_path(affiliate) %> 
+
+                            <!-- only affiliate candidates can be deleted -->
+                            <% if !affiliate.isfaculty %>
+                               | <%= link_to 'Delete', affiliate, method: :delete, data: { confirm: 'Are you sure?' } %>
+                            <% end %>
+
                             </td>
                           </tr>
                         <% end %>

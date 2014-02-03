@@ -14,4 +14,9 @@ class StaticPagesController < ApplicationController
 		@title      = 'Administration'
     	@description = 'Administrative Panel'		
 	end
+
+	def reports
+		@title = 'Reports'
+		@description = 'Reporting Options'
+	end 
 end

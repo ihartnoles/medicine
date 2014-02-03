@@ -4,8 +4,8 @@ class AffiliatesController < ApplicationController
   def index
     
     if params[:prospect]
-      @title      =  'Prospect List'
-      @description = 'List of Prospects'
+      @title      =  'Affiliate Candidate List'
+      @description = 'List of Affiliate Candidates'
       @affiliates = Affiliate.where(:isfaculty => 0)
     else 
       @title      =  'Faculty List'
@@ -33,8 +33,8 @@ class AffiliatesController < ApplicationController
       @description = 'Edit faculty details'
       @isfacultyflag    = 1
     else 
-      @title      = 'Edit Prospect'
-      @description = 'Edit prospect details'
+      @title      = 'Edit Affiliate Candidate'
+      @description = 'Edit affiliate candidate details'
       @isfacultyflag    = 0
     end 
     
@@ -68,8 +68,8 @@ class AffiliatesController < ApplicationController
   # GET /affiliates/new.json
   def new
     if params[:prospect]
-      @title       = 'New Prospect' 
-      @description = 'Add a new prospect'
+      @title       = 'New Affiliate Candidate' 
+      @description = 'Add a new affiliate candidate'
       @isfacultyflag    = 0
       #set session var for prospect
       #session[:isProspect] = 1
@@ -96,11 +96,11 @@ class AffiliatesController < ApplicationController
 
     if @isfacultyflag
       @title      = 'Edit Faculty'
-      @description = 'Edit faculty x'
+      @description = 'Edit faculty'
       @isfacultyflag    = 1
     else 
-      @title      = 'Edit Prospect'
-      @description = 'Edit prospect'
+      @title      = 'Edit Affiliate Candidate'
+      @description = 'Edit Affiliate Candidate'
       @isfacultyflag    = 0
     end 
   end
@@ -109,6 +109,7 @@ class AffiliatesController < ApplicationController
   # POST /affiliates.json
   def create
     @affiliate = Affiliate.new(params[:affiliate])
+    @affiliate.isf = params[:affiliate][:isfaculty]
 
     respond_to do |format|
       if @affiliate.save
@@ -132,9 +133,9 @@ class AffiliatesController < ApplicationController
       @description = 'Edit faculty'
       @type        = 'Faculty'
     else 
-      @title      = 'Edit Prospect'
-      @description = 'Edit prospect'
-      @type        = 'Prospect'
+      @title      = 'Edit Affiliate Candidate'
+      @description = 'Edit Affiliate Candidate'
+      @type        = 'Affilate Candidate'
     end 
 
     respond_to do |format|
@@ -152,12 +153,29 @@ class AffiliatesController < ApplicationController
   # DELETE /affiliates/1.json
   def destroy
     @affiliate = Affiliate.find(params[:id])
+    @isfacultyflag = Affiliate.find(params[:id]).isfaculty
     @affiliate.destroy
 
-    respond_to do |format|
-      format.html { redirect_to affiliates_url }
-      format.json { head :no_content }
-    end
+     if @isfacultyflag
+      @type        = 'Faculty'
+
+      respond_to do |format|
+        #format.html { redirect_to affiliates_url }
+        format.html { redirect_to affiliates_path, notice: @type + ' information successfully deleted.' }
+        format.json { head :no_content }
+      end
+
+    else 
+      @type        = 'Affilate Candidate'
+
+      respond_to do |format|
+        #format.html { redirect_to affiliates_url }
+        format.html { redirect_to affiliates_path(:prospect => "1"), notice: @type + ' information successfully deleted.' }
+        format.json { head :no_content }
+      end
+    end 
+
+    
   end
 
   #GET /search

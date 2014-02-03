@@ -442,9 +442,11 @@
                        </div>
                        
                       
-
+                      
                       <div id="appointments" class="tab-pane fade">
-                           <div class="row"><!-- row1 -->
+                        <!-- SHOW THIS ONLY IF THEY ARE FACULTY -->
+                         <% if @isfacultyflag == 1 %>
+                             <div class="row"><!-- row1 -->
                                 <div class="col-sm-6">                             
                                   <!-- BOX -->
                                   <div class="box border inverse">
@@ -453,6 +455,9 @@
                                      
                                     </div>
                                     <div class="box-body">
+
+                                      <b>@isfacultyflag <%=@isfacultyflag  %></b>
+
                                             <p>
                                               <b>Start Date at FAU:</b><br>
                                               ???
@@ -519,8 +524,10 @@
                                 </div>
 
                               </div><!-- end of row1-->
-
-                              
+                            <% end %>
+                            
+                            <!-- SHOW THIS ONLY IF THEY ARE FACULTY -->
+                           <% if @isfacultyflag == 1 %>
                                <div class="row"><!-- row4 -->
                                 <div class="col-sm-12">                             
                                   <!-- BOX -->
@@ -571,10 +578,16 @@
                                   <!-- /BOX -->    
                                 </div>
                               </div><!-- end of row4 -->
+                            <% end %>
 
+                            
+                               <div class="row"><!-- row1 -->
+                                <% if @isfacultyflag == 1 %>
+                                  <div class="col-sm-6">                             
+                                <% else %>
+                                  <div class="col-sm-12"> 
+                                <% end %>
 
-                              <div class="row"><!-- row1 -->
-                                <div class="col-sm-6">                             
                                   <!-- BOX -->
                                   <div class="box border orange">
                                     <div class="box-title">
@@ -601,6 +614,7 @@
                                   <!-- /BOX -->    
                                 </div>
 
+                              <% if @isfacultyflag == 1 %>
                                 <div class="col-sm-6">                             
                                   <!-- BOX -->
                                   <div class="box border pink">
@@ -629,6 +643,7 @@
                                   </div>
                                   <!-- /BOX -->    
                                 </div>
+                              <% end %>
 
                               </div><!-- end of row1-->
                          
@@ -811,7 +826,13 @@
                        </div>
 
                         <div id="research" class="tab-pane fade">
-                        <div class="alert alert-info"><strong>Source of the Research Feed data is TBD</strong></div>
+                        <div class="alert alert-info">
+                          <ul>
+                            <li><strong>Phase II implmentation</strong></li>
+                            <li><strong>Data will come from GRANTS-ERA</strong></li>
+                          </ul>
+
+                          </div>
                                
                        </div>
                      </div>
