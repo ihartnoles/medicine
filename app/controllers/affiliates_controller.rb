@@ -117,7 +117,7 @@ class AffiliatesController < ApplicationController
   # POST /affiliates.json
   def create
     @affiliate = Affiliate.new(params[:affiliate])
-    @affiliate.isfaculty = params[:affiliate][:isfaculty]
+    #@affiliate.isfaculty = params[:affiliate][:isfaculty]
 
     respond_to do |format|
       if @affiliate.save
