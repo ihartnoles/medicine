@@ -10,7 +10,7 @@
                 <!-- BOX -->
                 <div class="box border">
                   <div class="box-title">
-                    <h4><i class="fa fa-columns"></i><span class="hidden-inline-mobile"><%= @affiliate.firstname %> <%= @affiliate.middlename %>  <%= @affiliate.lastname %>, <%= @affiliate.suffix %></span></h4>
+                    <h4><i class="fa fa-columns"></i><span class="hidden-inline-mobile"></span></h4>
                   </div>
                   <div class="box-body">
                     <div class="tabbable header-tabs">
@@ -237,7 +237,7 @@
                                           <tr>
                                             <th>Specialty</th>
                                             <th>Year received</th>
-                                            <th>Action</th>
+                                            <th>Actions</th>
                                           </tr>
                                         </thead>
                                         <tbody>
@@ -296,7 +296,7 @@
                                             <th>City</th>
                                             <th>State</th>
                                             <th>Country</th>
-                                            <th>Action</th>
+                                            <th>Actions</th>
                                           </tr>
                                         </thead>
                                         <tbody>
@@ -405,7 +405,7 @@
                                             <th>Specialty</th>
                                             <th>Training</th>
                                             <th>Location</th> 
-                                            <th>Action</th>       
+                                            <th>Actions</th>       
                                           </tr>
                                         </thead>
                                         <tbody>
@@ -456,7 +456,7 @@
                                     </div>
                                     <div class="box-body">
 
-                                      <b>@isfacultyflag <%=@isfacultyflag  %></b>
+                                      <b>@isfacultyflag <%=@isfacultyflag %></b>
 
                                             <p>
                                               <b>Start Date at FAU:</b><br>
@@ -698,6 +698,10 @@
                                   <!-- /BOX -->    
                               </div>
                               </div><!-- end of row -->
+
+                        <!-- SHOW THIS ONLY IF THEY ARE FACULTY -->
+                         <% if @isfacultyflag == 1 %>
+
                          <div class="row"><!-- row -->
                              <div class="col-sm-12">                             
                                 <div class="box border primary col-sm-12"><!-- work -->
@@ -752,6 +756,8 @@
                                 </div><!-- Evaluations -->
                               </div>
                               </div><!-- end of row -->
+
+                            <% end %>
 
 
                           <div class="row"><!-- row -->
@@ -829,7 +835,7 @@
                         <div class="alert alert-info">
                           <ul>
                             <li><strong>Phase II implmentation</strong></li>
-                            <li><strong>Data will come from GRANTS-ERA</strong></li>
+                            <li><strong>Data will come from GRANTS-ERA and other sources to be determined</strong></li>
                           </ul>
 
                           </div>

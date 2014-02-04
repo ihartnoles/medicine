@@ -25,15 +25,23 @@ class AffiliatesController < ApplicationController
   def show
 
     @id = !params[:affiliate_id].blank? ? params[:affiliate_id] : params[:id]
+    thisaffiliate = Affiliate.find(@id)
     @affiliate = Affiliate.find(@id)
     @isfacultyflag = Affiliate.find(@id).isfaculty
+
+   if !thisaffiliate.suffix.blank?
+    @fullname  = thisaffiliate.firstname  + ' ' + thisaffiliate.lastname +  ', ' + thisaffiliate.suffix
+   else
+    @fullname  = thisaffiliate.firstname  + ' ' + thisaffiliate.lastname
+   end 
    
     if @isfacultyflag
-      @title      = 'Edit Faculty'
+
+      @title      = 'Edit Faculty - '  +  @fullname  
       @description = 'Edit faculty details'
       @isfacultyflag    = 1
     else 
-      @title      = 'Edit Affiliate Candidate'
+      @title      = 'Edit Affiliate Candidate - ' +  @fullname
       @description = 'Edit affiliate candidate details'
       @isfacultyflag    = 0
     end 
