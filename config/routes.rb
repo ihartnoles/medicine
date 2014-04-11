@@ -50,6 +50,8 @@ Medicine::Application.routes.draw do
   match '/home',   to: 'static_pages#home'
   match '/admin',  to: 'static_pages#admin'
   match '/reports',  to: 'static_pages#reports'
+  match '/banner', to: 'banners#index'
+  
 
   #miscellaneous affilate actions
   get  '/search',           to: 'affiliates#search'

@@ -1,0 +1,65 @@
+<div class="row">
+<div class="col-md-12">
+
+<div class="box border red">
+                <div class="box-title">
+                    <h4><i class="fa fa-table"></i>Banner Queue</h4>
+                </div>
+                <div class="box-body">
+
+   <table id="datatable1" cellpadding="0" cellspacing="0" border="0" class="datatable table table-condensed table-striped table-bordered table-hover">
+    <thead>
+    <tr>
+      <th class="hidden-xs">ZID</th>
+      <th class="hidden-xs">NetID</th>
+      <th class="hidden-xs">LAST_NAME</th>
+      <th class="hidden-xs">FIRST_NAME</th>
+      <th class="hidden-xs">BIRTH_DATE</th>
+     <th class="hidden-xs">EMAIL</th>
+      <th class="hidden-xs">ECLS_DESC</th>
+    </tr>
+  </thead>
+
+    <tbody>
+    <% @banners.each do |banner| %>
+      <tr>      
+        <td><%= banner.zid %></td>
+        <td><%= banner.fau_netid %></td>
+        <td><%= banner.last_name %></td>
+        <td><%= banner.first_name %></td>
+        <td><%= banner.birth_date %></td>
+        <td><%= banner.email %></td>
+        <td><%= banner.ecls_desc %></td>
+      </tr>
+    <% end %>
+    </tbody>
+
+    <tfoot>
+      <tr>
+        <th class="hidden-xs">ZID</th>
+        <th class="hidden-xs">NetID</th>
+        <th class="hidden-xs">LAST_NAME</th>
+        <th class="hidden-xs">FIRST_NAME</th>
+        <th class="hidden-xs">BIRTH_DATE</th>
+        <th class="hidden-xs">EMAIL</th>
+        <th class="hidden-xs">ECLS_DESC</th>
+      </tr>
+    </tfoot>
+  </table>
+
+   </div>
+  </div>
+   <!-- /BOX -->
+</div>
+</div><!-- row -->
+
+
+<!-- JQUERY -->
+<%= render 'shared/javascript' %>
+
+<script>
+  jQuery(document).ready(function() {     
+    App.setPage("dynamic_table");  //Set current page
+    App.init(); //Initialise plugins and elements
+  });
+</script>
