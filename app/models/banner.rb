@@ -1,7 +1,7 @@
 class Banner < ActiveRecord::Base
   # attr_accessible :title, :body
   self.abstract_class = true
-  set_table_name "FAUMGR.AWP_COM_ALL_EMPS"
+  self.table_name="FAUMGR.AWP_COM_ALL_EMPS"
 
   establish_connection(:banner)
 
