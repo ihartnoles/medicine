@@ -15,8 +15,9 @@
       <th class="hidden-xs">LAST_NAME</th>
       <th class="hidden-xs">FIRST_NAME</th>
       <th class="hidden-xs">BIRTH_DATE</th>
-     <th class="hidden-xs">EMAIL</th>
+      <th class="hidden-xs">EMAIL</th>
       <th class="hidden-xs">ECLS_DESC</th>
+      <th class="hidden-xs">Status</th>
     </tr>
   </thead>
 
@@ -30,6 +31,13 @@
         <td><%= banner.birth_date %></td>
         <td><%= banner.email %></td>
         <td><%= banner.ecls_desc %></td>
+        <td>
+                                    <% if Affiliate.find_by_lastname(banner.last_name) %>
+                                       <b class="text-success">Potential Match</b>
+                                    <% else %>
+                                        <b class="text-primary">No Match</b>
+                                    <% end %>
+                                </td>
       </tr>
     <% end %>
     </tbody>
@@ -43,6 +51,7 @@
         <th class="hidden-xs">BIRTH_DATE</th>
         <th class="hidden-xs">EMAIL</th>
         <th class="hidden-xs">ECLS_DESC</th>
+        <th class="hidden-xs">Status</th>
       </tr>
     </tfoot>
   </table>
