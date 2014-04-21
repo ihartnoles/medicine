@@ -51,7 +51,9 @@ Medicine::Application.routes.draw do
   match '/admin',  to: 'static_pages#admin'
   match '/reports',  to: 'static_pages#reports'
   match '/banner', to: 'banners#index'
-  
+
+  get  '/bannerdetail/:pidm', to: 'banners#show'
+  get  '/bannermatches/:lastname/:affiliateid', to: 'banners#showmatches'
 
   #miscellaneous affilate actions
   get  '/search',           to: 'affiliates#search'

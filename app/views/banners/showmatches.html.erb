@@ -1,0 +1,186 @@
+
+<% if notice %>
+  <div class="alert alert-block alert-success fade in">
+    <a class="close" aria-hidden="true" href="#" data-dismiss="alert">×</a>
+    <%= notice %>
+  </div>
+<% end %>
+
+<div class="col-md-12"><!-- BOX -->
+
+<% if @banner.count > 0 %><!-- begin IF -->
+				<% @banner.each do |b| %>
+					   <div class="row"><!-- row1 -->
+				             <div class="col-sm-12">
+				                <div class="box border orange col-sm-12">
+				                    <div class="box-title">                              
+				                        <h4><i class="fa fa-user"></i>Banner Detail for  <%= b.first_name %>  <%= b.last_name %></h4>       
+				                    </div>
+				              
+				                    <div class="box-body">
+				                      <div class="box-container">
+				                           
+				                           		<%# @banner.each do |b| %>
+													 <div class="row">
+														<div class="col-sm-6"> 
+														  <b>znumber:</b>
+														  <%= b.zid %>
+														</div>
+
+														 <div class="col-sm-6"> 
+														 <b>NetID:</b>
+														  <%= b.fau_netid %>
+														</div>
+
+														 <div class="col-sm-6"> 
+														  <b>Firstname:</b>
+														  <%= b.first_name %>
+														</div>
+
+														 <div class="col-sm-6"> 
+														  <b>Lastname:</b>
+														  <%= b.last_name %>
+														</div>
+													
+														<div class="col-sm-6"> 
+														  <b>Email:</b>
+														  <%= b.email %>
+														</div>
+														<div class="col-sm-6"> 
+														  <b>Birthdate:</b>
+														  <%= b.birth_date.strftime("%m/%d/%Y") %>
+														</div>
+														<div class="col-sm-6"> 
+														  <b>Street:</b>
+														  <%= b.hm_street_line1 %>
+														</div>
+														<div class="col-sm-6"> 
+														  <b>City:</b>
+														  <%= b.hm_city %>
+														</div>
+														<div class="col-sm-6"> 
+														  <b>State:</b>
+														  <%= b.hm_state %>
+														</div>
+														<div class="col-sm-6"> 
+														  <b>Zip:</b>
+														  <%= b.hm_zip %>
+														</div>
+
+														<div class="col-sm-6"> 
+														  <b>Home phone:</b>
+														  <%= b.hm_phone %>
+														</div>
+
+														<div class="col-sm-6"> 
+														  <b>Job Start Date:</b>
+														  <% if b.primary_job_start_date %>
+														  	<%= b.primary_job_start_date.strftime("%m/%d/%Y") %>
+														  <% end %>
+														</div>
+
+														<div class="col-sm-6"> 
+														  <b>Annual Salary:</b>
+														  <%= b.nbrjobs_ann_salary %>
+														</div>
+
+														<div class="col-sm-6"> 
+														  <b>Last Increase Date:</b>
+														  <% if b.last_incr_date %>
+														  	<%= b.last_incr_date.strftime("%m/%d/%Y") %>
+														  <% end %>
+														</div>
+
+														<div class="col-sm-6"> 
+														  <b>Working Title:</b>
+														  <%= b.working_title %>
+														</div>
+
+														<div class="col-sm-6"> 
+														  <b>Position Title:</b>
+														  <%= b.nbbposn_title %>
+														</div>
+
+														<div class="col-sm-6"> 
+														  <b>Academic Title:</b>
+														  <%= b.perbfac_academic_title %>
+														</div>
+
+														<div class="col-sm-6"> 
+														  <b>Academic Title:</b>
+														  <%= b.supervisor_title %>
+														</div>
+
+													</div>
+
+													<div class="row">
+														<div class="col-sm-12 center"> 
+															<br>
+															<button type="button" class="btn btn-primary">Make Match</button>
+														</div>
+													</div>
+												 <%# end %>
+										 
+									  </div>
+									 </div>
+
+						</div>
+				      </div>
+
+
+				     </div><!-- end of row1 -->
+
+
+				 <% end %>  
+<% else %>
+
+<div class="alert alert-block alert-warning fade in">
+      No Results Found!
+  </div>
+<% end %>
+
+
+</div>
+
+	
+					<!--
+				      <div id="dialog-confirm" title="Make Match?">
+					    <p align="justify"> 
+					         <span class="ui-icon ui-icon-alert"></span>
+					         You are about to match an Affiliate to Banner Data! Do you want to continue?
+					    </p>
+					</div> 
+				-->
+
+
+<!-- JQUERY -->
+<%= render 'shared/javascript' %>
+
+<script>
+  jQuery(document).ready(function() {     
+    App.setPage("dynamic_table");  //Set current page
+    App.init(); //Initialise plugins and elements
+
+    $('.btn-primary').click(function(){
+    	confirm('You are about to match an Affiliate to Banner Data!. Would you like to continue?');
+    	//$('#dialog-confirm').dialog('open');
+    });
+
+
+    // jquery-ui confirm dialog box
+	//$("#dialog-confirm").dialog({
+	//   autoOpen: false,
+	 //  resizable: false,
+	 //  modal: true,
+	 //  buttons: {
+	  //      'Yes': function() { // remove what you want to remove
+	  //             // do something here
+	  //       },
+	 //        Cancel: function() {
+	  //             $(this).dialog('close');
+	 //        }
+	 //  }
+	//});
+
+  });
+</script>

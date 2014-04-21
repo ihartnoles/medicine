@@ -29,13 +29,19 @@
                         -->
                         <th class="hidden-xs">Specialty</th>
                         <!-- <th class="hidden-xs">Faculty</th>     -->
-                        <th class="hidden-xs">Status</th>
+                        <% if params[:prospect] %>
+                          <th class="hidden-xs">Status</th>
+                        <% end %>
                         <th>Actions</th>                    
                       </tr>
                     </thead>
 
                     <tbody>
                         <% @affiliates.each do |affiliate| %>
+
+                         <!-- set potential match flag-->
+                         <% @potential_match = Banner.find_by_lastname(affiliate.lastname) %>
+
                           <tr class="gradeA">
                             <% if !params[:prospect] %>
                                 <td class="hidden-xs"><%= affiliate.znumber %></td>
@@ -51,16 +57,24 @@
                             <td class="hidden-xs"><%=[:Geriatrics, :Nephrology].sample %></td>
                             -->
                             <td class="hidden-xs"><%=[:Physiology, :Immunology].sample %></td>
-                            <td class="hidden-xs">
-                                <% if Banner.find_by_lastname(affiliate.lastname) %>
-                                       <b class="text-success">Potential Match</b>
-                                <% else %>
-                                        <b class="text-primary">No Match</b>
-                                <% end %>
-                            </td>
+                             <% if params[:prospect] %>
+                                <td class="hidden-xs">
+                                    <% if  @potential_match %>
+                                           <b class="text-success">Potential Match</b>
+                                    <% else %>
+                                            <b class="text-primary">No Match</b>
+                                    <% end %>
+                                </td>
+                            <% end %>
+
                             <td >
                             <%= link_to 'View', affiliate %> |
                             <%= link_to 'Edit', edit_affiliate_path(affiliate) %> 
+
+                            <% if @potential_match %>
+                               | <a href="/bannermatches/<%= affiliate.lastname %>/<%= affiliate.id %>">View Matches</a>
+                            <% end %>
+
 
                             <!-- only affiliate candidates can be deleted -->
                             <% if !affiliate.isfaculty %>
@@ -88,7 +102,9 @@
                             -->
                             <th class="hidden-xs">Specialty</th>
                             <!-- <th class="hidden-xs">Faculty</th>     -->
-                            <th class="hidden-xs">Status</th>
+                            <% if params[:prospect] %>
+                             <th class="hidden-xs">Status</th>
+                            <% end %>
                             <th>Actions</th>                    
                           </tr>
                     </tfoot>

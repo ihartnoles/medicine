@@ -12,12 +12,15 @@
     <tr>
       <th class="hidden-xs">ZID</th>
       <th class="hidden-xs">NetID</th>
-      <th class="hidden-xs">LAST_NAME</th>
-      <th class="hidden-xs">FIRST_NAME</th>
-      <th class="hidden-xs">BIRTH_DATE</th>
-      <th class="hidden-xs">EMAIL</th>
-      <th class="hidden-xs">ECLS_DESC</th>
-      <th class="hidden-xs">Status</th>
+      <th class="hidden-xs">Lastname</th>
+      <th class="hidden-xs">Firstname</th>
+      <th class="hidden-xs">Birthdate</th>
+      <th class="hidden-xs">Email</th>
+      <th class="hidden-xs">Description</th>
+      <% if params[:prospect] %>
+        <th class="hidden-xs">Status</th>
+      <% end %>
+      <th class="hidden-xs">Action</th>
     </tr>
   </thead>
 
@@ -28,30 +31,38 @@
         <td><%= banner.fau_netid %></td>
         <td><%= banner.last_name %></td>
         <td><%= banner.first_name %></td>
-        <td><%= banner.birth_date %></td>
+        <td><%= banner.birth_date.strftime("%m/%d/%Y") %></td>
         <td><%= banner.email %></td>
         <td><%= banner.ecls_desc %></td>
+        <% if params[:prospect] %>
+          <td>
+              <% if Affiliate.find_by_lastname(banner.last_name) %>
+                 <b class="text-success">Potential Match</b>
+              <% else %>
+                  <b class="text-primary">No Match</b>
+              <% end %>
+          </td>
+        <% end %>
         <td>
-                                    <% if Affiliate.find_by_lastname(banner.last_name) %>
-                                       <b class="text-success">Potential Match</b>
-                                    <% else %>
-                                        <b class="text-primary">No Match</b>
-                                    <% end %>
-                                </td>
+           <a href="/bannerdetail/<%= banner.pidm %>">View Banner Detail</a>
+        </td>
       </tr>
     <% end %>
     </tbody>
 
     <tfoot>
       <tr>
-        <th class="hidden-xs">ZID</th>
-        <th class="hidden-xs">NetID</th>
-        <th class="hidden-xs">LAST_NAME</th>
-        <th class="hidden-xs">FIRST_NAME</th>
-        <th class="hidden-xs">BIRTH_DATE</th>
-        <th class="hidden-xs">EMAIL</th>
-        <th class="hidden-xs">ECLS_DESC</th>
+       <th class="hidden-xs">ZID</th>
+      <th class="hidden-xs">NetID</th>
+      <th class="hidden-xs">Lastname</th>
+      <th class="hidden-xs">Firstname</th>
+      <th class="hidden-xs">Birthdate</th>
+      <th class="hidden-xs">Email</th>
+      <th class="hidden-xs">Description</th>
+       <% if params[:prospect] %>
         <th class="hidden-xs">Status</th>
+      <% end %>
+      <th class="hidden-xs">Action</th>
       </tr>
     </tfoot>
   </table>

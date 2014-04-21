@@ -16,13 +16,30 @@ class BannersController < ApplicationController
   # GET /banners/1
   # GET /banners/1.json
   def show
-    @banner = Banner.find(params[:id])
+    #@banner = Banner.find(params[:id])
+    @banner = Banner.find_by_id(params[:pidm])
+    @title      = 'Banner Details'
+    @description = 'Detailed Banner Data'
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @banner }
     end
   end
+ 
+  # GET /banners/doe
+   def showmatches
+    #@banner = Banner.find(params[:id])
+    @banner = Banner.find_matches(params[:lastname])
+    @title      = 'Banner Details'
+    @description = 'Detailed Banner Data'
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @banner }
+    end
+  end
+
 
   # # GET /banners/new
   # # GET /banners/new.json

@@ -18,5 +18,36 @@ class Banner < ActiveRecord::Base
   		return false
   	end 
   end
+
+
+  def self.find_by_id(pidm)
+      record = self.find_by_sql(["select * from FAUMGR.AWP_COM_ALL_EMPS  where pidm = :pidm ", {:pidm => pidm }])
+
+      return record
+  end
+
+  def self.find_matches(lastname)
+      self.find_by_sql(["select 
+                            zid, 
+                            fau_netid, 
+                            first_name, 
+                            last_name, 
+                            email, 
+                            birth_date, 
+                            hm_street_line1,
+                            hm_city,
+                            hm_state,
+                            hm_zip,
+                            hm_phone,
+                            primary_job_start_date,
+                            nbrjobs_ann_salary,
+                            last_incr_date,
+                            working_title,
+                            nbbposn_title,
+                            perbfac_academic_title,
+                            supervisor_title
+                        from FAUMGR.AWP_COM_ALL_EMPS  
+                        where last_name = :last ", {:last => lastname }])
+  end
   
 end
