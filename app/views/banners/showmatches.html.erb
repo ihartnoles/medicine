@@ -20,7 +20,12 @@
 				                    <div class="box-body">
 				                      <div class="box-container">
 				                           
-				                           		<%# @banner.each do |b| %>
+				                           		<% @banner.each do |b| %>
+				                           		  	<%= form_for :makematch, :url => makematch_path ,:html => {:multipart => true} do |f| %>
+
+				                           		  	<%= hidden_field_tag 'id', params[:affiliateid] %>
+				                           		  	<%= hidden_field_tag 'pidm', b.pidm %>
+
 													 <div class="row">
 														<div class="col-sm-6"> 
 														  <b>znumber:</b>
@@ -116,10 +121,14 @@
 													<div class="row">
 														<div class="col-sm-12 center"> 
 															<br>
+															<!--
 															<button type="button" class="btn btn-primary">Make Match</button>
+															-->
+															<%= f.submit "Make Match" , :id => "upload_button", :class => 'btn btn-primary' , :onclick => "return confirm('You are about to match an Affiliate to Banner Data! Do you want to continue?' )"%>
 														</div>
 													</div>
-												 <%# end %>
+													<% end %>
+												 <% end %>
 										 
 									  </div>
 									 </div>
@@ -161,10 +170,16 @@
     App.setPage("dynamic_table");  //Set current page
     App.init(); //Initialise plugins and elements
 
-    $('.btn-primary').click(function(){
-    	confirm('You are about to match an Affiliate to Banner Data! Would you like to continue?');
+    //$('.btn-primary').click(function(){
+    //	var foo=confirm('You are about to match an Affiliate to Banner Data! Would you like to continue?');
     	//$('#dialog-confirm').dialog('open');
-    });
+
+    //	if (foo) {
+    //		alert('Oh yeah!');
+    //	}
+
+
+    //});
 
 
     // jquery-ui confirm dialog box

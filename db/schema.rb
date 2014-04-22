@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140128142542) do
+ActiveRecord::Schema.define(:version => 20140421230234) do
 
   create_table "AffiliatesSpecialty", :id => false, :force => true do |t|
     t.integer "id",           :null => false
@@ -22,6 +22,12 @@ ActiveRecord::Schema.define(:version => 20140128142542) do
   create_table "BasicScienceDisciplines", :primary_key => "Discipline_id", :force => true do |t|
     t.string "DisciplineName", :limit => 50
     t.date   "created_at"
+  end
+
+  create_table "COMHospitals", :id => false, :force => true do |t|
+    t.string "name"
+    t.string "name_listed"
+    t.string "correctname"
   end
 
   create_table "affiliateinstitutions", :force => true do |t|
@@ -81,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20140128142542) do
     t.boolean  "isfaculty"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.integer  "pidm"
   end
 
   create_table "annualevaluations", :force => true do |t|
@@ -441,8 +448,8 @@ ActiveRecord::Schema.define(:version => 20140128142542) do
     t.string   "firstname"
     t.string   "lastname"
     t.string   "phone"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "usertypes", :force => true do |t|

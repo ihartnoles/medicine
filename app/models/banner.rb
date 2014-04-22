@@ -28,6 +28,7 @@ class Banner < ActiveRecord::Base
 
   def self.find_matches(lastname)
       self.find_by_sql(["select 
+                            pidm,
                             zid, 
                             fau_netid, 
                             first_name, 

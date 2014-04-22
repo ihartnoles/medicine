@@ -40,6 +40,19 @@ class BannersController < ApplicationController
     end
   end
 
+  def makematch
+    #set the isFaculty value to 1 for affiliate
+    affiliate = Affiliate.find(params[:id])
+    affiliate.isfaculty = 1
+
+    #set the pimd value
+    affiliate.pidm = params[:pidm]
+    affiliate.save
+
+    #redirect and show faculty list
+    redirect_to affiliates_path
+  end
+
 
   # # GET /banners/new
   # # GET /banners/new.json

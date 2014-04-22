@@ -54,6 +54,7 @@ Medicine::Application.routes.draw do
 
   get  '/bannerdetail/:pidm', to: 'banners#show'
   get  '/bannermatches/:lastname/:affiliateid', to: 'banners#showmatches'
+  post '/makematch', to: 'banners#makematch'
 
   #miscellaneous affilate actions
   get  '/search',           to: 'affiliates#search'

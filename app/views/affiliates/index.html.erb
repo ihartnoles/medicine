@@ -71,7 +71,7 @@
                             <%= link_to 'View', affiliate %> |
                             <%= link_to 'Edit', edit_affiliate_path(affiliate) %> 
 
-                            <% if @potential_match %>
+                            <% if @potential_match && !affiliate.isfaculty %>
                                | <a href="/bannermatches/<%= affiliate.lastname %>/<%= affiliate.id %>">View Matches</a>
                             <% end %>
 
