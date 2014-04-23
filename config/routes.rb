@@ -39,7 +39,10 @@ Medicine::Application.routes.draw do
   resources :affiliates
   resources :usertypes
   resources :users
-  resources :affiliates
+  
+  resources :affiliates 
+  get  'affiliates/:id/:pidm', to: 'affiliates#show'
+
   resources :hospitalprivileges
   resources :hospitals
   resources :languages

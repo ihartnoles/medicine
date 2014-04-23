@@ -40,7 +40,9 @@
                         <% @affiliates.each do |affiliate| %>
 
                          <!-- set potential match flag-->
-                         <% @potential_match = Banner.find_by_lastname(affiliate.lastname) %>
+                          <% if params[:prospect] %>
+                            <% @potential_match = Banner.find_by_lastname(affiliate.lastname) %>
+                          <% end %>
 
                           <tr class="gradeA">
                             <% if !params[:prospect] %>
@@ -68,7 +70,9 @@
                             <% end %>
 
                             <td >
-                            <%= link_to 'View', affiliate %> |
+                            <%#= link_to 'View', affiliate %> 
+                            <a href="/affiliates/<%= affiliate.id %>/<%= affiliate.pidm %>">View</a>
+                            |
                             <%= link_to 'Edit', edit_affiliate_path(affiliate) %> 
 
                             <% if @potential_match && !affiliate.isfaculty %>

@@ -36,10 +36,10 @@ class AffiliatesController < ApplicationController
    end 
    
     if @isfacultyflag
-
       @title      = 'Edit Faculty - '  +  @fullname  
       @description = 'Edit faculty details'
       @isfacultyflag    = 1
+      @banner =  Banner.find_by_id(params[:pidm])
     else 
       @title      = 'Edit Affiliate Candidate - ' +  @fullname
       @description = 'Edit affiliate candidate details'

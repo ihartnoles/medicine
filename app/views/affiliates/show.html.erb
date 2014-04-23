@@ -49,18 +49,86 @@
                                            <div class="col-sm-6"> 
                                             <p>
                                               <b>Znumber:</b><br>
-                                              <%= @affiliate.znumber %>
+                                              <% if @banner %>
+                                               <% @banner.each do |b| %>
+                                                 <% if b.zid %>
+                                                    <%= b.zid %>
+                                                  <% else %>
+                                                    null
+                                                  <% end %>
+                                                <% end %>
+                                              <% else %>
+                                                <%= @affiliate.znumber %>
+                                              <% end %>
                                             </p>
 
                                             <p>
                                               <b>Name:</b><br>
-                                              <%= @affiliate.prefix %>  <%= @affiliate.firstname %> <%= @affiliate.middlename %>  <%= @affiliate.lastname %>, <%= @affiliate.suffix %>
+                                               <% if @banner %>
+                                                 <% @banner.each do |b| %>
+                                                   <%= b.first_name %> <%= b.last_name %> <%= b.name_suffix %> 
+                                                  <% end %>
+                                              <% else %>
+                                                <%= @affiliate.prefix %>  <%= @affiliate.firstname %> <%= @affiliate.middlename %>  <%= @affiliate.lastname %>, <%= @affiliate.suffix %>
+                                              <% end %>
                                             </p>
 
                                             <p>
+                                              <b>DOB:</b><br>
+                                               <% if @banner %>
+                                                 <% @banner.each do |b| %>
+                                                    <% if b.birth_date %>
+                                                      <%= b.birth_date %>
+                                                    <% else %>
+                                                      null
+                                                    <% end %>
+                                                  <% end %>
+                                              <% else %>
+                                                  ???
+                                              <% end %>
+                                            </p>
+                                            <p>
+                                              <b>Home Phone:</b><br>
+                                               <% if @banner %>
+                                                 <% @banner.each do |b| %>
+                                                    <% if b.hm_phone %>
+                                                      <%= b.hm_phone %>
+                                                    <% else %>
+                                                       null
+                                                    <% end %>
+                                                  <% end %>
+                                              <% else %>
+                                                  ???
+                                              <% end %>
+                                            </p>
+
+                                             <p>
+                                              <b>Cell Phone:</b><br>
+                                               <% if @banner %>
+                                                 <% @banner.each do |b| %>
+                                                  <% if b.cell %>
+                                                    <%= b.cell %>
+                                                   <% else %>
+                                                       null
+                                                    <% end %>
+                                                  <% end %>
+                                              <% else %>
+                                                  ???
+                                              <% end %>
+                                            </p>
+
+
+                                            <p>
                                               <b>Address:</b><br>
-                                              <%= @affiliate.homestreet %><br>
+                                              <% if @banner %>
+                                                 <% @banner.each do |b| %>
+                                                   <%= b.hm_street_line1 %><br>
+                                                   <%= b.hm_city %> <%= b.hm_state %> <%= b.hm_zip %> 
+                                                  <% end %>
+                                              <% else %>
+                                               <%= @affiliate.homestreet %><br>
                                                <%= @affiliate.homecity %>, <%= @affiliate.homestate %> <%= @affiliate.homezip %>
+                                              <% end %>
                                             </p>
                                                                                    
                                             <p>
@@ -457,12 +525,28 @@
                                     <div class="box-body">
                                             <p>
                                               <b>Start Date at FAU:</b><br>
-                                              ???
+                                              
+                                                <% @banner.each do |b| %>
+                                                  <% if b.primary_job_start_date %>
+                                                    <%= b.primary_job_start_date %>
+                                                  <% else %>
+                                                    null
+                                                  <% end %>
+                                                <% end %>
+                                              
                                             </p>
 
                                             <p>
                                               <b>Date of Last Increase:</b><br>
-                                              ????
+                                              
+                                                  <% @banner.each do |b| %>
+                                                    <% if b.last_incr_date %>
+                                                      <%= b.last_incr_date %>
+                                                    <%else%>
+                                                      null
+                                                    <%end%>
+                                                  <% end %>
+                                             
                                             </p>
 
                                             <p>
@@ -490,10 +574,16 @@
                                       <h4><i class="fa fa-plus-square"></i>Contract Dates</h4>
                                      
                                     </div>
-                                    <div class="box-body">
+                                    <div class="box-body">                                                               
                                           <p>
                                               <b>Secondary Assignment Start Date:</b><br>
-                                              ???
+                                                <% @banner.each do |b| %>
+                                                  <% if b.secondary_begin_date %>
+                                                    <%= b.secondary_begin_date %>
+                                                  <%else%>
+                                                    null
+                                                  <%end%>
+                                                <% end %>
                                             </p>
 
                                             <p>
@@ -514,7 +604,6 @@
                                               <b>FAU Grad College Membership End Date:</b><br>
                                               ????
                                             </p>                                           
-                                          
                                     </div>
                                   </div>
                                   <!-- /BOX -->    
@@ -534,42 +623,80 @@
                                      
                                     </div>
                                     <div class="box-body">
-                                         <p>
+
+                                      <% if @banner %>
+                                            <% @banner.each do |b| %>
+                                                                                           
+                                             <p>
                                               <b>Start Date at College of Medicine:</b><br>
-                                              ???
+                                              <% if b.secondary_begin_date %>
+                                                <%= b.secondary_begin_date %>
+                                              <%else%>
+                                                    null
+                                              <%end%>
                                             </p>
 
                                             <p>
                                               <b>Tenure Tracking Begin Date:</b><br>
-                                              ????
+                                              <% if b.perappt_tenure_trac_begin_date %>
+                                               <%= b.perappt_tenure_trac_begin_date %>
+                                              <%else%>
+                                                    null
+                                              <%end%>
                                             </p>
 
                                             <p>
                                               <b>Tenure on Date:</b><br>
-                                              ????
+                                               <% if b.perappt_tenure_eff_date %>
+                                                <%= b.perappt_tenure_eff_date %>
+                                              <%else%>
+                                                    null
+                                              <%end%>
+
                                             </p>
 
                                             <p>
                                               <b>Tenure Review Date:</b><br>
-                                              ????
+                                             <% if b.perappt_tenure_rev_date %>
+                                              <%= b.perappt_tenure_rev_date %>
+                                             <%else%>
+                                                    null
+                                              <%end%>
                                             </p>
                                             <p>
                                               <b>Tenure Code:</b><br>
-                                              ????
+                                              <% if b.perappt_tenure_code %>
+                                                <%= b.perappt_tenure_code %>
+                                              <%else%>
+                                                    null
+                                              <%end%>
                                             </p>
                                              <p>
                                               <b>Decision (tenure):</b><br>
-                                              ????
+                                              <% if b.perappt_decision %>
+                                                <%= b.perappt_decision %>
+                                              <%else%>
+                                                    null
+                                              <%end%>
                                             </p>
                                             <p>
                                               <b>Decision (tenure) date:</b><br>
-                                              ????
+                                               <% if b.perappt_decision_date %>
+                                              <%= b.perappt_decision_date %>
+                                              <%else%>
+                                                    null
+                                              <%end%>
                                             </p>
                                             <p>
                                               <b>Decision (tenure) deferred to date:</b><br>
-                                              ????
+                                               <% if b.perappt_decision_defer_date %>
+                                               <%= b.perappt_decision_defer_date %>
+                                               <%else%>
+                                                    null
+                                              <%end%>
                                             </p>
-                                           
+                                           <% end %>
+                                        <% end %>
                                     </div>
                                   </div>
                                   <!-- /BOX -->    
