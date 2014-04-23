@@ -69,7 +69,7 @@
                                                    <%= b.first_name %> <%= b.last_name %> <%= b.name_suffix %> 
                                                   <% end %>
                                               <% else %>
-                                                <%= @affiliate.prefix %>  <%= @affiliate.firstname %> <%= @affiliate.middlename %>  <%= @affiliate.lastname %>, <%= @affiliate.suffix %>
+                                                <%= @affiliate.prefix %>  <%= @affiliate.firstname %> <%= @affiliate.lastname %> <%= @affiliate.suffix %>
                                               <% end %>
                                             </p>
 
@@ -127,7 +127,7 @@
                                                   <% end %>
                                               <% else %>
                                                <%= @affiliate.homestreet %><br>
-                                               <%= @affiliate.homecity %>, <%= @affiliate.homestate %> <%= @affiliate.homezip %>
+                                               <%= @affiliate.homecity %> <%= @affiliate.homestate %> <%= @affiliate.homezip %>
                                               <% end %>
                                             </p>
                                                                                    
@@ -137,10 +137,12 @@
                                             </p>
                                           </div>
                                           <div class="col-sm-6"> 
+                                           <!--
                                             <p>
                                               <b>Faculty:</b><br>
                                               <%= @affiliate.facultymember %>
                                             </p>
+                                            -->
 
                                             <b>Languages Spoken:</b><br>
                                             <%= form_for(@languagespoken) do |f| %>
@@ -718,6 +720,13 @@
                                       <h4><i class="fa fa-briefcase"></i>CAP Dates</h4>
                                      
                                     </div>
+
+                                    <div class="tools">
+                                          <a href="/fellowships/new?affiliate_id=<%= params[:id] %>">
+                                              <i class="fa fa-pencil"></i>
+                                          </a>
+                                    </div>
+
                                     <div class="box-body">
                                             <p>
                                               <b>CAP Certificate Date:</b><br>

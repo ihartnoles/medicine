@@ -7,7 +7,7 @@ gem 'rake', '10.2.2'
 
 gem 'ruby-oci8', '~> 2.1.7'
 gem 'activerecord-oracle_enhanced-adapter', '~>1.4.0'
-
+gem 'activerecord-sqlserver-adapter'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -24,7 +24,6 @@ end
 
 gem 'jquery-rails'
 gem 'tiny_tds'
-gem 'activerecord-sqlserver-adapter'
 gem 'carrierwave'
 gem 'rubycas-client'
 

@@ -26,9 +26,9 @@ banner:
 # Do not set this db to the same as development or production.
 
 
-# production:
-#   adapter: sqlserver
-#   dataserver: boc22mssqloit.ad.fau.edu
-#   database: Medicine
-#   username: FAU\ihartstein
-#   password: ikeFAU1358
+ production:
+   adapter: sqlserver
+   dataserver: boc22mssqloit.ad.fau.edu
+   database: Medicine
+   username: FAU\ihartstein
+   password: ikeFAU1358
