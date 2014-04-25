@@ -1,0 +1,29 @@
+<h1>Listing cap_dates</h1>
+
+<table>
+  <tr>
+    <th>Certificatedate</th>
+    <th>Statusdate</th>
+    <th>Meetingdate</th>
+    <th>Affiliate</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cap_dates.each do |cap_date| %>
+  <tr>
+    <td><%= cap_date.certificatedate %></td>
+    <td><%= cap_date.statusdate %></td>
+    <td><%= cap_date.meetingdate %></td>
+    <td><%= cap_date.affiliate_id %></td>
+    <td><%= link_to 'Show', cap_date %></td>
+    <td><%= link_to 'Edit', edit_cap_date_path(cap_date) %></td>
+    <td><%= link_to 'Destroy', cap_date, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Cap date', new_cap_date_path %>

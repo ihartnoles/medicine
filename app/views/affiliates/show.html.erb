@@ -626,79 +626,96 @@
                                     </div>
                                     <div class="box-body">
 
-                                      <% if @banner %>
-                                            <% @banner.each do |b| %>
+                                      <%# if @banner %>
+                                            
                                                                                            
                                              <p>
                                               <b>Start Date at College of Medicine:</b><br>
-                                              <% if b.secondary_begin_date %>
-                                                <%= b.secondary_begin_date %>
-                                              <%else%>
-                                                    null
-                                              <%end%>
+                                                <% @banner.each do |b| %>
+                                                  <% if b.secondary_begin_date %>
+                                                    <%= b.secondary_begin_date %>
+                                                  <%else%>
+                                                        null
+                                                  <%end%>
+                                               <% end %> 
                                             </p>
 
+                                            
                                             <p>
                                               <b>Tenure Tracking Begin Date:</b><br>
-                                              <% if b.perappt_tenure_trac_begin_date %>
-                                               <%= b.perappt_tenure_trac_begin_date %>
-                                              <%else%>
-                                                    null
-                                              <%end%>
+                                              <% @banner.each do |b| %>
+                                                <% if b.perappt_tenure_trac_begin_date %>
+                                                 <%= b.perappt_tenure_trac_begin_date %>
+                                                <%else%>
+                                                      null
+                                                <%end%>
+                                               <% end %> 
                                             </p>
 
                                             <p>
                                               <b>Tenure on Date:</b><br>
-                                               <% if b.perappt_tenure_eff_date %>
-                                                <%= b.perappt_tenure_eff_date %>
-                                              <%else%>
-                                                    null
-                                              <%end%>
-
+                                               <% @banner.each do |b| %> 
+                                                 <% if b.perappt_tenure_eff_date %>
+                                                    <%= b.perappt_tenure_eff_date %>
+                                                  <%else%>
+                                                        null
+                                                  <%end%>
+                                                <% end %>
                                             </p>
 
                                             <p>
                                               <b>Tenure Review Date:</b><br>
-                                             <% if b.perappt_tenure_rev_date %>
-                                              <%= b.perappt_tenure_rev_date %>
-                                             <%else%>
-                                                    null
-                                              <%end%>
+                                                <% @banner.each do |b| %> 
+                                                 <% if b.perappt_tenure_rev_date %>
+                                                  <%= b.perappt_tenure_rev_date %>
+                                                 <%else%>
+                                                        null
+                                                  <%end%>
+                                                <%end%>
                                             </p>
                                             <p>
                                               <b>Tenure Code:</b><br>
-                                              <% if b.perappt_tenure_code %>
-                                                <%= b.perappt_tenure_code %>
-                                              <%else%>
-                                                    null
-                                              <%end%>
+                                              <% @banner.each do |b| %> 
+                                                  <% if b.perappt_tenure_code %>
+                                                    <%= b.perappt_tenure_code %>
+                                                  <%else%>
+                                                        null
+                                                  <%end%>
+                                             <%end%> 
                                             </p>
                                              <p>
                                               <b>Decision (tenure):</b><br>
-                                              <% if b.perappt_decision %>
-                                                <%= b.perappt_decision %>
-                                              <%else%>
-                                                    null
+                                               <% @banner.each do |b| %> 
+                                                <% if b.perappt_decision %>
+                                                  <%= b.perappt_decision %>
+                                                <%else%>
+                                                      null
+                                                <%end%>
                                               <%end%>
                                             </p>
                                             <p>
                                               <b>Decision (tenure) date:</b><br>
-                                               <% if b.perappt_decision_date %>
-                                              <%= b.perappt_decision_date %>
-                                              <%else%>
-                                                    null
+                                              <% @banner.each do |b| %> 
+                                                 <% if b.perappt_decision_date %>
+                                                  <%= b.perappt_decision_date %>
+                                                <%else%>
+                                                      null
+                                                <%end%>
                                               <%end%>
                                             </p>
                                             <p>
                                               <b>Decision (tenure) deferred to date:</b><br>
-                                               <% if b.perappt_decision_defer_date %>
-                                               <%= b.perappt_decision_defer_date %>
-                                               <%else%>
-                                                    null
-                                              <%end%>
+                                               <% @banner.each do |b| %> 
+                                                   <% if b.perappt_decision_defer_date %>
+                                                   <%= b.perappt_decision_defer_date %>
+                                                   <%else%>
+                                                        null
+                                                  <%end%>
+                                                <%end%>
                                             </p>
-                                           <% end %>
-                                        <% end %>
+                                         
+                                         
+                                        <%# end %>
                                     </div>
                                   </div>
                                   <!-- /BOX -->    
@@ -716,32 +733,54 @@
 
                                   <!-- BOX -->
                                   <div class="box border orange">
-                                    <div class="box-title">
+                                  
+                                      <div class="box-title">
                                       <h4><i class="fa fa-briefcase"></i>CAP Dates</h4>
-                                     
-                                    </div>
+                                      
 
-                                    <div class="tools">
-                                          <a href="/fellowships/new?affiliate_id=<%= params[:id] %>">
+                                      <% if @cap_dates.blank? %>
+                                       <div class="tools">
+                                          <a href="/cap_dates/new?affiliate_id=<%= params[:id] %>">
                                               <i class="fa fa-pencil"></i>
                                           </a>
+                                       </div>
+                                      <% end %>
+
                                     </div>
+              
+                                  
 
                                     <div class="box-body">
-                                            <p>
-                                              <b>CAP Certificate Date:</b><br>
-                                              ???
-                                            </p>
+                                            <% if !@cap_dates.blank? %>
+                                              <% @cap_dates.each do |cd| %>
+                                                   <p>
+                                                    <b>CAP Certificate Date:</b><br>
+                                                     <%= cd.certificatedate %>
+                                                     [<%= link_to 'Update', edit_cap_date_path(cd, :affiliate_id => params[:id]) %>]
+                                                      
+                                                  </p>
 
-                                            <p>
-                                              <b>CAP Status Date:</b><br>
-                                              ????
-                                            </p>
+                                                  <p>
+                                                    <b>CAP Status Date:</b><br>
+                                                     <%= cd.statusdate %>
+                                                     [<%= link_to 'Update', edit_cap_date_path(cd, :affiliate_id => params[:id]) %>]
+                                                  </p>
 
-                                            <p>
-                                              <b>CAP Meeting Date:</b><br>
-                                              ????
-                                            </p>
+                                                  <p>
+                                                    <b>CAP Meeting Date:</b><br>
+                                                    <%= cd.meetingdate %>
+                                                    [<%= link_to 'Update', edit_cap_date_path(cd, :affiliate_id => params[:id]) %>]
+                                                  </p>
+                                              <% end %>
+                                             
+                                            <% else %>
+                                              
+                                                    <div class="alert alert-block alert-info fade in">
+                                                    <a aria-hidden="true" href="#" data-dismiss="alert" class="close">×</a>
+                                                      <p></p><h4><i class="fa fa-check-square-o"></i> No CAP Dates on Record!</h4> Please add cap dates by clicking on the pencil icon in the upper right corner.<p></p><br>
+                                                  </div>
+                                               
+                                            <% end %>
                                     </div>
                                   </div>
                                   <!-- /BOX -->    

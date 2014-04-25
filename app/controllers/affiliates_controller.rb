@@ -65,6 +65,9 @@ class AffiliatesController < ApplicationController
 
     #disciplinary data
     @disciplinaryactions     = Disciplinaryaction.where(:affiliate_id => params[:id])
+    
+    #CAP Dates
+    @cap_dates     = CapDate.where(:affiliate_id => params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

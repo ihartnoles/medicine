@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140421230234) do
+ActiveRecord::Schema.define(:version => 20140424201430) do
 
   create_table "AffiliatesSpecialty", :id => false, :force => true do |t|
     t.integer "id",           :null => false
@@ -114,6 +114,15 @@ ActiveRecord::Schema.define(:version => 20140421230234) do
     t.integer  "homezip"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "cap_dates", :force => true do |t|
+    t.datetime "certificatedate"
+    t.datetime "statusdate"
+    t.datetime "meetingdate"
+    t.integer  "affiliate_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "certifiedspecialities", :force => true do |t|

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Certificatedate:</b>
+  <%= @cap_date.certificatedate %>
+</p>
+
+<p>
+  <b>Statusdate:</b>
+  <%= @cap_date.statusdate %>
+</p>
+
+<p>
+  <b>Meetingdate:</b>
+  <%= @cap_date.meetingdate %>
+</p>
+
+<p>
+  <b>Affiliate:</b>
+  <%= @cap_date.affiliate_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_cap_date_path(@cap_date) %> |
+<%= link_to 'Back', cap_dates_path %>
