@@ -73,6 +73,12 @@
                                               <% end %>
                                             </p>
 
+                                            <!-- BEGIN show DOB:
+                                                  1) must show for faculty only (@affilate.isFaculty == true)
+                                                  2) Only visible to ADMINS!!
+                                              -->
+
+                                            <% if @affiliate.isfaculty %>  
                                             <p>
                                               <b>DOB:</b><br>
                                                <% if @banner %>
@@ -87,6 +93,9 @@
                                                   ???
                                               <% end %>
                                             </p>
+                                            <% end %>
+                                            <!-- END: show DOB -->
+
                                             <p>
                                               <b>Home Phone:</b><br>
                                                <% if @banner %>
@@ -103,6 +112,16 @@
                                             </p>
 
                                              <p>
+                                              <b>Emergency Phone:</b><br>
+                                               <% if defined?(@affiliate.emergencyphone) %>
+                                                  <%= @affiliate.emergencyphone %>
+                                              <% else %>
+                                                  N/A
+                                              <% end %>
+                                            </p>
+
+                                            <!--
+                                             <p>
                                               <b>Cell Phone:</b><br>
                                                <% if @banner %>
                                                  <% @banner.each do |b| %>
@@ -116,7 +135,7 @@
                                                   ???
                                               <% end %>
                                             </p>
-
+                                          -->
 
                                             <p>
                                               <b>Address:</b><br>
@@ -193,6 +212,33 @@
                                                N/A
                                             <% end %>
                                           </p>
+
+                                          <p>
+                                            <b>Work email:</b><br>
+                                            <% if !@affiliate.emailoffice.blank? %>
+                                              <%= @affiliate.emailoffice %>
+                                            <% else %>
+                                               N/A
+                                            <% end %>
+                                          </p>
+
+                                          <p>
+                                            <b>Work phone:</b><br>
+                                            <% if !@affiliate.otherphonenumber.blank? %>
+                                              <%= @affiliate.otherphonenumber %>
+                                            <% else %>
+                                               N/A
+                                            <% end %>
+                                          </p>
+
+                                          <p>
+                                            <b>Fax:</b><br>
+                                            <% if !@affiliate.faxnumber.blank? %>
+                                              <%= @affiliate.faxnumber %>
+                                            <% else %>
+                                               N/A
+                                            <% end %>
+                                          </p>
                                         </div>
                                           <div class="col-sm-6"> 
                                           <p>
@@ -217,6 +263,33 @@
                                               <%= collection_select(:hospital, :id, Hospital.all, :id, :name, {}, :class=>'form-control') %>
                                                <div class="actions">
                                                 <br><%= f.submit 'Add Privileges'%>
+                                              </div>
+                                            <% end %>
+                                            </p>    
+
+
+                                             <p>
+                                            <b>Hospital Closest to Practice</b><br>
+                                              
+                                                <ul>
+                                                <% if @showprivileges.count > 0%>
+                                                  <% @showprivileges.each do |p| %>
+                                                   <li><%= p.hospital.name %> <%= link_to 'Remove', p, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+                                                  <% end %>
+                                                <% else %>
+                                                  <li>None selected</li>
+                                                <% end %>
+                                                </ul>
+                                              
+                                          </p>           
+                                          
+                                            <p>
+                                            <b>Add a Hospital Closest to Practice:</b><br>
+                                            <%= form_for @hospitalprivilege, :html => {:class => 'form'} do |f| %>
+                                              <%= hidden_field_tag :affiliate_id, params[:id] %>
+                                              <%= collection_select(:hospital, :id, Hospital.all, :id, :name, {}, :class=>'form-control') %>
+                                               <div class="actions">
+                                                <br><%= f.submit 'Add Hospital'%>
                                               </div>
                                             <% end %>
                                             </p>    

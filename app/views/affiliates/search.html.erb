@@ -32,12 +32,24 @@
                                 <%= collection_select(:clinicaldivision, :division_id, Clinicaldivision.all, :id, :divisionname, {:include_blank => '-- Clinical Division --'} ,:class=>'form-control') %>
                             </div>
 
-                            <div class="col-sm-4" id="clinicalsection">
-                                
+
+                            <div class="col-sm-4" id="clinicaldivision">
+                                <b>Specialty:</b><br>
+                                <%= collection_select(:clinicaldivision, :division_id, Clinicaldivision.all, :id, :divisionname, {:include_blank => '-- Clinical Division --'} ,:class=>'form-control') %>
                             </div>
                          </div>
 
-                        
+                        <div class="row">
+                            <div class="col-sm-4">
+                                 <%= f.label :cellphone, "Cell Phone:" %><br />
+                                <%= f.text_field :cellphone ,:class => 'form-control'  %>
+                            </div>
+
+                             <div class="col-sm-4">
+                                 <%= f.label :emailfau, "Email:" %><br />
+                                <%= f.text_field :emailfau ,:class => 'form-control'  %>
+                            </div>
+                         </div>
                         
                         <br>
                         <div class="row">
