@@ -817,6 +817,15 @@
                                               <i class="fa fa-pencil"></i>
                                           </a>
                                        </div>
+                                      <% else %>
+                                        <div class="tools">
+                                          <! -- http://10.16.9.208:3000/cap_dates/4/edit?affiliate_id=24 -->
+                                           <% @cap_dates.each do |cd| %>
+                                            <a href="/cap_dates/<%= cd.id %>/edit?affiliate_id=<%= params[:id] %>">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                          <% end %>
+                                       </div>
                                       <% end %>
 
                                     </div>
@@ -827,23 +836,26 @@
                                             <% if !@cap_dates.blank? %>
                                               <% @cap_dates.each do |cd| %>
                                                    <p>
-                                                    <b>CAP Certificate Date:</b><br>
+                                                    <b>CAP Expiration Date:</b><br>
                                                      <%= cd.certificatedate %>
-                                                     [<%= link_to 'Update', edit_cap_date_path(cd, :affiliate_id => params[:id]) %>]
+                                                     <!-- [<%= link_to 'Update', edit_cap_date_path(cd, :affiliate_id => params[:id]) %>] -->
                                                       
                                                   </p>
 
                                                   <p>
-                                                    <b>CAP Status Date:</b><br>
-                                                     <%= cd.statusdate %>
-                                                     [<%= link_to 'Update', edit_cap_date_path(cd, :affiliate_id => params[:id]) %>]
+                                                    <b>CAP Status:</b><br>
+                                                     <%= cd.getStatusName(cd.id)%>
+                                                     <!-- [<%= link_to 'Update', edit_cap_date_path(cd, :affiliate_id => params[:id]) %>] -->
                                                   </p>
 
+                                                  <!--
+                                                  
                                                   <p>
                                                     <b>CAP Meeting Date:</b><br>
                                                     <%= cd.meetingdate %>
                                                     [<%= link_to 'Update', edit_cap_date_path(cd, :affiliate_id => params[:id]) %>]
                                                   </p>
+                                                -->
                                               <% end %>
                                              
                                             <% else %>
@@ -911,31 +923,36 @@
                                       <table class="table table-hover">
                                         <thead>
                                           <tr>
-                                            <th>Vetter</th>
+                                            
                                             <th>Clinical Divisions</th>
-                                            <th>Clinical Specialities</th>   
-                                            <th>Basic Science Discipline</th>     
+                                            <th>Clinical Specialities</th>  
+                                            <!-- only display for faculty -->
+                                            <% if @isfacultyflag == 1%> 
+                                              <th>Basic Science Discipline</th>   
+                                            <% end %>
+                                            <th>Vetter</th>  
                                           </tr>
                                         </thead>
                                         <tbody>
                                           <tr>
-                                            <td>John Doe</td>
                                             <td>Mark</td>
                                             <td>Otto</td>
-                                            <td>Otto</td>
+                                            <!-- only display for faculty -->
+                                            <% if @isfacultyflag  == 1%> 
+                                              <td>Otto</td>
+                                            <% end %>
+                                            <td>John Doe</td>
                                           </tr>
                                           <tr>
-                                            <td>Jane Doe</td>
+                                            
                                             <td>Jacob</td>
                                             <td>Thornton</td>
-                                            <td>Otto</td>
-                                          </tr>
-                                          <tr>
-                                            <td>Jim Doe</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td> 
-                                            <td>Otto</td>                                          
-                                          </tr>
+                                            <!-- only display for faculty -->
+                                            <% if @isfacultyflag  == 1 %> 
+                                              <td>Otto</td>
+                                            <% end %>
+                                            <td>Jane Doe</td>
+                                          </tr>                                          
                                         </tbody>
                                         </table>
                                     </div>

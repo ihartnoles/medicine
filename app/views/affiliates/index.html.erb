@@ -25,8 +25,10 @@
                       <% @affiliates.each do |affiliate| %>
                          <!-- display for affiliate list -->
                          <% if params[:prospect] %>
+                            
                             <!-- set potential match flag-->
                             <% @potential_match = Banner.find_by_lastname(affiliate.lastname) %>
+                            <% @cap_dates       = CapDate.where(:affiliate_id => affiliate.id) %>
 
                             <tr class="gradeA">
                                 <td><%= affiliate.firstname %></td>
@@ -41,8 +43,8 @@
                                             <b class="text-primary">No Match</b>
                                     <% end %>
                                 </td>
-                                <td class="hidden-xs">CAP Date</td>
-                                <td class="hidden-xs">A1 Title</td>
+                                <td class="hidden-xs"><% @cap_dates.each do |cd| %><%= cd.certificatedate %> <% end %></td>
+                                <!-- <td class="hidden-xs">A1 Title</td> -->
                                 <td>
                                     <a href="/affiliates/<%= affiliate.id %>/<%= affiliate.pidm %>">View</a>|
                                     <%= link_to 'Edit', edit_affiliate_path(affiliate) %> 
@@ -60,19 +62,23 @@
                             </tr>    
                          <% else %>
                             <!-- display for faculty list -->
-                            <tr class="gradeA">
-                                <td class="hidden-xs"><%= affiliate.znumber %></td>
-                                <td><%= affiliate.firstname %></td>
-                                <td><%= affiliate.lastname %></td>
-                                <td class="hidden-xs">A1 Title here</td>
-                                <td class="hidden-xs"><%=[:Physiology, :Immunology].sample %></td>
-                                <td class="hidden-xs">FTE here</td>
-                                <td>
-                                  <a href="/affiliates/<%= affiliate.id %>/<%= affiliate.pidm %>">View</a>
-                                    |
-                                    <%= link_to 'Edit', edit_affiliate_path(affiliate) %>                         
-                                </td>
-                            </tr>
+                            <% @banner = Banner.find_by_id(affiliate.pidm) %>
+
+                            
+                              <tr class="gradeA">
+                                  <td class="hidden-xs"><% @banner.each do |b| %><%= b.zid %> <% end %></td>
+                                  <td><%= affiliate.firstname %></td>
+                                  <td><%= affiliate.lastname %></td>
+                                  <td class="hidden-xs"><% @banner.each do |b| %><%= b.perbfac_academic_title.humanize %> <% end %> </td>
+                                  <td class="hidden-xs"><%=[:Physiology, :Immunology].sample %></td>
+                                  <td class="hidden-xs"><% @banner.each do |b| %><%= b.fte %> <% end %></td>
+                                  <td>
+                                    <a href="/affiliates/<%= affiliate.id %>/<%= affiliate.pidm %>">View</a>
+                                      |
+                                      <%= link_to 'Edit', edit_affiliate_path(affiliate) %>                         
+                                  </td>
+                              </tr>
+                             
                          <% end %>
                         
                     <% end %>

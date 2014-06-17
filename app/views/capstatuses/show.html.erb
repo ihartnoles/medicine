@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Status:</b>
+  <%= @capstatus %>
+</p>
+
+
+<%= link_to 'Edit', edit_capstatus_path(@capstatus) %> |
+<%= link_to 'Back', capstatus_path %>
+
+
+
+  <%= render 'shared/javascript' %>
+
+    <script>
+        jQuery(document).ready(function() {     
+            App.setPage("show_capstatus");  //Set current page
+            App.init(); //Initialise plugins and elements
+        });
+    </script>

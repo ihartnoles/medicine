@@ -50,6 +50,7 @@ Medicine::Application.routes.draw do
   resources :hospitals
   resources :languages
   resources :affiliatelanguages
+  resources :capstatuses
 
   #static actions
   match '/faq',    to: 'static_pages#faq'

@@ -11,6 +11,7 @@ class AffiliatesController < ApplicationController
       @title      =  'Faculty List'
       @description = 'List of CoM Faculty'
       @affiliates = Affiliate.where(:isfaculty => 1)
+      #@affiliates = Affiliate.find
     end
 
     respond_to do |format|
@@ -214,7 +215,17 @@ class AffiliatesController < ApplicationController
   # POST /affiliates
   # POST /affiliates.json
   def doSearch
-    #@affiliate = Affiliate.new(params[:affiliate])
+    #@affiliate = Affiliate.results
+
+    results = Affiliate.order(:lastname)
+    results = results.where("firstname LIKE ?", params[:searchform][:firstname]) if params[:searchform][:firstname].present?
+    results = results.where("lastname LIKE ?", params[:searchform][:lastname]) if params[:searchform][:lastname].present?
+    results = results.where("cellphone LIKE ?", params[:searchform][:cellphone]) if params[:searchform][:cellphone].present?
+    results = results.where("emailfau LIKE ?", params[:searchform][:emailfau]) if params[:searchform][:emailfau].present?
+
+    #results =  Affiliate.find(:all, :joins => [:certifiedspecialities], :select => "certifiedspecialities.speciality_id, certifiedspecialities.year, affiliates.*")
+
+    @affiliates = results
 
     respond_to do |format|
       format.html # show.html.erb

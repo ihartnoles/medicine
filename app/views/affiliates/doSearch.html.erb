@@ -1,2 +1,12 @@
+ <%#= render '@affiliate.results' %>	
+
+<%#= params[:searchform][:lastname] %>
+
+<% @affiliates.each do |result| %>
+		<%= result.firstname %> <%= result.lastname %><br>
+		<hr>
+<% end %>
+
+
 <%= debug params %>
 <%= debug request.env %>

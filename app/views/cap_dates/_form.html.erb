@@ -16,18 +16,29 @@
 
   <div class="form-group">
     <div class="input-group">
-      <%= f.label :certificatedate, "CAP Certificate Date", :class=>'control-label' %><br />
+      <%= f.label :certificatedate, "CAP Expiration Date", :class=>'control-label' %><br />
       <%= f.text_field :certificatedate , :class=>'form-control' , 'data-mask' => "99/99/9999" %>
       <span class="help-block">99/99/9999</span>
     </div>
   </div>
+  <!--
   <div class="form-group">
     <div class="input-group">
-    <%= f.label :statusdate, "CAP Status Date", :class=>'control-label' %><br />
-    <%= f.text_field :statusdate , :class=>'form-control' , 'data-mask' => "99/99/9999"%>
+    <%= f.label :status, "CAP Status", :class=>'control-label' %><br />
+    <%= f.text_field :status , :class=>'form-control' , 'data-mask' => "99/99/9999"%>
     <span class="help-block">99/99/9999</span>
     </div>
   </div>
+  -->
+
+  <div class="form-group">
+    <div class="input-group">
+      <%= label_tag(:status, "CAP Status") %><br>
+      <%= collection_select(:cap_date, :status, Capstatus.all, :id, :status, { :selected =>  params[:id] }, :class=>'col-sm-6 form-control') %>
+    </div>
+  </div>
+
+  <!--
   <div class="form-group">
     <div class="input-group">
     <%= f.label :meetingdate, "CAP Meeting Date", :class=>'control-label' %><br />
@@ -35,7 +46,8 @@
     <span class="help-block">99/99/9999</span>
     </div>
   </div>
- 
+ -->
+
   <div class="actions">
     <%= f.submit "Update CAP dates" %>
   </div>

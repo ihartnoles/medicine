@@ -1,0 +1,24 @@
+<%= form_for @capstatus, :html => {:class => 'form' } do |f| %>
+  <% if @capstatus.errors.any? %>
+    <div class="alert alert-block alert-danger">
+      <h2><%= pluralize(@capstatus.errors.count, "error") %> prohibited this capstatus from being saved:</h2>
+
+      <ul>
+      <% @capstatus.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <div class="form-group">
+      <%= f.label :status %><br />
+      <%= f.text_field :status ,:class => 'form-control' %>
+  </div>
+ 
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
