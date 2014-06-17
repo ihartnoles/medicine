@@ -7,11 +7,16 @@ class Affiliate < ActiveRecord::Base
   has_many  :fellowships
   has_many  :certifiedspecialities
   has_many  :affiliatepermissions
-  attr_accessible :isfaculty, :cellphone, :emailfau, :emailoffice, :emailother, :emailpersonal, :emergencyphone, :faxnumber, :firstname, :homecity, :homephone, :homestate, :homestreet, :homezip, :isfaculty, :lastname, :license, :middlename, :officecity, :officestate, :officestreet, :officezip, :otherphonenumber, :prefix, :suffix, :znumber
+  attr_accessible  :isfaculty, :cellphone, :emailfau, :emailoffice, :emailother, :emailpersonal, :emergencyphone, :faxnumber, :firstname, :homecity, :homephone, :homestate, :homestreet, :homezip, :isfaculty, :lastname, :license, :middlename, :officecity, :officestate, :officestreet, :officezip, :otherphonenumber, :prefix, :suffix, :znumber
 
   validates :firstname, length: {minimum: 1, maximum: 50} ,:presence => true
   validates :lastname, length:  {minimum: 1, maximum: 50} ,:presence => true
   validates :homezip, length:   {minimum: 5}
+
+  def getSpecialty(affiliateid)
+    specialtyname = Clinicalsection.find(Certifiedspeciality.where(:affiliate_id => affiliateid).first.speciality_id).sectionname
+    return specialtyname 
+  end
 
   def facultymember
     self.isfaculty ? "Yes" : "No"
