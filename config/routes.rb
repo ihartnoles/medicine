@@ -1,28 +1,14 @@
 Medicine::Application.routes.draw do
   
   resources :cap_dates
-
-
   resources :bannerqueues
-
-
   resources :disciplinaryactions
-
-
   resources :evaluationstatuses
-
-
   resources :annualevaluations
-
-
   resources :degreelists
-
-
   resources :countries
-
-
   resources :states
-
+  resources :closesthospitalprivileges
 
   get "contact/index"
 

@@ -49,6 +49,10 @@ class AffiliatesController < ApplicationController
     
     @hospitalprivilege = Hospitalprivilege.new
     @showprivileges = Hospitalprivilege.where(:affiliate_id => params[:id])
+
+    @closesthospitalprivilege = Closesthospitalprivilege.new
+    @showclosestprivileges = Closesthospitalprivilege.where(:affiliate_id => params[:id])
+
     @showlanguagespoken = Affiliatelanguage.where(:affiliate_id => params[:id])
     #@languagespoken_id = Affiliatelanguage.where(:affiliate_id => params[:id], :language_id => ?)
     @languagespoken = Affiliatelanguage.new   

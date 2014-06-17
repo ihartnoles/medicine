@@ -105,25 +105,33 @@
         <%= f.number_field :homezip ,:class => 'form-control'%>
      <% end %>
   </div>
+
+
   <div class="form-group">
-    <%= f.label :officestreet, "Office street address" %><br />
+    <%= f.label :officestreet, "Work street address" %><br />
     <%= f.text_field :officestreet ,:class => 'form-control' %>
    
   </div>
   <div class="form-group">
-    <%= f.label :officecity, "Office city address" %><br />
+    <%= f.label :officecity, "Work city" %><br />
     <%= f.text_field :officecity ,:class => 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :officestate, "Office state address" %><br />
+    <%= f.label :officestate, "Work state" %><br />
     <%= f.text_field :officestate ,:class => 'form-control'  %>    
   </div>
   <div class="form-group">
-    <%= f.label :officezip, "Office zipcode" %><br />
+    <%= f.label :officezip, "Work zipcode" %><br />
     <%= f.number_field :officezip ,:class => 'form-control' %>
   </div>
+
   <div class="form-group">
-    <%= f.label :homephone, "Home phone number" %><br />
+    <%= f.label :officephone, "Work phone" %><br />
+    <%= f.number_field :officephone ,:class => 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :homephone, "Home phone" %><br />
     <% if @isfacultyflag == 1 %>
         <%= f.text_field :homephone ,:class => 'form-control' , :id => 'disabledInput', :disabled=>'' %>
      <% else %>
@@ -131,25 +139,25 @@
      <% end %>
   </div>
   <div class="form-group">
-    <%= f.label :cellphone, "Cell phone number" %><br />
+    <%= f.label :cellphone, "Cell phone" %><br />
     <%= f.text_field :cellphone ,:class => 'form-control'  %>
   </div>
   <div class="form-group">
-    <%= f.label :emergencyphone, "Emergency phone number" %><br />
+    <%= f.label :emergencyphone, "Emergency phone" %><br />
     <%= f.text_field :emergencyphone ,:class => 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :faxnumber, "Fax number" %><br />
+    <%= f.label :faxnumber, "Fax" %><br />
     <%= f.text_field :faxnumber ,:class => 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :otherphonenumber, "Other phone number" %><br />
+    <%= f.label :otherphonenumber, "Other phone" %><br />
     <%= f.text_field :otherphonenumber ,:class => 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :emailfau, "Email address FAU" %><br />
+    <%= f.label :emailfau, "FAU Email" %><br />
     <% if @isfacultyflag == 1 %>
          <%= f.text_field :emailfau ,:class => 'form-control' , :id => 'disabledInput', :disabled=>'' %>
      <% else %>
@@ -157,18 +165,15 @@
      <% end %>
   </div>
   <div class="form-group">
-    <%= f.label :emailpersonal, "Email address personal" %><br />
+    <%= f.label :emailpersonal, "Personal Email" %><br />
     <%= f.text_field :emailpersonal ,:class => 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :emailoffice, "Email address office" %><br />
+    <%= f.label :emailoffice, "Office Email" %><br />
     <%= f.text_field :emailoffice  ,:class => 'form-control' %>
   </div>
-  <div class="form-group">
-    <%= f.label :emailother, "Email address other" %><br />
-    <%= f.text_field :emailother ,:class => 'form-control' %>
-  </div>
-  <!--
+  
+   <!--
   <div class="form-group">
     <%= f.label :isfaculty %><br />
      <% if params[:prospect] %>
@@ -178,6 +183,21 @@
      <% end %>
   </div>
   -->
+  <div class="form-group">
+    <%= f.label :physiciansgroup, "Physican's Group" %><br />
+    <%= f.text_field :physiciansgroup ,:class => 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :currentpractice, "Current Practice" %><br />
+    <%= f.select :currentpractice, options_for_select([["Select One", ""], "full time", "part time", "retired"]), :class => 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :teachingavailability, "Teaching Availability" %><br />
+    <%= f.select :teachingavailability, options_for_select([["Select One", ""], "occassional", "weekly", "monthly", "seasonal", "on demand"]), :class => 'form-control' %>
+  </div>
+
   <div class="actions">
     <%= f.submit 'Update' %>
   </div>

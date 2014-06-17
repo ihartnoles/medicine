@@ -272,8 +272,8 @@
                                             <b>Hospital Closest to Practice</b><br>
                                               
                                                 <ul>
-                                                <% if @showprivileges.count > 0%>
-                                                  <% @showprivileges.each do |p| %>
+                                                <% if @showclosestprivileges.count > 0%>
+                                                  <% @showclosestprivileges.each do |p| %>
                                                    <li><%= p.hospital.name %> <%= link_to 'Remove', p, method: :delete, data: { confirm: 'Are you sure?' } %></li>
                                                   <% end %>
                                                 <% else %>
@@ -285,7 +285,7 @@
                                           
                                             <p>
                                             <b>Add a Hospital Closest to Practice:</b><br>
-                                            <%= form_for @hospitalprivilege, :html => {:class => 'form'} do |f| %>
+                                            <%= form_for @closesthospitalprivilege, :html => {:class => 'form'} do |f| %>
                                               <%= hidden_field_tag :affiliate_id, params[:id] %>
                                               <%= collection_select(:hospital, :id, Hospital.all, :id, :name, {}, :class=>'form-control') %>
                                                <div class="actions">
