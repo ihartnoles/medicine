@@ -27,6 +27,7 @@ class DisciplinaryactionsController < ApplicationController
     @disciplinaryaction = Disciplinaryaction.new
     @title      = 'New Disciplinary Action'
     @description = 'Add a new disciplinary action'
+    @affiliate_id = params[:affiliate_id]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -47,8 +48,11 @@ class DisciplinaryactionsController < ApplicationController
   # POST /disciplinaryactions
   # POST /disciplinaryactions.json
   def create
+    @title      = 'New Disciplinary Action'
+    @description = 'Add a new disciplinary action'
     @disciplinaryaction = Disciplinaryaction.new(params[:disciplinaryaction])
-    
+    @affiliate_id = params[:disciplinaryaction][:affiliate_id]
+
     respond_to do |format|
       if @disciplinaryaction.save
         format.html { redirect_to affiliate_url(:id => params[:disciplinaryaction][:affiliate_id]) + "#assignments", notice: 'Disciplinary Action Added!' }
