@@ -1,0 +1,2 @@
+module AppointmentrejectionsHelper
+end

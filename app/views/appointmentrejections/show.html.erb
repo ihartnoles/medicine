@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Vetter:</b>
+  <%= @appointmentrejection.vetter %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @appointmentrejection.date %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @appointmentrejection.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_appointmentrejection_path(@appointmentrejection) %> |
+<%= link_to 'Back', appointmentrejections_path %>

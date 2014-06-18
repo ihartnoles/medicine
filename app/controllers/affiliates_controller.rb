@@ -62,6 +62,8 @@ class AffiliatesController < ApplicationController
     @certifiedspecialties  = Certifiedspeciality.where(:affiliate_id => params[:id])
     @degrees               = Degree.where(:affiliate_id => params[:id])
     @annualevaluations     = Annualevaluation.where(:affiliate_id => params[:id])
+    @appointmentrejections = Appointmentrejection.where(:affiliate_id => params[:id])
+
 
     #felloship data
     @fellowships           = Fellowship.where(:affiliate_id => params[:id]) 

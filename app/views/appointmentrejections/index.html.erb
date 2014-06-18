@@ -1,0 +1,27 @@
+<h1>Listing appointmentrejections</h1>
+
+<table>
+  <tr>
+    <th>Vetter</th>
+    <th>Date</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @appointmentrejections.each do |appointmentrejection| %>
+  <tr>
+    <td><%= appointmentrejection.vetter %></td>
+    <td><%= appointmentrejection.date %></td>
+    <td><%= appointmentrejection.status %></td>
+    <td><%= link_to 'Show', appointmentrejection %></td>
+    <td><%= link_to 'Edit', edit_appointmentrejection_path(appointmentrejection) %></td>
+    <td><%= link_to 'Destroy', appointmentrejection, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Appointmentrejection', new_appointmentrejection_path %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  vetter: MyString
+  date: 2014-06-18
+  status: MyString
+
+two:
+  vetter: MyString
+  date: 2014-06-18
+  status: MyString

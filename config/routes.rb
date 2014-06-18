@@ -1,5 +1,8 @@
 Medicine::Application.routes.draw do
   
+  resources :appointmentrejections
+
+
   resources :cap_dates
   resources :bannerqueues
   resources :disciplinaryactions

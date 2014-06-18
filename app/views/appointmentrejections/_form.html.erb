@@ -1,0 +1,33 @@
+<%= form_for(@appointmentrejection) do |f| %>
+  <% if @appointmentrejection.errors.any? %>
+    <div class="alert alert-block alert-danger">
+      <a class="close" aria-hidden="true" href="#" data-dismiss="alert">×</a>
+      <h2><%= pluralize(@appointmentrejection.errors.count, "error") %> prohibited this appointmentrejection from being saved:</h2>
+
+      <ul>
+      <% @appointmentrejection.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :affiliate_id , :value => @affiliate_id %>
+
+  <div class="form-group">
+    <%= f.label :vetter %><br />
+    <%= f.text_field :vetter , :class=>'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :date ,  :class=>'control-label' %><br />
+    <%= f.text_field :date ,:class => 'form-control' , 'data-mask' => "99/99/9999" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :status %><br />
+    <%#= f.text_field :status %>
+    <%= f.select :status, [["Do not hire", "Do not hire"], ["No current match on skills", "No current match on skills"]], { :include_blank => '-- Choose One --', :selected => @action },  :class => 'form-control' %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Update Appointment Rejection" %>
+  </div>
+<% end %>

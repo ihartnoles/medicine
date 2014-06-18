@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140523145507) do
+ActiveRecord::Schema.define(:version => 20140618175501) do
 
   create_table "AffiliatesSpecialty", :id => false, :force => true do |t|
     t.integer "id",           :null => false
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20140523145507) do
     t.string   "officecity"
     t.string   "officestate"
     t.integer  "officezip"
+    t.string   "officephone"
     t.string   "homephone"
     t.string   "cellphone"
     t.string   "emergencyphone"
@@ -85,9 +86,12 @@ ActiveRecord::Schema.define(:version => 20140523145507) do
     t.string   "emailoffice"
     t.string   "emailother"
     t.boolean  "isfaculty"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
     t.integer  "pidm"
+    t.text     "physiciansgroup"
+    t.string   "currentpractice"
+    t.string   "teachingavailability"
   end
 
   create_table "annualevaluations", :force => true do |t|
@@ -98,6 +102,14 @@ ActiveRecord::Schema.define(:version => 20140523145507) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.integer  "affiliate_id"
+  end
+
+  create_table "appointmentrejections", :force => true do |t|
+    t.string   "vetter"
+    t.date     "date"
+    t.string   "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "bannerqueues", :force => true do |t|
@@ -147,6 +159,13 @@ ActiveRecord::Schema.define(:version => 20140523145507) do
   create_table "clinicalsections", :force => true do |t|
     t.string  "sectionname", :limit => 50
     t.integer "division_id"
+  end
+
+  create_table "closesthospitalprivileges", :force => true do |t|
+    t.integer  "hospital_id"
+    t.integer  "affiliate_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "com_affiliate", :id => false, :force => true do |t|
@@ -343,8 +362,9 @@ ActiveRecord::Schema.define(:version => 20140523145507) do
     t.string   "disciplinaryaction"
     t.string   "removed"
     t.string   "date"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.string   "vetter",             :limit => 500
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   create_table "evaluationstatuses", :force => true do |t|
