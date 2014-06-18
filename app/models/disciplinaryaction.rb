@@ -4,6 +4,6 @@ class Disciplinaryaction < ActiveRecord::Base
   validates :date, :presence => true
   validates :disciplinaryaction, :presence => true
   validates :removed, :presence => true
-  validates :vetter, :presence => true
-  
+  validates :vetter, format: { with: /^([a-zA-Z]+\s)*[a-zA-Z]+$/, message: "only allows letters" }
+
 end
