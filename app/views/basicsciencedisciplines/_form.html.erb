@@ -1,0 +1,22 @@
+<%= form_for(@basicsciencediscipline) do |f| %>
+  <% if @basicsciencediscipline.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@basicsciencediscipline.errors.count, "error") %> prohibited this basicsciencediscipline from being saved:</h2>
+
+      <ul>
+      <% @basicsciencediscipline.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <div class="field">
+    <%= f.label :disciplinename, "Basic Discipline Name" %><br />
+    <%= f.text_field :disciplinename,  :class => 'form-control' %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>

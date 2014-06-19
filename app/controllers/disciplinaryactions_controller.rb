@@ -56,7 +56,7 @@ class DisciplinaryactionsController < ApplicationController
     respond_to do |format|
       if @disciplinaryaction.save
         format.html { redirect_to affiliate_url(:id => params[:disciplinaryaction][:affiliate_id]) + "#assignments", notice: 'Disciplinary Action Added!' }
-        #ormat.json { render json: @disciplinaryaction, status: :created, location: @disciplinaryaction }
+        #format.json { render json: @disciplinaryaction, status: :created, location: @disciplinaryaction }
       else
         format.html { render action: "new" }
         #format.json { render json: @disciplinaryaction.errors, status: :unprocessable_entity }
