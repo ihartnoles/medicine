@@ -190,12 +190,12 @@
 
   <div class="form-group">
     <%= f.label :currentpractice, "Current Practice" %><br />
-    <%= f.select :currentpractice, options_for_select([["Select One", ""], "full time", "part time", "retired"]), :class => 'form-control' %>
+    <%= f.select :currentpractice, options_for_select([["Select One", ""], "full time", "part time", "retired"]), {}, :class => 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :teachingavailability, "Teaching Availability" %><br />
-    <%= f.select :teachingavailability, options_for_select([["Select One", ""], "occassional", "weekly", "monthly", "seasonal", "on demand"]), :class => 'form-control' %>
+    <%= f.label :teachingavailability, "Teaching Availability"  %><br />
+    <%= f.select :teachingavailability, options_for_select([["Select One", ""], "occassional", "weekly", "monthly", "seasonal", "on demand"]), {}, :class => 'form-control' %>
   </div>
 
   <div class="actions">
