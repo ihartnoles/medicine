@@ -1,0 +1,27 @@
+<div class="row">
+	<div class="col-md-12">
+		<!-- BASIC -->
+		<div class="box border red">
+			<div class="box-title">
+				<h4><i class="fa fa-bars"></i>Edit Certified Specialty</h4>				
+			</div>
+			<div class="box-body">	
+				<%= render 'form' %>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<%= render 'shared/javascript' %>
+
+<script>
+        jQuery(document).ready(function() {     
+            App.setPage("edit_specialty");  //Set current page
+            App.init(); //Initialise plugins and elements
+        });
+</script>
+
+
+<%= link_to 'Show', @clinicalspecialty %> |
+<%= link_to 'Back', clinicalspecialties_path %>

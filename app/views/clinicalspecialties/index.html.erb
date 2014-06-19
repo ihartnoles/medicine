@@ -1,0 +1,27 @@
+<h1>Listing clinical specialties</h1>
+
+<table>
+  <tr>
+    <th>Affiliate</th>
+    <th>Speciality</th>
+    <th>Year</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @clinicalspecialties.each do |cs| %>
+  <tr>
+    <td><%= cs.affiliate_id %></td>
+    <td><%= cs.speciality_id %></td>
+    <td><%= cs.year %></td>
+    <td><%= link_to 'Show', cs %></td>
+    <td><%= link_to 'Edit', edit_clinicalspecialty_path(cs) %></td>
+    <td><%= link_to 'Destroy', cs, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New clinicalspeciality', new_clinicalspecialty_path %>

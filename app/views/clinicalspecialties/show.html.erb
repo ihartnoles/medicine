@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Affiliate:</b>
+  <%= @clinicalspecialty.affiliate_id %>
+</p>
+
+<p>
+  <b>Speciality:</b>
+  <%= @clinicalspecialty.speciality_id %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%= @clinicalspecialty.year %>
+</p>
+
+
+<%= link_to 'Edit', edit_clinicalspecialty_path(@clinicalspecialty) %> |
+<%= link_to 'Back', clinicalspecialties_path %>

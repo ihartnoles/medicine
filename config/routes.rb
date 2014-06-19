@@ -1,5 +1,8 @@
 Medicine::Application.routes.draw do
   
+  resources :clinicalsections
+
+
   resources :basicsciencedisciplines
 
 
@@ -22,7 +25,7 @@ Medicine::Application.routes.draw do
 
 
   resources :permissions
-  resources :certifiedspecialities
+  resources :clinicalspecialties
   resources :cvs
   resources :affiliateresearchareas
   resources :researchareas

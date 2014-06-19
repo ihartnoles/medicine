@@ -369,7 +369,7 @@
                                       <h4><i class="fa fa-check-square"></i>Certified Specialties</h4>
                                       
                                         <div class="tools">
-                                          <a href="/certifiedspecialities/new?affiliate_id=<%= params[:id] %>">
+                                          <a href="/clinicalspecialties/new?affiliate_id=<%= params[:id] %>">
                                               <i class="fa fa-pencil"></i>
                                           </a>
                                        </div>
@@ -378,26 +378,28 @@
                                            <table class="table table-hover">
                                         <thead>
                                           <tr>
-                                            <th>Specialty</th>
+                                            <th>Basic Science Discipline</th>
+                                            <th>Clinical Specialty</th>
                                             <th>Year received</th>
                                             <th>Actions</th>
                                           </tr>
                                         </thead>
                                         <tbody>
-                                            <% if !@certifiedspecialties.blank? %>
-                                              <% @certifiedspecialties.each do |cs| %>
+                                            <% if !@clinicalspecialties.blank? %>
+                                              <% @clinicalspecialties.each do |cs| %>
                                                 <tr>
+                                                    <td>???</td>
                                                     <td><%= cs.getSpecialtyName(cs.speciality_id) %></td>
                                                     <td><%= cs.year %></td>
                                                     <td>  
-                                                      <%= link_to 'Update', edit_certifiedspeciality_path(cs , :affiliate_id => params[:id]) %>
-                                                      | <%= link_to 'Remove', certifiedspeciality_path(cs , :affiliate_id => params[:id]), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+                                                      <%= link_to 'Update', edit_clinicalspecialty_path(cs , :affiliate_id => params[:id]) %>
+                                                      | <%= link_to 'Remove', clinicalspecialty_path(cs , :affiliate_id => params[:id]), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
                                                 </tr>
                                               <% end %>
                                              
                                             <% else %>
                                               <tr>
-                                                <td colspan="2">
+                                                <td colspan="4">
                                                     <div class="alert alert-block alert-info fade in">
                                                     <a aria-hidden="true" href="#" data-dismiss="alert" class="close">×</a>
                                                       <p></p><h4><i class="fa fa-check-square-o"></i> No Specialties on Record!</h4> Please add specialties by clicking on the pencil icon in the upper right corner.<p></p><br>

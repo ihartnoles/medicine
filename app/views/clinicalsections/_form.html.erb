@@ -1,0 +1,22 @@
+<%= form_for(@clinicalsection) do |f| %>
+  <% if @clinicalsection.errors.any? %>
+     <div class="alert alert-block alert-danger">
+      <h2><%= pluralize(@clinicalsection.errors.count, "error") %> prohibited this clinical specialty from being saved:</h2>
+
+      <ul>
+      <% @clinicalsection.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :sectionname, "Clinical Specialty" %><br />
+    <%= f.text_field :sectionname,  :class => 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>

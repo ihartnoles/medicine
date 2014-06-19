@@ -11,17 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140619124854) do
+ActiveRecord::Schema.define(:version => 20140619172732) do
 
   create_table "AffiliatesSpecialty", :id => false, :force => true do |t|
     t.integer "id",           :null => false
     t.integer "Affiliate_id", :null => false
     t.integer "Division_id",  :null => false
-  end
-
-  create_table "BasicScienceDisciplines", :primary_key => "Discipline_id", :force => true do |t|
-    t.string "DisciplineName", :limit => 50
-    t.date   "created_at"
   end
 
   create_table "COMHospitals", :id => false, :force => true do |t|
@@ -129,6 +124,11 @@ ActiveRecord::Schema.define(:version => 20140619124854) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "basicsciencedisciplines", :force => true do |t|
+    t.string "disciplinename", :limit => 50
+    t.date   "created_at"
+  end
+
   create_table "cap_dates", :force => true do |t|
     t.string   "certificatedate", :limit => 50
     t.string   "status"
@@ -144,22 +144,28 @@ ActiveRecord::Schema.define(:version => 20140619124854) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "certifiedspecialities", :force => true do |t|
-    t.integer  "affiliate_id"
-    t.integer  "speciality_id"
-    t.integer  "year"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
   create_table "clinicaldivisions", :force => true do |t|
     t.string   "divisionname", :limit => 50
     t.datetime "created_at"
   end
 
   create_table "clinicalsections", :force => true do |t|
+    t.string   "sectionname"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "clinicalsections_bak", :force => true do |t|
     t.string  "sectionname", :limit => 50
     t.integer "division_id"
+  end
+
+  create_table "clinicalspecialties", :force => true do |t|
+    t.integer  "affiliate_id"
+    t.integer  "speciality_id"
+    t.integer  "year"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "closesthospitalprivileges", :force => true do |t|
