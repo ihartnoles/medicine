@@ -12,13 +12,18 @@
   <% end %>
 
 
-  <%= hidden_field_tag :affiliate_id, params[:affiliate_id] %>
-
+  <%= f.hidden_field :affiliate_id , :value => @affiliate_id %>
 
   <div class="form-group">
     <%= f.label :degreelist_id, "Degree" %><br />
     <%= collection_select(:degree, :degreelist_id, Degreelist.all, :id, :degreename, {:include_blank => '-- Choose Degree --'}, :class=>'form-control' ) %>
   </div>
+
+  <div class="form-group">
+    <%= f.label :degreespecialty, "Degree specialty" %><br />
+    <%= f.text_field :degreespecialty ,:class => 'form-control' %>
+  </div>
+
   <div class="form-group">
     <%= f.label :year %><br />
     <%#= f.date_select :year, {:order => [:year], :start_year => 1900, :end_year => Time.now.year, :prompt => {:year => "Select year" }} , {:class => "form-control"} %>

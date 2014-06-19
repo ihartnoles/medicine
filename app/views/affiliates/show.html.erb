@@ -434,6 +434,7 @@
                                         <thead>
                                           <tr>
                                             <th>Degree</th>
+                                            <th>Degree Specialty</th>
                                             <th>Degree Year</th>
                                             <th>Institution</th>
                                             <th>City</th>
@@ -448,6 +449,7 @@
                                               <% @degrees.each do |d| %>
                                                  <tr>
                                                   <td><%= d.getDegreeName(d.degreelist_id) %></td>
+                                                  <td><%= d.degreespecialty %></td>
                                                   <td><%= d.year %></td>
                                                   <td><%= d.getInstitutionName(d.institution_id) %></td>
                                                   <td><%= d.city %></td>

@@ -1,6 +1,6 @@
 class Degree < ActiveRecord::Base
   #has_and_belongs_to_many :institutions
-  attr_accessible :affiliate_id, :degreelist_id, :institution_id, :year, :city, :state, :country
+  attr_accessible :affiliate_id, :degreelist_id, :institution_id, :year, :city, :state, :country, :degreespecialty
 
   validates :degreelist_id, :presence => true
   validates :year, :presence => true
@@ -8,7 +8,7 @@ class Degree < ActiveRecord::Base
   validates :city,  format: { with: /^[A-Za-z\s]+$/, message: "only allows letters" } ,:presence => true
   validates :state, :presence => true
   validates :country, :presence => true
-
+  validates :degreespecialty, :presence => true
 
   def getDegreeName(degreelist_id)
   	degreename = Degreelist.find(degreelist_id).degreename

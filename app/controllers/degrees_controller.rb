@@ -29,6 +29,7 @@ class DegreesController < ApplicationController
     @description = 'Add a new degree'
 
     @institutions =  Institution.all
+    @affiliate_id = params[:affiliate_id]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,19 +42,24 @@ class DegreesController < ApplicationController
     @degree = Degree.find(params[:id])
     @title      = 'Edit Degree'
     @description = 'Edit degree'
+    @affiliate_id = params[:affiliate_id]
   end
 
   # POST /degrees
   # POST /degrees.json
   def create
+    @title      = 'New Degree'
+    @description = 'Add a new degree'
     @degree = Degree.new(params[:degree])
-    @degree.affiliate_id = params[:affiliate_id]
+    #@degree.affiliate_id = params[:affiliate_id]
 
-    @affiliate = Affiliate.find(params[:affiliate_id])
+    @affiliate = Affiliate.find(params[:degree][:affiliate_id])
+    @affiliate_id = params[:degree][:affiliate_id]
 
     respond_to do |format|
       if @degree.save
-        format.html { redirect_to @affiliate, notice: 'Degree was successfully created.' }
+        #format.html { redirect_to @affiliate, notice: 'Degree was successfully created.' }
+        format.html { redirect_to affiliate_url(:id => params[:degree][:affiliate_id]) + "#training", notice: 'Disciplinary Action Added!' }
       else
         format.html { render action: "new" }
       end
@@ -64,12 +70,12 @@ class DegreesController < ApplicationController
   # PUT /degrees/1.json
   def update
     @degree = Degree.find(params[:id])
-    @affiliate = Affiliate.find(params[:affiliate_id])
-
+    @affiliate = Affiliate.find(params[:degree][:affiliate_id])
+    @affiliate_id = params[:degree][:affiliate_id]
 
     respond_to do |format|
       if @degree.update_attributes(params[:degree])
-        format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training", notice: 'Degree was successfully updated.', notice: 'Degree was successfully updated.' }
+        format.html { redirect_to affiliate_url(:id => @affiliate_id) + "#training", notice: 'Degree was successfully updated.', notice: 'Degree was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
