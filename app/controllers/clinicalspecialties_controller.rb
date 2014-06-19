@@ -45,6 +45,7 @@ class ClinicalspecialtiesController < ApplicationController
 
 
    !@clinicalspecialty.blank? ? @clinicalspecialty_id = Clinicalspecialty.find(params[:id]).speciality_id : @clinicalspecialty_id = 0
+   !@clinicalspecialty.blank? ? @basicsciencediscipline_id = Clinicalspecialty.find(params[:id]).basicsciencediscipline_id : @basicsciencediscipline_id = 0
   end
 
   # POST /clinicalspecialties
@@ -54,6 +55,7 @@ class ClinicalspecialtiesController < ApplicationController
     @clinicalspecialty.affiliate_id = params[:affiliate_id]
     @clinicalspecialty.speciality_id = params[:clinicalspecialty][:speciality_id]
     @clinicalspecialty.year = params[:clinicalspecialty][:year]
+    @clinicalspecialty.basicsciencediscipline_id = params[:clinicalspecialty][:basicsciencediscipline_id]
 
     respond_to do |format|
       if @clinicalspecialty.save
@@ -73,6 +75,7 @@ class ClinicalspecialtiesController < ApplicationController
     @clinicalspecialty.affiliate_id = params[:affiliate_id]
     @clinicalspecialty.speciality_id = params[:clinicalspecialty][:speciality_id]
     @clinicalspecialty.year = params[:clinicalspecialty][:year]
+    @clinicalspecialty.basicsciencediscipline_id = params[:clinicalspecialty][:basicsciencediscipline_id]
 
     respond_to do |format|
       if @clinicalspecialty.update_attributes(params[:clinicalspecialty])

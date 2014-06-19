@@ -388,7 +388,12 @@
                                             <% if !@clinicalspecialties.blank? %>
                                               <% @clinicalspecialties.each do |cs| %>
                                                 <tr>
-                                                    <td>???</td>
+                                                    <td>
+                                                      <% if !cs.basicsciencediscipline_id.blank? %>
+                                                      <%= cs.getDisciplineName(cs.basicsciencediscipline_id) %>
+                                                      <% end %>
+                                                      
+                                                    </td>
                                                     <td><%= cs.getSpecialtyName(cs.speciality_id) %></td>
                                                     <td><%= cs.year %></td>
                                                     <td>  

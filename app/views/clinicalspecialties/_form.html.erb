@@ -13,11 +13,16 @@
   <% end %>
 
   <%= hidden_field_tag :affiliate_id, params[:affiliate_id] %>
+ 
+  <div class="field">
+     <%= f.label :basicdiscipline_id, "Basic Science Discipline" %><br />
+     <%= collection_select(:clinicalspecialty, :basicsciencediscipline_id, Basicsciencediscipline.all, :id, :disciplinename, {:include_blank => '-- Choose Discipline --' , :selected =>  @basicsciencediscipline_id }  , :class=>'form-control') %>
+  </div>
 
   <div class="form-group">
     <%= f.label :speciality_id, "Specialty" %><br />
     <%#= f.number_field :speciality_id , :class => 'form-control' %>
-    <%= collection_select(@clinicalspecialty, :speciality_id, Clinicalsection.all, :id, :sectionname, {:include_blank => '-- Choose Specialty --' , :selected =>  @clinicalspecialty_id }  , :class=>'form-control') %>
+    <%= collection_select(:clinicalspecialty, :speciality_id, Clinicalsection.all, :id, :sectionname, {:include_blank => '-- Choose Specialty --' , :selected =>  @clinicalspecialty_id }  , :class=>'form-control') %>
   </div>
   <div class="form-group">
     <%= f.label :year %><br />

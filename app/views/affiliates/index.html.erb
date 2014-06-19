@@ -29,7 +29,8 @@
                             <!-- set potential match flag-->
                             <% @potential_match = Banner.find_by_lastname(affiliate.lastname) %>
                             <% @cap_dates       = CapDate.where(:affiliate_id => affiliate.id) %>
-                            <% @has_speciality  = Certifiedspeciality.where(:affiliate_id => affiliate.id) %>
+                            <%# @has_speciality  = Clinicalsection.where(:affiliate_id => affiliate.id) %>
+                            <% @has_speciality  = Clinicalsection.first %>
 
                             <tr class="gradeA">
                                 <td><%= affiliate.firstname %></td>
@@ -39,11 +40,13 @@
                                 <td class="hidden-xs">
                                     <%#=[:Physiology, :Immunology].sample %>
                                     <%#= affiliate.id %>                                
-                                    <%#= Clinicalsection.find(Certifiedspeciality.where(:affiliate_id => affiliate.id).first.speciality_id).sectionname %>
-
+                                    <%#= Clinicalsection.find(Clinicalsection.where(:affiliate_id => affiliate.id).first.speciality_id).sectionname %>
+                                  
                                     <% if !@has_speciality.blank? %>
-                                        <%= affiliate.getSpecialty(affiliate.id) %>                                   
+                                        <%#= affiliate.getSpecialty(affiliate.id) %>        
+                                        Yup                           
                                     <% end %>
+                                  
                                 </td>
                                 <td class="hidden-xs">
                                     <% if @potential_match %>
@@ -72,8 +75,9 @@
                          <% else %>
                             <!-- display for faculty list -->
                             <% @banner = Banner.find_by_id(affiliate.pidm) %>
-                            <% @has_speciality  = Certifiedspeciality.where(:affiliate_id => affiliate.id) %>
-                            
+                            <%# @has_speciality  = Clinicalsection.where(:affiliate_id => affiliate.id) %>
+                            <% @has_speciality  = Clinicalsection.first %>
+
                               <tr class="gradeA">
                                   <td class="hidden-xs"><% @banner.each do |b| %><%= b.zid %> <% end %></td>
                                   <td><%= affiliate.firstname %></td>
@@ -81,7 +85,8 @@
                                   <td class="hidden-xs"><% @banner.each do |b| %><%= b.perbfac_academic_title.humanize %> <% end %> </td>
                                   <td class="hidden-xs">
                                     <% if !@has_speciality.blank? %>
-                                        <%= affiliate.getSpecialty(affiliate.id) %>                                    
+                                        <%#= affiliate.getSpecialty(affiliate.id) %>                                    
+                                        Yup
                                     <% end %>
                                   </td>
                                   <td class="hidden-xs"><% @banner.each do |b| %><%= b.fte %> <% end %></td>
