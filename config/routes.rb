@@ -1,14 +1,9 @@
 Medicine::Application.routes.draw do
   
+  resources :facultytitles
   resources :clinicalsections
-
-
   resources :basicsciencedisciplines
-
-
   resources :appointmentrejections
-
-
   resources :cap_dates
   resources :bannerqueues
   resources :disciplinaryactions

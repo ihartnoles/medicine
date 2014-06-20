@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @facultytitle.title %>
+</p>
+
+
+<%= link_to 'Edit', edit_facultytitle_path(@facultytitle) %> |
+<%= link_to 'Back', facultytitles_path %>
+
+ <%= render 'shared/javascript' %>
+
+    <script>
+        jQuery(document).ready(function() {     
+            App.setPage("show_titles");  //Set current page
+            App.init(); //Initialise plugins and elements
+        });
+    </script>

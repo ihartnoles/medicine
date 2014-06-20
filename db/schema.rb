@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140619201759) do
+ActiveRecord::Schema.define(:version => 20140620002514) do
 
   create_table "AffiliatesSpecialty", :id => false, :force => true do |t|
     t.integer "id",           :null => false
@@ -163,10 +163,10 @@ ActiveRecord::Schema.define(:version => 20140619201759) do
   create_table "clinicalspecialties", :force => true do |t|
     t.integer  "affiliate_id"
     t.integer  "speciality_id"
+    t.integer  "basicsciencediscipline_id"
     t.integer  "year"
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
-    t.integer  "basicsciencediscipline_id"
   end
 
   create_table "closesthospitalprivileges", :force => true do |t|
@@ -378,6 +378,12 @@ ActiveRecord::Schema.define(:version => 20140619201759) do
 
   create_table "evaluationstatuses", :force => true do |t|
     t.text     "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "facultytitles", :force => true do |t|
+    t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -1,0 +1,21 @@
+<%= form_for(@facultytitle) do |f| %>
+  <% if @facultytitle.errors.any? %>
+    <div class="alert alert-block alert-danger">
+      <h2><%= pluralize(@facultytitle.errors.count, "error") %> prohibited this facultytitle from being saved:</h2>
+
+      <ul>
+      <% @facultytitle.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title, "COM Faculty Title" %><br />
+    <%= f.text_field :title ,:class => 'form-control' %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Update Faculty Title' %>
+  </div>
+<% end %>
