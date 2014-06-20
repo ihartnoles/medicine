@@ -620,6 +620,12 @@
                                               
                                             </p>
 
+                                              <p>
+                                              <b>Start Date at College of Medicine:</b><br>
+                                                ???
+                                            </p>
+
+
                                             <p>
                                               <b>Date of Last Increase:</b><br>
                                               
@@ -644,7 +650,23 @@
                                             </p>
                                              <p>
                                                 <b>Classification Date:</b><br>
-                                                ????
+                                                 <% @banner.each do |b| %>
+                                                    <% if b.first_hire_date %>
+                                                      <%= b.first_hire_date %>
+                                                    <%else%>
+                                                      null
+                                                    <%end%>
+                                                <% end %>
+                                             </p>
+                                             <p>
+                                                <b>Classification:</b><br>
+                                                <% @banner.each do |b| %>
+                                                    <% if b.ecls_desc %>
+                                                      <%= b.ecls_desc %>
+                                                    <%else%>
+                                                      null
+                                                    <%end%>
+                                                <% end %>
                                              </p>
                                     </div>
                                   </div>
@@ -672,12 +694,24 @@
 
                                             <p>
                                               <b>Contract Start Date:</b><br>
-                                              ????
+                                                <% @banner.each do |b| %>
+                                                  <% if b.primary_job_start_date %>
+                                                    <%= b.primary_job_start_date %>
+                                                  <%else%>
+                                                    null
+                                                  <%end%>
+                                                <% end %>
                                             </p>
 
                                             <p>
                                               <b>Contract End Date:</b><br>
-                                              ????
+                                                <% @banner.each do |b| %>
+                                                  <% if b.primary_job_end_date %>
+                                                    <%= b.primary_job_end_date %>
+                                                  <%else%>
+                                                    null
+                                                  <%end%>
+                                                <% end %>
                                             </p>
 
                                             <p>
@@ -711,91 +745,7 @@
                                       <%# if @banner %>
                                             
                                                                                            
-                                             <p>
-                                              <b>Start Date at College of Medicine:</b><br>
-                                                <% @banner.each do |b| %>
-                                                  <% if b.secondary_begin_date %>
-                                                    <%= b.secondary_begin_date %>
-                                                  <%else%>
-                                                        null
-                                                  <%end%>
-                                               <% end %> 
-                                            </p>
-
-                                            
-                                            <p>
-                                              <b>Tenure Tracking Begin Date:</b><br>
-                                              <% @banner.each do |b| %>
-                                                <% if b.perappt_tenure_trac_begin_date %>
-                                                 <%= b.perappt_tenure_trac_begin_date %>
-                                                <%else%>
-                                                      null
-                                                <%end%>
-                                               <% end %> 
-                                            </p>
-
-                                            <p>
-                                              <b>Tenure on Date:</b><br>
-                                               <% @banner.each do |b| %> 
-                                                 <% if b.perappt_tenure_eff_date %>
-                                                    <%= b.perappt_tenure_eff_date %>
-                                                  <%else%>
-                                                        null
-                                                  <%end%>
-                                                <% end %>
-                                            </p>
-
-                                            <p>
-                                              <b>Tenure Review Date:</b><br>
-                                                <% @banner.each do |b| %> 
-                                                 <% if b.perappt_tenure_rev_date %>
-                                                  <%= b.perappt_tenure_rev_date %>
-                                                 <%else%>
-                                                        null
-                                                  <%end%>
-                                                <%end%>
-                                            </p>
-                                            <p>
-                                              <b>Tenure Code:</b><br>
-                                              <% @banner.each do |b| %> 
-                                                  <% if b.perappt_tenure_code %>
-                                                    <%= b.perappt_tenure_code %>
-                                                  <%else%>
-                                                        null
-                                                  <%end%>
-                                             <%end%> 
-                                            </p>
-                                             <p>
-                                              <b>Decision (tenure):</b><br>
-                                               <% @banner.each do |b| %> 
-                                                <% if b.perappt_decision %>
-                                                  <%= b.perappt_decision %>
-                                                <%else%>
-                                                      null
-                                                <%end%>
-                                              <%end%>
-                                            </p>
-                                            <p>
-                                              <b>Decision (tenure) date:</b><br>
-                                              <% @banner.each do |b| %> 
-                                                 <% if b.perappt_decision_date %>
-                                                  <%= b.perappt_decision_date %>
-                                                <%else%>
-                                                      null
-                                                <%end%>
-                                              <%end%>
-                                            </p>
-                                            <p>
-                                              <b>Decision (tenure) deferred to date:</b><br>
-                                               <% @banner.each do |b| %> 
-                                                   <% if b.perappt_decision_defer_date %>
-                                                   <%= b.perappt_decision_defer_date %>
-                                                   <%else%>
-                                                        null
-                                                  <%end%>
-                                                <%end%>
-                                            </p>
-                                         
+                                          
                                          
                                         <%# end %>
                                     </div>
@@ -898,6 +848,82 @@
                                               <b>University Faculty Overload End Date:</b><br>
                                               ????
                                             </p>
+
+                                             
+                                            
+                                            <p>
+                                              <b>Tenure Tracking Begin Date:</b><br>
+                                              <% @banner.each do |b| %>
+                                                <% if b.perappt_tenure_trac_begin_date %>
+                                                 <%= b.perappt_tenure_trac_begin_date %>
+                                                <%else%>
+                                                      null
+                                                <%end%>
+                                               <% end %> 
+                                            </p>
+
+                                            <p>
+                                              <b>Tenure on Date:</b><br>
+                                               <% @banner.each do |b| %> 
+                                                 <% if b.perappt_tenure_eff_date %>
+                                                    <%= b.perappt_tenure_eff_date %>
+                                                  <%else%>
+                                                        null
+                                                  <%end%>
+                                                <% end %>
+                                            </p>
+
+                                            <p>
+                                              <b>Tenure Review Date:</b><br>
+                                                <% @banner.each do |b| %> 
+                                                 <% if b.perappt_tenure_rev_date %>
+                                                  <%= b.perappt_tenure_rev_date %>
+                                                 <%else%>
+                                                        null
+                                                  <%end%>
+                                                <%end%>
+                                            </p>
+                                            <p>
+                                              <b>Tenure Code:</b><br>
+                                              <% @banner.each do |b| %> 
+                                                  <% if b.perappt_tenure_code %>
+                                                    <%= b.perappt_tenure_code %>
+                                                  <%else%>
+                                                        null
+                                                  <%end%>
+                                             <%end%> 
+                                            </p>
+                                             <p>
+                                              <b>Decision (tenure):</b><br>
+                                               <% @banner.each do |b| %> 
+                                                <% if b.perappt_decision %>
+                                                  <%= b.perappt_decision %>
+                                                <%else%>
+                                                      null
+                                                <%end%>
+                                              <%end%>
+                                            </p>
+                                            <p>
+                                              <b>Decision (tenure) date:</b><br>
+                                              <% @banner.each do |b| %> 
+                                                 <% if b.perappt_decision_date %>
+                                                  <%= b.perappt_decision_date %>
+                                                <%else%>
+                                                      null
+                                                <%end%>
+                                              <%end%>
+                                            </p>
+                                            <p>
+                                              <b>Decision (tenure) deferred to date:</b><br>
+                                               <% @banner.each do |b| %> 
+                                                   <% if b.perappt_decision_defer_date %>
+                                                   <%= b.perappt_decision_defer_date %>
+                                                   <%else%>
+                                                        null
+                                                  <%end%>
+                                                <%end%>
+                                            </p>
+                                         
 
                                             <p>
                                               <b>Third Year Review Date:</b><br>
