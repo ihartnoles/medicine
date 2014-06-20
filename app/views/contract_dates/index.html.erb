@@ -1,0 +1,27 @@
+<h1>Listing contract_dates</h1>
+
+<table>
+  <tr>
+    <th>Affiliate</th>
+    <th>Grad college start date</th>
+    <th>Grad college end date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @contract_dates.each do |contract_date| %>
+  <tr>
+    <td><%= contract_date.affiliate_id %></td>
+    <td><%= contract_date.grad_college_start_date %></td>
+    <td><%= contract_date.grad_college_end_date %></td>
+    <td><%= link_to 'Show', contract_date %></td>
+    <td><%= link_to 'Edit', edit_contract_date_path(contract_date) %></td>
+    <td><%= link_to 'Destroy', contract_date, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Contract date', new_contract_date_path %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  affiliate_id: 
+  grad_college_start_date: 
+  grad_college_end_date: MyString
+
+two:
+  affiliate_id: 
+  grad_college_start_date: 
+  grad_college_end_date: MyString

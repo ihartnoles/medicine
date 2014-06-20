@@ -1,0 +1,31 @@
+
+<%#= link_to 'Back', contract_dates_path %>
+
+<div class="row">
+	<div class="col-md-12">
+		<!-- BASIC -->
+		<div class="box border orange">
+			<div class="box-title">
+				<h4><i class="fa fa-bars"></i>Edit Contract Dates</h4>
+				
+			</div>
+			<div class="box-body">				
+				  <%= render 'form' %>			
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<%= render 'shared/javascript' %>
+
+<script>
+        jQuery(document).ready(function() {     
+            App.setPage("forms");  //Set current page
+            App.init(); //Initialise plugins and elements
+
+            $("#contract_date_grad_college_start_date").datepicker();
+            $("#contract_date_grad_college_end_date").datepicker();
+           
+        });
+</script>

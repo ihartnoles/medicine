@@ -1,5 +1,8 @@
 Medicine::Application.routes.draw do
   
+  resources :contract_dates
+
+
   resources :facultytitles
   resources :clinicalsections
   resources :basicsciencedisciplines

@@ -678,7 +678,23 @@
                                   <div class="box border red">
                                     <div class="box-title">
                                       <h4><i class="fa fa-plus-square"></i>Contract Dates</h4>
-                                     
+                                      
+                                      <% if @contract_dates.blank? %>
+                                       <div class="tools">
+                                          <a href="/contract_dates/new?affiliate_id=<%= params[:id] %>">
+                                              <i class="fa fa-pencil"></i>
+                                          </a>
+                                       </div>
+                                      <% else %>
+                                        <div class="tools">
+                                          <% @contract_dates.each do |cd| %>
+                                            <a href="/contract_dates/<%= cd.id %>/edit?affiliate_id=<%= params[:id] %>">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                          <% end %>
+                                       </div>
+                                      <% end %>
+
                                     </div>
                                     <div class="box-body">                                                               
                                           <p>
@@ -716,11 +732,19 @@
 
                                             <p>
                                               <b>FAU Grad College Membership Start Date:</b><br>
-                                              ????
+                                               <% if !@contract_dates.blank? %>
+                                                 <% @contract_dates.each do |condate| %>
+                                                     <%= condate.grad_college_start_date %>
+                                                 <% end %>
+                                               <% end %>
                                             </p>
                                             <p>
                                               <b>FAU Grad College Membership End Date:</b><br>
-                                              ????
+                                               <% if !@contract_dates.blank? %>
+                                                 <% @contract_dates.each do |condate| %>
+                                                     <%= condate.grad_college_end_date %>
+                                                 <% end %>
+                                               <% end %>
                                             </p>                                           
                                     </div>
                                   </div>
@@ -849,7 +873,7 @@
                                               ????
                                             </p>
 
-                                             
+
                                             
                                             <p>
                                               <b>Tenure Tracking Begin Date:</b><br>

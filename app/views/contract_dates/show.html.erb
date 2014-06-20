@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Affiliate:</b>
+  <%= @contract_date.affiliate_id %>
+</p>
+
+<p>
+  <b>Grad college start date:</b>
+  <%= @contract_date.grad_college_start_date %>
+</p>
+
+<p>
+  <b>Grad college end date:</b>
+  <%= @contract_date.grad_college_end_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_contract_date_path(@contract_date) %> |
+<%= link_to 'Back', contract_dates_path %>

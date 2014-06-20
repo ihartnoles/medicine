@@ -1,0 +1,29 @@
+<%= form_for(@contract_date) do |f| %>
+  <% if @contract_date.errors.any? %>
+    <div class="alert alert-block alert-danger">
+      <h2><%= pluralize(@contract_date.errors.count, "error") %> prohibited this contract_date from being saved:</h2>
+
+      <ul>
+      <% @contract_date.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+
+  <%= hidden_field_tag :affiliate_id, params[:affiliate_id] %>
+
+  
+  <div class="form-group">
+    <%= f.label :grad_college_start_date , "FAU Grad College Membership Start Date:", :class=>'control-label' %><br />
+    <%= f.text_field :grad_college_start_date, :class=>'form-control' , 'data-mask' => "99/99/9999"  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :grad_college_end_date, "FAU Grad College Membership End Date:", :class=>'control-label' %><br />
+    <%= f.text_field :grad_college_end_date, :class=>'form-control' , 'data-mask' => "99/99/9999" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Update contract dates" %>
+  </div>
+<% end %>
