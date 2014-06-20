@@ -5,14 +5,16 @@
 		<!-- BASIC -->
 		<div class="box border orange">
 			<div class="box-title">
-				<h4><i class="fa fa-bars"></i>New contract_date</h4>		
-			</div>		
-			<div class="box-body">	
-				<%= render 'form' %>
+				<h4><i class="fa fa-bars"></i>Edit Appointment Date</h4>
+				
+			</div>
+			<div class="box-body">				
+				  <%= render 'form' %>			
 			</div>
 		</div>
 	</div>
 </div>
+
 
 <%= render 'shared/javascript' %>
 
@@ -21,8 +23,7 @@
         App.setPage("forms");  //Set current page
         App.init(); //Initialise plugins and elements
 
-        $("#contract_date_grad_college_start_date").datepicker();
-        $("#contract_date_grad_college_end_date").datepicker();
+        $("#appointment_date_com_start_date").datepicker();         
        
     });
 </script>

@@ -604,7 +604,23 @@
                                   <div class="box border inverse">
                                     <div class="box-title">
                                       <h4><i class="fa fa-briefcase"></i>Appointment Dates</h4>
-                                     
+                                      
+                                       <% if @appointment_dates.blank? %>
+                                       <div class="tools">
+                                          <a href="/appointment_dates/new?affiliate_id=<%= params[:id] %>">
+                                              <i class="fa fa-pencil"></i>
+                                          </a>
+                                       </div>
+                                      <% else %>
+                                        <div class="tools">
+                                          <% @appointment_dates.each do |cd| %>
+                                            <a href="/appointment_dates/<%= cd.id %>/edit?affiliate_id=<%= params[:id] %>">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                          <% end %>
+                                       </div>
+                                      <% end %>
+
                                     </div>
                                     <div class="box-body">
                                             <p>
@@ -622,7 +638,11 @@
 
                                               <p>
                                               <b>Start Date at College of Medicine:</b><br>
-                                                ???
+                                                 <% if !@appointment_dates.blank? %>
+                                                   <% @appointment_dates.each do |ad| %>
+                                                       <%= ad.com_start_date %>
+                                                   <% end %>
+                                                 <% end %>
                                             </p>
 
 
@@ -761,17 +781,11 @@
                                   <!-- BOX -->
                                   <div class="box border primary">
                                     <div class="box-title">
-                                      <h4><i class="fa fa-plus-square"></i>College of Medicine Dates</h4>
+                                      <h4><i class="fa fa-plus-square"></i>College of Medicine Dates/Appointments</h4>
                                      
                                     </div>
                                     <div class="box-body">
 
-                                      <%# if @banner %>
-                                            
-                                                                                           
-                                          
-                                         
-                                        <%# end %>
                                     </div>
                                   </div>
                                   <!-- /BOX -->    

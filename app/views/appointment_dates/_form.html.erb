@@ -1,0 +1,24 @@
+<%= form_for(@appointment_date) do |f| %>
+  <% if @appointment_date.errors.any? %>
+    <div class="alert alert-block alert-danger">
+      <h2><%= pluralize(@appointment_date.errors.count, "error") %> prohibited this appointment_date from being saved:</h2>
+
+      <ul>
+      <% @appointment_date.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%= hidden_field_tag :affiliate_id, params[:affiliate_id] %>
+
+
+  <div class="form-group">
+    <%= f.label :com_start_date, "Start Date at College of Medicine" , :class=>'control-label' %><br />
+    <%= f.text_field :com_start_date , :class=>'form-control' , 'data-mask' => "99/99/9999"%>
+  </div>
+  <div class="actions">
+    <%= f.submit  "Update start date" %>
+  </div>
+<% end %>

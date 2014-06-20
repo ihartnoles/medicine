@@ -1,0 +1,25 @@
+<h1>Listing appointment_dates</h1>
+
+<table>
+  <tr>
+    <th>Affiliate</th>
+    <th>Com start date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @appointment_dates.each do |appointment_date| %>
+  <tr>
+    <td><%= appointment_date.affiliate_id %></td>
+    <td><%= appointment_date.com_start_date %></td>
+    <td><%= link_to 'Show', appointment_date %></td>
+    <td><%= link_to 'Edit', edit_appointment_date_path(appointment_date) %></td>
+    <td><%= link_to 'Destroy', appointment_date, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Appointment date', new_appointment_date_path %>

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Affiliate:</b>
+  <%= @appointment_date.affiliate_id %>
+</p>
+
+<p>
+  <b>Com start date:</b>
+  <%= @appointment_date.com_start_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_appointment_date_path(@appointment_date) %> |
+<%= link_to 'Back', appointment_dates_path %>

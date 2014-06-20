@@ -1,5 +1,8 @@
 Medicine::Application.routes.draw do
   
+  resources :appointment_dates
+
+
   resources :contract_dates
 
 
