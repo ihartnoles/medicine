@@ -56,10 +56,20 @@ class DegreesController < ApplicationController
     @affiliate = Affiliate.find(params[:degree][:affiliate_id])
     @affiliate_id = params[:degree][:affiliate_id]
 
+    @isfacultyflag = Affiliate.find(params[:degree][:affiliate_id]).isfaculty
+
+    if @isfacultyflag
+      @pidm = Affiliate.find(params[:degree][:affiliate_id]).pidm
+    end
+
     respond_to do |format|
       if @degree.save
         #format.html { redirect_to @affiliate, notice: 'Degree was successfully created.' }
-        format.html { redirect_to affiliate_url(:id => params[:degree][:affiliate_id]) + "#training", notice: 'Disciplinary Action Added!' }
+        if @isfacultyflag
+          format.html { redirect_to affiliate_url(:id => params[:degree][:affiliate_id], :pidm => @pidm) + "#training", notice: 'Disciplinary Action Added!' }
+        else
+          format.html { redirect_to affiliate_url(:id => params[:degree][:affiliate_id]) + "#training", notice: 'Disciplinary Action Added!' }
+        end
       else
         format.html { render action: "new" }
       end
@@ -73,9 +83,19 @@ class DegreesController < ApplicationController
     @affiliate = Affiliate.find(params[:degree][:affiliate_id])
     @affiliate_id = params[:degree][:affiliate_id]
 
+    @isfacultyflag = Affiliate.find(params[:degree][:affiliate_id]).isfaculty
+
+    if @isfacultyflag
+      @pidm = Affiliate.find(params[:degree][:affiliate_id]).pidm
+    end
+
     respond_to do |format|
       if @degree.update_attributes(params[:degree])
-        format.html { redirect_to affiliate_url(:id => @affiliate_id) + "#training", notice: 'Degree was successfully updated.', notice: 'Degree was successfully updated.' }
+        if @isfacultyflag
+          format.html { redirect_to affiliate_url(:id => @affiliate_id, :pidm => @pidm) + "#training", notice: 'Degree was successfully updated.' }
+        else
+          format.html { redirect_to affiliate_url(:id => @affiliate_id) + "#training", notice: 'Degree was successfully updated.' }
+        end
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -90,8 +110,19 @@ class DegreesController < ApplicationController
     @degree = Degree.find(params[:id])
     @degree.destroy
 
+    @isfacultyflag = Affiliate.find(params[:affiliate_id]).isfaculty
+
+    if @isfacultyflag
+      @pidm = Affiliate.find(params[:affiliate_id]).pidm
+    end
+
+
     respond_to do |format|
-      format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training", notice: 'Degree Removed!'  }
+        if @isfacultyflag
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id], :pidm => @pidm) + "#training", notice: 'Degree was successfully updated.'}
+        else
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training", notice: 'Degree was successfully updated.'}
+        end
       format.json { head :no_content }
     end
   end

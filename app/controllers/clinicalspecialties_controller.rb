@@ -56,11 +56,20 @@ class ClinicalspecialtiesController < ApplicationController
     @clinicalspecialty.speciality_id = params[:clinicalspecialty][:speciality_id]
     @clinicalspecialty.year = params[:clinicalspecialty][:year]
     @clinicalspecialty.basicsciencediscipline_id = params[:clinicalspecialty][:basicsciencediscipline_id]
+    @isfacultyflag = Affiliate.find(params[:affiliate_id]).isfaculty
+
+    if @isfacultyflag
+      @pidm = Affiliate.find(params[:affiliate_id]).pidm
+    end
 
     respond_to do |format|
       if @clinicalspecialty.save
-        format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training", notice: 'clinical Specialty Added!'}
-        format.json { render json: @clinicalspecialty, status: :created, location: @clinicalspecialty }
+        if @isfacultyflag
+          format.html { redirect_to affiliate_url(:id => @clinicalspecialty.affiliate_id, :pidm => @pidm) + "#training", notice: 'clinical Specialty Added!' }
+        else
+          format.html { redirect_to affiliate_url(:id => @clinicalspecialty.affiliate_id) + "#training", notice: 'clinical Specialty Added!' }
+        end
+        #format.json { render json: @clinicalspecialty, status: :created, location: @clinicalspecialty }
       else
         format.html { render action: "new" }
         format.json { render json: @clinicalspecialty.errors, status: :unprocessable_entity }
@@ -76,14 +85,24 @@ class ClinicalspecialtiesController < ApplicationController
     @clinicalspecialty.speciality_id = params[:clinicalspecialty][:speciality_id]
     @clinicalspecialty.year = params[:clinicalspecialty][:year]
     @clinicalspecialty.basicsciencediscipline_id = params[:clinicalspecialty][:basicsciencediscipline_id]
+    @isfacultyflag = Affiliate.find(params[:affiliate_id]).isfaculty
+
+    if @isfacultyflag
+      @pidm = Affiliate.find(params[:affiliate_id]).pidm
+    end
 
     respond_to do |format|
       if @clinicalspecialty.update_attributes(params[:clinicalspecialty])
-        format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training", notice: 'clinical Specialty Updated!' }
-        format.json { head :no_content }
+        if @isfacultyflag
+          format.html { redirect_to affiliate_url(:id => @clinicalspecialty.affiliate_id, :pidm => @pidm) + "#training", notice: 'clinical Specialty Updated!' }
+        else
+          format.html { redirect_to affiliate_url(:id => @clinicalspecialty.affiliate_id) + "#training", notice: 'clinical Specialty Updated!' }
+        end
+        
+        #format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @clinicalspecialty.errors, status: :unprocessable_entity }
+        #format.json { render json: @clinicalspecialty.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -94,8 +113,19 @@ class ClinicalspecialtiesController < ApplicationController
     @clinicalspecialty = Clinicalspecialty.find(params[:id])
     @clinicalspecialty.destroy
 
+    @isfacultyflag = Affiliate.find(params[:affiliate_id]).isfaculty
+
+    if @isfacultyflag
+      @pidm = Affiliate.find(params[:affiliate_id]).pidm
+    end
+
     respond_to do |format|
-      format.html { redirect_to affiliate_url(:id => params[:id]) + "#training", notice: 'clinical Specialty Removed!' }
+      if @isfacultyflag
+        format.html { redirect_to affiliate_url(:id => params[:affiliate_id], :pidm => @pidm) + "#training", notice: 'clinical Specialty Removed!' }
+      else
+        format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training", notice: 'clinical Specialty Removed!' }
+      end
+      
       format.json { head :no_content }
     end
   end

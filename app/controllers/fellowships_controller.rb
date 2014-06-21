@@ -28,7 +28,7 @@ class FellowshipsController < ApplicationController
     @title      = 'New Fellowship'
     @description = 'Add fellowship information'
 
-    @specialties  = Certifiedspeciality.all
+    @specialties  = Clinicalspecialty.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -53,9 +53,20 @@ class FellowshipsController < ApplicationController
 
     @affiliate = Affiliate.find(params[:affiliate_id])
 
+    @isfacultyflag = Affiliate.find(params[:affiliate_id]).isfaculty
+
+    if @isfacultyflag
+      @pidm = Affiliate.find(params[:affiliate_id]).pidm
+    end
+
     respond_to do |format|
       if @fellowship.save
-        format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training", notice: 'Fellowship was successfully created.' }
+        if @isfacultyflag
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id], :pidm => @pidm) + "#training", notice: 'Fellowship was successfully created!' }
+        else
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id])+ "#training", notice: 'Fellowship was successfully created!' }
+        end
+        # format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training", notice: 'Fellowship was successfully created.' }
         #format.json { render json: @fellowship, status: :created, location: @fellowship }
       else
         format.html { render action: "new" }
@@ -68,11 +79,21 @@ class FellowshipsController < ApplicationController
   # PUT /fellowships/1.json
   def update
     @fellowship = Fellowship.find(params[:id])
+    @isfacultyflag = Affiliate.find(params[:affiliate_id]).isfaculty
+
+    if @isfacultyflag
+      @pidm = Affiliate.find(params[:affiliate_id]).pidm
+    end
 
     respond_to do |format|
       if @fellowship.update_attributes(params[:fellowship])
-        format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training", notice: 'Fellowship was successfully updated.' }
-        format.json { head :no_content }
+        if @isfacultyflag
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id], :pidm => @pidm) + "#training", notice: 'Fellowship was successfully updated!' }
+        else
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id])+ "#training", notice: 'Fellowship was successfully updated!' }
+        end
+        # format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training", notice: 'Fellowship was successfully updated.' }
+        # format.json { head :no_content }
       else
         format.html { render action: "edit" }
         format.json { render json: @fellowship.errors, status: :unprocessable_entity }
@@ -86,9 +107,20 @@ class FellowshipsController < ApplicationController
     @fellowship = Fellowship.find(params[:id])
     @fellowship.destroy
 
+    @isfacultyflag = Affiliate.find(params[:affiliate_id]).isfaculty
+
+    if @isfacultyflag
+      @pidm = Affiliate.find(params[:affiliate_id]).pidm
+    end
+
     respond_to do |format|
-      format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training", notice: 'Fellowship Removed!' }
-      format.json { head :no_content }
+      if @isfacultyflag
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id], :pidm => @pidm) + "#training", notice: 'Fellowship Removed!' }
+        else
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id])+ "#training", notice: 'Fellowship Removed!' }
+        end
+      # format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training", notice: 'Fellowship Removed!' }
+      # format.json { head :no_content }
     end
   end
 end

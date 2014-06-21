@@ -48,12 +48,20 @@ class ResidenciesController < ApplicationController
   def create
     @residency = Residency.new(params[:residency])
     @residency.affiliate_id = params[:affiliate_id]
+    @isfacultyflag = Affiliate.find(params[:affiliate_id]).isfaculty
 
-    #@affiliate = Affiliate.find(params[:affiliate_id])
+    if @isfacultyflag
+      @pidm = Affiliate.find(params[:affiliate_id]).pidm
+    end
 
     respond_to do |format|
       if @residency.save
-       format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training", notice: 'Residency was successfully created.' }
+        if @isfacultyflag
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id], :pidm => @pidm) + "#training", notice: 'Residency was successfully created.' }
+        else
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training", notice: 'Residency was successfully created.' }
+        end
+        #format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training", notice: 'Residency was successfully created.' }
         #format.json { render json: @residency, status: :created, location: @residency }
       else
         format.html { render action: "new" }
@@ -67,10 +75,21 @@ class ResidenciesController < ApplicationController
   def update
     @residency = Residency.find(params[:id])
 
+    @isfacultyflag = Affiliate.find(params[:affiliate_id]).isfaculty
+
+    if @isfacultyflag
+      @pidm = Affiliate.find(params[:affiliate_id]).pidm
+    end
+
     respond_to do |format|
       if @residency.update_attributes(params[:residency])
-        format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training", notice: 'Residency was successfully updated.' }
-        format.json { head :no_content }
+        if @isfacultyflag
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id], :pidm => @pidm) + "#training", notice: 'Residency was successfully updated.' }
+        else
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training", notice: 'Residency was successfully updated.' }
+        end
+        #format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training", notice: 'Residency was successfully updated.' }
+        #format.json { head :no_content }
       else
         format.html { render action: "edit" }
         format.json { render json: @residency.errors, status: :unprocessable_entity }
@@ -84,9 +103,21 @@ class ResidenciesController < ApplicationController
     @residency = Residency.find(params[:id])
     @residency.destroy
 
+    @isfacultyflag = Affiliate.find(params[:affiliate_id]).isfaculty
+
+    if @isfacultyflag
+      @pidm = Affiliate.find(params[:affiliate_id]).pidm
+    end
+
     respond_to do |format|
-      format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training", notice: 'Residency Removed!' }
-      format.json { head :no_content }
+      if @isfacultyflag
+        format.html { redirect_to affiliate_url(:id => params[:affiliate_id], :pidm => @pidm) + "#training", notice: 'Residency Removed!' }
+      else
+        format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training", notice: 'Residency Removed!' }
+      end
+
+      # format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training", notice: 'Residency Removed!' }
+      # format.json { head :no_content }
     end
   end
 end

@@ -157,6 +157,7 @@ class AffiliatesController < ApplicationController
       @title      = 'Edit Faculty'
       @description = 'Edit faculty'
       @type        = 'Faculty'
+      @pidm = Affiliate.find(params[:id]).pidm
     else 
       @title      = 'Edit Affiliate Candidate'
       @description = 'Edit Affiliate Candidate'
@@ -165,7 +166,11 @@ class AffiliatesController < ApplicationController
 
     respond_to do |format|
       if @affiliate.update_attributes(params[:affiliate])
-        format.html { redirect_to @affiliate, notice: @type + ' information successfully updated.' }
+        if @isfacultyflag
+          format.html { redirect_to affiliate_url(:id => params[:id], :pidm => @pidm) , notice: 'clinical Specialty Updated!' }
+        else
+          format.html { redirect_to @affiliate, notice: @type + ' information successfully updated.' }
+        end
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -183,10 +188,11 @@ class AffiliatesController < ApplicationController
 
      if @isfacultyflag
       @type        = 'Faculty'
+      @pidm = Affiliate.find(params[:id]).pidm
 
       respond_to do |format|
         #format.html { redirect_to affiliates_url }
-        format.html { redirect_to affiliates_path, notice: @type + ' information successfully deleted.' }
+        #format.html { redirect_to affiliates_path, notice: @type + ' information successfully deleted.' }
         format.json { head :no_content }
       end
 
@@ -260,6 +266,13 @@ class AffiliatesController < ApplicationController
     affiliate.license = params[:license]
     affiliate.save
 
+    isfacultyflag = Affiliate.find(params[:affiliate_id]).isfaculty
+
+    if isfacultyflag
+      @pidm = Affiliate.find(params[:affiliate_id]).pidm
+    end
+
+
     #upload the CV (TO DO)
 
 
@@ -278,7 +291,11 @@ class AffiliatesController < ApplicationController
     affiliateResearchArea.save
    
     respond_to do |format|
-      format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training" , notice: 'Training Updated!'}
+      if isfacultyflag
+        format.html { redirect_to affiliate_url(:id => params[:affiliate_id], :pidm => @pidm) + "#training", notice: 'Training Updated!' }
+      else
+        format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#training" , notice: 'Training Updated!'}
+      end
       #format.json { head :ok }
     end
    

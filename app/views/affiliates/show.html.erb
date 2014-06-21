@@ -626,14 +626,20 @@
                                             <p>
                                               <b>Start Date at FAU:</b><br>
                                               
+                                               <% if !@banner.blank? %>
                                                 <% @banner.each do |b| %>
+                                                  <%= b.primary_job_start_date %>
+
                                                   <% if b.primary_job_start_date %>
                                                     <%= b.primary_job_start_date %>
                                                   <% else %>
                                                     null
                                                   <% end %>
+
                                                 <% end %>
-                                              
+                                               <% else %>
+                                                99 Problems
+                                              <% end %>
                                             </p>
 
                                               <p>

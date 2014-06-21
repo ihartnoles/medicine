@@ -62,7 +62,7 @@ class AppointmentDatesController < ApplicationController
   # PUT /appointment_dates/1.json
   def update
     @appointment_date = AppointmentDate.find(params[:id])
-
+    
     respond_to do |format|
       if @appointment_date.update_attributes(params[:appointment_date])
         format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#appointments", notice: 'Appointment Date Updated!'}
