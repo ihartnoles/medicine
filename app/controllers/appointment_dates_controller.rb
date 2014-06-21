@@ -47,10 +47,22 @@ class AppointmentDatesController < ApplicationController
     @appointment_date = AppointmentDate.new(params[:appointment_date])
     @appointment_date.affiliate_id = params[:affiliate_id]
 
+   
+    @isfacultyflag = Affiliate.find(params[:affiliate_id]).isfaculty
+
+    if @isfacultyflag
+      @pidm = Affiliate.find(params[:affiliate_id]).pidm
+    end
+
     respond_to do |format|
       if @appointment_date.save
-        format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#appointments", notice: 'Appointment Date Added!'}
-        format.json { render json: @appointment_date, status: :created, location: @appointment_date }
+        if @isfacultyflag
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id], :pidm => @pidm) + "#appointments", notice: 'Appointment was successfully updated!' }
+        else
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id])+ "#appointments", notice: 'Appointment was successfully updated!' }
+        end
+        # format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#appointments", notice: 'Appointment Date Added!'}
+        # format.json { render json: @appointment_date, status: :created, location: @appointment_date }
       else
         format.html { render action: "new" }
         format.json { render json: @appointment_date.errors, status: :unprocessable_entity }
@@ -62,11 +74,22 @@ class AppointmentDatesController < ApplicationController
   # PUT /appointment_dates/1.json
   def update
     @appointment_date = AppointmentDate.find(params[:id])
+
+    @isfacultyflag = Affiliate.find(params[:affiliate_id]).isfaculty
+
+    if @isfacultyflag
+      @pidm = Affiliate.find(params[:affiliate_id]).pidm
+    end
     
     respond_to do |format|
       if @appointment_date.update_attributes(params[:appointment_date])
-        format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#appointments", notice: 'Appointment Date Updated!'}
-        format.json { head :no_content }
+        if @isfacultyflag
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id], :pidm => @pidm) + "#appointments", notice: 'Appointment was successfully updated!' }
+        else
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id])+ "#appointments", notice: 'Appointment was successfully updated!' }
+        end
+        # format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#appointments", notice: 'Appointment Date Updated!'}
+        # format.json { head :no_content }
       else
         format.html { render action: "edit" }
         format.json { render json: @appointment_date.errors, status: :unprocessable_entity }
@@ -79,10 +102,21 @@ class AppointmentDatesController < ApplicationController
   def destroy
     @appointment_date = AppointmentDate.find(params[:id])
     @appointment_date.destroy
+    
+    @isfacultyflag = Affiliate.find(params[:affiliate_id]).isfaculty
+
+    if @isfacultyflag
+      @pidm = Affiliate.find(params[:affiliate_id]).pidm
+    end
 
     respond_to do |format|
-      format.html { redirect_to appointment_dates_url }
-      format.json { head :no_content }
+      if @isfacultyflag
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id], :pidm => @pidm) + "#appointments", notice: 'Appointment was successfully updated!' }
+        else
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id])+ "#appointments", notice: 'Appointment was successfully updated!' }
+        end
+      # format.html { redirect_to appointment_dates_url }
+      # format.json { head :no_content }
     end
   end
 end

@@ -47,11 +47,21 @@ class CapDatesController < ApplicationController
     @cap_date = CapDate.new(params[:cap_date])
     @cap_date.affiliate_id = params[:affiliate_id]
 
+    @isfacultyflag = Affiliate.find(params[:affiliate_id]).isfaculty
+
+    if @isfacultyflag
+      @pidm = Affiliate.find(params[:affiliate_id]).pidm
+    end
+
     respond_to do |format|
       if @cap_date.save
-        #format.html { redirect_to @cap_date, notice: 'Cap date was successfully created.' }
-        format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#appointments", notice: 'CAP Date Added!'}
-        format.json { render json: @cap_date, status: :created, location: @cap_date }
+        if @isfacultyflag
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id], :pidm => @pidm) + "#appointments", notice: 'CAP Date Added!' }
+        else
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id])+ "#appointments", notice: 'CAP Date Added!' }
+        end
+        # format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#appointments", notice: 'CAP Date Added!'}
+        # format.json { render json: @cap_date, status: :created, location: @cap_date }
       else
         format.html { render action: "new" }
         format.json { render json: @cap_date.errors, status: :unprocessable_entity }
@@ -64,10 +74,21 @@ class CapDatesController < ApplicationController
   def update
     @cap_date = CapDate.find(params[:id])
 
+    @isfacultyflag = Affiliate.find(params[:affiliate_id]).isfaculty
+
+    if @isfacultyflag
+      @pidm = Affiliate.find(params[:affiliate_id]).pidm
+    end
+
     respond_to do |format|
       if @cap_date.update_attributes(params[:cap_date])
-        format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#appointments", notice: 'CAP Date Updated!'}
-        format.json { head :no_content }
+         if @isfacultyflag
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id], :pidm => @pidm) + "#appointments", notice: 'CAP Date Updated!' }
+        else
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id])+ "#appointments", notice: 'CAP Date Updated!' }
+        end
+        # format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#appointments", notice: 'CAP Date Updated!'}
+        # format.json { head :no_content }
       else
         format.html { render action: "edit" }
         format.json { render json: @cap_date.errors, status: :unprocessable_entity }
@@ -81,9 +102,20 @@ class CapDatesController < ApplicationController
     @cap_date = CapDate.find(params[:id])
     @cap_date.destroy
 
+    @isfacultyflag = Affiliate.find(params[:affiliate_id]).isfaculty
+
+    if @isfacultyflag
+      @pidm = Affiliate.find(params[:affiliate_id]).pidm
+    end
+
     respond_to do |format|
-      format.html { redirect_to cap_dates_url }
-      format.json { head :no_content }
+       if @isfacultyflag
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id], :pidm => @pidm) + "#appointments", notice: 'CAP Date Removed!' }
+        else
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id])+ "#appointments", notice: 'CAP Date Removed!' }
+        end
+      # format.html { redirect_to cap_dates_url }
+      # format.json { head :no_content }
     end
   end
 end
