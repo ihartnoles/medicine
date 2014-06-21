@@ -43,7 +43,7 @@ class AnnualevaluationsController < ApplicationController
     @description = 'Update the annual evaluation'
     @annualevaluation = Annualevaluation.find(params[:id])
 
-    !@annualevaluation.blank? ?  @evaluator_id = User.find(params[:affiliate_id]).id : @evaluator_id = 0
+    !@annualevaluation.blank? ?  @evaluator_id = Annualevaluation.find(params[:id]).evaluator_id : @evaluator_id = 0
     !@annualevaluation.blank? ?  @status_id    = Evaluationstatus.find(@annualevaluation.status_id).id : @status_id = 0
   end
 
@@ -53,10 +53,21 @@ class AnnualevaluationsController < ApplicationController
     @annualevaluation = Annualevaluation.new(params[:annualevaluation])
     @annualevaluation.affiliate_id = params[:affiliate_id]
 
+    @isfacultyflag = Affiliate.find(params[:affiliate_id]).isfaculty
+
+    if @isfacultyflag
+      @pidm = Affiliate.find(params[:affiliate_id]).pidm
+    end
+
     respond_to do |format|
       if @annualevaluation.save
-         format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#assignments", notice: 'Annual Evaluation Added!'}
-        #format.json { render json: @annualevaluation, status: :created, location: @annualevaluation }
+        if @isfacultyflag
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id], :pidm => @pidm) + "#assignments", notice: 'Annual Evaluation Added!' }
+        else
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id])+ "#assignments", notice: 'Annual Evaluation Added!' }
+        end
+        #  format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#assignments", notice: 'Annual Evaluation Added!'}
+        # #format.json { render json: @annualevaluation, status: :created, location: @annualevaluation }
       else
         format.html { render action: "new" }
         #format.json { render json: @annualevaluation.errors, status: :unprocessable_entity }
@@ -69,10 +80,22 @@ class AnnualevaluationsController < ApplicationController
   def update
     @annualevaluation = Annualevaluation.find(params[:id])
 
+    @isfacultyflag = Affiliate.find(params[:affiliate_id]).isfaculty
+
+    if @isfacultyflag
+      @pidm = Affiliate.find(params[:affiliate_id]).pidm
+    end
+
     respond_to do |format|
       if @annualevaluation.update_attributes(params[:annualevaluation])
-        format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#assignments", notice: 'Annual Evaluation Updated!' }
-        format.json { head :no_content }
+        if @isfacultyflag
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id], :pidm => @pidm) + "#assignments", notice: 'Annual Evaluation Updated!' }
+        else
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id])+ "#assignments", notice: 'Annual Evaluation Updated!' }
+        end
+
+        # format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#assignments", notice: 'Annual Evaluation Updated!' }
+        # format.json { head :no_content }
       else
         format.html { render action: "edit" }
         format.json { render json: @annualevaluation.errors, status: :unprocessable_entity }
@@ -86,9 +109,21 @@ class AnnualevaluationsController < ApplicationController
     @annualevaluation = Annualevaluation.find(params[:id])
     @annualevaluation.destroy
 
+    @isfacultyflag = Affiliate.find(params[:affiliate_id]).isfaculty
+
+    if @isfacultyflag
+      @pidm = Affiliate.find(params[:affiliate_id]).pidm
+    end
+
     respond_to do |format|
-      format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#assignments", notice: 'Annual Evaluation Removed!' }
-      format.json { head :no_content }
+      if @isfacultyflag
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id], :pidm => @pidm) + "#assignments", notice: 'Annual Evaluation Removed!' }
+        else
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id])+ "#assignments", notice: 'Annual Evaluation Removed!' }
+        end
+
+      # format.html { redirect_to affiliate_url(:id => params[:affiliate_id]) + "#assignments", notice: 'Annual Evaluation Removed!' }
+      # format.json { head :no_content }
     end
   end
 end
