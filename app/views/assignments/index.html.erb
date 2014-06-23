@@ -1,0 +1,31 @@
+<h1>Listing assignments</h1>
+
+<table>
+  <tr>
+    <th>Affiliate</th>
+    <th>Clinicaldivision</th>
+    <th>Clinicalsection</th>
+    <th>Basicsciencediscipline</th>
+    <th>Vetter</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @assignments.each do |assignment| %>
+  <tr>
+    <td><%= assignment.affiliate_id %></td>
+    <td><%= assignment.clinicaldivision_id %></td>
+    <td><%= assignment.clinicalsection_id %></td>
+    <td><%= assignment.basicsciencediscipline_id %></td>
+    <td><%= assignment.vetter %></td>
+    <td><%= link_to 'Show', assignment %></td>
+    <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
+    <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Assignment', new_assignment_path %>

@@ -82,6 +82,9 @@ class AffiliatesController < ApplicationController
     #Appointment Dates
     @appointment_dates  = AppointmentDate.where(:affiliate_id => params[:id])
 
+    #Assignments
+    @assignments = Assignment.where(:affiliate_id => params[:id])
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @affiliate }

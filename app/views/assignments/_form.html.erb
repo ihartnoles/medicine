@@ -1,0 +1,39 @@
+<%= form_for(@assignment) do |f| %>
+  <% if @assignment.errors.any? %>
+    <div class="alert alert-block alert-danger">
+      <h2><%= pluralize(@assignment.errors.count, "error") %> prohibited this assignment from being saved:</h2>
+
+      <ul>
+      <% @assignment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :affiliate_id , :value => @affiliate_id %>
+
+ 
+  <div class="form-group">
+    <%= f.label :clinicaldivision_id, "Clinical Division" %><br />
+    <%#= f.number_field :clinicaldivision_id ,:class => 'form-control'%>
+     <%= collection_select(:assignment, :clinicaldivision_id, Clinicaldivision.all, :id, :divisionname, {:include_blank => '-- Choose Division --'  }  , :class=>'form-control') %>
+  </div>
+  <div class="form-group">
+    <%= f.label :clinicalsection_id, "Clinical Specialty" %><br />
+    <%#= f.number_field :clinicalsection_id ,:class => 'form-control'%>
+     <%= collection_select(:assignment, :clinicalsection_id, Clinicalsection.all, :id, :sectionname, {:include_blank => '-- Choose Specialty --'  }  , :class=>'form-control') %>
+  </div>
+  <div class="form-group">
+    <%= f.label :basicsciencediscipline_id, "Basic Science Discipline" %><br />
+    <%#= f.number_field :basicsciencediscipline_id ,:class => 'form-control'%>
+    <%= collection_select(:assignment, :basicsciencediscipline_id, Basicsciencediscipline.all, :id, :disciplinename, {:include_blank => '-- Choose Discipline --' }  , :class=>'form-control') %>
+  </div>
+  <div class="form-group">
+    <%= f.label :vetter %><br />
+    <%= f.text_field :vetter ,:class => 'form-control' %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

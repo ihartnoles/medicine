@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Affiliate:</b>
+  <%= @assignment.affiliate_id %>
+</p>
+
+<p>
+  <b>Clinicaldivision:</b>
+  <%= @assignment.clinicaldivision_id %>
+</p>
+
+<p>
+  <b>Clinicalsection:</b>
+  <%= @assignment.clinicalsection_id %>
+</p>
+
+<p>
+  <b>Basicsciencediscipline:</b>
+  <%= @assignment.basicsciencediscipline_id %>
+</p>
+
+<p>
+  <b>Vetter:</b>
+  <%= @assignment.vetter %>
+</p>
+
+
+<%= link_to 'Edit', edit_assignment_path(@assignment) %> |
+<%= link_to 'Back', assignments_path %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  affiliate_id: 1
+  clinicaldivision_id: 1
+  clinicalsection_id: 1
+  basicsciencediscipline_id: 1
+  vetter: MyString
+
+two:
+  affiliate_id: 1
+  clinicaldivision_id: 1
+  clinicalsection_id: 1
+  basicsciencediscipline_id: 1
+  vetter: MyString

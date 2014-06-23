@@ -996,7 +996,13 @@
                                   <div class="box border green">
                                     <div class="box-title">
                                       <h4><i class="fa fa-user-md"></i>Assignments</h4>
-                                     
+                                      
+                                      <div class="tools">
+                                          <a href="/assignments/new?affiliate_id=<%= params[:id] %>">
+                                             <i class="fa fa-pencil"></i>
+                                          </a>
+                                       </div>
+
                                     </div>
                                     <div class="box-body">
                                       <table class="table table-hover">
@@ -1010,28 +1016,37 @@
                                               <th>Basic Science Discipline</th>   
                                             <% end %>
                                             <th>Vetter</th>  
+                                            <th>Actions</th>
                                           </tr>
                                         </thead>
                                         <tbody>
-                                          <tr>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <!-- only display for faculty -->
-                                            <% if @isfacultyflag  == 1%> 
-                                              <td>Otto</td>
-                                            <% end %>
-                                            <td>John Doe</td>
-                                          </tr>
-                                          <tr>
-                                            
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <!-- only display for faculty -->
-                                            <% if @isfacultyflag  == 1 %> 
-                                              <td>Otto</td>
-                                            <% end %>
-                                            <td>Jane Doe</td>
-                                          </tr>                                          
+                                           <% if !@assignments.blank? %>
+                                             <% @assignments.each do |assignment| %>
+                                              <tr>
+                                                <td><%= assignment.getDivisionName(assignment.clinicaldivision_id) %></td>
+                                                <td><%= assignment.getSpecialtyName(assignment.clinicalsection_id) %></td>
+                                                <!-- only display for faculty -->
+                                                <% if @isfacultyflag  == 1%> 
+                                                  <td><%= assignment.getDisciplineName(assignment.basicsciencediscipline_id) %></td>
+                                                <% end %>
+                                                <td><%= assignment.vetter %></td>
+                                                <td><%= link_to 'Update', edit_assignment_path(assignment, :affiliate_id => params[:id]) %> | 
+                                                  <%#= link_to 'Remove', assignment, method: :delete, data: { confirm: 'Are you sure?' } %>
+                                                  <%= link_to 'Remove', assignment_path(assignment , :affiliate_id => params[:id]), method: :delete, data: { confirm: 'Are you sure?' } %>
+                                                </td>
+                                              </tr>
+                                            <% end %>    
+                                          <% else %>
+                                              <tr>
+                                                <td colspan="5">
+                                                    <div class="alert alert-block alert-info fade in">
+                                                    <a aria-hidden="true" href="#" data-dismiss="alert" class="close">×</a>
+                                                      <p></p><h4><i class="fa fa-check-square-o"></i> No Assignments on Record!</h4> Please add assignments by clicking on the pencil icon in the upper right corner.<p></p><br>
+                                                  </div>
+                                                </td>
+                                              </tr>
+
+                                          <% end %>                                   
                                         </tbody>
                                         </table>
                                     </div>

@@ -1,16 +1,10 @@
-class Clinicalspecialty < ActiveRecord::Base
-  attr_accessible :affiliate_id, :speciality_id, :year, :basicsciencediscipline_id
+class Assignment < ActiveRecord::Base
+  attr_accessible :affiliate_id, :basicsciencediscipline_id, :clinicaldivision_id, :clinicalsection_id, :vetter
 
-  belongs_to	:clinicalsection
-  belongs_to  :affiliate
-  
-  has_many :basicsciencedisciplines
-
-  validates :affiliate_id, length: {minimum: 1},:presence => true
-  validates :speciality_id,:presence => true
-  validates :basicsciencediscipline_id,:presence => true
-  validates :year, length: {is: 4},:presence => true
-
+   # def getDivision(researcharea_id)
+   # 	 researchAreaName = Researcharea.find(researcharea_id).name
+  	#  return researchAreaName
+   # end 
 
   def getDivisionName(clinicaldivision_id)
     divisionname = Clinicaldivision.find(clinicaldivision_id).divisionname
