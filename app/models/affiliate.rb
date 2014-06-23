@@ -20,7 +20,7 @@ class Affiliate < ActiveRecord::Base
   
 
   def getSpecialty(affiliateid)
-    specialtyname = Clinicalsection.find(Certifiedspeciality.where(:affiliate_id => affiliateid).first.speciality_id).sectionname
+    specialtyname = Clinicalsection.find(Clinicalspecialty.where(:affiliate_id => affiliateid).first.speciality_id).sectionname
     return specialtyname 
   end
 
