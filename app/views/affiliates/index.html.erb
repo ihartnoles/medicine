@@ -98,7 +98,11 @@
                                     <a href="/affiliates/<%= affiliate.id %>/<%= affiliate.pidm %>">View</a>
                                       |
                                       <%= link_to 'Edit', edit_affiliate_path(affiliate) %>      
-                                                         
+                                      | 
+                                     <a href="/removematch/<%= affiliate.id %>" onclick="return confirm('Are you sure you want to remove the Banner match?')">Remove Banner Match</a>       
+
+
+
                                   </td>
                               </tr>
                              

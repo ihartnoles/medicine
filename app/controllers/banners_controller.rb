@@ -55,6 +55,16 @@ class BannersController < ApplicationController
     redirect_to affiliates_path
   end
 
+  def removematch
+    affiliate = Affiliate.find(params[:id])
+    affiliate.isfaculty = 0
+
+    affiliate.pidm = nil
+
+    affiliate.save(validate: false)
+    redirect_to affiliates_path
+  end
+
 
   # # GET /banners/new
   # # GET /banners/new.json
