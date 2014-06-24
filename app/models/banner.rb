@@ -1,5 +1,8 @@
 class Banner < ActiveRecord::Base
   # attr_accessible :title, :body
+  
+  has_many  :affiliates
+
   self.abstract_class = true
   self.table_name="FAUMGR.AWP_COM_ALL_EMPS"
 

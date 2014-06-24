@@ -47,7 +47,9 @@ class BannersController < ApplicationController
 
     #set the pimd value
     affiliate.pidm = params[:pidm]
-    affiliate.save
+    #@affiliate.update_attributes(:pidm => params[:pidm], :isfaculty => 1)
+
+    affiliate.save(validate: false)
 
     #redirect and show faculty list
     redirect_to affiliates_path

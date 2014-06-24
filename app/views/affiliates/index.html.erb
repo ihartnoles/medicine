@@ -81,7 +81,13 @@
                                   <td class="hidden-xs"><% @banner.each do |b| %><%= b.zid %> <% end %></td>
                                   <td><%#= affiliate.id %> <%= affiliate.firstname %></td>
                                   <td><%= affiliate.lastname %></td>
-                                  <td class="hidden-xs"><% @banner.each do |b| %><%= b.perbfac_academic_title.humanize %> <% end %> </td>
+                                  <td class="hidden-xs">
+                                    <% @banner.each do |b| %>
+                                      <% if defined?(b.perbfac_academic_title.humanize) %>
+                                        <%= b.perbfac_academic_title.humanize %> 
+                                      <% end %> 
+                                    <% end %> 
+                                  </td>
                                   <td class="hidden-xs">
                                     <% if !@has_specialty.blank? || @has_specialty.nil? %>
                                         <%= affiliate.getSpecialty(affiliate.id) %>                                                                            
@@ -91,7 +97,8 @@
                                   <td>
                                     <a href="/affiliates/<%= affiliate.id %>/<%= affiliate.pidm %>">View</a>
                                       |
-                                      <%= link_to 'Edit', edit_affiliate_path(affiliate) %>                         
+                                      <%= link_to 'Edit', edit_affiliate_path(affiliate) %>      
+                                                         
                                   </td>
                               </tr>
                              

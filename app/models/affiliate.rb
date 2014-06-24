@@ -7,7 +7,9 @@ class Affiliate < ActiveRecord::Base
   has_many  :fellowships
   has_many  :certifiedspecialities
   has_many  :affiliatepermissions
-  attr_accessible  :isfaculty, :cellphone, :emailfau, :emailoffice, :emailother, :emailpersonal, :emergencyphone, :faxnumber, :firstname, :homecity, :homephone, :homestate, :homestreet, :homezip, :isfaculty, :lastname, :license, :middlename, :officecity, :officestate, :officestreet, :officezip, :otherphonenumber, :prefix, :suffix, :znumber, :officephone, :physiciansgroup, :currentpractice, :teachingavailability
+  has_many  :banners
+  
+  attr_accessible  :pidm, :path, :isfaculty, :cellphone, :emailfau, :emailoffice, :emailother, :emailpersonal, :emergencyphone, :faxnumber, :firstname, :homecity, :homephone, :homestate, :homestreet, :homezip, :isfaculty, :lastname, :license, :middlename, :officecity, :officestate, :officestreet, :officezip, :otherphonenumber, :prefix, :suffix, :znumber, :officephone, :physiciansgroup, :currentpractice, :teachingavailability
 
   validates :firstname, length: {minimum: 1, maximum: 50} ,:presence => true
   validates :lastname, length:  {minimum: 1, maximum: 50} ,:presence => true
@@ -36,23 +38,23 @@ class Affiliate < ActiveRecord::Base
     Affiliate.find(:all, :conditions => conditions)
   end
 
-  def firstname_conditions
-    ["affiliates.firstname LIKE ?", "%#{firstname}%" , "%#{firstname}%"] unless firstname.blank?
-  end
+  # def firstname_conditions
+  #   ["affiliates.firstname LIKE ?", "%#{firstname}%" , "%#{firstname}%"] unless firstname.blank?
+  # end
 
-  def conditions
-    [conditions_clauses.join(' AND '), *conditions_options]    
-  end
+  # def conditions
+  #   [conditions_clauses.join(' AND '), *conditions_options]    
+  # end
   
-  def conditions_clauses
-    conditions_parts.map { |condition| condition.first }
-  end
+  # def conditions_clauses
+  #   conditions_parts.map { |condition| condition.first }
+  # end
 
-  def conditions_options
-    conditions_parts.map { |condition| condition[1..-1] }.flatten
-  end
+  # def conditions_options
+  #   conditions_parts.map { |condition| condition[1..-1] }.flatten
+  # end
 
-  def conditions_parts
-    methods.grep(/_conditions$/).map {|m| send(m) }.compact
-  end
+  # def conditions_parts
+  #   methods.grep(/_conditions$/).map {|m| send(m) }.compact
+  # end
 end

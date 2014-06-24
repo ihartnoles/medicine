@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140623175949) do
+ActiveRecord::Schema.define(:version => 20140624174339) do
 
   create_table "AffiliatesSpecialty", :id => false, :force => true do |t|
     t.integer "id",           :null => false
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20140623175949) do
     t.text     "physiciansgroup"
     t.string   "currentpractice"
     t.string   "teachingavailability"
+    t.string   "path"
   end
 
   create_table "annualevaluations", :force => true do |t|
@@ -212,7 +213,7 @@ ActiveRecord::Schema.define(:version => 20140623175949) do
     t.string "home_city"
     t.string "home_county"
     t.string "home_state"
-    t.string "home_zip"
+    t.float  "home_zip",                  :limit => 53
     t.string "home_phone"
     t.string "home_fax"
     t.string "home_email"
@@ -223,7 +224,7 @@ ActiveRecord::Schema.define(:version => 20140623175949) do
     t.string "work_city"
     t.string "work_county"
     t.string "work_state"
-    t.string "work_zip"
+    t.float  "work_zip",                  :limit => 53
     t.string "work_phone"
     t.string "work_cel"
     t.string "work_pager"
@@ -232,13 +233,13 @@ ActiveRecord::Schema.define(:version => 20140623175949) do
     t.string "assistant_name"
     t.string "assistant_phone"
     t.string "assistant_email"
-    t.string "hospital_appointments"
-    t.string "teaching_experience"
-    t.string "research_experience"
-    t.string "honors_awards"
-    t.string "medical_organizations"
+    t.text   "hospital_appointments"
+    t.text   "teaching_experience"
+    t.text   "research_experience"
+    t.text   "honors_awards"
+    t.text   "medical_organizations"
     t.string "committees"
-    t.string "community_service"
+    t.text   "community_service"
     t.string "notes"
     t.string "created"
     t.string "updated"
@@ -288,17 +289,18 @@ ActiveRecord::Schema.define(:version => 20140623175949) do
   create_table "com_certification", :id => false, :force => true do |t|
     t.float  "id",           :limit => 53
     t.string "specialty"
-    t.string "year"
+    t.float  "year",         :limit => 53
     t.float  "affiliate_id", :limit => 53
   end
 
   create_table "com_education", :id => false, :force => true do |t|
     t.float  "id",           :limit => 53
     t.string "degree"
-    t.string "year"
+    t.float  "year",         :limit => 53
     t.string "institution"
     t.string "country"
     t.float  "affiliate_id", :limit => 53
+    t.string "F7"
   end
 
   create_table "com_hospital", :id => false, :force => true do |t|
@@ -317,18 +319,9 @@ ActiveRecord::Schema.define(:version => 20140623175949) do
     t.float  "affiliate_id", :limit => 53
   end
 
-  create_table "com_log", :id => false, :force => true do |t|
-    t.float  "id",           :limit => 53
-    t.string "date_time"
-    t.string "ip"
-    t.string "user_name"
-    t.string "action"
-    t.float  "affiliate_id", :limit => 53
-  end
-
   create_table "com_teaching", :id => false, :force => true do |t|
     t.float  "id",           :limit => 53
-    t.string "ENGINE"
+    t.string "type"
     t.string "title"
     t.string "period"
     t.float  "affiliate_id", :limit => 53

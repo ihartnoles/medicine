@@ -35,8 +35,9 @@
 
 					 
 					  <div class="form-group">
-					  	<%= label_tag 'cv', 'CV:' %><br>
-					    <%= file_field_tag 'cv' %>
+					  	<%= label_tag 'CV Path', 'CV Path:' %><br>
+					    <%#= file_field_tag 'cv' %>
+					     <%= text_field_tag 'path', @affiliate.path , size:20 ,class: 'form-control' %>
 					  </div>
 					
 					<!--
