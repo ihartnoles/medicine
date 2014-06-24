@@ -19,8 +19,6 @@
 				              
 				                    <div class="box-body">
 				                      <div class="box-container">
-				                           
-				                           		<% @banner.each do |b| %>
 				                           		  	<%= form_for :makematch, :url => makematch_path ,:html => {:multipart => true} do |f| %>
 
 				                           		  	<%= hidden_field_tag 'id', params[:affiliateid] %>
@@ -126,8 +124,7 @@
 															-->
 															<%= f.submit "Make Match" , :id => "upload_button", :class => 'btn btn-primary' , :onclick => "return confirm('You are about to match an Affiliate to Banner Data! Do you want to continue?' )"%>
 														</div>
-													</div>
-													<% end %>
+													</div>													
 												 <% end %>
 										 
 									  </div>
