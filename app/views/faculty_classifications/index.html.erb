@@ -1,0 +1,72 @@
+
+
+
+<div class="row">
+              <div class="col-md-12">
+                 <%= link_to 'New Faculty classification', new_faculty_classification_path %> <br><br>
+                <!-- BOX -->
+                <div class="box border blue">
+                  <div class="box-title">
+                    <h4><i class="fa fa-table"></i>Faculty Titles</h4>
+                    <div class="tools hidden-xs">
+                      <a href="#box-config" data-toggle="modal" class="config">
+                        <i class="fa fa-cog"></i>
+                      </a>
+                      <a href="javascript:;" class="reload">
+                        <i class="fa fa-refresh"></i>
+                      </a>
+                      <a href="javascript:;" class="collapse">
+                        <i class="fa fa-chevron-up"></i>
+                      </a>
+                      <a href="javascript:;" class="remove">
+                        <i class="fa fa-times"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="box-body">
+                    <table id="datatable3" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered table-hover">
+                      <thead>
+                        <tr>
+                          <th>Title</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                       <% @faculty_classifications.each do |faculty_classification| %>
+                            <tr class="gradeX">
+                              <td><%= faculty_classification.classification %></td>
+                              <td>
+                                <%#= link_to 'Show', faculty_classification %>
+                                <%= link_to 'Edit', edit_faculty_classification_path(faculty_classification) %> |
+                                <%= link_to 'Delete', faculty_classification, method: :delete, data: { confirm: 'Are you sure?' } %>
+                              </td>
+                            </tr>
+                          <% end %>
+                                  
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                          <th>Title</th>
+                          <th>Actions</th>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+                <!-- /BOX -->
+
+              </div>
+            </div>
+<br />
+
+<br />
+
+
+<%= render 'shared/javascript' %>
+
+<script>
+    jQuery(document).ready(function() {   
+      App.setPage("dynamic_table");  //Set current page
+      App.init(); //Initialise plugins and elements      
+    });
+  </script>

@@ -1,0 +1,21 @@
+<%= form_for(@faculty_classification) do |f| %>
+  <% if @faculty_classification.errors.any? %>
+    <div class="alert alert-block alert-danger">
+      <h2><%= pluralize(@faculty_classification.errors.count, "error") %> prohibited this faculty_classification from being saved:</h2>
+
+      <ul>
+      <% @faculty_classification.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :classification, "Classification" %><br />
+    <%= f.text_field :classification ,:class => 'form-control'%>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

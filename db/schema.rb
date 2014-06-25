@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140624174339) do
+ActiveRecord::Schema.define(:version => 20140625142424) do
 
   create_table "AffiliatesSpecialty", :id => false, :force => true do |t|
     t.integer "id",           :null => false
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20140624174339) do
   end
 
   create_table "affiliates", :force => true do |t|
+    t.integer  "legacy_id"
     t.string   "znumber"
     t.string   "prefix"
     t.string   "firstname"
@@ -398,6 +399,12 @@ ActiveRecord::Schema.define(:version => 20140624174339) do
     t.text     "status"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "faculty_classifications", :force => true do |t|
+    t.string   "classification"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "facultytitles", :force => true do |t|

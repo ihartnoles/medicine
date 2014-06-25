@@ -1,14 +1,9 @@
 Medicine::Application.routes.draw do
   
+  resources :faculty_classifications
   resources :assignments
-
-
   resources :appointment_dates
-
-
   resources :contract_dates
-
-
   resources :facultytitles
   resources :clinicalsections
   resources :basicsciencedisciplines
