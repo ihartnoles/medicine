@@ -157,7 +157,9 @@
 
                                             <p>
                                               <b>Classification:</b><br>
-                                              <%= @affiliate.getClassification(@affiliate.faculty_classification_id) %>
+                                              <% if @affiliate.faculty_classification_id %>
+                                                <%= @affiliate.getClassification(@affiliate.faculty_classification_id) %>
+                                              <% end %>
                                             </p>
                                           </div>
                                           <div class="col-sm-6"> 
