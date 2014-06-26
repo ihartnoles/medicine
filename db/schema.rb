@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140625142424) do
+ActiveRecord::Schema.define(:version => 20140626011543) do
 
   create_table "AffiliatesSpecialty", :id => false, :force => true do |t|
     t.integer "id",           :null => false
@@ -82,13 +82,14 @@ ActiveRecord::Schema.define(:version => 20140625142424) do
     t.string   "emailoffice"
     t.string   "emailother"
     t.boolean  "isfaculty"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.integer  "pidm"
     t.text     "physiciansgroup"
     t.string   "currentpractice"
     t.string   "teachingavailability"
     t.string   "path"
+    t.integer  "faculty_classification_id"
   end
 
   create_table "annualevaluations", :force => true do |t|

@@ -21,6 +21,12 @@
   
   <%= f.hidden_field :isfaculty , :value => @isfacultyflag %>
 
+  
+  <div class="form-group">
+    <%= f.label :faculty_classification_id, "Classification" %><br />
+   
+     <%= f.collection_select(:faculty_classification_id, FacultyClassification.all, :id, :classification, {:include_blank => '-- Choose one --'} , :class=>'col-sm-6 form-control') %>
+  </div>
 
   <div class="form-group">
     <%= f.label :prefix %><br />

@@ -9,7 +9,7 @@ class Affiliate < ActiveRecord::Base
   has_many  :affiliatepermissions
   has_many  :banners
   
-  attr_accessible  :pidm, :path, :isfaculty, :cellphone, :emailfau, :emailoffice, :emailother, :emailpersonal, :emergencyphone, :faxnumber, :firstname, :homecity, :homephone, :homestate, :homestreet, :homezip, :isfaculty, :lastname, :license, :middlename, :officecity, :officestate, :officestreet, :officezip, :otherphonenumber, :prefix, :suffix, :znumber, :officephone, :physiciansgroup, :currentpractice, :teachingavailability
+  attr_accessible  :faculty_classification_id, :pidm, :path, :isfaculty, :cellphone, :emailfau, :emailoffice, :emailother, :emailpersonal, :emergencyphone, :faxnumber, :firstname, :homecity, :homephone, :homestate, :homestreet, :homezip, :isfaculty, :lastname, :license, :middlename, :officecity, :officestate, :officestreet, :officezip, :otherphonenumber, :prefix, :suffix, :znumber, :officephone, :physiciansgroup, :currentpractice, :teachingavailability
 
   validates :firstname, length: {minimum: 1, maximum: 50} ,:presence => true
   validates :lastname, length:  {minimum: 1, maximum: 50} ,:presence => true
@@ -24,6 +24,11 @@ class Affiliate < ActiveRecord::Base
   def getSpecialty(affiliateid)
     specialtyname = Clinicalsection.find(Clinicalspecialty.where(:affiliate_id => affiliateid).first.speciality_id).sectionname
     return specialtyname 
+  end
+
+  def getClassification(classificationid)
+    classification = FacultyClassification.find(classificationid).classification
+    return classification 
   end
 
   def facultymember

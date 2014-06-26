@@ -10,7 +10,12 @@ class AffiliatesController < ApplicationController
     else 
       @title      =  'Faculty List'
       @description = 'List of CoM Faculty'
-      @affiliates = Affiliate.where(:isfaculty => 1)
+      if params[:faculty_classification_id]
+        @affiliates = Affiliate.where(:isfaculty => 1, :faculty_classification_id => params[:faculty_classification_id])
+      else
+        @affiliates = Affiliate.where(:isfaculty => 1)
+      end 
+
       #@affiliates = Affiliate.find
     end
 

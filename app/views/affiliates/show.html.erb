@@ -154,6 +154,11 @@
                                               <b>License:</b><br>
                                               <%= @affiliate.license %>
                                             </p>
+
+                                            <p>
+                                              <b>Classification:</b><br>
+                                              <%= @affiliate.getClassification(@affiliate.faculty_classification_id) %>
+                                            </p>
                                           </div>
                                           <div class="col-sm-6"> 
                                            <!--
