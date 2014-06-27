@@ -8,3 +8,12 @@
 
 <%= link_to 'Edit', edit_evaluationstatus_path(@evaluationstatus) %> |
 <%= link_to 'Back', evaluationstatuses_path %>
+
+  <%= render 'shared/javascript' %>
+
+    <script>
+        jQuery(document).ready(function() {     
+            App.setPage("show_evaluationstatus");  //Set current page
+            App.init(); //Initialise plugins and elements
+        });
+    </script>

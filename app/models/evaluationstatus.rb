@@ -1,3 +1,3 @@
 class Evaluationstatus < ActiveRecord::Base
-  attr_accessible :status
+  attr_accessible :status, :statustype
 end

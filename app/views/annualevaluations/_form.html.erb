@@ -43,8 +43,24 @@
   </div>
   <div class="form-group">
     <%= f.label :status_id, "Status" %><br />
-    <%#= f.number_field :status_id , :class=>'form-control' %>
-    <%= collection_select(:annualevaluation, :status_id, Evaluationstatus.all, :id, :status, {:include_blank => '-- Choose Status --' , :selected =>  @status_id }  , :class=>'form-control') %>
+    
+    <% if !@faculty_classification_id.blank? || !@faculty_classification_id.nil? %>
+      <% if @faculty_classification_id >= 1 && @faculty_classification_id <= 2%>
+          <%= collection_select(:annualevaluation, :status_id, Evaluationstatus.where(:statustype => 'Faculty'), :id, :status, {:include_blank => '-- Choose Status --' , :selected =>  @status_id }  , :class=>'form-control') %>
+      <% elsif @faculty_classification_id >= 3 &&  @faculty_classification_id <= 5 %>
+           <%= collection_select(:annualevaluation, :status_id, Evaluationstatus.where(:statustype => 'Affiliates/Affiliates Preceptors'), :id, :status, {:include_blank => '-- Choose Status --' , :selected =>  @status_id }  , :class=>'form-control') %>
+      <% else %>
+           <%= collection_select(:annualevaluation, :status_id, Evaluationstatus.where(:statustype => 'Staff'), :id, :status, {:include_blank => '-- Choose Status --' , :selected =>  @status_id }  , :class=>'form-control') %>
+      <% end %>
+    <% else %>
+
+      <div class="alert alert-block alert-danger">
+          This individual has not been classified/categorized as either FACULTY, STAFF, or AFFILIATE/AFFILIATE PRECEPTOR.<br>
+          Please classify/categorize this individual in the PERSONAL tab.
+      </div>
+
+    <% end %>
+
   </div>
   <div class="actions">
     <%= f.submit 'Update Evaluation' %>

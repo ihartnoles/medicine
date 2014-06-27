@@ -1,6 +1,6 @@
 <%= form_for(@evaluationstatus) do |f| %>
   <% if @evaluationstatus.errors.any? %>
-    <div id="error_explanation">
+    <div class="alert alert-block alert-danger">
       <h2><%= pluralize(@evaluationstatus.errors.count, "error") %> prohibited this evaluationstatus from being saved:</h2>
 
       <ul>
@@ -11,10 +11,21 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :status %><br />
-    <%= f.text_area :status %>
+    <%= f.text_field :status ,:class => 'form-control'%>
   </div>
+
+  <div class="field">
+    <%= f.label :statustype %><br />
+    <%#= f.select :statustype, options_for_select([["Select One", ""], "Faculty", "Staff", "Affiliates/Affiliates Preceptors"]), { :selected =>  }, :class => 'form-control' %>
+
+
+     <%= f.select :statustype, [["Faculty", "Faculty"], ["Staff", "Staff"], ["Affiliates/Affiliates Preceptors","Affiliates/Affiliates Preceptors"] ], { :include_blank => '-- Choose One --', :selected => Evaluationstatus.find(params[:id]).statustype
+ },  :class => 'form-control' %>
+
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

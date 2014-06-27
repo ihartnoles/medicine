@@ -31,6 +31,8 @@ class AnnualevaluationsController < ApplicationController
     @evaluator_id = 0
     @status_id = 0
 
+    @faculty_classification_id = Affiliate.find(params[:affiliate_id]).faculty_classification_id
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @annualevaluation }
@@ -42,6 +44,7 @@ class AnnualevaluationsController < ApplicationController
     @title      = 'Edit Annual Evaluation'
     @description = 'Update the annual evaluation'
     @annualevaluation = Annualevaluation.find(params[:id])
+    @faculty_classification_id = Affiliate.find(params[:affiliate_id]).faculty_classification_id
 
     !@annualevaluation.blank? ?  @evaluator_id = Annualevaluation.find(params[:id]).evaluator_id : @evaluator_id = 0
     !@annualevaluation.blank? ?  @status_id    = Evaluationstatus.find(@annualevaluation.status_id).id : @status_id = 0

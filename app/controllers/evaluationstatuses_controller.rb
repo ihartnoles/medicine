@@ -3,6 +3,8 @@ class EvaluationstatusesController < ApplicationController
   # GET /evaluationstatuses.json
   def index
     @evaluationstatuses = Evaluationstatus.all
+    @title      = 'Evaluation Status List'
+    @description = 'List of Evaluation Statuses'
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,6 +27,8 @@ class EvaluationstatusesController < ApplicationController
   # GET /evaluationstatuses/new.json
   def new
     @evaluationstatus = Evaluationstatus.new
+    @title      = 'New Evaluation Status'
+    @description = 'Add a new evaluation status to the system'
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +39,8 @@ class EvaluationstatusesController < ApplicationController
   # GET /evaluationstatuses/1/edit
   def edit
     @evaluationstatus = Evaluationstatus.find(params[:id])
+    @title      = 'Edit Evaluation Status'
+    @description = 'Edit a evaluation status option in the system'
   end
 
   # POST /evaluationstatuses
