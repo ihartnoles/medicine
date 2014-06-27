@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140626011543) do
+ActiveRecord::Schema.define(:version => 20140627173652) do
 
   create_table "AffiliatesSpecialty", :id => false, :force => true do |t|
     t.integer "id",           :null => false
@@ -156,6 +156,7 @@ ActiveRecord::Schema.define(:version => 20140626011543) do
     t.integer  "affiliate_id"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
+    t.string   "fautitle"
   end
 
   create_table "capstatuses", :force => true do |t|

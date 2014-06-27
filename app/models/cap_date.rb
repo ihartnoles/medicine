@@ -1,9 +1,9 @@
 class CapDate < ActiveRecord::Base
-  attr_accessible :affiliate_id, :certificatedate, :meetingdate, :status
+  attr_accessible :affiliate_id, :certificatedate, :meetingdate, :status, :fautitle
 
   validates :certificatedate, :presence => true
   validates :status, :presence => true
-  #validates :meetingdate, :presence => true
+  validates :fautitle, :presence => true
 
   #validates_date  :certificatedate
   #validates_date :statusdate
@@ -14,4 +14,7 @@ class CapDate < ActiveRecord::Base
     return statusname
   end
   
+  def getFacultyTitle(titleid)
+    return Facultytitle.find(titleid).title
+  end
 end

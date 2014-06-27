@@ -38,15 +38,16 @@
     </div>
   </div>
 
-  <!--
+  
   <div class="form-group">
     <div class="input-group">
-    <%= f.label :meetingdate, "CAP Meeting Date", :class=>'control-label' %><br />
-    <%= f.text_field :meetingdate , :class=>'form-control' , 'data-mask' => "99/99/9999" %>
-    <span class="help-block">99/99/9999</span>
+    <%= f.label :fautitle, "Current FAU Title", :class=>'control-label' %><br />
+    <%#= f.text_field :fautitle , :class=>'form-control' %>
+      <%= f.collection_select(:fautitle, Facultytitle.all, :id, :title, {:include_blank => '-- Choose one --'} , :class=>'col-sm-6 form-control') %>
+    
     </div>
   </div>
- -->
+ 
 
   <div class="actions">
     <%= f.submit "Update CAP dates" %>

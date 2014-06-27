@@ -338,8 +338,6 @@
                                               <b>Curriculum-Vitae:</b><br>
                                               <%= @affiliate.path %>
                                             </p>
-
-
                                             
                                             <p>
                                               <b>Research Area:</b><br>
@@ -858,14 +856,17 @@
                                                      <!-- [<%= link_to 'Update', edit_cap_date_path(cd, :affiliate_id => params[:id]) %>] -->
                                                   </p>
 
-                                                  <!--
+                                                  
                                                   
                                                   <p>
-                                                    <b>CAP Meeting Date:</b><br>
-                                                    <%= cd.meetingdate %>
-                                                    [<%= link_to 'Update', edit_cap_date_path(cd, :affiliate_id => params[:id]) %>]
+                                                    <b>Current FAU Title:</b><br>
+                                                      <%= cd.getFacultyTitle(cd.fautitle) %>
+                                                    <!-- 
+                                                   <%= cd.meetingdate %>
+                                                    [<%= link_to 'Update', edit_cap_date_path(cd, :affiliate_id => params[:id]) %>] 
+                                                   -->
                                                   </p>
-                                                -->
+                                               
                                               <% end %>
                                              
                                             <% else %>
