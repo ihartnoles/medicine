@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  position_title: MyString
+  position_start_date: MyString
+  position_end_date: MyString
+  academic_title: MyString
+  academic_start_date: MyString
+  position_end_date: MyString
+  admin1_title: MyString
+  admin1_start_date: MyString
+  admin1_end_date: MyString
+  admin2_title: MyString
+  admin2_start_date: MyString
+  admin2_end_date: MyString
+  admin3_title: MyString
+  admin3_start_date: MyString
+  admin3_end_date: MyString
+  positiontrack: MyString
+  workingtitle: MyString
+
+two:
+  position_title: MyString
+  position_start_date: MyString
+  position_end_date: MyString
+  academic_title: MyString
+  academic_start_date: MyString
+  position_end_date: MyString
+  admin1_title: MyString
+  admin1_start_date: MyString
+  admin1_end_date: MyString
+  admin2_title: MyString
+  admin2_start_date: MyString
+  admin2_end_date: MyString
+  admin3_title: MyString
+  admin3_start_date: MyString
+  admin3_end_date: MyString
+  positiontrack: MyString
+  workingtitle: MyString

@@ -1,0 +1,97 @@
+<%= form_for(@com_dates_appt) do |f| %>
+  <% if @com_dates_appt.errors.any? %>
+    <div class="alert alert-block alert-danger">
+      <h2><%= pluralize(@com_dates_appt.errors.count, "error") %> prohibited this com_dates_appt from being saved:</h2>
+
+      <ul>
+      <% @com_dates_appt.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :affiliate_id, :value => params[:affiliate_id] %>
+
+   <div class="form-group">
+    <%= f.label :position_title , "Position Title", :class=>'control-label'%><br />
+    <%= f.text_field :position_title , :class=>'form-control'%>
+  </div>
+  <div class="form-group">
+    <%= f.label :position_start_date, "Position Start Date", :class=>'control-label'%><br />
+    <%= f.text_field :position_start_date , :class=>'form-control' , 'data-mask' => "99/99/9999" %>
+      <span class="help-block">99/99/9999</span>
+  </div>
+  <div class="form-group">
+    <%= f.label :position_end_date , "Position End Date",  :class=>'control-label'%><br />
+    <%= f.text_field :position_end_date , :class=>'form-control' , 'data-mask' => "99/99/9999" %>
+      <span class="help-block">99/99/9999</span>
+  </div>
+  <div class="form-group">
+    <%= f.label :academic_title , "Academic Title", :class=>'control-label'%><br />
+    <%= f.text_field :academic_title , :class=>'form-control' %>
+  </div>
+   <div class="form-group">
+    <%= f.label :academic_start_date , "Academic Start Date", :class=>'control-label'%><br />
+    <%= f.text_field :academic_start_date , :class=>'form-control' , 'data-mask' => "99/99/9999" %>
+      <span class="help-block">99/99/9999</span>
+  </div>
+  <div class="form-group">
+    <%= f.label :academic_end_date , "Academic End Date", :class=>'control-label'%><br />
+    <%= f.text_field :academic_end_date , :class=>'form-control' , 'data-mask' => "99/99/9999" %>
+      <span class="help-block">99/99/9999</span>
+  </div>
+  <div class="form-group">
+    <%= f.label :admin1_title, "Administrative Title 1" ,:class=>'control-label'%><br />
+    <%= f.text_field :admin1_title , :class=>'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :admin1_start_date , "Admin1 Start Date" ,:class=>'control-label'%><br />
+    <%= f.text_field :admin1_start_date , :class=>'form-control' , 'data-mask' => "99/99/9999" %>
+      <span class="help-block">99/99/9999</span>
+  </div>
+  <div class="form-group">
+    <%= f.label :admin1_end_date , "Admin1 End Date" , :class=>'control-label'%><br />
+    <%= f.text_field :admin1_end_date , :class=>'form-control' , 'data-mask' => "99/99/9999" %>
+      <span class="help-block">99/99/9999</span>
+  </div>
+  <div class="form-group">
+    <%= f.label :admin2_title , "Administrative Title 2" , :class=>'control-label'%><br />
+    <%= f.text_field :admin2_title, :class=>'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :admin2_start_date , "Admin2 Start Date" ,:class=>'control-label'%><br />
+    <%= f.text_field :admin2_start_date, :class=>'form-control' , 'data-mask' => "99/99/9999" %>
+      <span class="help-block">99/99/9999</span>
+  </div>
+  <div class="form-group">
+    <%= f.label :admin2_end_date , "Admin2 End Date" , :class=>'control-label'%><br />
+    <%= f.text_field :admin2_end_date , :class=>'form-control' , 'data-mask' => "99/99/9999" %>
+      <span class="help-block">99/99/9999</span>
+  </div>
+  <div class="form-group">
+    <%= f.label :admin3_title , "Administrative Title 3" ,  :class=>'control-label'%><br />
+    <%= f.text_field :admin3_title , :class=>'form-control'%>
+  </div>
+  <div class="form-group">
+    <%= f.label :admin3_start_date , "Admin3 Start Date" ,:class=>'control-label'%><br />
+    <%= f.text_field :admin3_start_date , :class=>'form-control' , 'data-mask' => "99/99/9999" %>
+      <span class="help-block">99/99/9999</span>
+  </div>
+  <div class="form-group">
+    <%= f.label :admin3_end_date , "Admin3 End Date" ,:class=>'control-label' %><br />
+    <%= f.text_field :admin3_end_date , :class=>'form-control' , 'data-mask' => "99/99/9999" %>
+      <span class="help-block">99/99/9999</span>
+  </div>
+  <div class="form-group">
+    <%= f.label :positiontrack , "Position Track" ,:class=>'control-label'%><br />
+    <%= f.text_field :positiontrack , :class=>'form-control'%>
+  </div>
+  <div class="form-group">
+    <%= f.label :workingtitle  , "Working Title" ,:class=>'control-label' %><br />
+    <%= f.text_field :workingtitle , :class=>'form-control'%>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

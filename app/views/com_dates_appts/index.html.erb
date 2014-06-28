@@ -1,0 +1,55 @@
+<h1>Listing com_dates_appts</h1>
+
+<table>
+  <tr>
+    <th>Position title</th>
+    <th>Position start date</th>
+    <th>Position end date</th>
+    <th>Academic title</th>
+    <th>Academic start date</th>
+    <th>Position end date</th>
+    <th>Admin1 title</th>
+    <th>Admin1 start date</th>
+    <th>Admin1 end date</th>
+    <th>Admin2 title</th>
+    <th>Admin2 start date</th>
+    <th>Admin2 end date</th>
+    <th>Admin3 title</th>
+    <th>Admin3 start date</th>
+    <th>Admin3 end date</th>
+    <th>Positiontrack</th>
+    <th>Workingtitle</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @com_dates_appts.each do |com_dates_appt| %>
+  <tr>
+    <td><%= com_dates_appt.position_title %></td>
+    <td><%= com_dates_appt.position_start_date %></td>
+    <td><%= com_dates_appt.position_end_date %></td>
+    <td><%= com_dates_appt.academic_title %></td>
+    <td><%= com_dates_appt.academic_start_date %></td>
+    <td><%= com_dates_appt.position_end_date %></td>
+    <td><%= com_dates_appt.admin1_title %></td>
+    <td><%= com_dates_appt.admin1_start_date %></td>
+    <td><%= com_dates_appt.admin1_end_date %></td>
+    <td><%= com_dates_appt.admin2_title %></td>
+    <td><%= com_dates_appt.admin2_start_date %></td>
+    <td><%= com_dates_appt.admin2_end_date %></td>
+    <td><%= com_dates_appt.admin3_title %></td>
+    <td><%= com_dates_appt.admin3_start_date %></td>
+    <td><%= com_dates_appt.admin3_end_date %></td>
+    <td><%= com_dates_appt.positiontrack %></td>
+    <td><%= com_dates_appt.workingtitle %></td>
+    <td><%= link_to 'Show', com_dates_appt %></td>
+    <td><%= link_to 'Edit', edit_com_dates_appt_path(com_dates_appt) %></td>
+    <td><%= link_to 'Destroy', com_dates_appt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Com dates appt', new_com_dates_appt_path %>

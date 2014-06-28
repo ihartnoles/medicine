@@ -1,5 +1,8 @@
 Medicine::Application.routes.draw do
   
+  resources :com_dates_appts
+
+
   resources :faculty_classifications
   resources :assignments
   resources :appointment_dates

@@ -1,0 +1,35 @@
+<div class="row">
+	<div class="col-md-12">
+		<!-- BASIC -->
+		<div class="box border orange">
+			<div class="box-title">
+				<h4><i class="fa fa-bars"></i>Edit COM Dates/Appointment</h4>
+				
+			</div>
+			<div class="box-body">				
+				  <%= render 'form' %>			
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<%= render 'shared/javascript' %>
+
+<script>
+        jQuery(document).ready(function() {     
+            App.setPage("forms");  //Set current page
+            App.init(); //Initialise plugins and elements
+
+            $("#com_dates_appt_position_start_date").datepicker();
+            $("#com_dates_appt_position_end_date").datepicker();
+            $("#com_dates_appt_academic_start_date").datepicker();
+            $("#com_dates_appt_academic_end_date").datepicker();
+            $("#com_dates_appt_admin1_start_date").datepicker();
+            $("#com_dates_appt_admin1_end_date").datepicker();
+            $("#com_dates_appt_admin2_start_date").datepicker();
+            $("#com_dates_appt_admin2_end_date").datepicker();
+            $("#com_dates_appt_admin3_start_date").datepicker();
+            $("#com_dates_appt_admin3_end_date").datepicker();
+        });
+</script>

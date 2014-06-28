@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140627173652) do
+ActiveRecord::Schema.define(:version => 20140628200129) do
 
   create_table "AffiliatesSpecialty", :id => false, :force => true do |t|
     t.integer "id",           :null => false
@@ -296,6 +296,28 @@ ActiveRecord::Schema.define(:version => 20140627173652) do
     t.float  "affiliate_id", :limit => 53
   end
 
+  create_table "com_dates_appts", :force => true do |t|
+    t.string   "affiliate_id"
+    t.string   "position_title"
+    t.string   "position_start_date"
+    t.string   "position_end_date"
+    t.string   "academic_title"
+    t.string   "academic_start_date"
+    t.string   "admin1_title"
+    t.string   "admin1_start_date"
+    t.string   "admin1_end_date"
+    t.string   "admin2_title"
+    t.string   "admin2_start_date"
+    t.string   "admin2_end_date"
+    t.string   "admin3_title"
+    t.string   "admin3_start_date"
+    t.string   "admin3_end_date"
+    t.string   "positiontrack"
+    t.string   "workingtitle"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
   create_table "com_education", :id => false, :force => true do |t|
     t.float  "id",           :limit => 53
     t.string "degree"
@@ -399,8 +421,9 @@ ActiveRecord::Schema.define(:version => 20140627173652) do
 
   create_table "evaluationstatuses", :force => true do |t|
     t.text     "status"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "statustype", :limit => 100
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   create_table "faculty_classifications", :force => true do |t|
