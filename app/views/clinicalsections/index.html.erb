@@ -34,16 +34,17 @@
                       <thead>
                         <tr>
                             
-                            <th>Clinical Specialty Name </th>
                             <th>Associated Division</th>
+                            <th>Clinical Specialty Name </th>
+                            
                             <th class="hidden-xs">Actions</th>
                         </tr>
                       </thead>
                       <tbody>
                          <% @clinicalsections.each do |clinicalsection| %>
                           <tr>
-                            <td><%= clinicalsection.sectionname %></td>
                             <td><%= clinicalsection.getDivisionName(clinicalsection.division_id) %></td>
+                            <td><%= clinicalsection.sectionname %></td>
                             <td><%= link_to 'Edit', edit_clinicalsection_path(clinicalsection) %> | <%= link_to 'Delete', clinicalsection, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                           </tr>
                         <% end %>
