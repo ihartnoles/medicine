@@ -39,6 +39,14 @@
 								<span class="arrow"></span>
 								</a>
 								<ul class="sub">
+									 <li><a class="" href="/affiliates"><span class="sub-menu-text">All </span></a></li>
+
+									 <% @FacultyClassification = FacultyClassification.all %>
+
+									 <% @FacultyClassification.each do |fc| %>
+									 	<li><a class="" href="/affiliates?faculty_classification_id=<%= fc.id %>" ><span class="sub-menu-text"><%= fc.classification %></span></a></li>
+									 <% end %>
+									 <!--
 									<li><a class="" href="/affiliates"><span class="sub-menu-text">All </span></a></li>
 
 									<li><a class="" href="/affiliates?faculty_classification_id=1"><span class="sub-menu-text">Faculty-BMS </span></a></li>
@@ -66,6 +74,7 @@
 									<li><a class="" href="/affiliates"><span class="sub-menu-text">Lab-IMS</span></a></li>
 
 									<li><a class="" href="/affiliates"><span class="sub-menu-text">Lab-SimCtr</span></a></li>
+								-->
 								</ul>
 							</li>
 							
