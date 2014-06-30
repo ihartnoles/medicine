@@ -71,6 +71,8 @@ Medicine::Application.routes.draw do
   get 'search/update_section_select/:id', to: 'affiliates#update_section_select'
   #match 'search/update_city_select/:id',  to: 'affiliates#update_city_select'
 
+  get 'assignments/update_section_select/:id', to: 'assignments#update_section_select'
+
   #contactus functions
   get  'contactus',   to: 'contact#index'
   post 'sendcontact', to: 'contact#sendcontact'

@@ -1,0 +1,11 @@
+<%= form_for :clinicalsection, :html => {:class => 'form', :id => 'searchform' } do |f| %>   
+	<b>Section:</b><br>
+    <%#= collection_select(:clinicalsection, :id, Clinicalsection.all, :id, :sectionname) %>
+
+    <% if !@sections.blank? %>
+      <%= f.select :section_id, @sections.collect{ |s| [s.sectionname,s.id]}, {:include_blank => '-- Clinical Section --'} , {:class=>'form-control'} %>
+    <% else %>
+      <%= f.select :section_id, "", {:include_blank => '-- N/A --'} , {:class=>'form-control'}  %>
+    <% end %>
+
+ <% end %>

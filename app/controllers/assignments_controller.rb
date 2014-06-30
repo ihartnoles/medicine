@@ -115,4 +115,13 @@ class AssignmentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+   #handles jquery/ajax call to populate second-drop down on search page.
+  def update_section_select
+    @sections = Clinicalsection.where(:division_id=>params[:id]).order(:sectionname) unless params[:id].blank?
+    render :partial => "sections"
+  end
+
+
 end
