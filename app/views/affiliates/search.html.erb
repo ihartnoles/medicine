@@ -77,21 +77,23 @@
     App.init(); //Initialise plugins and elements
 
 
-    // when the #country field changes
-    $("#clinicaldivision_division_id").change(function() {
-    
     //alert('SHABBA!!!');
 
+
+    // when the #country field changes
+    $("#searchform_division_id").change(function() {
+    
+    alert('RANK IN DA HOUSE!!!');
+
     // make a POST call and replace the content
-    var division = $('#clinicaldivision_division_id').val();
+    var division = $('#searchform_division_id').val();
     
     //alert(division);
 
-
-    if(division == "") division="0";
-      jQuery.get('/search/update_section_select/' + division, function(data){
-            $("#clinicalsection").html(data);
-    })
+     if(division == "") division="0";
+       jQuery.get('/search/update_section_select/' + division, function(data){
+             $("#searchform_section_id").html(data);
+     })
 
     return false;
   });
