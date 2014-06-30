@@ -11,10 +11,14 @@
     </div>
   <% end %>
  
-
   <div class="field">
     <%= f.label :sectionname, "Clinical Specialty" %><br />
     <%= f.text_field :sectionname,  :class => 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :division_id, "Associated Division" %><br />
+    <%= f.collection_select :division_id, Clinicaldivision.all, :id, :divisionname, {:include_blank => '-- Choose Division --'}, {:class=>'form-control'} %>
   </div>
 
   <div class="actions">

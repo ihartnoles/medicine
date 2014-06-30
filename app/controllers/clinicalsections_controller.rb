@@ -4,7 +4,7 @@ class ClinicalsectionsController < ApplicationController
   def index
     @title      =  'Clinical Specialties List'
     @description = 'List of clinical specialties'
-    @clinicalsections = Clinicalsection.all
+    @clinicalsections = Clinicalsection.order(:division_id)
 
     respond_to do |format|
       format.html # index.html.erb
