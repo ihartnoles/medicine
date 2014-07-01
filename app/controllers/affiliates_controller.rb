@@ -247,13 +247,18 @@ class AffiliatesController < ApplicationController
   def doSearch
     #@affiliate = Affiliate.results
 
-    results = Affiliate.order(:lastname)
+    #results = Affiliate.order(:lastname)
+    #results = Affiliate.joins("LEFT OUTER JOIN clinicalspecialties ON affiliates.id = clinicalspecialties.affiliate_id").order(:lastname)
+
+    results = Affiliate.joins("LEFT OUTER JOIN assignments ON affiliates.id = assignments.affiliate_id").order(:lastname)
+
     results = results.where("firstname LIKE ?", params[:searchform][:firstname]) if params[:searchform][:firstname].present?
     results = results.where("lastname LIKE ?", params[:searchform][:lastname]) if params[:searchform][:lastname].present?
     results = results.where("cellphone LIKE ?", params[:searchform][:cellphone]) if params[:searchform][:cellphone].present?
     results = results.where("emailfau LIKE ?", params[:searchform][:emailfau]) if params[:searchform][:emailfau].present?
+    results = results.where("clinicalsection_id = ?", params[:searchform][:section_id]) if params[:searchform][:section_id].present?
+    results = results.where("clinicaldivision_id = ?", params[:searchform][:division_id]) if params[:searchform][:division_id].present?
 
-    #results =  Affiliate.find(:all, :joins => [:certifiedspecialities], :select => "certifiedspecialities.speciality_id, certifiedspecialities.year, affiliates.*")
 
     @affiliates = results
 
