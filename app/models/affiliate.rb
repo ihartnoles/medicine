@@ -8,6 +8,7 @@ class Affiliate < ActiveRecord::Base
   has_many  :certifiedspecialities
   has_many  :affiliatepermissions
   has_many  :banners
+  has_many  :assignments
   
   attr_accessible  :faculty_classification_id, :pidm, :path, :isfaculty, :cellphone, :emailfau, :emailoffice, :emailother, :emailpersonal, :emergencyphone, :faxnumber, :firstname, :homecity, :homephone, :homestate, :homestreet, :homezip, :isfaculty, :lastname, :license, :middlename, :officecity, :officestate, :officestreet, :officezip, :otherphonenumber, :prefix, :suffix, :znumber, :officephone, :physiciansgroup, :currentpractice, :teachingavailability
 
@@ -22,7 +23,7 @@ class Affiliate < ActiveRecord::Base
   
 
   def getSpecialty(affiliateid)
-    specialtyname = Clinicalsection.find(Clinicalspecialty.where(:affiliate_id => affiliateid).first.speciality_id).sectionname
+    specialtyname = Clinicalsection.find(Assignment.where(:affiliate_id => affiliateid).first.clinicalsection_id).sectionname
     return specialtyname 
   end
 

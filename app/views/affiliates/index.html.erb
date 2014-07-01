@@ -29,12 +29,12 @@
                             <!-- set potential match flag-->
                             <% @potential_match = Banner.find_by_lastname(affiliate.lastname) %>
                             <% @cap_dates       = CapDate.where(:affiliate_id => affiliate.id) %>
-                            <% @has_specialty  = Clinicalspecialty.where(:affiliate_id => affiliate.id) %>
+                            <% @has_specialty  = Assignment.where(:affiliate_id => affiliate.id) %>
                             <%# @has_specialty  = Clinicalsection.first %>
 
                             <tr class="gradeA">
-                                <td><%= affiliate.firstname %></td>
                                 <td class="hidden-xs"><%#= affiliate.id %> <%= affiliate.lastname %></td>
+                                <td><%= affiliate.firstname %></td>
                                 <td class="hidden-xs"><%= affiliate.suffix %></td>
                                 <td class="hidden-xs"><%= affiliate.emailfau %></td>
                                 <td class="hidden-xs">
@@ -74,7 +74,7 @@
                          <% else %>
                             <!-- display for faculty list -->
                             <% @banner = Banner.find_by_id(affiliate.pidm) %>
-                            <% @has_specialty  = Clinicalspecialty.where(:affiliate_id => affiliate.id) %>
+                            <% @has_specialty  = Assignment.where(:affiliate_id => affiliate.id) %>
                             <%# @has_specialty  = Clinicalsection.first %>
 
                               <tr class="gradeA">

@@ -1,11 +1,111 @@
- <%#= render '@affiliate.results' %>	
-
-<%#= params[:searchform][:lastname] %>
-
-<% @affiliates.each do |result| %>
-		<%= result.firstname %> <%= result.lastname %><br>
+<!--
+<%# @affiliates.each do |result| %>
+		<%#= result.firstname %> <%#= result.lastname %><br>
 		<hr>
-<% end %>
+<%# end %>
+-->
+
+
+<div class="row">
+<div class="col-md-12">
+            
+            <div class="box border red">
+                <div class="box-title">
+                    <h4><i class="fa fa-table"></i><%= @title %></h4>
+                </div>
+                <div class="box-body">
+                    <table id="datatable1" cellpadding="0" cellspacing="0" border="0" class="datatable table table-condensed table-striped table-bordered table-hover">
+                     <thead>
+                         <tr>
+                          <th>Lastname</th>
+						  <th>Firstname</th>
+						  <th class="hidden-xs">Suffix</th>
+						  <th class="hidden-xs">Email</th>
+						  <th class="hidden-xs">Specialty</th>
+						  <th>Actions</th>                    
+						</tr>
+                    </thead>
+                    
+
+                    <tbody>
+                      <% @affiliates.each do |affiliate| %>
+                         
+                            
+                            <!-- set potential match flag-->
+                            <%# @potential_match = Banner.find_by_lastname(affiliate.lastname) %>
+                            <%# @cap_dates       = CapDate.where(:affiliate_id => affiliate.id) %>
+                            <% @has_specialty  = Assignment.where(:affiliate_id => affiliate.id) %>
+                           
+
+                            <tr class="gradeA">
+                                <td class="hidden-xs"><%#= affiliate.id %> <%= affiliate.lastname %></td>
+                                <td><%= affiliate.firstname %></td>                                
+                                <td class="hidden-xs"><%= affiliate.suffix %></td>
+                                <td class="hidden-xs"><%= affiliate.emailfau %></td>
+                                <td class="hidden-xs">              
+                                   <%# if !@has_specialty.blank? || @has_specialty.nil? %>
+                                   <% if @has_specialty %>
+                                        <%= affiliate.getSpecialty(affiliate.id) %>                          
+                                   <% end %>
+                                </td>
+                                <td>
+                                    <a href="/affiliates/<%= affiliate.id %>/<%= affiliate.pidm %>">View</a>|
+                                    <%= link_to 'Edit', edit_affiliate_path(affiliate) %> 
+
+                                    <% if @potential_match && !affiliate.isfaculty %>
+                                    | <a href="/bannermatches/<%= affiliate.lastname %>/<%= affiliate.id %>">View Matches</a>
+                                    <% end %>
+
+                                <!-- only affiliate candidates can be deleted -->
+                                <% if !affiliate.isfaculty %>
+                                | <%= link_to 'Delete', affiliate, method: :delete, data: { confirm: 'Are you sure?' } %>
+                                <% end %>
+
+                                </td>
+                            </tr>    
+                        
+                        
+                    <% end %>
+                    </tbody>
+
+                    <tfoot>
+                        <tr>
+						  <th>Lastname</th>
+						  <th>Firstname</th>
+						  <th class="hidden-xs">Suffix</th>
+						  <th class="hidden-xs">Email</th>
+						  <th class="hidden-xs">Specialty</th>
+						  <th>Actions</th>                    
+						</tr>
+                    </tfoot>
+                   
+
+                    </table>
+                    <!-- Download: <%= link_to "Excel", affiliates_path(format: "xls") %>
+                    <br /> -->
+
+                </div>
+            </div>
+             <!-- /BOX -->
+</div>
+</div><!-- row -->
+
+
+<!-- JQUERY -->
+<%= render 'shared/javascript' %>
+
+<script>
+  jQuery(document).ready(function() {     
+    App.setPage("dynamic_table");  //Set current page
+    App.init(); //Initialise plugins and elements
+
+    // $('#datatable1').dataTable( {
+    //   "iDisplayLength": 100
+    // } );
+
+
+  });
+</script>
 
 
 <%= debug params %>

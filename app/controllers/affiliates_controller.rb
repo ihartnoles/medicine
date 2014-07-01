@@ -245,6 +245,9 @@ class AffiliatesController < ApplicationController
   # POST /affiliates
   # POST /affiliates.json
   def doSearch
+
+    @title      = 'Advanced Search Results'
+
     #@affiliate = Affiliate.results
 
     #results = Affiliate.order(:lastname)
