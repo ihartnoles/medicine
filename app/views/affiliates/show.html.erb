@@ -815,8 +815,20 @@
                                           <% if !@com_dates_appts.blank? %>                                  
                                             <% @com_dates_appts.each do |com_dates_appt| %>
                                               <p>
-                                                <b>Position title:</b>
-                                                <%= com_dates_appt.position_title %>
+                                                <b>Position title:</b>                                               
+                                                <% if @isfacultyflag == 1 %>
+                                                   <!-- if faculty display the banner information -->
+                                                   <% @banner.each do |b| %>
+                                                      <% if b.nbbposn_title %>
+                                                        <%= b.nbbposn_title %>
+                                                      <%else%>
+                                                        null
+                                                      <%end%>
+                                                   <%end%>
+                                                <% else %>
+                                                    <!-- if NOT faculty the show the manual entry -->
+                                                    <%= com_dates_appt.position_title %>
+                                                <% end %>
                                               </p>
 
                                               <p>
@@ -831,7 +843,21 @@
 
                                               <p>
                                                 <b>Academic title:</b>
-                                                <%=com_dates_appt.academic_title %>
+                                                
+                                                <% if @isfacultyflag == 1 %>
+                                                   <!-- if faculty display the banner information -->
+                                                   <% @banner.each do |b| %>
+                                                    <% if b.perbfac_academic_title %>
+                                                      <%= b.perbfac_academic_title %>
+                                                    <%else%>
+                                                      null
+                                                    <%end%>
+                                                   <%end%>
+                                                <% else %>
+                                                    <!-- if NOT faculty the show the manual entry -->
+                                                    <%=com_dates_appt.academic_title %>
+                                                <% end %>
+
                                               </p>
 
                                               <p>
@@ -889,7 +915,7 @@
                                               </p>
 
                                               <p>
-                                                <b>Workingtitle:</b>
+                                                <b>Working title:</b>
                                                 <%= com_dates_appt.workingtitle %>
                                               </p>
                                             <% end %>
