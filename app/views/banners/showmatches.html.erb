@@ -8,6 +8,69 @@
 
 <div class="col-md-12"><!-- BOX -->
 
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="box border purple">
+      <div class="box-title">
+        <h4><i class="fa fa-bars"></i>Individual You Are Trying to Match</h4>        
+      </div>
+      <div class="box-body">        
+              
+<% if !@affiliate.nil? %>
+              <p>
+                <b>Znumber:</b>
+                  	<%= @affiliate.znumber %>
+               
+              </p>
+
+              <p>
+                <b>Suffix:</b>
+                <%= @affiliate.suffix %>
+              </p>
+
+              <p>
+                <b>Firstname:</b>
+                <%= @affiliate.firstname %>
+              </p>
+
+              <p>
+                <b>Lastname:</b>
+                <%= @affiliate.lastname %>
+              </p>
+
+              
+              <p>
+                <b>Emailfau:</b>
+                <%= @affiliate.emailfau %>
+              </p>
+
+              <p>
+                <b>Homestreet:</b>
+                <%= @affiliate.homestreet %>
+              </p>
+
+              <p>
+                <b>Homecity:</b>
+                <%= @affiliate.homecity %>
+              </p>
+
+              <p>
+                <b>Homestate:</b>
+                <%= @affiliate.homestate %>
+              </p>
+
+              <p>
+                <b>Homezip:</b>
+                <%= @affiliate.homezip %>
+              </p>
+ <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <% if @banner.count > 0 %><!-- begin IF -->
 				<% @banner.each do |b| %>
 					   <div class="row"><!-- row1 -->

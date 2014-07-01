@@ -18,6 +18,7 @@ class BannersController < ApplicationController
   def show
     #@banner = Banner.find(params[:id])
     @banner = Banner.find_by_id(params[:pidm])
+
     @title      = 'Banner Details'
     @description = 'Detailed Banner Data'
 
@@ -30,6 +31,7 @@ class BannersController < ApplicationController
   # GET /banners/doe
    def showmatches
     #@banner = Banner.find(params[:id])
+    @affiliate = Affiliate.find(params[:affiliateid])
     @banner = Banner.find_matches(params[:lastname])
     @title      = 'Banner Details'
     @description = 'Detailed Banner Data'
