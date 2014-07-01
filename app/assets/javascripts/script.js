@@ -1204,7 +1204,8 @@ var App = function () {
 	/*-----------------------------------------------------------------------------------*/
 	var handleDataTables = function () {
 		$('#datatable1').dataTable({
-				"sPaginationType": "bs_full"
+				"sPaginationType": "bs_full",
+                "iDisplayLength": 100
 			});
 		$('#datatable2').dataTable({
 				"sPaginationType": "bs_full",
