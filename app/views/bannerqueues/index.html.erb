@@ -15,7 +15,9 @@
                         <th>Suffix</th>
                         <th>Firstname</th>
                         <th>Lastname</th>
-                        <th>Dob</th>
+                        <% if session[:usertype] = 4 %>
+                            <th>Dob</th>
+                        <% end %>
                         <th>Emailfau</th>
                         <th>Status</th>
                         <!--
@@ -36,7 +38,9 @@
                                 <td><%= bannerqueue.suffix %></td>
                                 <td><%= bannerqueue.firstname %></td>
                                 <td><%= bannerqueue.lastname %></td>
-                                <td><%= bannerqueue.dob %></td>
+                                <% if session[:usertype] = 4 %>
+                                    <td><%= bannerqueue.dob %></td>
+                                <% end %>
                                 <td><%= bannerqueue.emailfau %></td>
                                 <td>
                                     <% if Affiliate.find_by_lastname(bannerqueue.lastname) %>
@@ -67,7 +71,9 @@
                                 <th>Suffix</th>
                                 <th>Firstname</th>
                                 <th>Lastname</th>
-                                <th>Dob</th>
+                                 <% if session[:usertype] = 4 %>
+                                    <th>Dob</th>
+                                <% end %>
                                 <th>Emailfau</th>
                                 <th>Status</th>
                                 <!--

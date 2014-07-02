@@ -7,7 +7,7 @@ class StaticPagesController < ApplicationController
 	def home	
 		@title      = 'Home'
     	@description = 'What would you like to do?'		
-    	#@username = session[:cas_user]
+    	session[:usertype] = User.find_by_username(session[:cas_user]).usertype_id
 	end
 
 	def admin	

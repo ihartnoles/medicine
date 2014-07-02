@@ -14,7 +14,9 @@
       <th class="hidden-xs">NetID</th>
       <th class="hidden-xs">Lastname</th>
       <th class="hidden-xs">Firstname</th>
-      <th class="hidden-xs">Birthdate</th>
+      <% if session[:usertype] = 4 %>
+        <th class="hidden-xs">Birthdate</th>
+      <% end %>
       <th class="hidden-xs">Email</th>
       <th class="hidden-xs">Description</th>
       <% if params[:prospect] %>
@@ -31,7 +33,9 @@
         <td><%= banner.fau_netid %></td>
         <td><%= banner.last_name %></td>
         <td><%= banner.first_name %></td>
-        <td><%= banner.birth_date.strftime("%m/%d/%Y") %></td>
+        <% if session[:usertype] = 4 %>
+          <td><%= banner.birth_date.strftime("%m/%d/%Y") %></td>
+        <% end %>
         <td><%= banner.email %></td>
         <td><%= banner.ecls_desc %></td>
         <% if params[:prospect] %>
@@ -56,7 +60,9 @@
       <th class="hidden-xs">NetID</th>
       <th class="hidden-xs">Lastname</th>
       <th class="hidden-xs">Firstname</th>
-      <th class="hidden-xs">Birthdate</th>
+      <% if session[:usertype] = 4 %>
+        <th class="hidden-xs">Birthdate</th>
+      <% end %>
       <th class="hidden-xs">Email</th>
       <th class="hidden-xs">Description</th>
        <% if params[:prospect] %>

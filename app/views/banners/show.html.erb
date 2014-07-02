@@ -45,10 +45,12 @@
 												  <b>Email:</b>
 												  <%= b.email %>
 												</div>
-												<div class="col-sm-6"> 
-												  <b>Birthdate:</b>
-												  <%= b.birth_date.strftime("%m/%d/%Y") %>
-												</div>
+												<% if session[:usertype] = 4 %>
+													<div class="col-sm-6"> 
+													  <b>Birthdate:</b>
+													  <%= b.birth_date.strftime("%m/%d/%Y") %>
+													</div>
+												<% end %>
 												<div class="col-sm-6"> 
 												  <b>Street:</b>
 												  <%= b.hm_street_line1 %>
@@ -78,10 +80,12 @@
 												  <% end %>
 												</div>
 
-												<div class="col-sm-6"> 
-												  <b>Annual Salary:</b>
-												  <%= b.nbrjobs_ann_salary %>
-												</div>
+												<% if session[:usertype] = 4 %>
+													<div class="col-sm-6"> 
+													  <b>Annual Salary:</b>
+													  <%= b.nbrjobs_ann_salary %>
+													</div>
+												<% end %>
 
 												<div class="col-sm-6"> 
 												  <b>Last Increase Date:</b>
