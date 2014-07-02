@@ -248,9 +248,6 @@ class AffiliatesController < ApplicationController
 
     @title      = 'Advanced Search Results'
 
-    #@affiliate = Affiliate.results
-
-    #results = Affiliate.order(:lastname)
     #results = Affiliate.joins("LEFT OUTER JOIN clinicalspecialties ON affiliates.id = clinicalspecialties.affiliate_id").order(:lastname)
 
     results = Affiliate.joins("LEFT OUTER JOIN assignments ON affiliates.id = assignments.affiliate_id").order(:lastname)

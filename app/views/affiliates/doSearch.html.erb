@@ -44,7 +44,7 @@
                                 <td class="hidden-xs"><%= affiliate.emailfau %></td>
                                 <td class="hidden-xs">              
                                    <%# if !@has_specialty.blank? || @has_specialty.nil? %>
-                                   <% if @has_specialty %>
+                                   <% if !@has_specialty.blank? %>
                                         <%= affiliate.getSpecialty(affiliate.id) %>                          
                                    <% end %>
                                 </td>

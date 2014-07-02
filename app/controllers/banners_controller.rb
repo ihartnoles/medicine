@@ -49,7 +49,9 @@ class BannersController < ApplicationController
 
     #set the pimd value
     affiliate.pidm = params[:pidm]
-    #@affiliate.update_attributes(:pidm => params[:pidm], :isfaculty => 1)
+    affiliate.cellphone = params[:cell]
+    affiliate.emailfau = params[:email]
+    
 
     affiliate.save(validate: false)
 

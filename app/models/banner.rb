@@ -43,6 +43,7 @@ class Banner < ActiveRecord::Base
                             hm_state,
                             hm_zip,
                             hm_phone,
+                            cell,
                             primary_job_start_date,
                             nbrjobs_ann_salary,
                             last_incr_date,
