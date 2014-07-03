@@ -94,6 +94,9 @@ class AffiliatesController < ApplicationController
     #Assignments
     @assignments = Assignment.where(:affiliate_id => params[:id])
 
+    #Licenses
+    @licenses = License.where(:affiliate_id => params[:id])
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @affiliate }

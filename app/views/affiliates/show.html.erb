@@ -160,14 +160,13 @@
                                             <p>
                                               <b>License:</b><br>
                                               <%= @affiliate.license %>
+
+
+                                              
+
                                             </p>
 
-                                            <p>
-                                              <b>Classification:</b><br>
-                                              <% if @affiliate.faculty_classification_id %>
-                                                <%= @affiliate.getClassification(@affiliate.faculty_classification_id) %>
-                                              <% end %>
-                                            </p>
+                                            
                                           </div>
                                           <div class="col-sm-6"> 
                                            <!--
@@ -340,10 +339,12 @@
 
                                     </div>
                                     <div class="box-body">
+                                            <!--
                                             <p>
                                               <b>Florida Medical License:</b><br>
                                               <%= @affiliate.license %>
                                             </p>
+                                          -->
 
                                             <p>
                                               <b>Curriculum-Vitae:</b><br>
@@ -371,6 +372,51 @@
                                               <% else %>
                                                 N/A
                                               <% end %>
+                                            </p>
+
+                                            <p>
+                                              <b>Medical Licenses:</b> [<a href="/licenses/new?affiliate_id=<%= params[:id] %>">Add Medical License</a>]<br>
+                                               <table class="table table-hover">
+                                                  <thead>
+                                                    <tr>
+                                                      <th>License number</th>
+                                                      <th>State</th>
+                                                      <!--
+                                                      <th>Year</th>
+                                                      <th>Status</th> 
+                                                      -->
+                                                      <th>Actions</th>
+                                                    </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                     <% if !@licenses.blank? %>
+                                                         <% @licenses.each do |license| %>
+                                                          <tr>
+                                                            <td><%= license.licensenumber %></td>
+                                                            <td><%= license.getStateName(license.state) %></td>
+                                                            <!--
+                                                            <td><%= license.year %></td>
+                                                            <td><%= license.status %></td>
+                                                            -->
+                                                            <td>
+                                                            <%= link_to 'Edit', edit_license_path(license, :affiliate_id => params[:id]) %> | 
+                                                            <%#= link_to 'Delete', license, method: :delete, data: { confirm: 'Are you sure?' } %>
+                                                            <%= link_to 'Remove', license_path(license , :affiliate_id => params[:id]), method: :delete, data: { confirm: 'Are you sure?' } %>
+                                                          </td>
+                                                          </tr>
+                                                        <% end %>    
+                                                       <% else %>
+                                                      <tr>
+                                                        <td colspan="5">
+                                                            <div class="alert alert-block alert-info fade in">
+                                                            <a aria-hidden="true" href="#" data-dismiss="alert" class="close">×</a>
+                                                              <p></p><h4><i class="fa fa-check-square-o"></i> No Medical Licenses on Record!</h4><br>
+                                                          </div>
+                                                        </td>
+                                                      </tr>
+                                                    <% end %>                                                     
+                                                  </tbody>
+                                                </table>
                                             </p>
                                             
                                     </div>
@@ -480,7 +526,8 @@
                                                   <td><%= d.city %></td>
                                                   <td><%= d.getStateName(d.state) %></td>
                                                   <td><%= d.getCountryName(d.country) %></td>
-                                                  <td> <%= link_to 'Update', edit_degree_path(d , :affiliate_id => params[:id]) %> | <%= link_to 'Remove', degree_path(d , :affiliate_id => params[:id]), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+                                                  <td> <%= link_to 'Update', edit_degree_path(d , :affiliate_id => params[:id]) %> | 
+                                                       <%= link_to 'Remove', degree_path(d , :affiliate_id => params[:id]), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
                                                 </tr>
                                               <% end %>
                                             <% else %>

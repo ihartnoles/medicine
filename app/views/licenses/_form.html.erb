@@ -1,6 +1,6 @@
 <%= form_for(@license) do |f| %>
   <% if @license.errors.any? %>
-    <div id="error_explanation">
+    <div id="alert alert-block alert-danger">
       <h2><%= pluralize(@license.errors.count, "error") %> prohibited this license from being saved:</h2>
 
       <ul>
@@ -11,27 +11,30 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :affiliate_id %><br />
-    <%= f.number_field :affiliate_id %>
+  <%= hidden_field_tag :affiliate_id, params[:affiliate_id] %>
+
+  <div class="form-group">
+    <%= f.label :licensenumber , "License number", :class=>'control-label'  %><br />
+    <%= f.text_field :licensenumber, :class=>'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :licensenumber %><br />
-    <%= f.text_field :licensenumber %>
+  <div class="form-group">
+    <%= f.label :state , :class=>'control-label' %><br />
+    <%#= f.text_field :state , :class=>'form-control'%>
+    <%= f.collection_select(:state, State.all, :id, :state, {:include_blank => '-- Choose one --'} , :class=>'col-sm-6 form-control') %>
   </div>
-  <div class="field">
-    <%= f.label :state %><br />
-    <%= f.text_field :state %>
+  <!--
+  <div class="form-group">
+    <%= f.label :year , :class=>'control-label' %><br />
+    <%#= f.number_field :year , :class=>'form-control'%>
+     <%= f.select :year, ((1900..2014).map {|i| [i,i] }) , {:include_blank => '-- Choose Year --'} , {:class => "form-control"} %>
   </div>
-  <div class="field">
-    <%= f.label :year %><br />
-    <%= f.number_field :year %>
+  <div class="form-group">
+    <%= f.label :status , :class=>'control-label' %><br />
+    <%= f.text_field :status , :class=>'form-control'%>
   </div>
-  <div class="field">
-    <%= f.label :status %><br />
-    <%= f.text_field :status %>
-  </div>
+-->
+
   <div class="actions">
-    <%= f.submit %>
+    <br><%= f.submit %>
   </div>
 <% end %>
