@@ -60,6 +60,7 @@ Medicine::Application.routes.draw do
   get  '/bannermatches/:lastname/:affiliateid', to: 'banners#showmatches'
   post '/makematch', to: 'banners#makematch'
   get  '/removematch/:id', to: 'banners#removematch'
+  get  '/automatchstaff/', to: 'banners#automatchstaff'
 
   #miscellaneous affilate actions
   get  '/search',           to: 'affiliates#search'

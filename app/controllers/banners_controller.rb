@@ -69,6 +69,50 @@ class BannersController < ApplicationController
     redirect_to affiliates_path
   end
 
+  def automatchstaff
+    
+    @Bannerstaff = Banner.find_by_sql(["select 
+                            pidm,
+                            zid, 
+                            fau_netid, 
+                            first_name, 
+                            last_name, 
+                            email, 
+                            birth_date, 
+                            hm_street_line1,
+                            hm_city,
+                            hm_state,
+                            hm_zip,
+                            hm_phone,
+                            cell
+                        from FAUMGR.AWP_COM_ALL_EMPS  
+                        where ECLS = '0D'"])
+
+    
+    @Bannerstaff.each do | bs |
+
+   
+      if Affiliate.find_by_znumber(bs.zid).nil?
+        affiliate = Affiliate.new
+        affiliate.isfaculty = 1
+        affiliate.pidm = bs.pidm
+        affiliate.znumber = bs.zid
+        affiliate.firstname = bs.first_name
+        affiliate.lastname = bs.last_name
+        affiliate.emailfau = bs.email
+        affiliate.homestreet = bs.hm_street_line1 unless bs.hm_street_line1.blank?
+        affiliate.homecity = bs.hm_city unless bs.hm_city.blank?
+        affiliate.homestate = bs.hm_state unless bs.hm_state.blank?
+        affiliate.homezip = bs.hm_zip unless bs.hm_zip.blank?
+        affiliate.cellphone = bs.cell unless bs.cell.blank?
+        affiliate.save(validate: false)   
+      end
+
+    end
+
+     redirect_to affiliates_path
+
+  end
 
   # # GET /banners/new
   # # GET /banners/new.json
