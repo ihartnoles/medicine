@@ -27,8 +27,8 @@
                          <% if params[:prospect] %>
                             
                             <!-- set potential match flag-->
-                            <% @potential_match = Banner.find_by_lastname(affiliate.lastname) %>
                             <% @cap_dates       = CapDate.where(:affiliate_id => affiliate.id) %>
+                            
                             <% @has_specialty  = Assignment.where(:affiliate_id => affiliate.id) %>
                             <%# @has_specialty  = Clinicalsection.first %>
 
@@ -48,11 +48,17 @@
                                   
                                 </td>
                                 <td class="hidden-xs">
-                                    <% if @potential_match %>
-                                           <b class="text-success">Potential Match</b>
-                                    <% else %>
-                                            <b class="text-primary">No Match</b>
+                                  <% @cap_dates.each do |cd| %>
+                                    <% if  cd.status == '3' %>
+                                      <% @potential_match = Banner.find_by_lastname(affiliate.lastname) %>
+
+                                      <% if @potential_match %>
+                                             <b class="text-success">Potential Match</b>
+                                      <% else %>
+                                              <b class="text-primary">No Match</b>
+                                      <% end %>
                                     <% end %>
+                                  <% end %>
                                 </td>
                                 <td class="hidden-xs"><% @cap_dates.each do |cd| %><%= cd.certificatedate %> <% end %></td>
                                 <!-- <td class="hidden-xs">A1 Title</td> -->
