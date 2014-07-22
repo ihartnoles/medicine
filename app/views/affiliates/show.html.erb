@@ -824,8 +824,8 @@
                                             <p>
                                               <b>Contract Start Date:</b><br>
                                                 <% @banner.each do |b| %>
-                                                  <% if b.primary_job_start_date %>
-                                                    <%= b.primary_job_start_date %>
+                                                  <% if b.first_hire_date %>
+                                                    <%= b.first_hire_date %>
                                                   <%else%>
                                                     null
                                                   <%end%>
