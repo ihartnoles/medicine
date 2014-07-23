@@ -7,16 +7,29 @@ class StaticPagesController < ApplicationController
 	def home	
 		@title      = 'Home'
     	@description = 'What would you like to do?'		
-    	session[:usertype] = User.find_by_username(session[:cas_user]).usertype_id
-	end
+    	session[:usertype]  = User.find_by_username(session[:cas_user]).usertype_id
+    	session[:userid] 	= User.find_by_username(session[:cas_user]).id
+    	session[:poweruseraccess] = Useraccesslevel.where(:affiliate_id => session[:userid]).pluck(:facultyclassification_id)
+    end
 
 	def admin	
-		@title      = 'Administration'
-    	@description = 'Administrative Panel'		
+
+		if session[:usertype] != 4
+			redirect_to unauthorized_path
+		else
+			@title      = 'Administration'
+    		@description = 'Administrative Panel'		
+    	end
+
 	end
 
 	def reports
 		@title = 'Reports'
 		@description = 'Reporting Options'
+	end 
+
+	def unauthorized
+		@title = 'Unauthorized'
+		@description = ''
 	end 
 end

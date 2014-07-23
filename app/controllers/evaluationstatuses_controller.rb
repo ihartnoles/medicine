@@ -2,14 +2,25 @@ class EvaluationstatusesController < ApplicationController
   # GET /evaluationstatuses
   # GET /evaluationstatuses.json
   def index
+
+    if session[:usertype] != 4
+      #redirect_to unauthorized_path
+      unauthorized = 1
+    end
+
     @evaluationstatuses = Evaluationstatus.all
     @title      = 'Evaluation Status List'
     @description = 'List of Evaluation Statuses'
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @evaluationstatuses }
+    if unauthorized == 1
+        redirect_to unauthorized_path
+    else        
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @evaluationstatuses }
+      end
     end
+    
   end
 
   # GET /evaluationstatuses/1

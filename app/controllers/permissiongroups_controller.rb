@@ -2,15 +2,25 @@ class PermissiongroupsController < ApplicationController
   # GET /permissiongroups
   # GET /permissiongroups.json
   def index
-    @permissiongroups = Permissiongroup.all
 
+     if session[:usertype] != 4
+      #redirect_to unauthorized_path
+      unauthorized = 1
+    end
+
+    @permissiongroups = Permissiongroup.all
     @title      = 'Permission Groups'
     @description = 'A list of permission groups'
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @permissiongroups }
+    if unauthorized == 1
+        redirect_to unauthorized_path
+    else      
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @permissiongroups }
+      end
     end
+    
   end
 
   # GET /permissiongroups/1

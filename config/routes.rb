@@ -54,6 +54,7 @@ Medicine::Application.routes.draw do
   match '/home',   to: 'static_pages#home'
   match '/admin',  to: 'static_pages#admin'
   match '/reports',  to: 'static_pages#reports'
+  match '/unauthorized',   to: 'static_pages#unauthorized'
   match '/banner', to: 'banners#index'
 
   get  '/bannerdetail/:pidm', to: 'banners#show'

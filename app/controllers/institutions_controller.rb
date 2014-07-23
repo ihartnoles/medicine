@@ -2,14 +2,24 @@ class InstitutionsController < ApplicationController
   # GET /institutions
   # GET /institutions.json
   def index
+
+    if session[:usertype] != 4
+      #redirect_to unauthorized_path
+      unauthorized = 1
+    end
+
     @institutions = Institution.all
     @title      = 'Institution List'
     @description = 'List of Institutions'
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @institutions }
+    if unauthorized == 1
+        redirect_to unauthorized_path
+    else
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @institutions }
+      end
     end
+    
   end
 
   # GET /institutions/1

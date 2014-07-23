@@ -2,14 +2,25 @@ class BasicsciencedisciplinesController < ApplicationController
   # GET /basicsciencedisciplines
   # GET /basicsciencedisciplines.json
   def index
+
+    if session[:usertype] != 4
+      #redirect_to unauthorized_path
+      unauthorized = 1
+    end
+
     @basicsciencedisciplines = Basicsciencediscipline.all
     @title      = 'Basic Science Disciplines'
     @description = 'List of Basic Science Disciplines'
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @basicsciencedisciplines }
+    if unauthorized == 1
+        redirect_to unauthorized_path
+    else
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @basicsciencedisciplines }
+      end
     end
+    
   end
 
   # GET /basicsciencedisciplines/1

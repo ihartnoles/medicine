@@ -10,19 +10,40 @@ class AffiliatesController < ApplicationController
     else 
       @title      =  'Faculty List'
       @description = 'List of CoM Faculty'
-      if params[:faculty_classification_id]
-        @affiliates = Affiliate.where(:isfaculty => 1, :faculty_classification_id => params[:faculty_classification_id])
-      else
-        @affiliates = Affiliate.where(:isfaculty => 1)
-      end 
+      currentuser = User.find(session[:userid])
 
-      #@affiliates = Affiliate.find
+      # if params[:faculty_classification_id]
+      #   @affiliates = Affiliate.where(:isfaculty => 1, :faculty_classification_id => params[:faculty_classification_id])
+      # else
+      #   @affiliates = Affiliate.where(:isfaculty => 1)
+      # end 
+      
+        if session[:usertype] == 4
+           #user is an admin; let them see whatever they want
+           if params[:faculty_classification_id]
+                @affiliates = Affiliate.where(:isfaculty => 1, :faculty_classification_id => params[:faculty_classification_id])
+           else
+                 @affiliates = Affiliate.where(:isfaculty => 1)                 
+           end
+        else
+          #you're not an admin; need to check useraccesslevel
+          if !currentuser.hasAccess(session[:userid], params[:faculty_classification_id]).blank?
+            @affiliates = Affiliate.where(:isfaculty => 1, :faculty_classification_id => params[:faculty_classification_id])
+          else
+            unauthorized = 1
+          end
+        end
+   
     end
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @affiliates }
-      format.xls  { response.headers['Content-Disposition'] = 'attachment; filename="affiliates_' +  Time.now.to_s + '.xls"' } 
+    if unauthorized == 1
+      redirect_to unauthorized_path
+    else
+      respond_to do |format|
+          format.html # index.html.erb
+          format.json { render json: @affiliates }
+          format.xls  { response.headers['Content-Disposition'] = 'attachment; filename="affiliates_' +  Time.now.to_s + '.xls"' } 
+      end
     end
   end
 

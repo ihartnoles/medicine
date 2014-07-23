@@ -2,14 +2,25 @@ class LanguagesController < ApplicationController
   # GET /languages
   # GET /languages.json
   def index
+
+    if session[:usertype] != 4
+      #redirect_to unauthorized_path
+      unauthorized = 1
+    end
+
     @languages = Language.all
     @title      = 'Language List'
     @description = 'Language options in the system'
+    if unauthorized == 1
+        redirect_to unauthorized_path
+    else
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @languages }
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @languages }
+      end
     end
+    
   end
 
   # GET /languages/1

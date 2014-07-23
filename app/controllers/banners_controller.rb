@@ -2,15 +2,26 @@ class BannersController < ApplicationController
   # GET /banners
   # GET /banners.json
   def index
-    #@banners = Banner.all
+    
+    if session[:usertype] != 4
+      #redirect_to unauthorized_path
+      unauthorized = 1
+    end
+
+
     @banners = Banner.get_objects
     @title      = 'Banner Queue'
     @description = 'CoM data in Banner'
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @banners }
+    if unauthorized == 1
+        redirect_to unauthorized_path
+    else  
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @banners }
+      end
     end
+    
   end
 
   # GET /banners/1

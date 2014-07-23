@@ -39,15 +39,32 @@
 								<span class="arrow"></span>
 								</a>
 								<ul class="sub">
-									 <li><a class="" href="/affiliates"><span class="sub-menu-text">All </span></a></li>
-
 									 <% @FacultyClassification = FacultyClassification.all %>
 
-									 <% @FacultyClassification.each do |fc| %>
-									 	<li><a class="" href="/affiliates?faculty_classification_id=<%= fc.id %>" ><span class="sub-menu-text"><%= fc.classification %></span></a></li>
-									 <% end %>
+									<% if session[:usertype] == 4 %>
+										 <li><a class="" href="/affiliates"><span class="sub-menu-text">All </span></a></li>
+
+										 <% @FacultyClassification.each do |fc| %>
+										 	<li><a class="" href="/affiliates?faculty_classification_id=<%= fc.id %>" ><span class="sub-menu-text"><%= fc.classification %></span></a></li>
+										 <% end %>
+									<% end %>
+
+									<% if session[:usertype] == 5 %>                                            
+                                         <% @FacultyClassification.each do |fc| %>
+										 	<% if  session[:poweruseraccess].include?(fc.id) %>
+										 		<li><a class="" href="/affiliates?faculty_classification_id=<%= fc.id %>" ><span class="sub-menu-text"><%= fc.classification %></span></a></li>
+										 	<% end %>
+										 <% end %>
+									<% end %>
+
+
+									<% if session[:usertype] == 6 %>
+										<li><a class="" href="/affiliates"><span class="sub-menu-text">All </span></a></li>
+									<% end %>
+
+
 									 <!--
-									<li><a class="" href="/affiliates"><span class="sub-menu-text">All </span></a></li>
+									
 
 									<li><a class="" href="/affiliates?faculty_classification_id=1"><span class="sub-menu-text">Faculty-BMS </span></a></li>
 
@@ -88,12 +105,15 @@
 									<li><a class="" href="/affiliates/new?prospect=1"><span class="sub-menu-text">Add an Affiliate Candidate</span></a></li>
 								</ul>
 							</li>
-							<li>
-								<a href="/admin">
-									<i class="fa fa-cogs fa-fw"></i> <span class="menu-text">Administration</span>
-									<span class="selected"></span>
-								</a>					
-							</li>
+							<% if session[:usertype] == 4 %>
+								<li>
+									<a href="/admin">
+										<i class="fa fa-cogs fa-fw"></i> <span class="menu-text">Administration</span>
+										<span class="selected"></span>
+									</a>					
+								</li>
+							<% end %>
+
 							<!--
 							<li class="has-sub">
 								<a href="javascript:;" class="">

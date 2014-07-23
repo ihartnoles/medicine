@@ -2,14 +2,23 @@ class CapstatusesController < ApplicationController
   # GET /capstatus
   # GET /capstatus.json
   def index
+
+    if session[:usertype] != 4
+      #redirect_to unauthorized_path
+      unauthorized = 1
+    end
+
     @capstatus = Capstatus.all
     @title      = 'CAP Status List'
     @description = 'List of Cap Statuses'
 
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @capstatus }
+    if unauthorized == 1
+        redirect_to unauthorized_path
+    else      
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @capstatus }
+      end
     end
   end
 

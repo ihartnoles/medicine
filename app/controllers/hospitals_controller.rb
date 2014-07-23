@@ -2,15 +2,26 @@ class HospitalsController < ApplicationController
   # GET /hospitals
   # GET /hospitals.json
   def index
+
+    if session[:usertype] != 4
+      #redirect_to unauthorized_path
+      unauthorized = 1
+    end
+
+
     @hospitals = Hospital.all
     @title      = 'Hospital List'
     @description = 'List of Hospitals'
 
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @hospitals }
+    if unauthorized == 1
+        redirect_to unauthorized_path
+    else
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @hospitals }
+      end
     end
+    
   end
 
   # GET /hospitals/1

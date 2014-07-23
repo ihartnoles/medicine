@@ -37,7 +37,22 @@
     <%= f.label :phone %><br />
     <%= f.text_field :phone  ,:class => 'col-sm-6 form-control' %>
   </div>
+  
  
+   <div class="form-group">
+    <%= f.label "Access" %><br />
+    
+    <% @FacultyClassification = FacultyClassification.all %>
+
+     <% @FacultyClassification.each do |fc| %>
+       <!-- <%#= check_box_tag "access[]", fc.id %><%= fc.classification %><br> -->
+         
+          <%= check_box_tag 'access[facultyclassification_ids][]', fc.id, Useraccesslevel.where(:affiliate_id => params[:id]).pluck(:facultyclassification_id).include?(fc.id) %> <%= fc.classification %><br>
+
+        <%#= check_box_tag 'languages[language_ids][]', lang.id, Affiliatelanguage.where(:affiliate_id => params[:id]).pluck(:language_id).include?(lang.id) %> 
+     <% end %>
+  </div>
+
   <br><br>
  
   <div class="actions">

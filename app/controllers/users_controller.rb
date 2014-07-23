@@ -2,14 +2,25 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+
+    if session[:usertype] != 4
+      #redirect_to unauthorized_path
+      unauthorized = 1
+    end
+
     @users = User.all
     @title      = 'User List'
     @description = 'Users who have access to the system'
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @users }
+    if unauthorized == 1
+        redirect_to unauthorized_path
+    else
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @users }
+      end
     end
+
   end
 
   # GET /users/1
@@ -49,6 +60,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 
+
     respond_to do |format|
       if @user.save
         format.html { redirect_to users_path, notice: 'User was successfully created.' }
@@ -64,6 +76,23 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
+    #@user.access = params[:access]
+     
+    # #loop over selections and save
+    # if params.has_key?("access")
+    #  #clear out any existing in database
+    #  Useraccesslevel.where('affiliate_id' => params[:id]).destroy_all
+
+    #   params[:access][:facultyclassification_ids].each do | i |          
+    #       @Useraccesslevel = Useraccesslevel.new(:facultyclassification_id => i,:affiliate_id => params[:id])
+    #       @Useraccesslevel.save
+    #   end        
+    # end
+
+
+    set_poweruser_accesslevels
+
+    set_sessionvars
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -87,4 +116,39 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  private
+
+  def set_poweruser_accesslevels
+     #loop over selections and save
+    if params.has_key?("access")
+     #clear out any existing in database
+     Useraccesslevel.where('affiliate_id' => params[:id]).destroy_all
+
+      params[:access][:facultyclassification_ids].each do | i |          
+          @Useraccesslevel = Useraccesslevel.new(:facultyclassification_id => i,:affiliate_id => params[:id])
+          @Useraccesslevel.save
+      end        
+    end
+  end
+
+  def set_sessionvars
+    #set the session usertype variable
+    session[:usertype]  = params[:user][:usertype_id].to_i
+
+    if params[:user][:usertype_id]
+      session[:poweruseraccess] = Useraccesslevel.where(:affiliate_id => session[:userid]).pluck(:facultyclassification_id)
+    else
+
+    end
+  end
+
+  def has_admin_access
+    if session[:usertype] != 4
+      #redirect_to unauthorized_path
+      unauthorized = 1
+    end
+  end
+
 end

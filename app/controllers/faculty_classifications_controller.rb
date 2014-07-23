@@ -2,14 +2,25 @@ class FacultyClassificationsController < ApplicationController
   # GET /faculty_classifications
   # GET /faculty_classifications.json
   def index
+
+    if session[:usertype] != 4
+      #redirect_to unauthorized_path
+      unauthorized = 1
+    end
+
     @faculty_classifications = FacultyClassification.all
     @title      = 'Faculty Classification List'
     @description = 'List of faculty classifications'
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @faculty_classifications }
+    if unauthorized == 1
+        redirect_to unauthorized_path
+    else  
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @faculty_classifications }
+      end
     end
+    
   end
 
   # GET /faculty_classifications/1

@@ -2,14 +2,25 @@ class ClinicalsectionsController < ApplicationController
   # GET /clinicalsections
   # GET /clinicalsections.json
   def index
+
+    if session[:usertype] != 4
+      #redirect_to unauthorized_path
+      unauthorized = 1
+    end
+
     @title      =  'Clinical Specialties List'
     @description = 'List of clinical specialties'
     @clinicalsections = Clinicalsection.order(:division_id)
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @clinicalsections }
+    if unauthorized == 1
+        redirect_to unauthorized_path
+    else
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @clinicalsections }
+      end
     end
+    
   end
 
   # GET /clinicalsections/1
