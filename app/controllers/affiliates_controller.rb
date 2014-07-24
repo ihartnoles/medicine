@@ -3,14 +3,26 @@ class AffiliatesController < ApplicationController
   # GET /affiliates.json
   def index
     
+    currentuser = User.find(session[:userid])
+
     if params[:prospect]
       @title      =  'Affiliate Candidate List'
       @description = 'List of Affiliate Candidates'
-      @affiliates = Affiliate.where(:isfaculty => 0)
+      if session[:usertype] == 4
+         #user is an admin; let them see whatever they want
+        @affiliates = Affiliate.where(:isfaculty => 0)
+      else
+         #you're not an admin; need to check useraccesslevel
+        if !currentuser.getPowerUserAccess(session[:userid]).blank?
+            @affiliates = Affiliate.find(:all, :conditions => ["isfaculty = ? AND faculty_classification_id IN (?)", 0, Useraccesslevel.where(:affiliate_id => session[:userid]).pluck(:facultyclassification_id)])
+        else
+            unauthorized = 1
+        end
+      end
     else 
       @title      =  'Faculty List'
       @description = 'List of CoM Faculty'
-      currentuser = User.find(session[:userid])
+      
 
       # if params[:faculty_classification_id]
       #   @affiliates = Affiliate.where(:isfaculty => 1, :faculty_classification_id => params[:faculty_classification_id])
