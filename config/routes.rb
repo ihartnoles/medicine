@@ -42,6 +42,7 @@ Medicine::Application.routes.draw do
   
   resources :affiliates 
   get  'affiliates/:id/:pidm', to: 'affiliates#show'
+  get  'testxml', to: 'affiliates#testxml'
 
   resources :hospitalprivileges
   resources :hospitals

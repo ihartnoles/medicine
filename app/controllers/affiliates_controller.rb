@@ -355,5 +355,13 @@ class AffiliatesController < ApplicationController
 
   end
 
+  def testxml
+    @affiliates = Affiliate.find(:all, :conditions => ["isfaculty = ?", 1])
+
+    respond_to do |format|
+      #format.html # index.html.erb
+      format.xml # index.xml.builder
+    end
+  end
 
 end
