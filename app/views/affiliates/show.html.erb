@@ -1065,9 +1065,12 @@
                                               <% @cap_dates.each do |cd| %>
                                                    <p>
                                                     <b>CAP Expiration Date:</b><br>
-                                                     <%= cd.certificatedate %>
-                                                     <!-- [<%= link_to 'Update', edit_cap_date_path(cd, :affiliate_id => params[:id]) %>] -->
-                                                      
+                                                     <%= cd.certificatedate %>                                                                         
+                                                  </p>
+
+                                                  <p>
+                                                    <b>CAP Meeting Date:</b><br>
+                                                     <%= cd.meetingdate %>       
                                                   </p>
 
                                                   <p>
