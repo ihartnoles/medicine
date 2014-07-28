@@ -14,6 +14,15 @@
 
   <%= hidden_field_tag :affiliate_id, params[:affiliate_id] %>
 
+  <div class="form-group">
+    <%= f.label :contract_start_date , "Contract Start Date:", :class=>'control-label' %><br />
+    <%= f.text_field :contract_start_date, :class=>'form-control' , 'data-mask' => "99/99/9999"  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :contract_end_date, "Contract End Date:", :class=>'control-label' %><br />
+    <%= f.text_field :contract_end_date, :class=>'form-control' , 'data-mask' => "99/99/9999" %>
+  </div>
+
   
   <div class="form-group">
     <%= f.label :grad_college_start_date , "FAU Grad College Membership Start Date:", :class=>'control-label' %><br />

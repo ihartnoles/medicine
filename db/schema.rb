@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140628200129) do
+ActiveRecord::Schema.define(:version => 20140728223943) do
 
   create_table "AffiliatesSpecialty", :id => false, :force => true do |t|
     t.integer "id",           :null => false
@@ -171,14 +171,15 @@ ActiveRecord::Schema.define(:version => 20140628200129) do
   end
 
   create_table "clinicalsections", :force => true do |t|
-    t.string   "sectionname"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "clinicalsections_bak", :force => true do |t|
     t.string  "sectionname", :limit => 50
     t.integer "division_id"
+  end
+
+  create_table "clinicalsections_bak_2", :force => true do |t|
+    t.string   "sectionname"
+    t.integer  "division_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "clinicalspecialties", :force => true do |t|
@@ -197,7 +198,30 @@ ActiveRecord::Schema.define(:version => 20140628200129) do
     t.datetime "updated_at",   :null => false
   end
 
-  create_table "com_affiliate", :id => false, :force => true do |t|
+  create_table "com_dates_appts", :force => true do |t|
+    t.string   "affiliate_id"
+    t.string   "position_title"
+    t.string   "position_start_date"
+    t.string   "position_end_date"
+    t.string   "academic_title"
+    t.string   "academic_start_date"
+    t.string   "academic_end_date"
+    t.string   "admin1_title"
+    t.string   "admin1_start_date"
+    t.string   "admin1_end_date"
+    t.string   "admin2_title"
+    t.string   "admin2_start_date"
+    t.string   "admin2_end_date"
+    t.string   "admin3_title"
+    t.string   "admin3_start_date"
+    t.string   "admin3_end_date"
+    t.string   "positiontrack"
+    t.string   "workingtitle"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  create_table "comed_affiliate", :id => false, :force => true do |t|
     t.float  "id",                        :limit => 53
     t.string "status"
     t.string "eligibility"
@@ -280,7 +304,7 @@ ActiveRecord::Schema.define(:version => 20140628200129) do
     t.string "currently_teaching"
   end
 
-  create_table "com_appointment", :id => false, :force => true do |t|
+  create_table "comed_appointment", :id => false, :force => true do |t|
     t.float  "id",             :limit => 53
     t.string "rank"
     t.string "school"
@@ -289,53 +313,23 @@ ActiveRecord::Schema.define(:version => 20140628200129) do
     t.float  "affiliate_id",   :limit => 53
   end
 
-  create_table "com_certification", :id => false, :force => true do |t|
+  create_table "comed_certification", :id => false, :force => true do |t|
     t.float  "id",           :limit => 53
     t.string "specialty"
     t.float  "year",         :limit => 53
     t.float  "affiliate_id", :limit => 53
   end
 
-  create_table "com_dates_appts", :force => true do |t|
-    t.string   "affiliate_id"
-    t.string   "position_title"
-    t.string   "position_start_date"
-    t.string   "position_end_date"
-    t.string   "academic_title"
-    t.string   "academic_start_date"
-    t.string   "admin1_title"
-    t.string   "admin1_start_date"
-    t.string   "admin1_end_date"
-    t.string   "admin2_title"
-    t.string   "admin2_start_date"
-    t.string   "admin2_end_date"
-    t.string   "admin3_title"
-    t.string   "admin3_start_date"
-    t.string   "admin3_end_date"
-    t.string   "positiontrack"
-    t.string   "workingtitle"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
-  end
-
-  create_table "com_education", :id => false, :force => true do |t|
+  create_table "comed_education", :id => false, :force => true do |t|
     t.float  "id",           :limit => 53
     t.string "degree"
     t.float  "year",         :limit => 53
     t.string "institution"
     t.string "country"
     t.float  "affiliate_id", :limit => 53
-    t.string "F7"
   end
 
-  create_table "com_hospital", :id => false, :force => true do |t|
-    t.float  "id",           :limit => 53
-    t.string "name"
-    t.float  "affiliate_id", :limit => 53
-    t.string "name_listed"
-  end
-
-  create_table "com_licensure", :id => false, :force => true do |t|
+  create_table "comed_hospital", :id => false, :force => true do |t|
     t.float  "id",           :limit => 53
     t.string "number"
     t.string "state"
@@ -344,7 +338,16 @@ ActiveRecord::Schema.define(:version => 20140628200129) do
     t.float  "affiliate_id", :limit => 53
   end
 
-  create_table "com_teaching", :id => false, :force => true do |t|
+  create_table "comed_licensure", :id => false, :force => true do |t|
+    t.float  "id",           :limit => 53
+    t.string "number"
+    t.string "state"
+    t.string "years"
+    t.string "status"
+    t.float  "affiliate_id", :limit => 53
+  end
+
+  create_table "comed_teaching", :id => false, :force => true do |t|
     t.float  "id",           :limit => 53
     t.string "type"
     t.string "title"
@@ -352,7 +355,7 @@ ActiveRecord::Schema.define(:version => 20140628200129) do
     t.float  "affiliate_id", :limit => 53
   end
 
-  create_table "com_training", :id => false, :force => true do |t|
+  create_table "comed_training", :id => false, :force => true do |t|
     t.float  "id",           :limit => 53
     t.string "specialty"
     t.string "years"
@@ -374,6 +377,8 @@ ActiveRecord::Schema.define(:version => 20140628200129) do
     t.string   "grad_college_end_date"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
+    t.string   "contract_start_date"
+    t.string   "contract_end_date"
   end
 
   create_table "countries", :force => true do |t|
@@ -397,6 +402,7 @@ ActiveRecord::Schema.define(:version => 20140628200129) do
   end
 
   create_table "degrees", :force => true do |t|
+    t.integer  "legacy_id"
     t.integer  "degreelist_id"
     t.integer  "year"
     t.integer  "institution_id"
@@ -535,6 +541,13 @@ ActiveRecord::Schema.define(:version => 20140628200129) do
 
   add_index "sysdiagrams", ["principal_id", "name"], :name => "UK_principal_name", :unique => true
 
+  create_table "useraccesslevels", :force => true do |t|
+    t.integer  "affiliate_id"
+    t.integer  "facultyclassification_id"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
   create_table "userpermissions", :force => true do |t|
     t.integer  "userid"
     t.integer  "permissionid"
@@ -548,6 +561,7 @@ ActiveRecord::Schema.define(:version => 20140628200129) do
     t.string   "firstname"
     t.string   "lastname"
     t.string   "phone"
+    t.string   "access",      :limit => 50
     t.datetime "created_at"
     t.datetime "updated_at"
   end

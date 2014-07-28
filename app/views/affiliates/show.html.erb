@@ -823,23 +823,15 @@
 
                                             <p>
                                               <b>Contract Start Date:</b><br>
-                                                <% @banner.each do |b| %>
-                                                  <% if b.first_hire_date %>
-                                                    <%= b.first_hire_date %>
-                                                  <%else%>
-                                                    null
-                                                  <%end%>
-                                                <% end %>
+                                                  <% @contract_dates.each do |cd| %>
+                                                    <%= cd.contract_start_date %>
+                                                  <% end %>
                                             </p>
 
                                             <p>
                                               <b>Contract End Date:</b><br>
-                                                <% @banner.each do |b| %>
-                                                  <% if b.primary_job_end_date %>
-                                                    <%= b.primary_job_end_date %>
-                                                  <%else%>
-                                                    null
-                                                  <%end%>
+                                                <% @contract_dates.each do |cd| %>
+                                                   <%= cd.contract_end_date %>
                                                 <% end %>
                                             </p>
 
