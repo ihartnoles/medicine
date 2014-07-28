@@ -35,7 +35,7 @@
                                         <h4><i class="fa fa-user"></i>Personal</h4>
 
                                         <!-- ONLY ADMINS and POWER USERS should be able edit-->
-                                        <% if session[:usertype] = 4 ||  session[:usertype] = 5 %>
+                                        <% if session[:usertype] == 4 ||  session[:usertype] == 5 %>
 
                                          <div class="tools">
                                             <a href="/affiliates/<%= params[:id] %>/edit">
@@ -84,7 +84,7 @@
                                               -->
 
                                             <% if @affiliate.isfaculty %>  
-                                              <% if session[:usertype] = 4 %>
+                                              <% if session[:usertype] == 4 %>
                                               <p>
                                                 <b>DOB:</b><br>
                                                  <% if @banner %>
@@ -207,7 +207,7 @@
                                   <div class="box-title">                              
                                       <h4><i class="fa fa-medkit"></i>Work information</h4>
 
-                                      <% if session[:usertype] = 4 ||  session[:usertype] = 5 %>
+                                      <% if session[:usertype] == 4 ||  session[:usertype] == 5 %>
                                        <div class="tools">
                                           <a href="/affiliates/<%= params[:id] %>/edit">
                                               <i class="fa fa-pencil"></i>
@@ -329,7 +329,7 @@
                                     <div class="box-title">
                                       <h4><i class="fa fa-briefcase"></i>Training</h4>
                                       
-                                      <% if session[:usertype] = 4 ||  session[:usertype] = 5 %>
+                                      <% if session[:usertype] == 4 ||  session[:usertype] == 5 %>
                                        <div class="tools">
                                           <a href="/editTraining/<%= params[:id] %>">
                                               <i class="fa fa-pencil"></i>
@@ -429,7 +429,7 @@
                                   <div class="box border red">
                                     <div class="box-title">
                                       <h4><i class="fa fa-check-square"></i>Certified Specialties</h4>
-                                        <% if session[:usertype] = 4 ||  session[:usertype] = 5 %>
+                                        <% if session[:usertype] == 4 ||  session[:usertype] == 5 %>
                                         <div class="tools">
                                           <a href="/clinicalspecialties/new?affiliate_id=<%= params[:id] %>">
                                               <i class="fa fa-pencil"></i>
@@ -492,7 +492,7 @@
                                   <div class="box border primary">
                                     <div class="box-title">
                                       <h4><i class="fa fa-book"></i>Degrees</h4>
-                                      <% if session[:usertype] = 4 ||  session[:usertype] = 5 %>
+                                      <% if session[:usertype] == 4 ||  session[:usertype] == 5 %>
                                       <div class="tools">
                                           <a href="/degrees/new?affiliate_id=<%= params[:id] %>">
                                               <i class="fa fa-pencil"></i>
@@ -554,7 +554,7 @@
                                   <div class="box border pink">
                                     <div class="box-title">
                                       <h4><i class="fa fa-stethoscope"></i>Residency</h4>
-                                       <% if session[:usertype] = 4 ||  session[:usertype] = 5 %>
+                                       <% if session[:usertype] == 4 ||  session[:usertype] == 5 %>
                                        <div class="tools">
                                           <a href="/residencies/new?affiliate_id=<%= params[:id] %>">
                                               <i class="fa fa-pencil"></i>
@@ -611,7 +611,7 @@
                                   <div class="box border green">
                                     <div class="box-title">
                                       <h4><i class="fa fa-user-md"></i>Fellowship</h4>       
-                                       <% if session[:usertype] = 4 ||  session[:usertype] = 5 %>                              
+                                       <% if session[:usertype] == 4 ||  session[:usertype] == 5 %>                              
                                        <div class="tools">
                                           <a href="/fellowships/new?affiliate_id=<%= params[:id] %>">
                                               <i class="fa fa-pencil"></i>
@@ -675,7 +675,7 @@
                                       <h4><i class="fa fa-briefcase"></i>Appointment Dates</h4>
                                       
                                        <% if @appointment_dates.blank? %>
-                                       <% if session[:usertype] = 4 ||  session[:usertype] = 5 %>
+                                       <% if session[:usertype] == 4 ||  session[:usertype] == 5 %>
                                        <div class="tools">
                                           <a href="/appointment_dates/new?affiliate_id=<%= params[:id] %>">
                                               <i class="fa fa-pencil"></i>
@@ -683,7 +683,7 @@
                                        </div>
                                        <% end %>
                                       <% else %>
-                                      <% if session[:usertype] = 4 ||  session[:usertype] = 5 %>
+                                      <% if session[:usertype] == 4 ||  session[:usertype] == 5 %>
                                         <div class="tools">
                                           <% @appointment_dates.each do |cd| %>
                                             <a href="/appointment_dates/<%= cd.id %>/edit?affiliate_id=<%= params[:id] %>">
@@ -789,7 +789,7 @@
                                       <h4><i class="fa fa-plus-square"></i>Contract Dates</h4>
                                       
                                       <% if @contract_dates.blank? %>
-                                       <% if session[:usertype] = 4 ||  session[:usertype] = 5 %>
+                                       <% if session[:usertype] == 4 ||  session[:usertype] == 5 %>
                                        <div class="tools">
                                           <a href="/contract_dates/new?affiliate_id=<%= params[:id] %>">
                                               <i class="fa fa-pencil"></i>
@@ -797,7 +797,7 @@
                                        </div>
                                        <% end %>
                                       <% else %>
-                                        <% if session[:usertype] = 4 ||  session[:usertype] = 5 %>
+                                        <% if session[:usertype] == 4 ||  session[:usertype] == 5 %>
                                         <div class="tools">
                                           <% @contract_dates.each do |cd| %>
                                             <a href="/contract_dates/<%= cd.id %>/edit?affiliate_id=<%= params[:id] %>">
@@ -877,7 +877,7 @@
                                       <h4><i class="fa fa-plus-square"></i>College of Medicine Dates/Appointments</h4>
                                       
                                       <% if @com_dates_appts.blank? %>
-                                      <% if session[:usertype] = 4 ||  session[:usertype] = 5 %>
+                                      <% if session[:usertype] == 4 ||  session[:usertype] == 5 %>
                                        <div class="tools">
                                           <a href="/com_dates_appts/new?affiliate_id=<%= params[:id] %>">
                                               <i class="fa fa-pencil"></i>
@@ -885,7 +885,7 @@
                                        </div>
                                        <% end %>
                                       <% else %>
-                                        <% if session[:usertype] = 4 ||  session[:usertype] = 5 %>
+                                        <% if session[:usertype] == 4 ||  session[:usertype] == 5 %>
                                         <div class="tools">
                                           <% @com_dates_appts.each do |cda| %>
                                             <a href="/com_dates_appts/<%= cda.id %>/edit?affiliate_id=<%= params[:id] %>">
@@ -1036,7 +1036,7 @@
                                       
 
                                       <% if @cap_dates.blank? %>
-                                       <% if session[:usertype] = 4 ||  session[:usertype] = 5 %>
+                                       <% if session[:usertype] == 4 ||  session[:usertype] == 5 %>
                                        <div class="tools">
                                           <a href="/cap_dates/new?affiliate_id=<%= params[:id] %>">
                                               <i class="fa fa-pencil"></i>
@@ -1044,7 +1044,7 @@
                                        </div>
                                        <% end %>
                                       <% else %>
-                                        <% if session[:usertype] = 4 ||  session[:usertype] = 5 %>
+                                        <% if session[:usertype] == 4 ||  session[:usertype] == 5 %>
                                         <div class="tools">
                                           <! -- http://10.16.9.208:3000/cap_dates/4/edit?affiliate_id=24 -->
                                            <% @cap_dates.each do |cd| %>
@@ -1231,7 +1231,7 @@
                                   <div class="box border green">
                                     <div class="box-title">
                                       <h4><i class="fa fa-user-md"></i>Assignments</h4>
-                                      <% if session[:usertype] = 4 ||  session[:usertype] = 5 %>
+                                      <% if session[:usertype] == 4 ||  session[:usertype] == 5 %>
                                       <div class="tools">
                                           <a href="/assignments/new?affiliate_id=<%= params[:id] %>">
                                              <i class="fa fa-pencil"></i>
@@ -1299,7 +1299,7 @@
                                 <div class="box border primary col-sm-12"><!-- work -->
                                   <div class="box-title">                              
                                       <h4><i class="fa fa-check-square-o"></i>Annual Evaluations</h4>
-                                      <% if session[:usertype] = 4 ||  session[:usertype] = 5 %>
+                                      <% if session[:usertype] == 4 ||  session[:usertype] == 5 %>
                                       <div class="tools">
                                           <a href="/annualevaluations/new?affiliate_id=<%= params[:id] %>">
                                              <i class="fa fa-pencil"></i>
@@ -1359,7 +1359,7 @@
                                   <div class="box-title">                              
                                       <h4><i class="fa fa-thumbs-o-down"></i>Appointment Rejection</h4>
 
-                                      <% if session[:usertype] = 4 ||  session[:usertype] = 5 %>
+                                      <% if session[:usertype] == 4 ||  session[:usertype] == 5 %>
                                       <div class="tools">
                                           <a href="/appointmentrejections/new?affiliate_id=<%= params[:id] %>">
                                               <i class="fa fa-pencil"></i>
@@ -1418,7 +1418,7 @@
                                 <div class="box border red col-sm-12"><!-- work -->
                                   <div class="box-title">                              
                                       <h4><i class="fa fa-warning"></i>Disciplinary Action</h4>
-                                      <% if session[:usertype] = 4 ||  session[:usertype] = 5 %>
+                                      <% if session[:usertype] == 4 ||  session[:usertype] == 5 %>
                                       <div class="tools">
                                         <a href="/disciplinaryactions/new?affiliate_id=<%= params[:id] %>">
                                             <i class="fa fa-pencil"></i>

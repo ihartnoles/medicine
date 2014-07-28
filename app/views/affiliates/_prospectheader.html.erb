@@ -4,7 +4,7 @@
   <th class="hidden-xs">Suffix</th>
   <th class="hidden-xs">Email</th>
   <th class="hidden-xs">Specialty</th>
-  <% if session[:usertype] == 4 %>
+  <% if User.find_by_username(session[:cas_user]).usertype_id == 4 %>
   <th class="hidden-xs">Status</th>
   <% end %>
   <th class="hidden-xs">CAP Expir.</th>

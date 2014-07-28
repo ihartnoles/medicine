@@ -41,7 +41,7 @@
 								<ul class="sub">
 									 <% @FacultyClassification = FacultyClassification.all %>
 
-									<% if session[:usertype] == 4 %>
+									<% if User.find_by_username(session[:cas_user]).usertype_id == 4 %>
 										 <li><a class="" href="/affiliates"><span class="sub-menu-text">All </span></a></li>
 
 										 <% @FacultyClassification.each do |fc| %>
@@ -49,7 +49,7 @@
 										 <% end %>
 									<% end %>
 
-									<% if session[:usertype] == 5 %>                                            
+									<% if User.find_by_username(session[:cas_user]).usertype_id == 5 %>                                            
                                          <% @FacultyClassification.each do |fc| %>
 										 	<% if  session[:poweruseraccess].include?(fc.id) %>
 										 		<li><a class="" href="/affiliates?faculty_classification_id=<%= fc.id %>" ><span class="sub-menu-text"><%= fc.classification %></span></a></li>
@@ -58,7 +58,7 @@
 									<% end %>
 
 
-									<% if session[:usertype] == 6 %>
+									<% if User.find_by_username(session[:cas_user]).usertype_id  == 6 %>
 										<li><a class="" href="/affiliates"><span class="sub-menu-text">All </span></a></li>
 									<% end %>
 
@@ -105,7 +105,7 @@
 									<li><a class="" href="/affiliates/new?prospect=1"><span class="sub-menu-text">Add an Affiliate Candidate</span></a></li>
 								</ul>
 							</li>
-							<% if session[:usertype] == 4 %>
+							<% if User.find_by_username(session[:cas_user]).usertype_id == 4 %>
 								<li>
 									<a href="/admin">
 										<i class="fa fa-cogs fa-fw"></i> <span class="menu-text">Administration</span>

@@ -47,7 +47,7 @@
                                         <% end %>
                                       
                                 </td>
-                                 <% if session[:usertype] == 4 %>
+                                 <% if User.find_by_username(session[:cas_user]).usertype_id == 4 %>
                                   <td class="hidden-xs">
                                     <% @cap_dates.each do |cd| %>
                                       <% if  cd.status == '3' %>

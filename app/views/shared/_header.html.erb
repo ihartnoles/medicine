@@ -44,7 +44,7 @@
 					<li id="header-user" class="dropdown user pull-right">
 						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
 							<!-- <img src="img/avatars/avatar3.jpg" alt=""> -->
-							<span class="username"><%= session[:cas_user] %> <br> <%= session[:usertype] %></span>
+							<span class="username"><%= session[:cas_user] %> <br><%= User.find_by_username(session[:cas_user]).usertype_id %> <%#= session[:usertype] %></span>
 							<i class="fa fa-angle-down"></i>
 						</a>
 						<ul class="dropdown-menu">

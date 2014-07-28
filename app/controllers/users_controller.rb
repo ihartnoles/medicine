@@ -60,6 +60,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 
+    set_sessionvars
 
     respond_to do |format|
       if @user.save
@@ -96,8 +97,13 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to users_path, notice: 'User was successfully updated.' }
-        format.json { head :no_content }
+        if User.find_by_username(session[:cas_user]).usertype_id == 4
+          format.html { redirect_to users_path, notice: 'User was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { redirect_to home_path, notice: 'User was successfully updated.' }
+          format.json { head :no_content }
+        end
       else
         format.html { render action: "edit" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -134,14 +140,18 @@ class UsersController < ApplicationController
   end
 
   def set_sessionvars
+
+    session[:usertype]=nil
+
     #set the session usertype variable
     session[:usertype]  = params[:user][:usertype_id].to_i
 
     if params[:user][:usertype_id]
       session[:poweruseraccess] = Useraccesslevel.where(:affiliate_id => session[:userid]).pluck(:facultyclassification_id)
-    else
-
+    else 
+      session[:poweruseraccess] = nil
     end
+
   end
 
   def has_admin_access
