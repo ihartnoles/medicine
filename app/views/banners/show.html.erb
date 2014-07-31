@@ -23,102 +23,75 @@
 											 <div class="row">
 												<div class="col-sm-6"> 
 												  <b>znumber:</b>
-												  <%= b.zid %>
-												</div>
-
-												 <div class="col-sm-6"> 
-												 <b>NetID:</b>
-												  <%= b.fau_netid %>
-												</div>
-
-												 <div class="col-sm-6"> 
+												  <%= b.zid %><br>
+												
 												  <b>Firstname:</b>
-												  <%= b.first_name %>
-												</div>
-
-												 <div class="col-sm-6"> 
+												  <%= b.first_name %><br>
+												
 												  <b>Lastname:</b>
-												  <%= b.last_name %>
-												</div>
+												  <%= b.last_name %><br>
 											
-												<div class="col-sm-6"> 
 												  <b>Email:</b>
-												  <%= b.email %>
-												</div>
-												<% if session[:usertype] = 4 %>
-													<div class="col-sm-6"> 
+												  <%= b.email %><br>
+												
+												<%# if session[:usertype] = 4 %>
+													<!-- <div class="col-sm-6"> 
 													  <b>Birthdate:</b>
 													  <%= b.birth_date.strftime("%m/%d/%Y") %>
-													</div>
-												<% end %>
-												<div class="col-sm-6"> 
+													</div> -->
+												<%# end %>
+												
 												  <b>Street:</b>
-												  <%= b.hm_street_line1 %>
-												</div>
-												<div class="col-sm-6"> 
+												  <%= b.hm_street_line1 %><br>
+												
 												  <b>City:</b>
-												  <%= b.hm_city %>
-												</div>
-												<div class="col-sm-6"> 
+												  <%= b.hm_city %><br>
+												
 												  <b>State:</b>
-												  <%= b.hm_state %>
-												</div>
-												<div class="col-sm-6"> 
+												  <%= b.hm_state %><br>
+												
 												  <b>Zip:</b>
-												  <%= b.hm_zip %>
-												</div>
-
-												<div class="col-sm-6"> 
+												  <%= b.hm_zip %><br>
+												
 												  <b>Home phone:</b>
-												  <%= b.hm_phone %>
+												  <%= b.hm_phone %><br>
 												</div>
-
-												<div class="col-sm-6"> 
-												  <b>Job Start Date:</b>
-												  <% if b.primary_job_start_date %>
-												  	<%= b.primary_job_start_date.strftime("%m/%d/%Y") %>
-												  <% end %>
-												</div>
-
-												<% if session[:usertype] = 4 %>
-													<div class="col-sm-6"> 
-													  <b>Annual Salary:</b>
-													  <%= b.nbrjobs_ann_salary %>
-													</div>
-												<% end %>
-
-												<div class="col-sm-6"> 
-												  <b>Last Increase Date:</b>
-												  <% if b.last_incr_date %>
-												  	<%= b.last_incr_date.strftime("%m/%d/%Y") %>
-												  <% end %>
-												</div>
-
-												<div class="col-sm-6"> 
-												  <b>Working Title:</b>
-												  <%= b.working_title %>
-												</div>
-
-												<div class="col-sm-6"> 
-												  <b>Position Title:</b>
-												  <%= b.nbbposn_title %>
-												</div>
-
-												<div class="col-sm-6"> 
-												  <b>Academic Title:</b>
-												  <%= b.perbfac_academic_title %>
-												</div>
-
-												<div class="col-sm-6"> 
-												  <b>Current Hire Date:</b>
-												  <%= b.current_hire_date %>
-												</div>												
 
 												<div class="col-sm-6"> 
 												  <b>First Hire Date:</b>
-												  <%= b.first_hire_date %>
-												</div>
+												  <%= b.first_hire_date %><br>
+												
+												  <b>Current Hire Date:</b><br>
+												  <%= b.current_hire_date %><br>
+												
+												  <b>Job Start Date:</b>
+												  <% if b.primary_job_start_date %>
+												  	<%= b.primary_job_start_date.strftime("%m/%d/%Y") %><br>
+												  <% end %>
+												
 
+												<%# if session[:usertype] = 4 %>
+													<!-- <div class="col-sm-6"> 
+													  <b>Annual Salary:</b>
+													  <%= b.nbrjobs_ann_salary %>
+													</div> -->
+												<%# end %>
+
+												
+												  <b>Last Increase Date:</b>
+												  <% if b.last_incr_date %>
+												  	<%= b.last_incr_date.strftime("%m/%d/%Y") %><br>
+												  <% end %>
+												
+												  <b>Position Title:</b>
+												  <%= b.nbbposn_title %><br>
+												
+												  <b>Academic Title:</b>
+												  <%= b.perbfac_academic_title %><br>
+												
+												  <b>Working Title:</b>
+												  <%= b.working_title %>
+												</div>	
 											</div>
 										 <%# end %>
 								 

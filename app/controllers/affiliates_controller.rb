@@ -20,8 +20,8 @@ class AffiliatesController < ApplicationController
         end
       end
     else 
-      @title      =  'Faculty List'
-      @description = 'List of CoM Faculty'
+      @title      =  'Faculty/Staff List'
+      @description = 'List of CoM Faculty/Staff'
       
 
       # if params[:faculty_classification_id]
