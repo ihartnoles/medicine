@@ -7,9 +7,9 @@ class Clinicalspecialty < ActiveRecord::Base
   has_many :basicsciencedisciplines
 
   validates :affiliate_id, length: {minimum: 1},:presence => true
-  validates :speciality_id,:presence => true
-  validates :basicsciencediscipline_id,:presence => true
-  validates :year, length: {is: 4},:presence => true
+  #validates :speciality_id,:presence => true
+  #validates :basicsciencediscipline_id,:presence => true
+  #validates :year, length: {is: 4},:presence => true
 
 
   def getDivisionName(clinicaldivision_id)

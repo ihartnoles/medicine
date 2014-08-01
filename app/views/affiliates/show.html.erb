@@ -1317,7 +1317,7 @@
                                               <tr>
                                                 <td><%= a.duedate %></td>
                                                 <td><%= a.completeddate %></td>
-                                                <td><%= a.getEvaluatorName(a.evaluator_id) %></td>
+                                                <td><%#= a.getEvaluatorName(a.evaluator_id) %><%= a.evaluator %></td>
                                                 <td><%= a.getStatus(a.status_id) %></td>
                                                 <td>
                                                   <%= link_to 'Update', edit_annualevaluation_path(a , :affiliate_id => params[:id]) %> | <%= link_to 'Remove', annualevaluation_path(a , :affiliate_id => params[:id]), method: :delete, data: { confirm: 'Are you sure?' } %>
