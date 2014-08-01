@@ -14,7 +14,7 @@ class Affiliate < ActiveRecord::Base
 
   validates :firstname, length: {minimum: 1, maximum: 50} ,:presence => true
   validates :lastname, length:  {minimum: 1, maximum: 50} ,:presence => true
-  validates :license, :presence => true
+  #validates :license, :presence => true
   validates :homestreet, :presence => true
   validates :homecity, :presence => true
   validates :homestate, :presence => true
