@@ -14,11 +14,8 @@
                         
                              
                          <div class="row">
-
-                            
-
                             <div class="col-sm-4">
-                                 <%= f.label :firstname %><br />
+                                <%= f.label :firstname %><br />
                                 <%= f.text_field :firstname ,:class => 'form-control'  %>
                             </div>
                             
@@ -31,25 +28,41 @@
                          <br>
                          <div class="row">
                             <div class="col-sm-4" id="clinicaldivision">
-                                <b>Division:</b><br>
+                                <label for="searchform_divisionname">Division</label><br>
                                 <%= collection_select(:searchform, :division_id, Clinicaldivision.all, :id, :divisionname, {:include_blank => '-- Clinical Division --'} ,:class=>'form-control') %>
                             </div>
 
 
                             <div class="col-sm-4" id="clinicaldivision">
-                                <b>Specialty:</b><br>
+                                <label for="searchform_sectionname">Specialty</label><br>
                                 <%= collection_select(:searchform, :section_id, Clinicalsection.all, :id, :sectionname, {:include_blank => '-- Clinical Specialty --'} ,:class=>'form-control') %>
                             </div>
                          </div>
+                         <br>
+                         <div class="row">
+                            <div class="col-sm-4">
+                                <label for="searchform_meetingdate">Cap Meeting Date</label><br>
+                                <%= f.text_field :meetingdate , :class=>'form-control' , 'data-mask' => "99/99/9999"%>
+                                <span class="help-block">99/99/9999</span>
+                            </div>
+
+
+                            <div class="col-sm-4">
+                                <label for="searchform_meetingdate">Cap Expiration Date</label><br>
+                                 <%= f.text_field :certificatedate , :class=>'form-control' , 'data-mask' => "99/99/9999" %>
+                                <span class="help-block">99/99/9999</span>
+                            </div>
+                         </div>
+
 
                         <div class="row">
                             <div class="col-sm-4">
-                                 <%= f.label :cellphone, "Cell Phone:" %><br />
+                                <%= f.label :cellphone, "Cell Phone:" %><br />
                                 <%= f.text_field :cellphone ,:class => 'form-control'  %>
                             </div>
 
                              <div class="col-sm-4">
-                                 <%= f.label :emailfau, "Email:" %><br />
+                                <%= f.label :emailfau, "Email:" %><br />
                                 <%= f.text_field :emailfau ,:class => 'form-control'  %>
                             </div>
                          </div>
@@ -81,6 +94,10 @@
 
 
     //alert('SHABBA!!!');
+    
+    //initialize the datepickers for CAP dates
+    $("#searchform_certificatedate").datepicker();            
+    $("#searchform_meetingdate").datepicker();
 
 
     // when the #country field changes

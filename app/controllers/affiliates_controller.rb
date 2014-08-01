@@ -286,7 +286,7 @@ class AffiliatesController < ApplicationController
 
     #results = Affiliate.joins("LEFT OUTER JOIN clinicalspecialties ON affiliates.id = clinicalspecialties.affiliate_id").order(:lastname)
 
-    results = Affiliate.joins("LEFT OUTER JOIN assignments ON affiliates.id = assignments.affiliate_id").order(:lastname)
+    results = Affiliate.joins("LEFT OUTER JOIN assignments ON affiliates.id = assignments.affiliate_id LEFT OUTER JOIN cap_dates ON affiliates.id = cap_dates.affiliate_id").order(:lastname)
 
     results = results.where("firstname LIKE ?", params[:searchform][:firstname]) if params[:searchform][:firstname].present?
     results = results.where("lastname LIKE ?", params[:searchform][:lastname]) if params[:searchform][:lastname].present?
@@ -294,7 +294,8 @@ class AffiliatesController < ApplicationController
     results = results.where("emailfau LIKE ?", params[:searchform][:emailfau]) if params[:searchform][:emailfau].present?
     results = results.where("clinicalsection_id = ?", params[:searchform][:section_id]) if params[:searchform][:section_id].present?
     results = results.where("clinicaldivision_id = ?", params[:searchform][:division_id]) if params[:searchform][:division_id].present?
-
+    results = results.where("meetingdate = ?", params[:searchform][:meetingdate]) if params[:searchform][:meetingdate].present?
+    results = results.where("certificatedate = ?", params[:searchform][:certificatedate]) if params[:searchform][:certificatedate].present?
 
     @affiliates = results
 
