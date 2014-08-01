@@ -4,7 +4,7 @@ class Annualevaluation < ActiveRecord::Base
   validates :completeddate, :presence => true
   validates :duedate, :presence => true
   validates :evaluator_id, :presence => true
-  validates :status_id, :presence => true
+  #validates :status_id, :presence => true
 
 
   def getEvaluatorName(evaluator_id)
