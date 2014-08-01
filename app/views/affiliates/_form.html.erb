@@ -2,7 +2,7 @@
   <% if @affiliate.errors.any? %>
     <div class="alert alert-block alert-danger">
       <a class="close" aria-hidden="true" href="#" data-dismiss="alert">×</a>
-      <h2><%= pluralize(@affiliate.errors.count, "error") %> prohibited this affiliate from being saved:</h2>
+      <h2><%= pluralize(@affiliate.errors.count, "error") %> prohibited this record from being saved:</h2>
 
       <ul>
       <% @affiliate.errors.full_messages.each do |msg| %>
