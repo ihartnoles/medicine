@@ -1,9 +1,9 @@
 class Annualevaluation < ActiveRecord::Base
-  attr_accessible :completeddate, :duedate, :evaluator_id, :status_id
+  attr_accessible :completeddate, :duedate, :evaluator, :status_id
 
   validates :completeddate, :presence => true
   validates :duedate, :presence => true
-  validates :evaluator_id, :presence => true
+  validates :evaluator, :presence => true
   #validates :status_id, :presence => true
 
 
