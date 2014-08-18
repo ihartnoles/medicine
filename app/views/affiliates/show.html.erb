@@ -355,7 +355,11 @@
                                               <b>Research Area:</b><br>
                                               <% if !@affiliateresearcharea.blank? %>
                                                 <% @affiliateresearcharea.each do |r| %>
-                                                  <%= r.getResearchAreaName(r.researcharea_id) %>
+                                                    <% if  !r.researcharea_id.blank? %>
+                                                      <%= r.getResearchAreaName(r.researcharea_id) %>
+                                                    <% else %>
+                                                       N/A
+                                                    <% end %>
                                                 <% end %>
                                               <% else %>
                                                 N/A
