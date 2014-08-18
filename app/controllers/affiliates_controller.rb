@@ -20,22 +20,24 @@ class AffiliatesController < ApplicationController
         end
       end
     else 
-      @title      =  'Faculty/Staff List'
-      @description = 'List of CoM Faculty/Staff'
+      
+      
       
 
-      # if params[:faculty_classification_id]
-      #   @affiliates = Affiliate.where(:isfaculty => 1, :faculty_classification_id => params[:faculty_classification_id])
-      # else
-      #   @affiliates = Affiliate.where(:isfaculty => 1)
-      # end 
+      if !params[:faculty_classification_id].blank?
+        @title       =  FacultyClassification.find(params[:faculty_classification_id]).classification + ' List'
+        @description = FacultyClassification.find(params[:faculty_classification_id]).classification
+      else
+        @title       =  'Faculty/Staff List'
+        @description = 'List of CoM Faculty/Staff'
+      end 
       
         if session[:usertype] == 4
            #user is an admin; let them see whatever they want
            if params[:faculty_classification_id]
                 @affiliates = Affiliate.where(:isfaculty => 1, :faculty_classification_id => params[:faculty_classification_id])
            else
-                 @affiliates = Affiliate.where(:isfaculty => 1)                 
+                @affiliates = Affiliate.where(:isfaculty => 1)                 
            end
         else
           #you're not an admin; need to check useraccesslevel
