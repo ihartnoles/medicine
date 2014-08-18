@@ -23,4 +23,13 @@
 </script>
 
 <%#= link_to 'Show', @affiliate %> 
-<a href="/affiliates?prospect=1">Back</a>
+
+
+
+<% if  @isfacultyflag == 1 %>
+	IS FACULTY
+	<a href="/affiliates">Back</a>
+<% else %>
+	NOPE
+	<a href="/affiliates?prospect=1">Back</a>
+<% end %>
