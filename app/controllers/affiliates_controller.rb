@@ -262,7 +262,7 @@ class AffiliatesController < ApplicationController
   #GET /search
   def search
     @title       = 'Advanced Search'
-    @description = 'Advanced Search of Faculty'
+    @description = 'Advanced Search'
 
     @clinicalsection = Clinicalsection.new
     @sections = Clinicalsection.all
