@@ -38,9 +38,7 @@
                                 <td class="hidden-xs"><%= affiliate.suffix %></td>
                                 <td class="hidden-xs"><%= affiliate.emailfau %></td>
                                 <td class="hidden-xs">
-                                        <%#=[:Physiology, :Immunology].sample %>
-                                        <%#= affiliate.id %>                                
-                                        <%#= Clinicalsection.find(Clinicalsection.where(:affiliate_id => affiliate.id).first.speciality_id).sectionname %>
+                                        
                                       
                                        <% if !@has_specialty.blank? || @has_specialty.nil? %>
                                             <%= affiliate.getSpecialty(affiliate.id) %>                                                                      
@@ -62,6 +60,11 @@
                                     <% end %>
                                   </td>
                                 <% end %>
+                                <td class="hidden-xs">
+                                   <% @cap_dates.each do |cd| %>
+                                      <%= affiliate.getStatus(affiliate.id).to_s %>
+                                   <% end %>
+                                </td>
                                 <td class="hidden-xs"><% @cap_dates.each do |cd| %><%= cd.certificatedate %> <% end %></td>
                                 <!-- <td class="hidden-xs">A1 Title</td> -->
                                 <td>

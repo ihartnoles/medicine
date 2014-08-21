@@ -1,5 +1,5 @@
 class ContactMailer < ActionMailer::Base
-  default from: "noreplay@fau.edu"
+  default from: "noreply@fau.edu"
 
    def send_msg(username,subject,msg)
   	@username =  username
@@ -8,7 +8,7 @@ class ContactMailer < ActionMailer::Base
   	
  	
 
-    mail(:from => "#{@username}@fau.edu", :to => "ihartstein@fau.edu", :subject => "CoM Faculty Database - #{@subject}")
+    mail(:from => "#{@username}@fau.edu", :to => "eneedelm@fau.edu", :subject => "CoM Faculty Database - #{@subject}")
    end
 
 end

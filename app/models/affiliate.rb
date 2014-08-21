@@ -24,8 +24,16 @@ class Affiliate < ActiveRecord::Base
 
   def getSpecialty(affiliateid)
     specialtyname = Clinicalsection.find(Assignment.where(:affiliate_id => affiliateid).first.clinicalsection_id).sectionname
+    #specialtyname  = Capstatus.select("status").where(:id => CapDate.select("status").where(:affiliate_id => affiliateid))
     return specialtyname 
   end
+
+  def getStatus(affiliateid)
+    statusname  =  Capstatus.where(:id => CapDate.where(:affiliate_id => affiliateid).pluck(:status)).pluck(:status).join(" ")
+
+    #Capstatus.select("status").where(:id => CapDate.select("status").where(:affiliate_id => affiliateid)).status
+    return statusname 
+  end 
 
   def getClassification(classificationid)
     classification = FacultyClassification.find(classificationid).classification
