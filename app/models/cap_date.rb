@@ -1,9 +1,9 @@
 class CapDate < ActiveRecord::Base
   attr_accessible :affiliate_id, :certificatedate, :meetingdate, :status, :fautitle
 
-  validates :certificatedate, :meetingdate, :presence => true
-  validates :status, :presence => true
-  validates :fautitle, :presence => true
+  #validates :certificatedate, :meetingdate, :presence => true
+  #validates :status, :presence => true
+  #validates :fautitle, :presence => true
 
   #validates_date  :certificatedate
   #validates_date :statusdate
