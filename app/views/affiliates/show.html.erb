@@ -1079,7 +1079,9 @@
                                                   
                                                   <p>
                                                     <b>Current FAU Title:</b><br>
+                                                    <% if !cd.fautitle.blank? %>
                                                       <%= cd.getFacultyTitle(cd.fautitle) %>
+                                                    <% end %>
                                                     <!-- 
                                                    <%= cd.meetingdate %>
                                                     [<%= link_to 'Update', edit_cap_date_path(cd, :affiliate_id => params[:id]) %>] 
