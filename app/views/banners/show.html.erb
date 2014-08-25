@@ -34,12 +34,12 @@
 												  <b>Email:</b>
 												  <%= b.email %><br>
 												
-												<%# if session[:usertype] = 4 %>
-													<!-- <div class="col-sm-6"> 
+												<% if session[:usertype] = 4 %>
+													
 													  <b>Birthdate:</b>
-													  <%= b.birth_date.strftime("%m/%d/%Y") %>
-													</div> -->
-												<%# end %>
+													  <%= b.birth_date.strftime("%m/%d/%Y") %><br>
+													
+												<% end %>
 												
 												  <b>Street:</b>
 												  <%= b.hm_street_line1 %><br>
@@ -61,7 +61,7 @@
 												  <b>First Hire Date:</b>
 												  <%= b.first_hire_date %><br>
 												
-												  <b>Current Hire Date:</b><br>
+												  <b>Current Hire Date:</b>
 												  <%= b.current_hire_date %><br>
 												
 												  <b>Job Start Date:</b>
@@ -90,7 +90,10 @@
 												  <%= b.perbfac_academic_title %><br>
 												
 												  <b>Working Title:</b>
-												  <%= b.working_title %>
+												  <%= b.working_title %><br>
+
+												  <b>Tenure Status:</b>
+												  <%= b.tenure_status %><br>
 												</div>	
 											</div>
 										 <%# end %>
