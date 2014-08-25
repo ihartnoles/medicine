@@ -90,8 +90,10 @@
 
                               <tr class="gradeA">
                                   <td class="hidden-xs"><% @banner.each do |b| %><%= b.zid %> <% end %></td>
+                                  <td class="hidden-xs"><%= affiliate.prefix %></td>
                                   <td><%#= affiliate.id %> <%= affiliate.firstname %></td>
                                   <td><%= affiliate.lastname %></td>
+                                  <td class="hidden-xs"><%= affiliate.suffix %></td>
                                   <td class="hidden-xs">
                                     <% @banner.each do |b| %>
                                       <% if defined?(b.perbfac_academic_title.humanize) %>
