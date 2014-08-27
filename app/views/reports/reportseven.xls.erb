@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+
+  <Styles>
+    <Style ss:ID="Default" ss:Name="Normal">
+      <Alignment ss:Vertical="Bottom" />
+      <Borders />
+      <Font />
+      <Interior />
+      <NumberFormat />
+      <Protection />
+    </Style>
+    <Style ss:ID="s21">
+      <Font x:Family="Swiss" ss:Bold="1" />
+    </Style>
+  </Styles>
+
+  <Worksheet ss:Name="Sheet1">
+  <Table>
+     <Row>
+       <Cell ss:StyleID="s21"><Data ss:Type="String">STATUS</Data></Cell>
+       <Cell ss:StyleID="s21"><Data ss:Type="String">ZNUMBER</Data></Cell>
+       <Cell ss:StyleID="s21"><Data ss:Type="String">PREFIX</Data></Cell>
+       <Cell ss:StyleID="s21"><Data ss:Type="String">FIRSTNAME</Data></Cell>
+       <Cell ss:StyleID="s21"><Data ss:Type="String">LASTNAME</Data></Cell>
+       <Cell ss:StyleID="s21"><Data ss:Type="String">SUFFIX</Data></Cell>
+       <Cell ss:StyleID="s21"><Data ss:Type="String">SPECIALTY</Data></Cell>
+       <Cell ss:StyleID="s21"><Data ss:Type="String">FAU TITLE</Data></Cell>
+     </Row>
+   <% @affiliates.each do |affiliate| %>
+
+        <% @has_specialty  = Assignment.where(:affiliate_id => affiliate.id) %>
+        <% @cap_dates      = CapDate.where(:affiliate_id => affiliate.id) %>
+        <% @showprivileges = Hospitalprivilege.where(:affiliate_id => affiliate.id) %>
+
+      <Row>
+        <Cell><Data ss:Type="String">status</Data></Cell>
+        <Cell><Data ss:Type="String"><%= affiliate.znumber%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= affiliate.prefix%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= affiliate.firstname%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= affiliate.lastname%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= affiliate.suffix%></Data></Cell>
+        <Cell><Data ss:Type="String">
+          <% if !@has_specialty.blank? || @has_specialty.nil? %>
+            <%= affiliate.getSpecialty(affiliate.id) %>
+          <% end %></Data></Cell>
+        <Cell><Data ss:Type="String">
+          <% @cap_dates.each do |cd| %>
+          <% if !cd.fautitle.blank? %>
+                <%= cd.getFacultyTitle(cd.fautitle) %>
+              <% end %>
+        <% end %></Data></Cell>
+      </Row>
+  <% end %>
+  </Table>
+  </Worksheet>
+</Workbook>

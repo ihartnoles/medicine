@@ -1,0 +1,35 @@
+<%= form_for(@faculty_date) do |f| %>
+  <% if @faculty_date.errors.any? %>
+    <div class="alert alert-block alert-danger">
+      <h2><%= pluralize(@faculty_date.errors.count, "error") %> prohibited this Faculty Overload Date from being saved:</h2>
+
+      <ul>
+      <% @faculty_date.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= hidden_field_tag :affiliate_id, params[:affiliate_id] %>
+
+
+  <div class="form-group">
+    <div class="input-group">
+      <%= f.label :overloadstart, "Faculty Overload Start Date", :class=>'control-label' %><br />
+      <%= f.text_field :overloadstart , :class=>'form-control' , 'data-mask' => "99/99/9999" %>
+        <span class="help-block">99/99/9999</span>
+    </div>
+  </div>
+  <div class="form-group">
+   <div class="input-group">
+      <%= f.label :overloadend, "Faculty Overload End Date", :class=>'control-label' %><br />
+     
+      <%= f.text_field :overloadend , :class=>'form-control' , 'data-mask' => "99/99/9999" %>
+        <span class="help-block">99/99/9999</span>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit "Update Overload Dates"%>
+  </div>
+<% end %>

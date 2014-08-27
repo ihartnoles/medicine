@@ -1109,17 +1109,45 @@
                                   <div class="box border pink">
                                     <div class="box-title">
                                       <h4><i class="fa fa-plus-square"></i>Faculty Dates</h4>
-                                     
+                                      
+                                      <div class="tools">
+                                         <% if @faculty_dates.blank? %>
+                                          <a href="/faculty_dates/new?affiliate_id=<%= params[:id] %>">
+                                              <i class="fa fa-pencil"></i>
+                                          </a>
+                                         <% else %>
+
+                                         <% @faculty_dates.each do |cd| %>
+                                            <a href="/faculty_dates/<%= cd.id %>/edit?affiliate_id=<%= params[:id] %>">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                          <% end %>
+
+                                         <% end %>
+                                       </div>
+
                                     </div>
                                     <div class="box-body">
                                           <p>
                                               <b>University Faculty Overload Start Date:</b><br>
-                                              ???
+                                              <% @faculty_dates.each do |fd| %>
+                                                <% if !fd.overloadstart.nil? || !fd.overloadstart.blank? %>
+                                                 <%= fd.overloadstart %>
+                                                <%else%>
+                                                    null
+                                                <%end%>
+                                              <% end %>
                                             </p>
 
                                             <p>
                                               <b>University Faculty Overload End Date:</b><br>
-                                              ????
+                                              <% @faculty_dates.each do |fd| %>
+                                                <% if !fd.overloadend.nil? || !fd.overloadend.blank? %>
+                                                 <%= fd.overloadend %>
+                                                <%else%>
+                                                      null
+                                                <%end%>
+                                              <% end %>
                                             </p>
 
 

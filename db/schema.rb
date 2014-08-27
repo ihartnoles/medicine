@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140728223943) do
+ActiveRecord::Schema.define(:version => 20140827182048) do
 
   create_table "AffiliatesSpecialty", :id => false, :force => true do |t|
     t.integer "id",           :null => false
@@ -95,10 +95,10 @@ ActiveRecord::Schema.define(:version => 20140728223943) do
   create_table "annualevaluations", :force => true do |t|
     t.string   "duedate"
     t.string   "completeddate"
-    t.integer  "evaluator_id"
+    t.string   "evaluator",     :limit => 100
     t.integer  "status_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
     t.integer  "affiliate_id"
   end
 
@@ -375,10 +375,10 @@ ActiveRecord::Schema.define(:version => 20140728223943) do
     t.integer  "affiliate_id"
     t.string   "grad_college_start_date"
     t.string   "grad_college_end_date"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
     t.string   "contract_start_date"
     t.string   "contract_end_date"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
   end
 
   create_table "countries", :force => true do |t|
@@ -436,6 +436,14 @@ ActiveRecord::Schema.define(:version => 20140728223943) do
     t.string   "classification"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "faculty_dates", :force => true do |t|
+    t.datetime "overloadstart"
+    t.datetime "overloadend"
+    t.integer  "affiliate_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "facultytitles", :force => true do |t|

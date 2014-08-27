@@ -117,6 +117,9 @@ class AffiliatesController < ApplicationController
     #CAP Dates
     @cap_dates     = CapDate.where(:affiliate_id => params[:id])
 
+    #Faculty Overload Dates
+    @faculty_dates  = FacultyDate.where(:affiliate_id => params[:id])
+
     #COM Dates
     @com_dates_appts = ComDatesAppt.where(:affiliate_id => params[:id])
 

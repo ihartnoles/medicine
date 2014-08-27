@@ -1,0 +1,151 @@
+<!-- 
+<h1>Reports#reportseven</h1>
+<p>Find me in app/views/reports/reportseven.html.erb</p> 
+-->
+
+
+<div class="row">
+<div class="col-md-12">
+            
+            <div class="box border primary">
+                <div class="box-title">
+                    <h4><i class="fa fa-table"></i><%= @title %></h4>
+                </div>
+                <div class="box-body">
+
+               <table id="datatable1" cellpadding="0" cellspacing="0" border="0" class="datatable table table-condensed table-striped table-bordered table-hover">
+                     <thead>
+                         <tr>
+						    <th class="hidden-xs">Status</th>
+						    <th>Z#</th>
+						    <th>Prefix</th>
+						    <th>Firstname</th>
+						    <th>Lastname</th>
+						    <th>Suffix</th>
+						    <th class="hidden-xs">Specialty</th>
+						    <th class="hidden-xs">FAU Title</th> 
+						    <th>CAP Meeting Date</th>             
+						    <th>CAP Expiration Date</th>   
+						    <th>Hospital</th>   
+						    <th>Address Home</th>
+						    <th>Address Work</th>    
+						    <th class="hidden-xs">Email Personal</th>
+						    <th class="hidden-xs">Email Office</th>						   
+						    <th class="hidden-xs">Email Other</th>
+						  </tr>
+                    </thead>
+                    
+
+                    <tbody>
+		                      <!-- <div class="box-container">
+
+		                      	<div cass="row">
+		                      		Hi there
+		                      	</div>
+		                      </div> -->
+
+		                      <% @affiliates.each do |affiliate| %>
+
+		                      <% @has_specialty  = Assignment.where(:affiliate_id => affiliate.id) %>
+		                      <% @cap_dates      = CapDate.where(:affiliate_id => affiliate.id) %>
+		                      <% @showprivileges = Hospitalprivilege.where(:affiliate_id => affiliate.id) %>
+
+		                      <tr class="gradeA">
+                                <td>Status (cap, banner)?</td>
+                                <td><%= affiliate.znumber %></td>
+                                <td><%= affiliate.prefix %></td>
+                                <td><%= affiliate.firstname %></td>
+                                <td><%= affiliate.lastname %></td>
+                                <td><%= affiliate.suffix %></td>
+                                <td>
+                                	<% if !@has_specialty.blank? || @has_specialty.nil? %>
+                                        <%= affiliate.getSpecialty(affiliate.id) %>
+                                    <% end %>
+                                </td>
+                                <td>
+                                	<% @cap_dates.each do |cd| %>
+                                		<% if !cd.fautitle.blank? %>
+                                          <%= cd.getFacultyTitle(cd.fautitle) %>
+                                        <% end %>
+                                	<% end %>
+                                </td> 
+							    <td>
+							    	<% @cap_dates.each do |cd| %>
+							    		<%= cd.meetingdate %>    
+							    	<% end %>
+							    </td>             
+							    <td>
+							    	<% @cap_dates.each do |cd| %>
+							    		<%= cd.certificatedate %>    
+							    	<% end %>
+							    </td>   
+							    <td>
+							    	   <% if @showprivileges.count > 0%>
+                                            <% @showprivileges.each do |p| %>
+                                            <%= p.hospital.name %><br>
+                                            <% end %>
+                                       <% end %>
+							    </td>   
+							    <td>
+							    	<%= affiliate.homestreet%><br>
+							    	<%= affiliate.homecity%> <%= affiliate.homestate%> <%=affiliate.homezip %> 
+							    </td>
+							    <td>
+							    	<%= affiliate.officestreet%><br>
+							    	<%= affiliate.officecity%> <%= affiliate.officestate%> <%=affiliate.officezip %> 
+							    </td>
+							    <td>
+							    	<%= affiliate.emailpersonal%>							    	 
+							    </td>
+							    <td>
+							    	<%= affiliate.emailoffice%>							    	 
+							    </td>
+							    <td>
+							    	<%= affiliate.emailother%>							    	 
+							    </td>
+                               </tr>                            
+		                      <% end %>
+		             </tbody>
+
+		             <tfoot>
+                         <tr>
+						    <th class="hidden-xs">Status</th>
+						    <th>Z#</th>
+						    <th>Prefix</th>
+						    <th>Firstname</th>
+						    <th>Lastname</th>
+						    <th>Suffix</th>
+						    <th class="hidden-xs">Specialty</th>
+						    <th class="hidden-xs">FAU Title</th> 
+						    <th>CAP Meeting Date</th>             
+						    <th>CAP Exp. Date</th>   
+						    <th>Hospital</th>   
+						    <th>Address Home</th>
+						    <th>Address Work</th>    
+						    <th class="hidden-xs">Email Personal</th>
+						    <th class="hidden-xs">Email Office</th>						   
+						    <th class="hidden-xs">Email Other</th>
+						  </tr>
+                    	</tfoot>
+		            </table>
+
+		             Download: <%= link_to "Excel", reports_reportseven_path(format: "xls") %>
+                    <br />
+
+		        </div>
+		     </div>
+  </div>
+</div>		
+
+
+<!-- JQUERY -->
+<%= render 'shared/javascript' %>
+
+<script>
+  jQuery(document).ready(function() {     
+    App.setPage("dynamic_table");  //Set current page
+    App.init(); //Initialise plugins and elements
+  });
+</script>
+
+

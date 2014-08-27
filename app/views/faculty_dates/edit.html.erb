@@ -1,0 +1,35 @@
+<!-- <h1>Editing faculty_date</h1> -->
+
+<%#= render 'form' %>
+
+<%#= link_to 'Show', @faculty_date %> |
+<%#= link_to 'Back', faculty_dates_path %>
+
+
+
+<div class="row">
+	<div class="col-md-12">
+		<!-- BASIC -->
+		<div class="box border pink">
+			<div class="box-title">
+				<h4><i class="fa fa-bars"></i>Edit Faculty Overload Dates</h4>
+				
+			</div>
+			<div class="box-body">				
+				  <%= render 'form' %>			
+			</div>
+		</div>
+	</div>
+</div>
+
+<%= render 'shared/javascript' %>
+
+<script>
+        jQuery(document).ready(function() {     
+            App.setPage("forms");  //Set current page
+            App.init(); //Initialise plugins and elements
+
+            $("#faculty_date_overloadstart").datepicker();
+            $("#faculty_date_overloadend").datepicker();
+        });
+</script>

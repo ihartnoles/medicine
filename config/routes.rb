@@ -1,5 +1,10 @@
 Medicine::Application.routes.draw do
   
+  resources :faculty_dates
+
+
+  get "reports/reportseven"
+
   resources :com_dates_appts
 
 
