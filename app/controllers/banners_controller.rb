@@ -97,7 +97,7 @@ class BannersController < ApplicationController
                             hm_phone,
                             cell
                         from FAUMGR.AWP_COM_ALL_EMPS  
-                        where ECLS <> 'CT'"])
+                        where 0=0"])
 
     
     @Bannerstaff.each do | bs |
