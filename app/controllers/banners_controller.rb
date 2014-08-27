@@ -103,7 +103,7 @@ class BannersController < ApplicationController
     @Bannerstaff.each do | bs |
 
    
-      if Affiliate.find_by_znumber(bs.zid).nil?
+      if Affiliate.find_by_znumber(bs.zid).nil? || bs.zid == affiliate.znumber
         affiliate = Affiliate.new
         affiliate.isfaculty = 1
         affiliate.pidm = bs.pidm
