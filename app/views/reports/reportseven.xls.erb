@@ -52,39 +52,13 @@
         <Cell><Data ss:Type="String"><%= affiliate.firstname%></Data></Cell>
         <Cell><Data ss:Type="String"><%= affiliate.lastname%></Data></Cell>
         <Cell><Data ss:Type="String"><%= affiliate.suffix%></Data></Cell>
-        <Cell><Data ss:Type="String">
-          <% if !@has_specialty.blank? || @has_specialty.nil? %>
-            <%= affiliate.getSpecialty(affiliate.id) %>
-          <% end %></Data></Cell>
-        <Cell><Data ss:Type="String">
-          <% @cap_dates.each do |cd| %>
-          <% if !cd.fautitle.blank? %>
-                <%= cd.getFacultyTitle(cd.fautitle) %>
-              <% end %>
-        <% end %></Data></Cell>
-        <Cell><Data ss:Type="String">
-          <% @cap_dates.each do |cd| %>
-               <%= cd.meetingdate %>    
-          <% end %>
-          </Data>
-        </Cell>
-        <Cell><Data ss:Type="String"><% @cap_dates.each do |cd| %>
-               <%= cd.certificatedate %>    
-          <% end %></Data>          
-        </Cell>
-        <Cell><Data ss:Type="String">
-         <% if @showprivileges.count > 0%>
-                <%= p.hospital.name %><br>    
-          <% end %></Data>          
-        </Cell>
-        <Cell><Data ss:Type="String">
-          <%= affiliate.homestreet%><br>
-                    <%= affiliate.homecity%> <%= affiliate.homestate%> <%=affiliate.homezip %> 
-        </Data></Cell>
-        <Cell><Data ss:Type="String">
-         <%= affiliate.officestreet%><br>
-                    <%= affiliate.officecity%> <%= affiliate.officestate%> <%=affiliate.officezip %>  
-        </Data></Cell>
+        <Cell><Data ss:Type="String"><% if !@has_specialty.blank? || @has_specialty.nil? %><%= affiliate.getSpecialty(affiliate.id) %><% end %></Data></Cell>
+        <Cell><Data ss:Type="String"><% @cap_dates.each do |cd| %><% if !cd.fautitle.blank? %><%= cd.getFacultyTitle(cd.fautitle) %><% end %><% end %></Data></Cell>
+        <Cell><Data ss:Type="String"><% @cap_dates.each do |cd| %><% if !cd.meetingdate.blank? %><%= cd.meetingdate %><% end %><% end %></Data></Cell>
+        <Cell><Data ss:Type="String"><% @cap_dates.each do |cd| %><% if !cd.certificatedate.blank? %><%= cd.certificatedate %><% end %><% end %></Data></Cell>
+        <Cell><Data ss:Type="String"><% if @showprivileges.count > 0%><%= p.hospital.name %><% end %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= affiliate.homestreet%><%= affiliate.homecity%> <%= affiliate.homestate%> <%=affiliate.homezip %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= affiliate.officestreet%><%= affiliate.officecity%> <%= affiliate.officestate%> <%=affiliate.officezip %></Data></Cell>
         <Cell><Data ss:Type="String"><%= affiliate.emailpersonal%></Data></Cell>
         <Cell><Data ss:Type="String"><%= affiliate.emailoffice%></Data></Cell>
         <Cell><Data ss:Type="String"><%= affiliate.emailother%></Data></Cell>
