@@ -14,12 +14,6 @@ development:
   password: ikeFAU1358
 
 
-banner:
-   adapter: oracle_enhanced
-   database: "(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=tcp)(HOST=bannerprd.fau.edu)(PORT=1550)))(CONNECT_DATA=(SID=FAUP)))"
-   username: ihartstein
-   password: ikeORA1358
-
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -32,3 +26,10 @@ production:
    database: Medicine
    username: FAU\ihartstein
    password: ikeFAU1358
+
+
+banner:
+   adapter: oracle_enhanced
+   database: "(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=tcp)(HOST=bannerprd.fau.edu)(PORT=1550)))(CONNECT_DATA=(SID=FAUP)))"
+   username: ihartstein
+   password: ikeORA1358
