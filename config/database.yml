@@ -28,7 +28,7 @@ banner:
 
 production:
    adapter: sqlserver
-   dataserver: boc22mssqloit.ad.fau.edu
+   dataserver: mssql.fau.edu
    database: Medicine
    username: FAU\ihartstein
    password: ikeFAU1358
