@@ -30,6 +30,14 @@
        <Cell ss:StyleID="s21"><Data ss:Type="String">SUFFIX</Data></Cell>
        <Cell ss:StyleID="s21"><Data ss:Type="String">SPECIALTY</Data></Cell>
        <Cell ss:StyleID="s21"><Data ss:Type="String">FAU TITLE</Data></Cell>
+       <Cell ss:StyleID="s21"><Data ss:Type="String">CAP MEETING</Data></Cell>
+       <Cell ss:StyleID="s21"><Data ss:Type="String">CAP EXPIRATION</Data></Cell>
+        <Cell ss:StyleID="s21"><Data ss:Type="String">HOSPITAL</Data></Cell>
+        <Cell ss:StyleID="s21"><Data ss:Type="String">ADDRESS HOME</Data></Cell>
+        <Cell ss:StyleID="s21"><Data ss:Type="String">ADDRESS WORK</Data></Cell>
+        <Cell ss:StyleID="s21"><Data ss:Type="String">EMAIL PERSONAL</Data></Cell>
+        <Cell ss:StyleID="s21"><Data ss:Type="String">EMAIL OFFICE</Data></Cell>
+        <Cell ss:StyleID="s21"><Data ss:Type="String">EMAIL OTHER</Data></Cell>
      </Row>
    <% @affiliates.each do |affiliate| %>
 
@@ -54,6 +62,32 @@
                 <%= cd.getFacultyTitle(cd.fautitle) %>
               <% end %>
         <% end %></Data></Cell>
+        <Cell><Data ss:Type="String"></Data>
+          <% @cap_dates.each do |cd| %>
+               <%= cd.meetingdate %>    
+          <% end %>
+        </Cell>
+        <Cell><Data ss:Type="String"></Data>
+          <% @cap_dates.each do |cd| %>
+               <%= cd.certificatedate %>    
+          <% end %>
+        </Cell>
+        <Cell><Data ss:Type="String"></Data>
+         <% if @showprivileges.count > 0%>
+                <%= p.hospital.name %><br>    
+          <% end %>
+        </Cell>
+        <Cell><Data ss:Type="String">
+          <%= affiliate.homestreet%><br>
+                    <%= affiliate.homecity%> <%= affiliate.homestate%> <%=affiliate.homezip %> 
+        </Data></Cell>
+        <Cell><Data ss:Type="String">
+         <%= affiliate.officestreet%><br>
+                    <%= affiliate.officecity%> <%= affiliate.officestate%> <%=affiliate.officezip %>  
+        </Data></Cell>
+        <Cell><Data ss:Type="String"><%= affiliate.emailpersonal%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= affiliate.emailoffice%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= affiliate.emailother%></Data></Cell>
       </Row>
   <% end %>
   </Table>
