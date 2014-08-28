@@ -57,8 +57,8 @@
         <Cell><Data ss:Type="String"><% @cap_dates.each do |cd| %><% if !cd.meetingdate.blank? %><%= cd.meetingdate %><% end %><% end %></Data></Cell>
         <Cell><Data ss:Type="String"><% @cap_dates.each do |cd| %><% if !cd.certificatedate.blank? %><%= cd.certificatedate %><% end %><% end %></Data></Cell>
         <Cell><Data ss:Type="String"><% if @showprivileges.count > 0%><%= p.hospital.name %><% end %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= affiliate.homestreet%><%= affiliate.homecity%> <%= affiliate.homestate%> <%=affiliate.homezip %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= affiliate.officestreet%><%= affiliate.officecity%> <%= affiliate.officestate%> <%=affiliate.officezip %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= affiliate.homestreet%> <%= affiliate.homecity%>, <%= affiliate.homestate%> <%=affiliate.homezip %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= affiliate.officestreet%> <%= affiliate.officecity%>,<%= affiliate.officestate%> <%=affiliate.officezip %></Data></Cell>
         <Cell><Data ss:Type="String"><%= affiliate.emailpersonal%></Data></Cell>
         <Cell><Data ss:Type="String"><%= affiliate.emailoffice%></Data></Cell>
         <Cell><Data ss:Type="String"><%= affiliate.emailother%></Data></Cell>
