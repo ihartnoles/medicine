@@ -96,7 +96,7 @@
                                                       <% end %>
                                                     <% end %>
                                                 <% else %>
-                                                    ???
+                                                    N/A
                                                 <% end %>
                                               </p>
                                               <% end %>
@@ -114,7 +114,7 @@
                                                     <% end %>
                                                   <% end %>
                                               <% else %>
-                                                  ???
+                                                  N/A
                                               <% end %>
                                             </p>
 
@@ -139,7 +139,7 @@
                                                     <% end %>
                                                   <% end %>
                                               <% else %>
-                                                  ???
+                                                  N/A
                                               <% end %>
                                             </p>
                                           -->
@@ -526,10 +526,22 @@
                                                   <td><%= d.getDegreeName(d.degreelist_id) %></td>
                                                   <td><%= d.degreespecialty %></td>
                                                   <td><%= d.year %></td>
-                                                  <td><%= d.getInstitutionName(d.institution_id) %></td>
+                                                  <td>
+                                                    <% if !d.institution_id.blank? %>
+                                                      <%= d.getInstitutionName(d.institution_id) %>
+                                                    <% end %>
+                                                  </td>
                                                   <td><%= d.city %></td>
-                                                  <td><%= d.getStateName(d.state) %></td>
-                                                  <td><%= d.getCountryName(d.country) %></td>
+                                                  <td>
+                                                    <% if !d.state.blank? %>
+                                                      <%= d.getStateName(d.state) %>
+                                                    <% end %>
+                                                  </td>
+                                                  <td>
+                                                    <% if !d.country.blank? %>
+                                                      <%= d.getCountryName(d.country) %>
+                                                    <% end %>
+                                                  </td>
                                                   <td> <%= link_to 'Update', edit_degree_path(d , :affiliate_id => params[:id]) %> | 
                                                        <%= link_to 'Remove', degree_path(d , :affiliate_id => params[:id]), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
                                                 </tr>

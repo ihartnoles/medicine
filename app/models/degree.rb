@@ -5,10 +5,10 @@ class Degree < ActiveRecord::Base
   validates :degreelist_id, :presence => true
   validates :year, :presence => true
   validates :institution_id, :presence => true
-  validates :city,  format: { with: /^[A-Za-z\s]+$/, message: "only allows letters" } ,:presence => true
-  validates :state, :presence => true
-  validates :country, :presence => true
-  validates :degreespecialty, :presence => true
+  #validates :city,  format: { with: /^[A-Za-z\s]+$/, message: "only allows letters" } ,:presence => true
+  #validates :state, :presence => true
+  #validates :country, :presence => true
+  #validates :degreespecialty, :presence => true
 
   def getDegreeName(degreelist_id)
   	degreename = Degreelist.find(degreelist_id).degreename
