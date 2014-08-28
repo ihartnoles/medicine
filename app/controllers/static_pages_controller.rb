@@ -9,15 +9,16 @@ class StaticPagesController < ApplicationController
     	@description = 'What would you like to do?'		
 
     	session[:usertype]  = nil
-    	session[:usertype]  = User.find_by_username(session[:cas_user]).usertype_id
-    	session[:userid] 	= User.find_by_username(session[:cas_user]).id
-    	session[:poweruseraccess] = Useraccesslevel.where(:affiliate_id => session[:userid]).pluck(:facultyclassification_id)
 
-    	#end user doesn't have access in the system!
-    	 if session[:usertype].blank? || session[:usertype].nil? 
-    	 	#bounce em out!
-    	 	redirect_to unauthorized_path
-    	 end
+    	if !User.find_by_username(session[:cas_user]).blank?
+	    	session[:usertype]  = User.find_by_username(session[:cas_user]).usertype_id
+	    	session[:userid] 	= User.find_by_username(session[:cas_user]).id
+	    	session[:poweruseraccess] = Useraccesslevel.where(:affiliate_id => session[:userid]).pluck(:facultyclassification_id)
+	    else
+	    	#end user doesn't have access in the system!
+	    	redirect_to unauthorized_path
+    	end
+    	
     end
 
 	def admin	
@@ -39,5 +40,7 @@ class StaticPagesController < ApplicationController
 	def unauthorized
 		@title = 'Unauthorized'
 		@description = ''
+
+		render layout: false
 	end 
 end
