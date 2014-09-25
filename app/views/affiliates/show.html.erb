@@ -523,7 +523,11 @@
                                               
                                               <% @degrees.each do |d| %>
                                                  <tr>
-                                                  <td><%= d.getDegreeName(d.degreelist_id) %></td>
+                                                  <td>
+                                                    <% if !d.degreelist_id.nil? %>
+                                                      <%= d.getDegreeName(d.degreelist_id) %>
+                                                    <% end %>
+                                                  </td>
                                                   <td><%= d.degreespecialty %></td>
                                                   <td><%= d.year %></td>
                                                   <td>
