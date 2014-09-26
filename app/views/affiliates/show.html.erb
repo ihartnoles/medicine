@@ -1301,11 +1301,25 @@
                                            <% if !@assignments.blank? %>
                                              <% @assignments.each do |assignment| %>
                                               <tr>
-                                                <td><%= assignment.getDivisionName(assignment.clinicaldivision_id) %></td>
-                                                <td><%= assignment.getSpecialtyName(assignment.clinicalsection_id) %></td>
+                                                <td>
+                                                  <% if !assignment.clinicaldivision_id.nil? %>
+                                                    <%= assignment.getDivisionName(assignment.clinicaldivision_id) %>
+                                                  <% end %>
+                                                </td>
+
+                                                <td>
+                                                  <% if !assignment.clinicalsection_id.nil? %>
+                                                    <%= assignment.getSpecialtyName(assignment.clinicalsection_id) %>
+                                                  <% end %>
+                                                </td>
                                                 <!-- only display for faculty -->
                                                 <% if @isfacultyflag  == 1%> 
-                                                  <td><%= assignment.getDisciplineName(assignment.basicsciencediscipline_id) %></td>
+
+                                                  <td>
+                                                    <% if !assignment.basicsciencediscipline_id.nil? %>
+                                                      <%= assignment.getDisciplineName(assignment.basicsciencediscipline_id) %>
+                                                    <% end %>
+                                                  </td>
                                                 <% end %>
                                                 <td><%= assignment.vetter %></td>
                                                 <td><%= link_to 'Update', edit_assignment_path(assignment, :affiliate_id => params[:id]) %> | 
