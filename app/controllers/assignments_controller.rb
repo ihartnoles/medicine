@@ -110,10 +110,25 @@ class AssignmentsController < ApplicationController
     @assignment = Assignment.find(params[:id])
     @assignment.destroy
 
-    respond_to do |format|
-      format.html { redirect_to assignments_url }
-      format.json { head :no_content }
+    @isfacultyflag = Affiliate.find(params[:affiliate_id]).isfaculty
+    #@affiliate_id = params[:affiliate_id]
+
+    if @isfacultyflag
+      @pidm = Affiliate.find(params[:affiliate_id]).pidm
     end
+
+    respond_to do |format|
+      if @isfacultyflag
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id], :pidm => @pidm) + "#assignments", notice: 'Assignment updated!' }
+      else
+          format.html { redirect_to affiliate_url(:id => params[:affiliate_id])+ "#assignments", notice: 'Assignment updated!' }
+      end
+    end
+
+    # respond_to do |format|
+    #   format.html { redirect_to assignments_url }
+    #   format.json { head :no_content }
+    # end
   end
 
 
