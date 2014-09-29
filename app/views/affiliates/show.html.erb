@@ -1349,13 +1349,13 @@
                                              <% @assignments.each do |assignment| %>
                                               <tr>
                                                 <td>
-                                                  <% if !assignment.clinicaldivision_id.nil? %>
+                                                  <% if !assignment.clinicaldivision_id.nil? || !assignment.clinicaldivision_id.blank? %>
                                                     <%= assignment.getDivisionName(assignment.clinicaldivision_id) %>
                                                   <% end %>
                                                 </td>
 
                                                 <td>
-                                                  <% if !assignment.clinicalsection_id.nil? %>
+                                                  <% if !assignment.clinicalsection_id.nil? || !assignment.clinicalsection_id.blank? %>
                                                     <%= assignment.getSpecialtyName(assignment.clinicalsection_id) %>
                                                   <% end %>
                                                 </td>
@@ -1363,7 +1363,7 @@
                                                 <% if @isfacultyflag  == 1%> 
 
                                                   <td>
-                                                    <% if !assignment.basicsciencediscipline_id.nil? %>
+                                                    <% if !assignment.basicsciencediscipline_id.nil? || !assignment.clinicalsection_id.blank?%>
                                                       <%= assignment.getDisciplineName(assignment.basicsciencediscipline_id) %>
                                                     <% end %>
                                                   </td>
