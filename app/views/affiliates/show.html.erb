@@ -461,8 +461,16 @@
                                                       <% end %>
 
                                                     </td>
-                                                    <td><%= cs.getSpecialtyName(cs.speciality_id) %></td>
-                                                    <td><%= cs.year %></td>
+                                                    <td>
+                                                      <% if !cs.speciality_id.blank? %>
+                                                        <%= cs.getSpecialtyName(cs.speciality_id) %>
+                                                      <% end %>
+                                                    </td>
+                                                    <td>
+                                                      <% if !cs.year.blank? %>
+                                                        <%= cs.year %>
+                                                      <% end %>
+                                                    </td>
                                                     <td>  
                                                       <%= link_to 'Update', edit_clinicalspecialty_path(cs , :affiliate_id => params[:id]) %>
                                                       | <%= link_to 'Remove', clinicalspecialty_path(cs , :affiliate_id => params[:id]), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
@@ -528,14 +536,26 @@
                                                       <%= d.getDegreeName(d.degreelist_id) %>
                                                     <% end %>
                                                   </td>
-                                                  <td><%= d.degreespecialty %></td>
-                                                  <td><%= d.year %></td>
+                                                  <td>
+                                                     <% if !d.degreespecialty.blank? %>
+                                                      <%= d.degreespecialty %>
+                                                    <% end %>
+                                                  </td>
+                                                  <td>
+                                                    <% if !d.year.blank? %>
+                                                      <%= d.year %>
+                                                    <% end %>
+                                                  </td>
                                                   <td>
                                                     <% if !d.institution_id.blank? %>
                                                       <%= d.getInstitutionName(d.institution_id) %>
                                                     <% end %>
                                                   </td>
-                                                  <td><%= d.city %></td>
+                                                  <td>
+                                                    <% if !d.city.blank? %>
+                                                      <%= d.city %>
+                                                    <% end %>
+                                                  </td>
                                                   <td>
                                                     <% if !d.state.blank? %>
                                                       <%= d.getStateName(d.state) %>
@@ -597,10 +617,26 @@
                                           <% if !@residencies.blank? %>
                                               <% @residencies.each do |r| %>
                                                 <tr>
-                                                    <td><%= r.getSpecialtyName(r.specialty_id) %></td>
-                                                    <td><%= r.location %></td>
-                                                    <td><%= r.trainingtitle %></td>
-                                                    <td><%= r.matchconnection %></td>
+                                                    <td>
+                                                      <% if !r.specialty_id.blank? %>
+                                                        <%= r.getSpecialtyName(r.specialty_id) %>
+                                                      <% end %>
+                                                    </td>
+                                                    <td>
+                                                      <% if !r.location.blank? %>
+                                                        <%= r.location %>
+                                                      <% end %>
+                                                    </td>
+                                                    <td>
+                                                      <% if !r.trainingtitle.blank? %>
+                                                        <%= r.trainingtitle %>
+                                                      <% end %>
+                                                    </td>
+                                                    <td>
+                                                       <% if !r.matchconnection.blank? %>
+                                                        <%= r.matchconnection %>
+                                                       <% end %>
+                                                    </td>
                                                     <td>  
                                                       <%= link_to 'Update', edit_residency_path(r , :affiliate_id => params[:id]) %>
                                                       | <%= link_to 'Remove', residency_path(r , :affiliate_id => params[:id]), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
@@ -653,10 +689,21 @@
                                            <% if !@fellowships.blank? %>
                                               <% @fellowships.each do |f| %>
                                                 <tr>
-                                                    <td><%= f.getSpecialtyName(f.specialty_id) %></td>
-                                                    <td><%= f.training %></td>
-                                                    <td><%= f.location %></td>
-                                                    <td>  
+                                                    <td>
+                                                      <% if !f.specialty_id.blank? %>
+                                                        <%= f.getSpecialtyName(f.specialty_id) %>
+                                                      <% end %>
+                                                      </td>
+                                                    <td>
+                                                      <% if !f.training.blank? %>
+                                                        <%= f.training %>
+                                                      <% end %>
+                                                    </td>
+                                                    <td>
+                                                      <% if !f.location.blank? %>
+                                                        <%= f.location %>
+                                                      <% end %>
+                                                    </td>                                                    <td>  
                                                       <%= link_to 'Update', edit_fellowship_path(f , :affiliate_id => params[:id]) %>
                                                       | <%= link_to 'Remove', fellowship_path(f , :affiliate_id => params[:id]), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
                                                 </tr>
