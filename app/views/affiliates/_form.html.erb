@@ -18,9 +18,20 @@
     <%= f.text_field :znumber %>
   </div>
 -->
+
   
   <%= f.hidden_field :isfaculty , :value => @isfacultyflag %>
 
+  <div class="form-group">
+    <%= f.label :znumber %><br />
+    <% if @isfacultyflag == 1 %>
+      <%= f.text_field :znumber ,:class => 'form-control'  , :id => 'disabledInput', :disabled=>'' %>
+    <% else %>
+      <%= f.text_field :znumber ,:class => 'form-control' %>
+    <% end %>
+    
+  </div>
+  
   
   <div class="form-group">
     <%= f.label :faculty_classification_id, "Classification" %><br />

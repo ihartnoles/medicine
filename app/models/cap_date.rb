@@ -10,11 +10,19 @@ class CapDate < ActiveRecord::Base
   #validates_date :meetingdate
 
   def getStatusName(status_id)
-  	statusname = Capstatus.find(status_id).status
+  	begin
+      statusname = Capstatus.find(status_id).status
+    rescue ActiveRecord::RecordNotFound => e
+      statusname = ''
+    end 
     return statusname
   end
   
   def getFacultyTitle(titleid)
-    return Facultytitle.find(titleid).title
+    begin
+      return Facultytitle.find(titleid).title
+    rescue ActiveRecord::RecordNotFound => e
+      return ''
+    end 
   end
 end

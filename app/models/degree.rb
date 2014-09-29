@@ -11,22 +11,41 @@ class Degree < ActiveRecord::Base
   #validates :degreespecialty, :presence => true
 
   def getDegreeName(degreelist_id)
-  	degreename = Degreelist.find(degreelist_id).degreename
+    begin
+  	 degreename = Degreelist.find(degreelist_id).degreename
+    rescue ActiveRecord::RecordNotFound => e
+     degreename = ''
+    end
+
     return degreename
   end
 
   def getInstitutionName(institution_id)
-  	institutionname = Institution.find(institution_id).institutionname
+    begin
+      institutionname = Institution.find(institution_id).institutionname
+    rescue ActiveRecord::RecordNotFound => e
+      institutionname = ''
+    end
     return institutionname
   end
 
   def getStateName(state_id)
-  	statename = State.find(state_id).state
+    begin
+  	  statename = State.find(state_id).state
+    rescue ActiveRecord::RecordNotFound => e
+      statename = ''
+    end
+
     return statename
   end
 
   def getCountryName(country_id)
-  	countryname = Country.find(country_id).country
+    begin
+  	 countryname = Country.find(country_id).country
+    rescue ActiveRecord::RecordNotFound => e
+      countryname = ''
+    end
+    
     return countryname
   end
 end

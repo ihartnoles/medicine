@@ -8,12 +8,22 @@ class Annualevaluation < ActiveRecord::Base
 
 
   def getEvaluatorName(evaluator_id)
-  	evaluatorname = User.find(evaluator_id).username
+  	begin 
+      evaluatorname = User.find(evaluator_id).username
+    rescue ActiveRecord::RecordNotFound => e
+      evaluatorname = ''
+    end 
+
     return evaluatorname
   end
 
   def getStatus(status_id)
-  	status = Evaluationstatus.find(status_id).status
+  	begin
+      status = Evaluationstatus.find(status_id).status
+    rescue ActiveRecord::RecordNotFound => e
+      status = ''
+    end
+    
     return status
   end
 

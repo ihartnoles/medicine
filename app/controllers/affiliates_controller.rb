@@ -70,10 +70,12 @@ class AffiliatesController < ApplicationController
     @affiliate = Affiliate.find(@id)
     @isfacultyflag = Affiliate.find(@id).isfaculty
 
-   if !thisaffiliate.suffix.blank?
+   if !thisaffiliate.firstname.blank? && !thisaffiliate.lastname.blank? && !thisaffiliate.suffix.blank?
     @fullname  = thisaffiliate.firstname  + ' ' + thisaffiliate.lastname +  ', ' + thisaffiliate.suffix
+   elsif !thisaffiliate.firstname.blank? && !thisaffiliate.lastname.blank? && !thisaffiliate.suffix.blank
+    @fullname  = thisaffiliate.firstname  + ' ' + thisaffiliate.lastname  
    else
-    @fullname  = thisaffiliate.firstname  + ' ' + thisaffiliate.lastname
+    @fullname  = ''
    end 
    
     if @isfacultyflag

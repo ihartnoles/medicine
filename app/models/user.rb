@@ -7,7 +7,11 @@ class User < ActiveRecord::Base
 
 
   def groupname(id)
-  	name = Permissiongroup.find(id).groupname
+    begin
+  	  name = Permissiongroup.find(id).groupname
+    rescue ActiveRecord::RecordNotFound => e
+      name = ''
+    end
 
   	return name
   end

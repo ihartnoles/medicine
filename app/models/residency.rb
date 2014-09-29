@@ -7,7 +7,11 @@ class Residency < ActiveRecord::Base
   validates :matchconnection, :presence => true
   
   def getSpecialtyName(speciality_id)
-  	specialtyname = Clinicalsection.find(speciality_id).sectionname
+  	begin
+  		specialtyname = Clinicalsection.find(speciality_id).sectionname
+  	rescue ActiveRecord::RecordNotFound => e
+  		specialtyname = ''
+  	end
     return specialtyname
   end
 end

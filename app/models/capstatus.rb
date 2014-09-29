@@ -5,7 +5,11 @@ class Capstatus < ActiveRecord::Base
   has_many  :capdates
 
   def getStatusName(status_id)
-  	statusname = Capstatus.find(status_id).status
+  	begin
+  	  statusname = Capstatus.find(status_id).status
+  	rescue ActiveRecord::RecordNotFound => e
+      statusname = ''
+    end 
     return statusname
   end
 end

@@ -6,7 +6,12 @@ class Clinicalsection < ActiveRecord::Base
   validates :sectionname, format: { with: /^[A-Za-z\/\\&\s]+$/, message: "only allows letters" } 
 
    def getDivisionName(clinicaldivision_id)
-    divisionname = Clinicaldivision.find(clinicaldivision_id).divisionname
+    begin
+    	divisionname = Clinicaldivision.find(clinicaldivision_id).divisionname
+    rescue ActiveRecord::RecordNotFound => e
+    	divisionname = ''
+    end 
+    
     return divisionname
   end
   
