@@ -7,17 +7,31 @@ class Assignment < ActiveRecord::Base
    # end 
 
   def getDivisionName(clinicaldivision_id)
-    divisionname = Clinicaldivision.find(clinicaldivision_id).divisionname
+    begin
+      divisionname = Clinicaldivision.find(clinicaldivision_id).divisionname
+    rescue
+      divisionname = ''
+    end
     return divisionname
   end
 
   def getSpecialtyName(clinicalsection_id)
-  	specialtyname = Clinicalsection.find(clinicalsection_id).sectionname
+  	begin
+      specialtyname = Clinicalsection.find(clinicalsection_id).sectionname
+    rescue
+      specialtyname = ''
+    end 
+
     return specialtyname
   end
  
   def getDisciplineName(basicsciencediscipline_id)
-    disciplinename = Basicsciencediscipline.find(basicsciencediscipline_id).disciplinename
+    begin
+      disciplinename = Basicsciencediscipline.find(basicsciencediscipline_id).disciplinename
+    rescue ActiveRecord::RecordNotFound => e
+      disciplinename = ''
+    end 
+
     return disciplinename
   end
 

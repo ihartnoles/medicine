@@ -111,8 +111,7 @@ class AssignmentsController < ApplicationController
     @assignment.destroy
 
     @isfacultyflag = Affiliate.find(params[:affiliate_id]).isfaculty
-    #@affiliate_id = params[:affiliate_id]
-
+    
     if @isfacultyflag
       @pidm = Affiliate.find(params[:affiliate_id]).pidm
     end
