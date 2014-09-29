@@ -9,7 +9,7 @@ class Assignment < ActiveRecord::Base
   def getDivisionName(clinicaldivision_id)
     begin
       divisionname = Clinicaldivision.find(clinicaldivision_id).divisionname
-    rescue
+    rescue ActiveRecord::RecordNotFound => e
       divisionname = ''
     end
     return divisionname
@@ -18,7 +18,7 @@ class Assignment < ActiveRecord::Base
   def getSpecialtyName(clinicalsection_id)
   	begin
       specialtyname = Clinicalsection.find(clinicalsection_id).sectionname
-    rescue
+    rescue ActiveRecord::RecordNotFound => e
       specialtyname = ''
     end 
 

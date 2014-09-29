@@ -3,7 +3,13 @@ class License < ActiveRecord::Base
 
 
   def getStateName(state_id)
-  	return State.find(state_id).state
+  	begin
+  		statename = State.find(state_id).state
+  	rescue ActiveRecord::RecordNotFound => e
+  		statename = ''
+  	end 
+
+  	return statename 
   end
 
 end

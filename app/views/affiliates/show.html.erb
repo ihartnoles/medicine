@@ -397,7 +397,11 @@
                                                          <% @licenses.each do |license| %>
                                                           <tr>
                                                             <td><%= license.licensenumber %></td>
-                                                            <td><%= license.getStateName(license.state) %></td>
+                                                            <td>
+                                                              <% if !license.state.blank? %>
+                                                                <%= license.getStateName(license.state) %>
+                                                              <% end %>
+                                                            </td>
                                                             <!--
                                                             <td><%= license.year %></td>
                                                             <td><%= license.status %></td>

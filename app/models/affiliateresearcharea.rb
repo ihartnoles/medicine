@@ -3,7 +3,12 @@ class Affiliateresearcharea < ActiveRecord::Base
 
 
   def getResearchAreaName(researcharea_id)
-   researchAreaName = Researcharea.find(researcharea_id).name
+   begin
+   	researchAreaName = Researcharea.find(researcharea_id).name
+   rescue ActiveRecord::RecordNotFound => e
+   	researchAreaName = ''
+   end 
+
    return researchAreaName
   end 
 end
