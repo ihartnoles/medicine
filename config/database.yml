@@ -11,7 +11,7 @@ development:
   database: Medicine
   #username: BOC22-LT-IH\ihartstein
   username: FAU\ihartstein
-  password: ikeFAU1358
+  password: ikeFAU60
 
 
 
@@ -25,7 +25,7 @@ production:
    dataserver: mssql.fau.edu
    database: Medicine
    username: FAU\ihartstein
-   password: ikeFAU1358
+   password: ikeFAU60
 
 
 banner:
