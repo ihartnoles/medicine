@@ -325,6 +325,7 @@ class AffiliatesController < ApplicationController
     #save affiliate medical license
     affiliate = Affiliate.find(params[:affiliate_id])
     affiliate.license = params[:license]
+    affiliate.path = params[:path]
     affiliate.save
 
     isfacultyflag = Affiliate.find(params[:affiliate_id]).isfaculty
