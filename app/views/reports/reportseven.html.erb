@@ -48,10 +48,17 @@
 
 		                      <% @has_specialty  = Assignment.where(:affiliate_id => affiliate.id) %>
 		                      <% @cap_dates      = CapDate.where(:affiliate_id => affiliate.id) %>
+
 		                      <% @showprivileges = Hospitalprivilege.where(:affiliate_id => affiliate.id) %>
 
 		                      <tr class="gradeA">
-                                <td>Status (cap, banner)?</td>
+                                <td>
+                                	<% @cap_dates.each do |cd| %>
+                                		<% if !cd.status.blank? %>
+                                          <%= cd.getStatusName(cd.status) %>
+                                        <% end %>
+                                	<% end %>
+                                </td>
                                 <td><%= affiliate.znumber %></td>
                                 <td><%= affiliate.prefix %></td>
                                 <td><%= affiliate.firstname %></td>
