@@ -8,7 +8,7 @@ class ContactMailer < ActionMailer::Base
   	
  	
 
-    mail(:from => "#{@username}@fau.edu", :to => "eneedelm@fau.edu", :subject => "CoM Faculty Database - #{@subject}")
+    mail(:from => "#{@username}@fau.edu", :to => "medsearchhelp@fau.edu", :subject => "CoM Faculty Database - #{@subject}")
    end
 
 end
