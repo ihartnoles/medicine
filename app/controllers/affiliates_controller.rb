@@ -316,9 +316,16 @@ class AffiliatesController < ApplicationController
     @title      = 'Edit Training'
     @affiliate  = Affiliate.find(params[:id])   
     @affiliateresearcharea = Affiliateresearcharea.where(:affiliate_id => params[:id])
+    researcharea_id = @affiliateresearcharea.pluck(:researcharea_id)
 
-   !@affiliateresearcharea.blank? ? @research_id = Researcharea.where(["id = ?" , Affiliateresearcharea.where(:affiliate_id => params[:id]).pluck(:researcharea_id)]).select("id").first.id : @research_id = 0
-   !@affiliateresearcharea.blank? ? @researchdescription = Affiliateresearcharea.where(:affiliate_id => params[:id]).select("researchdescription").first.researchdescription : @researchdescription = ''
+    if researcharea_id.nil?
+      !@affiliateresearcharea.blank? ? @research_id = Researcharea.where(["id = ?" , Affiliateresearcharea.where(:affiliate_id => params[:id]).pluck(:researcharea_id)]).select("id").first.id : @research_id = 0
+    else 
+      @research_id = 0
+    end
+
+    !@affiliateresearcharea.blank? ? @researchdescription = Affiliateresearcharea.where(:affiliate_id => params[:id]).select("researchdescription").first.researchdescription : @researchdescription = ''
+
   end
 
   def saveTraining
