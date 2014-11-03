@@ -52,7 +52,7 @@
 
   <div class="form-group">
     <%= f.label :country %><br />
-     <%= collection_select(:degree, :country, Country.all, :id, :country, {:include_blank => '-- Choose Country --'}, :class=>'form-control') %>
+     <%= collection_select(:degree, :country, Country.all, :id, :country, {:selected => '232'}, :class=>'form-control') %>
   </div>
 
   <div class="actions">
