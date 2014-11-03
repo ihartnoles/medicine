@@ -451,7 +451,7 @@
                                           <tr>
                                             <th>Basic Science Discipline</th>
                                             <th>Clinical Specialty</th>
-                                            <th>Year received</th>
+                                            <!--<th>Year received</th>-->
                                             <th>Actions</th>
                                           </tr>
                                         </thead>
@@ -470,11 +470,13 @@
                                                         <%= cs.getSpecialtyName(cs.speciality_id) %>
                                                       <% end %>
                                                     </td>
+                                                   <!--
                                                     <td>
                                                       <% if !cs.year.blank? %>
                                                         <%= cs.year %>
                                                       <% end %>
                                                     </td>
+                                                  -->
                                                     <td>  
                                                       <%= link_to 'Update', edit_clinicalspecialty_path(cs , :affiliate_id => params[:id]) %>
                                                       | <%= link_to 'Remove', clinicalspecialty_path(cs , :affiliate_id => params[:id]), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
