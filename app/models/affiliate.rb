@@ -12,14 +12,17 @@ class Affiliate < ActiveRecord::Base
   
   attr_accessible  :faculty_classification_id, :pidm, :path, :isfaculty, :cellphone, :emailfau, :emailoffice, :emailother, :emailpersonal, :emergencyphone, :faxnumber, :firstname, :homecity, :homephone, :homestate, :homestreet, :homezip, :isfaculty, :lastname, :license, :middlename, :officecity, :officestate, :officestreet, :officezip, :otherphonenumber, :prefix, :suffix, :znumber, :officephone, :physiciansgroup, :currentpractice, :teachingavailability
 
-  validates :firstname, length: {minimum: 1, maximum: 50} ,:presence => true
-  validates :lastname, length:  {minimum: 1, maximum: 50} ,:presence => true
+  #validates :firstname, length: {minimum: 1, maximum: 50} ,:presence => true
+  #validates :lastname, length:  {minimum: 1, maximum: 50} ,:presence => true
   #validates :license, :presence => true
-  validates :homestreet, :presence => true
-  validates :homecity, :presence => true
-  validates :homestate, :presence => true
-  validates :homezip, length:   {minimum: 5}
-
+  #validates :homestreet, :presence => true
+  #validates :homecity, :presence => true
+  #validates :homestate, :presence => true
+  #validates :homezip, length:   {minimum: 5}
+  
+  validates :homephone,   format: { with: /\d{3}-\d{3}-\d{4}/, message: "invalid home phone format." }
+  validates :officephone, format: { with: /\d{3}-\d{3}-\d{4}/, message: "invalid work phone format." }
+  validates :cellphone,   format: { with: /\d{3}-\d{3}-\d{4}/, message: "invalid cell phone format." }
   
 
   def getSpecialty(affiliateid)
