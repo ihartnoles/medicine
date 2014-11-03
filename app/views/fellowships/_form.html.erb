@@ -19,11 +19,20 @@
     <%#= f.number_field :speciality_id , :class => 'form-control' %>
     <%= collection_select(:fellowship, :specialty_id, Clinicalsection.all, :id, :sectionname, {:include_blank => '-- Choose Specialty --' , :selected =>  @fellowshipspecialty_id }  , :class=>'form-control') %>
   </div>
-
+  <!--
   <div class="form-group">
     <%= f.label :location %><br />
     <%= f.text_field :location ,:class => 'form-control' %>
   </div>
+  -->
+
+   <div class="form-group">
+    <%= f.label :location %><br />
+    <%#= f.number_field :institution_id %>
+    <%= collection_select(:fellowship, :location, Institution.all, :id, :institutionname, {:include_blank => '-- Choose Institution --'}, :class=>'form-control' ) %>
+    <%#= select_tag "institution_id", options_from_collection_for_select(@institutions, "id" , "institutionname") %>
+  </div>
+
   <div class="form-group">
     <%= f.label :training %><br />
     <%= f.text_field :training ,:class => 'form-control' %>

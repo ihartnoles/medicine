@@ -160,10 +160,6 @@
                                             <p>
                                               <b>License:</b><br>
                                               <%= @affiliate.license %>
-
-
-                                              
-
                                             </p>
 
                                             
@@ -707,7 +703,8 @@
                                                     </td>
                                                     <td>
                                                       <% if !f.location.blank? %>
-                                                        <%= f.location %>
+                                                        <%#= f.location %>
+                                                        <%= f.getInstitutionName(f.location) %>
                                                       <% end %>
                                                     </td>                                                    <td>  
                                                       <%= link_to 'Update', edit_fellowship_path(f , :affiliate_id => params[:id]) %>

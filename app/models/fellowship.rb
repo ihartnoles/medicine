@@ -16,4 +16,13 @@ class Fellowship < ActiveRecord::Base
     return specialtyname
   end
   
+  def getInstitutionName(location)
+    begin
+      institutionname = Institution.find(location).institutionname
+    rescue ActiveRecord::RecordNotFound => e
+      institutionname = ''
+    end
+    
+    return institutionname
+  end
 end
