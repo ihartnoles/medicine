@@ -3,8 +3,8 @@ class Residency < ActiveRecord::Base
 
   validates :location, :presence => true
   validates :specialty_id, :presence => true
-  validates :trainingtitle, :presence => true
-  validates :matchconnection, :presence => true
+  #validates :trainingtitle, :presence => true
+  #validates :matchconnection, :presence => true
   
   def getSpecialtyName(speciality_id)
   	begin
