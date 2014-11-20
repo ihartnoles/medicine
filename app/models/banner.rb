@@ -13,13 +13,18 @@ class Banner < ActiveRecord::Base
   end
 
   def self.find_by_lastname(lastname)
-  	 tmp = self.find_by_sql(["select * from FAUMGR.AWP_COM_ALL_EMPS  where last_name = :last ", {:last => lastname }])
 
-  	if tmp.count > 0
-  		return true
-  	else 
-  		return false
-  	end 
+    Rails.cache.fetch("find_by_lastname", :expires_in => 12.hours) do
+    	 tmp = self.find_by_sql(["select zid from FAUMGR.AWP_COM_ALL_EMPS  where last_name = :last ", {:last => lastname }])
+
+    	if tmp.count > 0
+    		return true
+    	else 
+    		return false
+    	end 
+
+    end
+
   end
 
 

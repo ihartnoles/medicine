@@ -37,13 +37,11 @@
                                 <td><%= affiliate.firstname %></td>
                                 <td class="hidden-xs"><%= affiliate.suffix %></td>
                                 <td class="hidden-xs"><%= affiliate.emailfau %></td>
-                                <td class="hidden-xs">
-                                        
+                                <td class="hidden-xs">                                     
                                       
-                                       <% if !@has_specialty.blank? || @has_specialty.nil? %>
-                                            <%= affiliate.getSpecialty(affiliate.id) %>                         
-                                        <% end %>
-                                      
+                                   <% if !@has_specialty.blank? || @has_specialty.nil? %>
+                                        <%= affiliate.getSpecialty(affiliate.id) %>                         
+                                    <% end %>                                      
                                 </td>
                                  <% if User.find_by_username(session[:cas_user]).usertype_id == 4 %>
                                   <td class="hidden-xs">
@@ -54,7 +52,7 @@
                                         <% if @potential_match %>
                                                <b class="text-success">Potential Match</b>
                                         <% else %>
-                                                <b class="text-primary">No Match</b>
+                                               <b class="text-primary">No Match</b>
                                         <% end %>
                                       <% end %>
                                     <% end %>
@@ -147,13 +145,13 @@
 <!-- JQUERY -->
 <%= render 'shared/javascript' %>
 
-<script>
+<script type="text/javascript">
   jQuery(document).ready(function() {     
     App.setPage("dynamic_table");  //Set current page
     App.init(); //Initialise plugins and elements
 
-    // $('#datatable1').dataTable( {
-    //   "iDisplayLength": 100
+    //  $('#datatable1').dataTable( {
+    //    "iDisplayLength": 100
     // } );
 
 
