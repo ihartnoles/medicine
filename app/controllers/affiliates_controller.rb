@@ -11,7 +11,7 @@ class AffiliatesController < ApplicationController
       if session[:usertype] == 4
          #user is an admin; let them see whatever they want
         #@affiliates = Affiliate.where(:isfaculty => 0)
-        @affiliates = Affiliate.find_by_sql(["select  id, pidm, prefix, firstname, lastname, suffix, emailfau, isfaculty FROM affiliates where isfaculty = :facflag ", {:facflag => 1 }])
+        @affiliates = Affiliate.find_by_sql(["select  id, pidm, prefix, firstname, lastname, suffix, emailfau, isfaculty FROM affiliates where isfaculty = :facflag ", {:facflag => 0 }])
       else
          #you're not an admin; need to check useraccesslevel
         if !currentuser.getPowerUserAccess(session[:userid]).blank?
