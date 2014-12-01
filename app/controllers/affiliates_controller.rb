@@ -294,16 +294,40 @@ class AffiliatesController < ApplicationController
 
     #results = Affiliate.joins("LEFT OUTER JOIN clinicalspecialties ON affiliates.id = clinicalspecialties.affiliate_id").order(:lastname)
 
-    results = Affiliate.joins("LEFT OUTER JOIN assignments ON affiliates.id = assignments.affiliate_id LEFT OUTER JOIN cap_dates ON affiliates.id = cap_dates.affiliate_id").order(:lastname)
+    if params[:searchform][:FTE].present?
 
-    results = results.where("firstname LIKE ?", params[:searchform][:firstname]) if params[:searchform][:firstname].present?
-    results = results.where("lastname LIKE ?", params[:searchform][:lastname]) if params[:searchform][:lastname].present?
-    results = results.where("cellphone LIKE ?", params[:searchform][:cellphone]) if params[:searchform][:cellphone].present?
-    results = results.where("emailfau LIKE ?", params[:searchform][:emailfau]) if params[:searchform][:emailfau].present?
-    results = results.where("clinicalsection_id = ?", params[:searchform][:section_id]) if params[:searchform][:section_id].present?
-    results = results.where("clinicaldivision_id = ?", params[:searchform][:division_id]) if params[:searchform][:division_id].present?
-    results = results.where("meetingdate = ?", params[:searchform][:meetingdate]) if params[:searchform][:meetingdate].present?
-    results = results.where("certificatedate = ?", params[:searchform][:certificatedate]) if params[:searchform][:certificatedate].present?
+      #first pull all the banner records with matching FTE value
+      ids = Banner.find_by_sql(["select pidm from FAUMGR.AWP_COM_ALL_EMPS  where fte = :fte ", {:fte => params[:searchform][:FTE] }]).map{|x| x.pidm}
+
+      #feed the id to the Affilate search
+      results = Affiliate.joins("LEFT OUTER JOIN assignments ON affiliates.id = assignments.affiliate_id LEFT OUTER JOIN cap_dates ON affiliates.id = cap_dates.affiliate_id").where(:pidm => ids).order(:lastname)
+      #results = Affiliate.joins("LEFT OUTER JOIN assignments ON affiliates.id = assignments.affiliate_id LEFT OUTER JOIN cap_dates ON affiliates.id = cap_dates.affiliate_id").find_by_pidm(Banner.find_by_sql(["select pidm from FAUMGR.AWP_COM_ALL_EMPS  where fte = :fte ", {:fte => params[:searchform][:FTE] }])).order(:lastname)
+
+      #add search params as necessary
+      results = results.where("firstname LIKE ?", params[:searchform][:firstname]) if params[:searchform][:firstname].present?
+      results = results.where("lastname LIKE ?", params[:searchform][:lastname]) if params[:searchform][:lastname].present?
+      results = results.where("cellphone LIKE ?", params[:searchform][:cellphone]) if params[:searchform][:cellphone].present?
+      results = results.where("emailfau LIKE ?", params[:searchform][:emailfau]) if params[:searchform][:emailfau].present?
+      results = results.where("clinicalsection_id = ?", params[:searchform][:section_id]) if params[:searchform][:section_id].present?
+      results = results.where("clinicaldivision_id = ?", params[:searchform][:division_id]) if params[:searchform][:division_id].present?
+      results = results.where("meetingdate = ?", params[:searchform][:meetingdate]) if params[:searchform][:meetingdate].present?
+      results = results.where("certificatedate = ?", params[:searchform][:certificatedate]) if params[:searchform][:certificatedate].present?
+
+    else
+
+      #get the search started
+      results = Affiliate.joins("LEFT OUTER JOIN assignments ON affiliates.id = assignments.affiliate_id LEFT OUTER JOIN cap_dates ON affiliates.id = cap_dates.affiliate_id").order(:lastname)
+
+      #add search params as necessary
+      results = results.where("firstname LIKE ?", params[:searchform][:firstname]) if params[:searchform][:firstname].present?
+      results = results.where("lastname LIKE ?", params[:searchform][:lastname]) if params[:searchform][:lastname].present?
+      results = results.where("cellphone LIKE ?", params[:searchform][:cellphone]) if params[:searchform][:cellphone].present?
+      results = results.where("emailfau LIKE ?", params[:searchform][:emailfau]) if params[:searchform][:emailfau].present?
+      results = results.where("clinicalsection_id = ?", params[:searchform][:section_id]) if params[:searchform][:section_id].present?
+      results = results.where("clinicaldivision_id = ?", params[:searchform][:division_id]) if params[:searchform][:division_id].present?
+      results = results.where("meetingdate = ?", params[:searchform][:meetingdate]) if params[:searchform][:meetingdate].present?
+      results = results.where("certificatedate = ?", params[:searchform][:certificatedate]) if params[:searchform][:certificatedate].present?
+    end 
 
     @affiliates = results
 

@@ -14,6 +14,7 @@
                     <h4><i class="fa fa-table"></i><%= @title %></h4>
                 </div>
                 <div class="box-body">
+            
                     <table id="datatable1" cellpadding="0" cellspacing="0" border="0" class="datatable table table-condensed table-striped table-bordered table-hover">
                      <thead>
                          <tr>
@@ -22,6 +23,7 @@
 						  <th class="hidden-xs">Suffix</th>
 						  <th class="hidden-xs">Email</th>
 						  <th class="hidden-xs">Specialty</th>
+                          <th class="hidden-xs">FTE</th>
 						  <th>Actions</th>                    
 						</tr>
                     </thead>
@@ -47,6 +49,10 @@
                                    <% if !@has_specialty.blank? %>
                                         <%= affiliate.getSpecialty(affiliate.id) %>                          
                                    <% end %>
+                                </td>
+                                <td class="hidden-xs">
+                                    <% @banner = Banner.find_by_id(affiliate.pidm) %>
+                                    <% @banner.each do |b| %><%= b.fte %> <% end %>
                                 </td>
                                 <td>
                                     <a href="/affiliates/<%= affiliate.id %>/<%= affiliate.pidm %>">View</a>|
@@ -75,6 +81,7 @@
 						  <th class="hidden-xs">Suffix</th>
 						  <th class="hidden-xs">Email</th>
 						  <th class="hidden-xs">Specialty</th>
+                          <th class="hidden-xs">FTE</th>
 						  <th>Actions</th>                    
 						</tr>
                     </tfoot>

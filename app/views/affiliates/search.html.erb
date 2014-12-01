@@ -68,6 +68,18 @@
                          </div>
                         
                         <br>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <%= f.label :FTE, "FTE:" %><br />
+                                <%= f.text_field :FTE ,:class => 'form-control'  %>
+                                <%#= f.select :FTE, options_for_select(0..1).step(0.5), { prompt: "No Limit" } %>
+                                <%#= f.select :FTE, options_for_select((0..1.0).step(0.1).to_a.map{|s| ["#{s}", s]})%>
+                            </div>
+
+                            
+                         </div>
+                         <br>
                         <div class="row">
                             <div class="col-sm-12">
                              <%= f.submit "Search" %> &nbsp; <%= link_to 'Back', home_path %> 
