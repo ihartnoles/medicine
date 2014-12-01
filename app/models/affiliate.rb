@@ -20,9 +20,9 @@ class Affiliate < ActiveRecord::Base
   #validates :homestate, :presence => true
   #validates :homezip, length:   {minimum: 5}
   
-  validates :homephone,   format: { with: /\d{3}-\d{3}-\d{4}/, message: "invalid home phone format." }
-  validates :officephone, format: { with: /\d{3}-\d{3}-\d{4}/, message: "invalid work phone format." }
-  validates :cellphone,   format: { with: /\d{3}-\d{3}-\d{4}/, message: "invalid cell phone format." }
+  validates :homephone,   format: { with: /\d{3}-\d{3}-\d{4}/, message: "invalid home phone format." , allow_blank: true}
+  validates :officephone, format: { with: /\d{3}-\d{3}-\d{4}/, message: "invalid work phone format." , allow_blank: true}
+  validates :cellphone,   format: { with: /\d{3}-\d{3}-\d{4}/, message: "invalid cell phone format." , allow_blank: true}
   
 
   def getSpecialty(affiliateid)
