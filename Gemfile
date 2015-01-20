@@ -26,6 +26,10 @@ gem 'jquery-rails'
 gem 'tiny_tds'
 gem 'carrierwave'
 gem 'rubycas-client'
+#gem 'jbuilder'
+#gem 'json_builder'
+
+
 #gem 'validates_timeliness', '~> 3.0'
 
 # To use ActiveModel has_secure_password

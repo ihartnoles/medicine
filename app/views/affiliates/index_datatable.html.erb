@@ -1,0 +1,111 @@
+<div class="row">
+<div class="col-md-12">
+            
+
+            <!--
+            <%= link_to 'Add a New Faculty Member', new_affiliate_path %> <br><br>
+            -->
+
+            <div class="box border red">
+                <div class="box-title">
+                    <h4><i class="fa fa-table"></i><%= @title %></h4>
+                </div>
+                <div class="box-body">
+                    <table id="datatable1" cellpadding="0" cellspacing="0" border="0" class="datatable table table-condensed table-striped table-bordered table-hover">
+                     <thead>
+                         <% if params[:prospect] %>
+                             <%= render 'prospectheader' %>
+                         <% else %>
+                             <%= render 'facultyheader' %>
+                         <% end %>
+                    </thead>
+                    
+
+                    <tbody>
+                     
+                         <!-- display for affiliate list -->
+                         <% if params[:prospect] %>
+                            
+                            
+                         <% else %>
+
+                          <% @affiliates.each do |affiliate| %>
+                            <!-- display for faculty list -->
+                            <% @banner = Banner.find_by_id(affiliate.pidm) %>
+                            <% @has_specialty  = Assignment.where(:affiliate_id => affiliate.id) %>
+                            <%# @has_specialty  = Clinicalsection.first %>
+
+                              <tr class="gradeA">
+                                  <td class="hidden-xs"><% @banner.each do |b| %><%= b.zid %> <% end %></td>
+                                  <td class="hidden-xs"><%= affiliate.prefix %></td>
+                                  <td><%#= affiliate.id %> <%= affiliate.firstname %></td>
+                                  <td><%= affiliate.lastname %></td>
+                                  <td class="hidden-xs"><%= affiliate.suffix %></td>
+                                  <td class="hidden-xs">
+                                    <% @banner.each do |b| %>
+                                      <% if defined?(b.perbfac_academic_title.humanize) %>
+                                        <%= b.perbfac_academic_title.humanize %> 
+                                      <% end %> 
+                                    <% end %> 
+                                  </td>
+                                  <td class="hidden-xs">
+                                    <% if !@has_specialty.blank? || @has_specialty.nil? %>
+                                        <%= affiliate.getSpecialty(affiliate.id) %>                                                                            
+                                    <% end %>
+                                  </td>
+                                  <td class="hidden-xs"><% @banner.each do |b| %><%= b.fte %> <% end %></td>
+                                  <td>
+                                    <a href="/affiliates/<%= affiliate.id %>/<%= affiliate.pidm %>">View</a>
+                                      |
+                                      <%= link_to 'Edit', edit_affiliate_path(affiliate) %>      
+                                      | 
+                                     <a href="/removematch/<%= affiliate.id %>" onclick="return confirm('Are you sure you want to remove the Banner match?')">Remove Banner Match</a>       
+
+
+
+                                  </td>
+                              </tr>
+                             
+                         <% end %>
+                        
+                    <% end %>
+                    </tbody>
+
+                    <tfoot>
+                        <% if params[:prospect] %>
+                             <%= render 'prospectheader' %>
+                         <% else %>
+                             <%= render 'facultyheader' %>
+                         <% end %>
+                    </tfoot>
+                   
+
+                    </table>
+                    <!-- Download: <%= link_to "Excel", affiliates_path(format: "xls") %>
+                    <br /> -->
+
+                </div>
+            </div>
+             <!-- /BOX -->
+</div>
+</div><!-- row -->
+
+
+<!-- JQUERY -->
+<%= render 'shared/javascript' %>
+
+<script type="text/javascript">
+  jQuery(document).ready(function() {     
+    //App.setPage("dynamic_table");  //Set current page
+    //App.init(); //Initialise plugins and elements
+
+     $('#datatable1').dataTable( {
+        //"bProcessing": true,
+        //"bServerSide": true,
+        //"sAjaxSource": 'get_data.json' 
+        "ajax":'get_data.json'
+        } );
+    });  
+
+  App.init(); //Initialise plugins and elements
+</script>

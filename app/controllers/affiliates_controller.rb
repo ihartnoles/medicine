@@ -1,6 +1,8 @@
 class AffiliatesController < ApplicationController
   # GET /affiliates
   # GET /affiliates.json
+
+
   def index
     
     currentuser = User.find(session[:userid])
@@ -10,8 +12,16 @@ class AffiliatesController < ApplicationController
       @description = 'List of Affiliate Candidates'
       if session[:usertype] == 4
          #user is an admin; let them see whatever they want
-        #@affiliates = Affiliate.where(:isfaculty => 0)
-        @affiliates = Affiliate.find_by_sql(["select  id, pidm, prefix, firstname, lastname, suffix, emailfau, isfaculty FROM affiliates where isfaculty = :facflag ", {:facflag => 0}])
+       
+        #@affiliates = Affiliate.find_by_sql(["select  id, pidm, prefix, firstname, lastname, suffix, emailfau, isfaculty FROM affiliates where isfaculty = :facflag ", {:facflag => 0}])
+        @affiliates = Affiliate.find_by_sql(["SELECT        affiliates.id, affiliates.potentialmatch, affiliates.pidm, affiliates.prefix, affiliates.firstname, affiliates.lastname, affiliates.suffix, affiliates.emailfau, affiliates.isfaculty, cap_dates.certificatedate, cap_dates.status, 
+                                              clinicalsections.sectionname , capstatuses.status
+                                              FROM            clinicalsections INNER JOIN
+                                               assignments ON clinicalsections.id = assignments.clinicalsection_id RIGHT OUTER JOIN
+                                               affiliates ON assignments.affiliate_id = affiliates.id LEFT OUTER JOIN
+                                               cap_dates ON affiliates.id = cap_dates.affiliate_id LEFT OUTER JOIN
+                                               capstatuses ON cap_dates.status = capstatuses.id
+                                               where affiliates.isfaculty = :facflag ", {:facflag => 0}])
       else
          #you're not an admin; need to check useraccesslevel
         if !currentuser.getPowerUserAccess(session[:userid]).blank?
@@ -21,9 +31,6 @@ class AffiliatesController < ApplicationController
         end
       end
     else 
-      
-      
-      
 
       if !params[:faculty_classification_id].blank?
         @title       =  FacultyClassification.find(params[:faculty_classification_id]).classification + ' List'

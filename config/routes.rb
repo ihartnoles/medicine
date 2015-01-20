@@ -68,8 +68,10 @@ Medicine::Application.routes.draw do
   post '/makematch', to: 'banners#makematch'
   get  '/removematch/:id', to: 'banners#removematch'
   get  '/automatchstaff/', to: 'banners#automatchstaff'
+  get  '/flagpotential/', to: 'banners#flagpotential'
 
   #miscellaneous affilate actions
+  get  '/get_data',         to: 'affiliates#get_data'
   get  '/search',           to: 'affiliates#search'
   post '/doSearch',         to: 'affiliates#doSearch'
   get  '/editTraining/:id', to: 'affiliates#editTraining'

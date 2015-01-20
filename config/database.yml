@@ -32,4 +32,4 @@ banner:
    adapter: oracle_enhanced
    database: "(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=tcp)(HOST=bannerprd.fau.edu)(PORT=1550)))(CONNECT_DATA=(SID=FAUP)))"
    username: ihartstein
-   password: ikeoracle1358
+   password: ikeCOM1358

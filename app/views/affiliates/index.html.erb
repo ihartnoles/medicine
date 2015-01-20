@@ -47,13 +47,13 @@
                                   <td class="hidden-xs">
                                     <% @cap_dates.each do |cd| %>
                                       <% if  cd.status == '3' %>
-                                        <% @potential_match = Banner.find_by_lastname(affiliate.lastname) %>
+                                        <%# @potential_match = Banner.find_by_lastname(affiliate.lastname) %>
 
-                                        <% if @potential_match %>
+                                        <%# if @potential_match %>
                                                <b class="text-success">Potential Match</b>
-                                        <% else %>
+                                        <%# else %>
                                                <b class="text-primary">No Match</b>
-                                        <% end %>
+                                        <%# end %>
                                       <% end %>
                                     <% end %>
                                   </td>
@@ -70,7 +70,7 @@
                                     <%= link_to 'Edit', edit_affiliate_path(affiliate) %> 
 
                                     <% if @potential_match && !affiliate.isfaculty %>
-                                    | <a href="/bannermatches/<%= affiliate.lastname %>/<%= affiliate.id %>">View Matches</a>
+                                     | <a href="/bannermatches/<%= affiliate.lastname %>/<%= affiliate.id %>">View Matches</a>
                                     <% end %>
 
                                 <!-- only affiliate candidates can be deleted -->
@@ -87,24 +87,34 @@
                             <%# @has_specialty  = Clinicalsection.first %>
 
                               <tr class="gradeA">
-                                  <td class="hidden-xs"><% @banner.each do |b| %><%= b.zid %> <% end %></td>
+                                  <td class="hidden-xs">
+                                    <% if !@banner.blank? || @banner.nil? %>
+                                    <% @banner.each do |b| %><%= b.zid %> <% end %>
+                                    <% end %>
+                                  </td>
                                   <td class="hidden-xs"><%= affiliate.prefix %></td>
                                   <td><%#= affiliate.id %> <%= affiliate.firstname %></td>
                                   <td><%= affiliate.lastname %></td>
                                   <td class="hidden-xs"><%= affiliate.suffix %></td>
                                   <td class="hidden-xs">
-                                    <% @banner.each do |b| %>
-                                      <% if defined?(b.perbfac_academic_title.humanize) %>
-                                        <%= b.perbfac_academic_title.humanize %> 
-                                      <% end %> 
-                                    <% end %> 
+                                       <% if !@banner.blank? || @banner.nil? %>
+                                          <% @banner.each do |b| %>
+                                            <% if defined?(b.perbfac_academic_title.humanize) %>
+                                              <%= b.perbfac_academic_title.humanize %> 
+                                            <% end %> 
+                                          <% end %> 
+                                        <% end %>
                                   </td>
                                   <td class="hidden-xs">
                                     <% if !@has_specialty.blank? || @has_specialty.nil? %>
                                         <%= affiliate.getSpecialty(affiliate.id) %>                                                                            
                                     <% end %>
                                   </td>
-                                  <td class="hidden-xs"><% @banner.each do |b| %><%= b.fte %> <% end %></td>
+                                  <td class="hidden-xs">
+                                    <% if !@banner.blank? || @banner.nil? %>
+                                      <% @banner.each do |b| %><%= b.fte %> <% end %>
+                                    <% end %>
+                                  </td>
                                   <td>
                                     <a href="/affiliates/<%= affiliate.id %>/<%= affiliate.pidm %>">View</a>
                                       |
@@ -147,12 +157,16 @@
 
 <script type="text/javascript">
   jQuery(document).ready(function() {     
-    App.setPage("dynamic_table");  //Set current page
-    App.init(); //Initialise plugins and elements
+    //App.setPage("dynamic_table");  //Set current page
+    //App.init(); //Initialise plugins and elements
 
-    //  $('#datatable1').dataTable( {
-    //    "iDisplayLength": 100
-    // } );
+      $('#datatable1').dataTable( {
+        "bScrollInfinite":true,
+        "bScrollCollapse":true,
+        "sScrollY": "200px"
+     } );
+     
+     App.init();
 
 
   });

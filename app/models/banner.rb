@@ -29,9 +29,15 @@ class Banner < ActiveRecord::Base
 
 
   def self.find_by_id(pidm)
-      record = self.find_by_sql(["select * from FAUMGR.AWP_COM_ALL_EMPS  where pidm = :pidm ", {:pidm => pidm }])
+      Rails.cache.fetch("find_by_lastname", :expires_in => 12.hours) do
+        record = self.find_by_sql(["select * from FAUMGR.AWP_COM_ALL_EMPS  where pidm = :pidm ", {:pidm => pidm }])
 
-      return record
+        if record.count > 0
+          return record
+        else 
+          return false
+        end 
+      end
   end
 
   def self.find_matches(lastname)
