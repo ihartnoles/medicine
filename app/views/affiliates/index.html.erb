@@ -93,10 +93,10 @@
                                     
                                     <% end %>
                                   </td>
-                                  <td><% if !affiliate.prefix.blank?%><%= affiliate.prefix %><%else%>N/A - A<% end %></td>
+                                  <td><% if !affiliate.prefix.blank?%><%= affiliate.prefix %><% end %></td>
                                   <td><%#= affiliate.id %> <%= affiliate.firstname %></td>
                                   <td><%= affiliate.lastname %></td>
-                                  <td><% if !affiliate.suffix.blank?%><%= affiliate.suffix %><%else%>N/A - B<% end %></td>
+                                  <td><% if !affiliate.suffix.blank?%><%= affiliate.suffix %><% end %></td>
                                   <td>
                                        <% if !@banner.blank? || @banner.nil? %>
                                           <% @banner.each do |b| %>
