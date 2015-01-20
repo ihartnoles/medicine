@@ -33,18 +33,18 @@
                             <%# @has_specialty  = Clinicalsection.first %>
 
                             <tr class="gradeA">
-                                <td class="hidden-xs"><%#= affiliate.id %> <%= affiliate.lastname %></td>
+                                <td><%#= affiliate.id %> <%= affiliate.lastname %></td>
                                 <td><%= affiliate.firstname %></td>
-                                <td class="hidden-xs"><%= affiliate.suffix %></td>
-                                <td class="hidden-xs"><%= affiliate.emailfau %></td>
-                                <td class="hidden-xs">                                     
+                                <td><%= affiliate.suffix %></td>
+                                <td><%= affiliate.emailfau %></td>
+                                <td>                                     
                                       
                                    <% if !@has_specialty.blank? || @has_specialty.nil? %>
                                         <%= affiliate.getSpecialty(affiliate.id) %>                         
                                     <% end %>                                      
                                 </td>
                                  <% if User.find_by_username(session[:cas_user]).usertype_id == 4 %>
-                                  <td class="hidden-xs">
+                                  <td>
                                     <% @cap_dates.each do |cd| %>
                                       <% if  cd.status == '3' %>
                                         <%# @potential_match = Banner.find_by_lastname(affiliate.lastname) %>
@@ -58,13 +58,13 @@
                                     <% end %>
                                   </td>
                                 <% end %>
-                                <td class="hidden-xs">
+                                <td >
                                    <% @cap_dates.each do |cd| %>
                                       <%= affiliate.getStatus(affiliate.id).to_s %>
                                    <% end %>
                                 </td>
-                                <td class="hidden-xs"><% @cap_dates.each do |cd| %><%= cd.certificatedate %> <% end %></td>
-                                <!-- <td class="hidden-xs">A1 Title</td> -->
+                                <td><% @cap_dates.each do |cd| %><%= cd.certificatedate %> <% end %></td>
+                                <!-- <td>A1 Title</td> -->
                                 <td>
                                     <a href="/affiliates/<%= affiliate.id %>/<%= affiliate.pidm %>">View</a>|
                                     <%= link_to 'Edit', edit_affiliate_path(affiliate) %> 
@@ -87,32 +87,36 @@
                             <%# @has_specialty  = Clinicalsection.first %>
 
                               <tr class="gradeA">
-                                  <td class="hidden-xs">
+                                  <td>
                                     <% if !@banner.blank? || @banner.nil? %>
                                     <% @banner.each do |b| %><%= b.zid %> <% end %>
+                                    
                                     <% end %>
                                   </td>
-                                  <td class="hidden-xs"><%= affiliate.prefix %></td>
+                                  <td><% if !affiliate.prefix.blank?%><%= affiliate.prefix %><%else%>N/A - A<% end %></td>
                                   <td><%#= affiliate.id %> <%= affiliate.firstname %></td>
                                   <td><%= affiliate.lastname %></td>
-                                  <td class="hidden-xs"><%= affiliate.suffix %></td>
-                                  <td class="hidden-xs">
+                                  <td><% if !affiliate.suffix.blank?%><%= affiliate.suffix %><%else%>N/A - B<% end %></td>
+                                  <td>
                                        <% if !@banner.blank? || @banner.nil? %>
                                           <% @banner.each do |b| %>
                                             <% if defined?(b.perbfac_academic_title.humanize) %>
                                               <%= b.perbfac_academic_title.humanize %> 
                                             <% end %> 
                                           <% end %> 
+                                        
                                         <% end %>
                                   </td>
-                                  <td class="hidden-xs">
+                                  <td>
                                     <% if !@has_specialty.blank? || @has_specialty.nil? %>
-                                        <%= affiliate.getSpecialty(affiliate.id) %>                                                                            
+                                        <%= affiliate.getSpecialty(affiliate.id) %>
+                                                                                                              
                                     <% end %>
                                   </td>
-                                  <td class="hidden-xs">
+                                  <td>
                                     <% if !@banner.blank? || @banner.nil? %>
                                       <% @banner.each do |b| %><%= b.fte %> <% end %>
+                                    
                                     <% end %>
                                   </td>
                                   <td>
@@ -157,16 +161,20 @@
 
 <script type="text/javascript">
   jQuery(document).ready(function() {     
-    //App.setPage("dynamic_table");  //Set current page
-    //App.init(); //Initialise plugins and elements
+    App.setPage("dynamic_table");  //Set current page
+    App.init(); //Initialise plugins and elements
 
-      $('#datatable1').dataTable( {
-        "bScrollInfinite":true,
-        "bScrollCollapse":true,
-        "sScrollY": "200px"
-     } );
+     //  $('#datatable1').dataTable( {
+     //    "bScrollInfinite":true,
+     //    "bScrollCollapse":true,
+     //    "sScrollY": "250px"
+     // } );
+
+     //  $(window).bind('resize', function () {
+     //    oTable.fnAdjustColumnSizing();
+     //  } );
      
-     App.init();
+     //App.init();
 
 
   });

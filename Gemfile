@@ -9,6 +9,8 @@ gem 'ruby-oci8', '~> 2.1.7'
 gem 'activerecord-oracle_enhanced-adapter', '~>1.4.0'
 gem 'activerecord-sqlserver-adapter'
 
+gem 'rufus-scheduler', '~> 3.0.9'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
