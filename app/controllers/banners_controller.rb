@@ -106,7 +106,7 @@ class BannersController < ApplicationController
       if Affiliate.find_by_znumber(bs.zid).nil? 
         affiliate = Affiliate.new
         affiliate.isfaculty = 1
-        affiliate.prefix = 'ww'
+        # affiliate.prefix = 'ww'
         affiliate.pidm = bs.pidm
         affiliate.znumber = bs.zid
         affiliate.firstname = bs.first_name
@@ -122,7 +122,7 @@ class BannersController < ApplicationController
         affiliate = Affiliate.find_by_znumber(bs.zid)       
         affiliate.update_attributes(
           :isfaculty => 1,
-          :prefix => 'xx',
+          # :prefix => 'xx',
           :pidm => bs.pidm,
           :znumber => bs.zid,
           :firstname => bs.first_name,
