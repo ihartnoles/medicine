@@ -21,11 +21,11 @@ class AffiliatesController < ApplicationController
                                                affiliates ON assignments.affiliate_id = affiliates.id LEFT OUTER JOIN
                                                cap_dates ON affiliates.id = cap_dates.affiliate_id LEFT OUTER JOIN
                                                capstatuses ON cap_dates.status = capstatuses.id
-                                               where affiliates.isfaculty = :facflag ", {:facflag => 0}])
+                                               where affiliates.isfaculty = :facflag  order by affiliates.lastname", {:facflag => 0}])
       else
          #you're not an admin; need to check useraccesslevel
         if !currentuser.getPowerUserAccess(session[:userid]).blank?
-            @affiliates = Affiliate.find(:all, :conditions => ["isfaculty = ? AND faculty_classification_id IN (?)", 0, Useraccesslevel.where(:affiliate_id => session[:userid]).pluck(:facultyclassification_id)])
+            @affiliates = Affiliate.find(:all, :conditions => ["isfaculty = ? AND faculty_classification_id IN (?)", 0, Useraccesslevel.where(:affiliate_id => session[:userid]).pluck(:facultyclassification_id)]).order(lastname: :desc)
         else
             unauthorized = 1
         end
@@ -43,14 +43,14 @@ class AffiliatesController < ApplicationController
         if session[:usertype] == 4
            #user is an admin; let them see whatever they want
            if params[:faculty_classification_id]
-                @affiliates = Affiliate.where(:isfaculty => 1, :faculty_classification_id => params[:faculty_classification_id])
+                @affiliates = Affiliate.order('lastname asc').where(:isfaculty => 1, :faculty_classification_id => params[:faculty_classification_id])
            else
-                @affiliates = Affiliate.where(:isfaculty => 1)                 
+                @affiliates = Affiliate.order('lastname asc').where(:isfaculty => 1)
            end
         else
           #you're not an admin; need to check useraccesslevel
           if !currentuser.hasAccess(session[:userid], params[:faculty_classification_id]).blank?
-            @affiliates = Affiliate.where(:isfaculty => 1, :faculty_classification_id => params[:faculty_classification_id])
+            @affiliates = Affiliate.order('lastname asc').where(:isfaculty => 1, :faculty_classification_id => params[:faculty_classification_id]).order(lastname: :desc)
           else
             unauthorized = 1
           end

@@ -13,7 +13,9 @@
                 <div class="box-body">
                     <table id="table1" cellpadding="0" cellspacing="0" border="0" class="table-condensed table-striped table-bordered table-hover">
                      <thead>
+                         <%= @affiliates.count %> records
                          <% if params[:prospect] %>
+
                              <%= render 'prospectheader' %>
                          <% else %>
                              <%= render 'facultyheader' %>
