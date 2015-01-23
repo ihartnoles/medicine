@@ -101,10 +101,12 @@ class BannersController < ApplicationController
 
     
     @Bannerstaff.each do | bs |
-   
+      
+      
       if Affiliate.find_by_znumber(bs.zid).nil? 
         affiliate = Affiliate.new
         affiliate.isfaculty = 1
+        affiliate.prefix = 'ww'
         affiliate.pidm = bs.pidm
         affiliate.znumber = bs.zid
         affiliate.firstname = bs.first_name
@@ -116,39 +118,27 @@ class BannersController < ApplicationController
         affiliate.homezip = bs.hm_zip unless bs.hm_zip.blank?
         affiliate.cellphone = bs.cell unless bs.cell.blank?
         affiliate.save(validate: false)   
-      elsif bs.zid == Affiliate.find_by_znumber(bs.zid).znumber
-        affiliate = Affiliate.find_by_znumber(bs.zid)
-        affiliate.isfaculty = 1
-        affiliate.pidm = bs.pidm
-        affiliate.znumber = bs.zid
-        affiliate.firstname = bs.first_name
-        affiliate.lastname = bs.last_name
-        affiliate.emailfau = bs.email
-        affiliate.homestreet = bs.hm_street_line1 unless bs.hm_street_line1.blank?
-        affiliate.homecity = bs.hm_city unless bs.hm_city.blank?
-        affiliate.homestate = bs.hm_state unless bs.hm_state.blank?
-        affiliate.homezip = bs.hm_zip unless bs.hm_zip.blank?
-        affiliate.cellphone = bs.cell unless bs.cell.blank?
-        affiliate.save(validate: false)   
-      else
-        affiliate = Affiliate.new
-        affiliate.isfaculty = 1
-        affiliate.pidm = bs.pidm
-        affiliate.znumber = bs.zid unless bs.zid.blank?
-        affiliate.firstname = bs.first_name
-        affiliate.lastname = bs.last_name
-        affiliate.emailfau = bs.email
-        affiliate.homestreet = bs.hm_street_line1 unless bs.hm_street_line1.blank?
-        affiliate.homecity = bs.hm_city unless bs.hm_city.blank?
-        affiliate.homestate = bs.hm_state unless bs.hm_state.blank?
-        affiliate.homezip = bs.hm_zip unless bs.hm_zip.blank?
-        affiliate.cellphone = bs.cell unless bs.cell.blank?
-        affiliate.save(validate: false)  
+      else 
+        affiliate = Affiliate.find_by_znumber(bs.zid)       
+        affiliate.update_attributes(
+          :isfaculty => 1,
+          :prefix => 'xx',
+          :pidm => bs.pidm,
+          :znumber => bs.zid,
+          :firstname => bs.first_name,
+          :lastname => bs.last_name,
+          :emailfau => bs.email,
+          :homestreet => bs.hm_street_line1,
+          :homecity => bs.hm_city,
+          :homestate => bs.hm_state,
+          :homezip => bs.hm_zip,
+          :cellphone => bs.cell
+         )
       end
+     end
 
-    end
-
-     redirect_to affiliates_path
+     flash[:notice] = 'Automatch process complete!'
+     redirect_to admin_path
 
   end
 
@@ -176,73 +166,19 @@ class BannersController < ApplicationController
       @Bannerstaff.each do | bs |   
         if !Affiliate.find_by_lastname(bs.last_name).nil? 
             affiliate = Affiliate.find_by_lastname(bs.last_name)
-            affiliate.potentialmatch = 1    
-            affiliate.save(validate: false)       
+            # affiliate.potentialmatch = 1    
+            # affiliate.save(validate: false)  
+            #if affiliate.isfaculty != 1
+              affiliate.update_attributes(:potentialmatch => 1)     
+            #end
         end
       end
 
-       redirect_to root_path
+        flash[:notice] = 'Potentials flagged!'
+        redirect_to admin_path
 
   end
 
-  # # GET /banners/new
-  # # GET /banners/new.json
-  # def new
-  #   @banner = Banner.new
-
-  #   respond_to do |format|
-  #     format.html # new.html.erb
-  #     format.json { render json: @banner }
-  #   end
-  # end
-
-  # # GET /banners/1/edit
-  # def edit
-  #   @banner = Banner.find(params[:id])
-  # end
-
-  # # POST /banners
-  # # POST /banners.json
-  # def create
-  #   @banner = Banner.new(params[:banner])
-
-  #   respond_to do |format|
-  #     if @banner.save
-  #       format.html { redirect_to @banner, notice: 'Banner was successfully created.' }
-  #       format.json { render json: @banner, status: :created, location: @banner }
-  #     else
-  #       format.html { render action: "new" }
-  #       format.json { render json: @banner.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-  # # PUT /banners/1
-  # # PUT /banners/1.json
-  # def update
-  #   @banner = Banner.find(params[:id])
-
-  #   respond_to do |format|
-  #     if @banner.update_attributes(params[:banner])
-  #       format.html { redirect_to @banner, notice: 'Banner was successfully updated.' }
-  #       format.json { head :no_content }
-  #     else
-  #       format.html { render action: "edit" }
-  #       format.json { render json: @banner.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-  # # DELETE /banners/1
-  # # DELETE /banners/1.json
-  # def destroy
-  #   @banner = Banner.find(params[:id])
-  #   @banner.destroy
-
-  #   respond_to do |format|
-  #     format.html { redirect_to banners_url }
-  #     format.json { head :no_content }
-  #   end
-  # end
+  
 end
 
